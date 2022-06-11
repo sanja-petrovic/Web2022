@@ -1,6 +1,6 @@
 @import 'base';
 
-.login-body {
+.register-body {
   margin: 0;
   font-family: $main-font;
   background-image: url('images/lightskyblue.jpg');
@@ -14,27 +14,29 @@
   align-items: center;
 }
 
-.login-div {
+.register-div {
   @extend %basic-white-component;
   width: 21.5vw;
-  height: 22vw;
-
+  height: 35vw;
 }
 
-.login-div:before {
+.register-div:before {
   @extend %basic-white-component-before;
 }
 
-form {
+.myForm {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
+select {
+  @extend %basic-text-box;
+}
 
 .text-box {
   @extend %basic-text-box;
-  width: 18em;
+  width: 18rem;
 }
 
 .text-box:hover {
@@ -50,7 +52,7 @@ form {
   @extend %basic-primary-button-hover
 }
 
-.login-content {
+.register-content {
   text-align: center;
   h1 {
     text-align: left;

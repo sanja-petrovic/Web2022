@@ -1,0 +1,67 @@
+@use "sass:math";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+$main-font: 'Montserrat', sans-serif;
+$bold-font-color: #000b42;
+$regular-font-color: #555557;
+$primary-button-color: #6382ff;
+$primary-button-foreground: white;
+$primary-button-hover: #708cff;
+$visited-link: #7f4cff;
+
+%basic-white-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+}
+
+%basic-white-component-before {
+  content: "";
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+  filter: blur(30px);
+  margin: 20px;
+}
+
+%basic-text-box {
+  border: 0;
+  outline: 0;
+  padding: 10px;
+  border-radius: 7px;
+  border-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.2);
+  color: $regular-font-color;
+  transition: 0.3s;
+}
+
+%basic-primary-button {
+  border: 0;
+  padding: 10px;
+  background-color: $primary-button-color;
+  color: $primary-button-foreground;
+  font-weight: 500;
+  border-radius: 10px;
+  box-shadow: 0 0 1em 0 rgba(99, 130, 255, 0.5);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+%basic-primary-button-hover {
+  background-color: $primary-button-hover;
+}
+
+* {
+  font-family: $main-font;
+}
+.myHeading {
+  font-weight: 600;
+  color: $bold-font-color;
+}

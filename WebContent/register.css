@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
-.login-div {
+.register-div {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,7 +11,7 @@
   overflow: hidden;
 }
 
-.login-div:before {
+.register-div:before {
   content: "";
   position: absolute;
   background: inherit;
@@ -21,7 +21,7 @@
   margin: 20px;
 }
 
-.text-box {
+.text-box, select {
   border: 0;
   outline: 0;
   padding: 10px;
@@ -58,7 +58,7 @@
   color: #000b42;
 }
 
-.login-body {
+.register-body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
   background-image: url("images/lightskyblue.jpg");
@@ -72,19 +72,19 @@
   align-items: center;
 }
 
-.login-div {
+.register-div {
   width: 21.5vw;
-  height: 22vw;
+  height: 35vw;
 }
 
-form {
+.myForm {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
 .text-box {
-  width: 18em;
+  width: 18rem;
 }
 
 .text-box:hover {
@@ -95,26 +95,26 @@ form {
   box-shadow: 0 0 1em 0 rgba(99, 130, 255, 0.5);
 }
 
-.login-content {
+.register-content {
   text-align: center;
 }
-.login-content h1 {
+.register-content h1 {
   text-align: left;
   margin-bottom: 1em;
 }
-.login-content p {
+.register-content p {
   font-size: 12px;
   color: #555557;
 }
-.login-content p a {
+.register-content p a {
   color: #6382ff;
   transition: 0.3s;
 }
-.login-content p a:hover {
+.register-content p a:hover {
   color: #708cff;
 }
-.login-content p a:visited {
+.register-content p a:visited {
   color: #7f4cff;
 }
 
-/*# sourceMappingURL=login.css.map */
+/*# sourceMappingURL=register.css.map */
