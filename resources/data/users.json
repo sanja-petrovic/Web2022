@@ -1,0 +1,11 @@
+[
+  {
+    "Username": "sanja",
+    "Password": "sanja",
+    "Name": "Sanja",
+    "Surname": "Petrovic",
+    "Gender": "Female",
+    "DateOfBirth": "2001-01-28",
+    "DeletedAt": "2001-01-28T12:45:00"
+  }
+]

@@ -1,4 +1,10 @@
 @use "sass:math";
+$primary: #900;
+$enable-shadows: true;
+$prefix: "mo-";
+
+// Then import Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 $main-font: 'Montserrat', sans-serif;
 $bold-font-color: #000b42;

@@ -3,14 +3,23 @@ package beans;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.google.gson.annotations.SerializedName;
+
 public class User {
 
+	@SerializedName("Username")
 	private String username;
+	@SerializedName("Password")
 	private String password;
+	@SerializedName("Name")
 	private String name;
+	@SerializedName("Surname")
 	private String surname;
+	@SerializedName("Gender")
 	private Gender gender;
+	@SerializedName("DateOfBirth")
 	private LocalDate dateOfBirth;
+	@SerializedName("DeletedAt")
 	private LocalDateTime deletedAt;
 
 	public User(String username, String password, String name, String surname, Gender gender, LocalDate dateOfBirth) {
