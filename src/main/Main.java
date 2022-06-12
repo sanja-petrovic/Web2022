@@ -1,4 +1,4 @@
-package rest;
+package main;
 
 import static spark.Spark.get;
 import static spark.Spark.port;
@@ -16,7 +16,6 @@ public class Main {
 		Repository.getInstance().loadData();
 		port(8080);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
-		LoginUserREST.init();
 	}
 	
 }

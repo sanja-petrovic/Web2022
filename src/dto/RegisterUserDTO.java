@@ -21,7 +21,7 @@ public class RegisterUserDTO {
 		this.username = username;
 		this.password = password;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
