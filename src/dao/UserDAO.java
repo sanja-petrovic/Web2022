@@ -17,6 +17,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
+import beans.Gender;
 import beans.User;
 
 public class UserDAO {
@@ -40,12 +41,18 @@ public class UserDAO {
 		} catch (Exception ex) {
 		    ex.printStackTrace();
 		}
+		this.users.add(new User("a", "b", "c", "d", Gender.FEMALE, LocalDate.now()));
+		writeUsers();
 	}
 	
 	public void writeUsers() {
 		Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
 		try {
-			gson.toJson(this.users, new FileWriter("resources/data/users.json"));
+			FileWriter writer = new FileWriter("resources/data/users.json");
+			gson.toJson(this.users, writer);
+			writer.flush();
+			writer.close();
+			
 		} catch (JsonIOException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
