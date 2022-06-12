@@ -12,6 +12,7 @@ import static spark.Spark.get;
 import static spark.Spark.path;
 import static spark.Spark.post;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class UserController {
@@ -29,15 +30,21 @@ public class UserController {
 			
 			if(user == null) {
 				res.status(401);
-				res.body("Incorrect username and/or password. Please try again.");
+				res.body("Incorrect username or password. Please try again.");
 				return res.body();
 			} else if(!user.getPassword().equals(u.getPassword())) {
 				res.status(401);
-				res.body("Incorrect username and/or password. Please try again.");
+				res.body("Incorrect username or password. Please try again.");
 				return res.body();
 			}
 			
 			return gson.toJson(u);
+		});
+	}
+	
+	public static void getProduct() {
+		get("/blabla", (req, res) -> {
+			return gson.toJson(userDAO.getUsers());
 		});
 	}
 	

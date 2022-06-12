@@ -41,8 +41,6 @@ public class UserDAO {
 		} catch (Exception ex) {
 		    ex.printStackTrace();
 		}
-		this.users.add(new User("a", "b", "c", "d", Gender.FEMALE, LocalDate.now()));
-		writeUsers();
 	}
 	
 	public void writeUsers() {

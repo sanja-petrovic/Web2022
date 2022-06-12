@@ -22,25 +22,28 @@ let LoginPage = Vue.component('login-page', {
 
     },
     mounted() {
+    		axios
+            .get("/login", config)
+            .then(response)
+            .catch(function error(err) {
+            });
     }
 })
 
 const router = new VueRouter({
     mode: 'hash',
     routes: [
-        { path: '/login', name: 'login', component: LoginPage}
+        { path: '/', name: 'login', component: LoginPage}
     ]
 });
 
 const app = new Vue(
     {
         el: "#app",
-        mounted: function () {
-
-        },
         components: {
             LoginPage
         },
         router
     }
 );
+
