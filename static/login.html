@@ -7,16 +7,15 @@
     <link rel="icon" type="image/x-icon" href="images/dumbbell.png">
 </head>
 <body class="login-body">
-<div class="login-div">
-    <div class="login-content">
-        <h1>Prijava</h1>
-        <form action="">
-            <input class="text-box" type="text" id="username" name="username" placeholder="Korisničko ime">
-            <input class="text-box" type="password" id="lname" name="lastname" placeholder="Šifra">
-            <input class="submit-button" type="submit" value="Prijavi se">
-        </form>
-        <p>Nemaš nalog? <a href="">Registruj se</a> </p>
-    </div>
+<div id="app">
+    <login-page></login-page>
 </div>
 </body>
+
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+<script src="js/axios.js"></script>
+<script src="js/toast.js"></script>
+<script src="components/login.js"></script>
+<script src="js/App.js"></script>
 </html>
