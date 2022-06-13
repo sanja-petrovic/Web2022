@@ -16,8 +16,20 @@
 
 .login-div {
   @extend %basic-white-component;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 19vw;
   height: 20vw;
+  border: 1px rgba(255, 255, 255, .2) solid;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .login-div:before {

@@ -14,10 +14,28 @@
   align-items: center;
 }
 
+#register {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 .register-div {
   @extend %basic-white-component;
   width: 25em;
   height: 45em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .register-div:before {
