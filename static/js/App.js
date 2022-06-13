@@ -7,7 +7,7 @@ let LoginPage = Vue.component('login-page', {
         }
     },
     template: `
-        <div>
+        <div class="login-wrapper">
         <div class="navBar">
             <div>
                 <img src="images/s.png" width="24px" height="24px">
@@ -46,7 +46,6 @@ let LoginPage = Vue.component('login-page', {
 let HomePage = Vue.component('home-page', {
     template: `
     <div>
-    
         <div class="navBar">
             <div>
                 <img src="images/s.png" width="24px" height="24px">

@@ -77,6 +77,8 @@
 }
 
 .navBar {
+  width: 95%;
+  overflow: hidden;
   display: flex;
   position: sticky;
   justify-content: space-between;
