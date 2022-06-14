@@ -1,0 +1,99 @@
+@import 'base';
+
+.register-body {
+  margin: 0;
+  font-family: $main-font;
+  background-image: url('images/lightskyblue.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#register {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.register-div {
+  @extend %basic-white-component;
+  width: 25em;
+  height: 45em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-div:before {
+  @extend %basic-white-component-before;
+}
+
+.myForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+select {
+  @extend %basic-text-box;
+}
+
+.text-box {
+  @extend %basic-text-box;
+  width: 18rem;
+}
+
+.text-box:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.submit-button {
+  @extend %basic-primary-button;
+  box-shadow: 0 0 1em 0 rgba(99, 130, 255, 0.5);
+  margin-bottom: 0.3em;
+  margin-top: 1em;
+}
+
+.submit-button:hover {
+  @extend %basic-primary-button-hover
+}
+
+.register-content {
+  text-align: center;
+  h1 {
+    text-align: left;
+    margin-bottom: 0.3em;
+  }
+  p {
+    font-size: 12px;
+    color: $regular-font-color;
+
+    a {
+      color: $primary-button-color;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      color: $primary-button-hover;
+    }
+
+    a:visited {
+      color: $visited-link;
+    }
+  }
+}
+

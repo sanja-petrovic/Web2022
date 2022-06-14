@@ -3,25 +3,38 @@ package beans;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.google.gson.annotations.SerializedName;
+
 public class User {
 
+	@SerializedName("Username")
 	private String username;
+	@SerializedName("Password")
 	private String password;
+	@SerializedName("Name")
 	private String name;
+	@SerializedName("Surname")
 	private String surname;
+	@SerializedName("Gender")
 	private Gender gender;
+	@SerializedName("DateOfBirth")
 	private LocalDate dateOfBirth;
+	@SerializedName("DeletedAt")
 	private LocalDateTime deletedAt;
+	@SerializedName("UserType")
+	private UserType userType;
 
-	public User(String username, String password, String name, String surname, Gender gender, LocalDate dateOfBirth) {
+	public User(String username, String password, String name, String surname, Gender gender, LocalDate dateOfBirth,
+			UserType userType) {
 		this.username = username;
 		this.password = password;
 		this.name = name;
 		this.surname = surname;
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
+		this.userType = userType;
 	}
-
+	
 	public String getUsername() {
 		return username;
 	}
@@ -80,6 +93,15 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return this.name + " " + this.surname;
+		return this.userType + ": " + this.name + " " + this.surname;
 	}
+
+	public UserType getUserType() {
+		return userType;
+	}
+
+	public void setUserType(UserType userType) {
+		this.userType = userType;
+	}
+
 }
