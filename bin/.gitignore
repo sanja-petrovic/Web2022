@@ -1,6 +1,3 @@
-/dao/
-/dto/
-/rest/
 /controller/
 /main/
-/beans/
+/dao/

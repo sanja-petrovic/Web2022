@@ -40,19 +40,18 @@ public class UserController {
 			String payload = req.body();
 			LoginUserDTO u = gson.fromJson(payload, LoginUserDTO.class);
 			
-			User user = userDAO.getUserById(u.getUsername());
+			User user = userDAO.getUserById(u.getUsername().trim());
 			
 			if(user == null) {
 				res.status(401);
-				res.body("Incorrect username or password. Please try again.");
+				res.body("Incorrect username or password. Please try again. attempted:" + u.getUsername() + " " + u.getPassword());
 				return res.body();
 			} else if(!user.getPassword().equals(u.getPassword())) {
 				res.status(401);
-				res.body("Incorrect username or password. Please try again.");
+				res.body("attempted: " + u.getUsername() + " " + u.getPassword());
 				return res.body();
 			}
 			
-			System.out.println(u);
 			return gson.toJson(u);
 		});
 	}
@@ -60,6 +59,15 @@ public class UserController {
 	public static void getUsers() {
 		get("/users", (req, res) -> {
 			return gson.toJson(userDAO.getUsers());
+		});
+	}
+	
+	public static void getUser() {
+		get("/user", (req, res) -> {
+			String username = req.queryParams("username");
+			Repository repository = Repository.getInstance();
+			User user = repository.getUserDAO().getUserById(username);
+			return gson.toJson(user);
 		});
 	}
 	

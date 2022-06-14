@@ -44,15 +44,14 @@ let LoginPage = Vue.component('login-page', {
             }
         },
         login: function () {
-            if(this.notEmptyCheck()) {
-                axios.
-                    post("rest/login",
-                        JSON.stringify({
-                            'Username' : this.username,
-                            'Password' : this.password,
-                        }));
-                event.preventDefault();
-            }
+            axios.post('/rest/login', {
+                username: this.username,
+                password: this.password
+            })
+                .then(response => (router.push(`/`)))
+                .catch(function error(err) {
+                    alert(err.response.data);
+                });
         }
     },
     mounted() {
