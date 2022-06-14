@@ -59,6 +59,7 @@ public class UserDAO {
 	}
 
 	public ArrayList<User> getUsers() {
+		this.load();
 		return this.users;
 	}
 

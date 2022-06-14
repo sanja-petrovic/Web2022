@@ -6,7 +6,8 @@
     "Surname": "Petrovic",
     "Gender": "Female",
     "DateOfBirth": "2001-01-28",
-    "DeletedAt": "2001-01-28T12:45:00"
+    "DeletedAt": "2001-01-28T12:45:00",
+    "UserType": "Admin"
   },
   {
     "Username": "a",
@@ -14,6 +15,7 @@
     "Name": "c",
     "Surname": "d",
     "Gender": "Female",
-    "DateOfBirth": "2022-06-12"
+    "DateOfBirth": "2022-06-12",
+    "UserType": "Buyer"
   }
 ]

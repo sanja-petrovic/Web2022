@@ -1,23 +1,37 @@
 package controller;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import beans.User;
 import dao.Repository;
 import dao.UserDAO;
 import dto.LoginUserDTO;
 import dto.RegisterUserDTO;
+import util.LocalDateAdapter;
+import util.LocalDateTimeAdapter;
 
 import static spark.Spark.get;
 import static spark.Spark.path;
 import static spark.Spark.post;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class UserController {
-	private static Gson gson = new Gson();
+	private static Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
 	private static UserDAO userDAO = new UserDAO();
+	private static String basePath = "/rest";
+	
+	public void init() {
+		path(basePath, () -> {
+			login();
+			getUsers();
+			register();
+		});
+	}
 	
 	public static void login() {
 
@@ -38,12 +52,13 @@ public class UserController {
 				return res.body();
 			}
 			
+			System.out.println(u);
 			return gson.toJson(u);
 		});
 	}
 	
-	public static void getProduct() {
-		get("/blabla", (req, res) -> {
+	public static void getUsers() {
+		get("/users", (req, res) -> {
 			return gson.toJson(userDAO.getUsers());
 		});
 	}

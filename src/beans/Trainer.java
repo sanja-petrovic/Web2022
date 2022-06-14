@@ -9,13 +9,13 @@ public class Trainer extends User {
 	
 	public Trainer(String username, String password, String name, String surname, Gender gender,
 			LocalDate dateOfBirth) {
-		super(username, password, name, surname, gender, dateOfBirth);
+		super(username, password, name, surname, gender, dateOfBirth, UserType.TRAINER);
 		this.trainingHistory = new ArrayList<>();
 	}
 
 	public Trainer(String username, String password, String name, String surname, Gender gender,
 			LocalDate dateOfBirth, ArrayList<Training> trainingHistory) {
-		super(username, password, name, surname, gender, dateOfBirth);
+		super(username, password, name, surname, gender, dateOfBirth, UserType.TRAINER);
 		this.trainingHistory = trainingHistory;
 	}
 	

@@ -13,7 +13,7 @@ public class Buyer extends User {
 	private LocalDateTime deletedAt;
 	
 	public Buyer(String username, String password, String name, String surname, Gender gender, LocalDate dateOfBirth, BuyerType buyerType) {
-		super(username, password, name, surname, gender, dateOfBirth);
+		super(username, password, name, surname, gender, dateOfBirth, UserType.BUYER);
 		this.visitedObjects = new ArrayList<>();
 		this.type = buyerType;
 		this.points = 0;
@@ -21,7 +21,7 @@ public class Buyer extends User {
 	
 	public Buyer(String username, String password, String name, String surname, Gender gender, LocalDate dateOfBirth,
 			Membership membership, ArrayList<SportsObject> visitedObjects, double points, BuyerType type) {
-		super(username, password, name, surname, gender, dateOfBirth);
+		super(username, password, name, surname, gender, dateOfBirth, UserType.BUYER);
 		this.membership = membership;
 		this.visitedObjects = visitedObjects;
 		this.points = points;

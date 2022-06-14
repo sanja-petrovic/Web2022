@@ -19,7 +19,7 @@ public class Main {
 		port(3030);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
 		UserController userController = new UserController();
-		get("/hello", (req, res) -> "Hello World");
+		userController.init();
 	}
 	
 }
