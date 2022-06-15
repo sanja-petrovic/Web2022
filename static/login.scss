@@ -48,7 +48,7 @@
 form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 18px;
 }
 
 .text-box {
@@ -73,6 +73,8 @@ form {
   text-align: center;
   h1 {
     text-align: left;
+    font-weight: 600;
+    margin-bottom: 0.3em;
   }
   p {
     font-size: 12px;

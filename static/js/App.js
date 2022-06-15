@@ -1,3 +1,101 @@
+let loggedInUser;
+
+const store = new Vuex.Store({
+    state: {
+        user: null,
+        userType: null,
+    },
+    mutations: {
+        logIn(user) {
+            this.user = user;
+            this.userType = user.userType;
+        },
+        logOut() {
+            this.user = null;
+            this.userType = null;
+        }
+    }
+})
+
+let NavBarLoggedIn = Vue.component('navBarLoggedIn', {
+    data: function () {
+        return {
+            username: window.localStorage.getItem("username"),
+            name: window.localStorage.getItem("name"),
+            surname: window.localStorage.getItem("surname"),
+        }
+    },
+    template: `
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="../images/sfitness.png" alt="" height="35px"></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0" v-if="">
+                    <li class="nav-item">
+                        <router-link to="/" class="nav-link active" aria-current="page">Početna stranica</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white" href="#">Treninzi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white" href="#">Članarine</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" style="color: white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ this.name + " " + this.surname }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Profil</a></li>
+                            <li><a class="dropdown-item" href="#">Članarina</a></li>
+                            <li><a class="dropdown-item" href="#">Istorija treninga</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" v-on:click="this.logOut">Odjavi se</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </nav>
+    `,
+    methods: {
+        logOut: function () {
+            window.localStorage.clear();
+            window.location.href = "/";
+            router.replace("/");
+        }
+    }
+})
+let NavBarLoggedOut = Vue.component('navBarLoggedOut', {
+    template: `
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="width: 100%">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="../images/sfitness.png" alt="" height="35px"></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0" v-if="">
+                    <li class="nav-item">
+                        <router-link to="/" class="nav-link active" aria-current="page">Početna stranica</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white" href="#">Treninzi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white" href="#">Članarine</a>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/login" class="nav-link" style="color: white" href="#">Prijava</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/register" class="nav-link" style="color: white" href="#">Registracija</router-link>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </nav>
+    `
+})
+
 let LoginPage = Vue.component('login-page', {
     data: function () {
         return {
@@ -8,27 +106,15 @@ let LoginPage = Vue.component('login-page', {
     },
     template: `
         <div class="login-wrapper">
-        <div class="navBar">
-            <div>
-                <img src="images/s.png" width="24px" height="24px">
-                <div>
-                    <a href="">Test1</a>
-                    <a href="">Test2</a>
-                    <a href="">Test3</a>
-                </div>
-            </div>
-            <div>
-                <router-link to="/register">Registracija</router-link>
-            </div>
-        </div>
+        <nav-bar-logged-out></nav-bar-logged-out>
         <div class="login-container">
             <div class="login-div">
                 <div class="login-content">
                     <h1>Prijava</h1>
-                    <form action="">
+                    <form @submit="login">
                         <input v-model="username" class="text-box" type="text" id="username" name="username" placeholder="Korisničko ime">
                         <input v-model="password" class="text-box" type="password" id="password" name="password" placeholder="Šifra">
-                        <input class="submit-button" type="submit" v-on:click="login()" value="Prijavi se">
+                        <input class="submit-button" type="submit" value="Prijavi se">
                     </form>
                     <p>Nemaš nalog? <router-link to="/register">Registruj se</router-link> </p>
                 </div>
@@ -48,7 +134,15 @@ let LoginPage = Vue.component('login-page', {
                 username: this.username,
                 password: this.password
             })
-                .then(response => (router.push(`/`)))
+                .then(function response(resp) {
+                    window.location.href = "/";
+                    router.replace("/");
+                    window.localStorage.clear();
+                    window.localStorage.setItem("username", resp.data.Username);
+                    window.localStorage.setItem("name", resp.data.Name);
+                    window.localStorage.setItem("surname", resp.data.Surname);
+                    window.localStorage.setItem("type", resp.data.UserType);
+                })
                 .catch(function error(err) {
                     alert(err.response.data);
                 });
@@ -100,22 +194,15 @@ let RegisterPage = Vue.component('register-page', {
     `
 })
 let HomePage = Vue.component('home-page', {
+    data: function () {
+        return {
+            loggedIn: window.localStorage.getItem("username") !== null
+        }
+    },
     template: `
     <div>
-        <div class="navBar">
-            <div>
-                <img src="images/s.png" width="24px" height="24px">
-                <div>
-                    <a href="">Test1</a>
-                    <a href="">Test2</a>
-                    <a href="">Test3</a>
-                </div>
-            </div>
-            <div>
-                <router-link :to="'/login'">Prijava</router-link>
-                <router-link to="/register">Registracija</router-link>
-            </div>
-        </div>
+    <nav-bar-logged-in v-if="this.loggedIn" ></nav-bar-logged-in>
+    <nav-bar-logged-out v-else ></nav-bar-logged-out>
         <div class="message-container">
             <div class="message">
                 <div class="text-message">
@@ -146,7 +233,8 @@ let HomePage = Vue.component('home-page', {
         </div>
 </div>
         `,
-    methods: {},
+    methods: {
+    },
     mounted() {
     }
 });
@@ -154,7 +242,7 @@ let HomePage = Vue.component('home-page', {
 const router = new VueRouter({
     mode: 'hash',
     routes: [
-        { path: '/', component: HomePage },
+        { path: '/', component: HomePage, alias: '/home' },
         { path: '/login', component: LoginPage },
         { path: '/register', component: RegisterPage }
     ]

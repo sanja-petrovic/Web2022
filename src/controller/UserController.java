@@ -52,7 +52,7 @@ public class UserController {
 				return res.body();
 			}
 			
-			return gson.toJson(u);
+			return gson.toJson(user);
 		});
 	}
 	
