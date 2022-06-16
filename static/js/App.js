@@ -248,6 +248,199 @@ let RegisterPage = Vue.component('register-page', {
         }
     }
 })
+
+let SingleSportsObjectCard = Vue.component('single-sports-object-card', {
+    /*data: function () {
+        return {
+            title: "",
+            logo: "",
+            type: "",
+            businessHours: "",
+            location: "",
+            rating: 0.0,
+            isOpen: false
+        }
+    },*/
+    props: ['title', 'logo', 'type', 'businessHours', 'location', 'rating'],
+    template: `
+        <li>
+        <a href="" class="card">
+            <img src="../images/gym6.png" class="card__image" alt="" />
+            <div class="card__overlay">
+                <div class="card__header">
+                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+                    <img class="card__thumb" v-bind:src="logo" alt="" />
+                    <div class="card__header-text">
+                        <h3 class="card__title"> {{ this.title }}<span class="badge rounded-pill badge-open" v-if="isOpen">Otvoreno</span>
+                        <span class="badge rounded-pill badge-closed" v-else>Zatvoreno</span></h3>
+                        <span class="card__status">{{ this.type }}</span><br>
+                    </div>
+                </div>
+                <p class="card__description">
+                    <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">{{ this.businessHours }}</span></span><br>
+                    <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">{{ this.location }}</span></span><br>
+                    <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">{{ this.rating }}</span></span>
+                </p>
+            </div>
+        </a>
+        </li>
+    `,
+    methods: {
+        openCheck: function () {
+            //if currentTime is before opening time or after closing time => isOpen = false, else => isOpen = true*/
+        }
+    },
+    mounted() {
+        this.openCheck();
+    }
+})
+
+let SportsObjectCards = Vue.component('sports-object-cards', {
+    data: function () {
+        sportsObjects: null
+    },
+    template: `
+        <ul class="cards">
+        <single-sports-object-card></single-sports-object-card>
+        <!--
+        remove the others and replace them with <single-sports-object-card></single-sports-object-card>
+        -->
+        <li is="single-sports-object-card" 
+            v-for="(object, index) in this.sportsObjects"
+            v-bind:key="object.id"
+            v-bind:title="object.name"
+            v-bind:type="object.type"
+            v-bind:location="object.location"
+            v-bind:logo="object.logoIcon"
+            v-bind:rating="object.averageGrade"
+            v-bind:businessHours="object.businessHours"
+        >
+        </li>
+        
+        <li>
+            <a href="" class="card">
+                <img src="../images/gym6.png" class="card__image" alt="" />
+                <div class="card__overlay">
+                    <div class="card__header">
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+                        <img class="card__thumb" src="../images/dance.png" alt="" />
+                        <div class="card__header-text">
+                            <h3 class="card__title">SDance <span class="badge rounded-pill badge-open">Otvoreno</span></h3>
+                            <span class="card__status">Plesni studio</span><br>
+                        </div>
+                    </div>
+                    <p class="card__description">
+                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
+                    </p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="" class="card">
+                <img src="../images/gym7.png" class="card__image" alt="" />
+                <div class="card__overlay">
+                    <div class="card__header">
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+                        <img class="card__thumb" src="../images/pool.png" alt="" />
+                        <div class="card__header-text">
+                            <h3 class="card__title">SPool <span class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
+                            <span class="card__status">Zatvoreni bazeni</span><br>
+                        </div>
+                    </div>
+                    <p class="card__description">
+                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
+                    </p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="" class="card">
+                <img src="../images/gym3.png" class="card__image" alt="" />
+                <div class="card__overlay">
+                    <div class="card__header">
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+                        <img class="card__thumb" src="../images/gym2.png" alt="" />
+                        <div class="card__header-text">
+                            <h3 class="card__title">SGym Two <span class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
+                            <span class="card__status">Teretana</span><br>
+                        </div>
+                    </div>
+                    <p class="card__description">
+                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
+                    </p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="" class="card">
+                <img src="../images/gym3.png" class="card__image" alt="" />
+                <div class="card__overlay">
+                    <div class="card__header">
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+                        <img class="card__thumb" src="../images/stadion.png" alt="" />
+                        <div class="card__header-text">
+                            <h3 class="card__title">SSport One <span class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
+                            <span class="card__status">Sportski centar</span><br>
+                        </div>
+                    </div>
+                    <p class="card__description">
+                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
+                    </p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="" class="card">
+                <img src="../images/gym3.png" class="card__image" alt="" />
+                <div class="card__overlay">
+                    <div class="card__header">
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+                        <img class="card__thumb" src="../images/sport.png" alt="" />
+                        <div class="card__header-text">
+                            <h3 class="card__title">SSport Two <span class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
+                            <span class="card__status">Sportski centar</span><br>
+                        </div>
+                    </div>
+                    <p class="card__description">
+                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
+                    </p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="" class="card">
+                <img src="../images/gym3.png" class="card__image" alt="" />
+                <div class="card__overlay">
+                    <div class="card__header">
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+                        <img class="card__thumb" src="../images/tennis.png" alt="" />
+                        <div class="card__header-text">
+                            <h3 class="card__title">STennis <span class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
+                            <span class="card__status">Teniski tereni</span><br>
+                        </div>
+                    </div>
+                    <p class="card__description">
+                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
+                    </p>
+                </div>
+            </a>
+        </li>
+        </ul>
+    `
+});
+
 let HomePage = Vue.component('home-page', {
     data: function () {
         return {
@@ -276,148 +469,7 @@ let HomePage = Vue.component('home-page', {
                 <div class="main-content">
                     <h1>Sportski objekti</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dapibus, ipsum a lobortis aliquet!</p>
-                    <ul class="cards">
-                        <li>
-                            <a href="" class="card">
-                                <img src="../images/gym4-2.png" class="card__image" alt="" />
-                                <div class="card__overlay">
-                                    <div class="card__header">
-                                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                                        <img class="card__thumb" src="../images/gym1.png" alt="" />
-                                        <div class="card__header-text">
-                                            <h3 class="card__title">SGym One <span class="badge rounded-pill badge-open">Otvoreno</span></h3>
-                                            <span class="card__status">Teretana</span><br>
-                                        </div>
-                                    </div>
-                                    <p class="card__description">
-                                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
-                                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="card">
-                                <img src="../images/gym6.png" class="card__image" alt="" />
-                                <div class="card__overlay">
-                                    <div class="card__header">
-                                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                                        <img class="card__thumb" src="../images/dance.png" alt="" />
-                                        <div class="card__header-text">
-                                            <h3 class="card__title">SDance <span class="badge rounded-pill badge-open">Otvoreno</span></h3>
-                                            <span class="card__status">Plesni studio</span><br>
-                                        </div>
-                                    </div>
-                                    <p class="card__description">
-                                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
-                                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="card">
-                                <img src="../images/gym7.png" class="card__image" alt="" />
-                                <div class="card__overlay">
-                                    <div class="card__header">
-                                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                                        <img class="card__thumb" src="../images/pool.png" alt="" />
-                                        <div class="card__header-text">
-                                            <h3 class="card__title">SPool <span class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
-                                            <span class="card__status">Zatvoreni bazeni</span><br>
-                                        </div>
-                                    </div>
-                                    <p class="card__description">
-                                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
-                                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="card">
-                                <img src="../images/gym3.png" class="card__image" alt="" />
-                                <div class="card__overlay">
-                                    <div class="card__header">
-                                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                                        <img class="card__thumb" src="../images/gym2.png" alt="" />
-                                        <div class="card__header-text">
-                                            <h3 class="card__title">SGym Two <span class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
-                                            <span class="card__status">Teretana</span><br>
-                                        </div>
-                                    </div>
-                                    <p class="card__description">
-                                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
-                                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="card">
-                                <img src="../images/gym3.png" class="card__image" alt="" />
-                                <div class="card__overlay">
-                                    <div class="card__header">
-                                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                                        <img class="card__thumb" src="../images/stadion.png" alt="" />
-                                        <div class="card__header-text">
-                                            <h3 class="card__title">SSport One <span class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
-                                            <span class="card__status">Sportski centar</span><br>
-                                        </div>
-                                    </div>
-                                    <p class="card__description">
-                                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
-                                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="card">
-                                <img src="../images/gym3.png" class="card__image" alt="" />
-                                <div class="card__overlay">
-                                    <div class="card__header">
-                                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                                        <img class="card__thumb" src="../images/sport.png" alt="" />
-                                        <div class="card__header-text">
-                                            <h3 class="card__title">SSport Two <span class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
-                                            <span class="card__status">Sportski centar</span><br>
-                                        </div>
-                                    </div>
-                                    <p class="card__description">
-                                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
-                                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="card">
-                                <img src="../images/gym3.png" class="card__image" alt="" />
-                                <div class="card__overlay">
-                                    <div class="card__header">
-                                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                                        <img class="card__thumb" src="../images/tennis.png" alt="" />
-                                        <div class="card__header-text">
-                                            <h3 class="card__title">STennis <span class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
-                                            <span class="card__status">Teniski tereni</span><br>
-                                        </div>
-                                    </div>
-                                    <p class="card__description">
-                                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
-                                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
+                    <sports-object-cards></sports-object-cards>
                 </div>
             </div>
         </div>
