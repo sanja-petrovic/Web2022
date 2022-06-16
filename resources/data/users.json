@@ -1,21 +1,38 @@
 [
   {
-    "Username": "sanja",
-    "Password": "sanja",
-    "Name": "Sanja",
-    "Surname": "Petrovic",
+    "Username": "petar",
+    "Password": "petar",
+    "Name": "Petar",
+    "Surname": "Petrović",
     "Gender": "Female",
-    "DateOfBirth": "2001-01-28",
-    "DeletedAt": "2001-01-28T12:45:00",
+    "DateOfBirth": "1998-05-02",
+    "UserType": "Trainer"
+  },
+  {
+    "Username": "marko",
+    "Password": "marko",
+    "Name": "Marko",
+    "Surname": "Marković",
+    "Gender": "Male",
+    "DateOfBirth": "1994-06-03",
+    "UserType": "Manager"
+  },
+  {
+    "Username": "jana",
+    "Password": "jana",
+    "Name": "Jana",
+    "Surname": "Janković",
+    "Gender": "Female",
+    "DateOfBirth": "1989-12-13",
     "UserType": "Admin"
   },
   {
-    "Username": "a",
-    "Password": "b",
-    "Name": "c",
-    "Surname": "d",
+    "Username": "milica",
+    "Password": "milica",
+    "Name": "Milica",
+    "Surname": "Miličević",
     "Gender": "Female",
-    "DateOfBirth": "2022-06-12",
+    "DateOfBirth": "1997-10-10",
     "UserType": "Buyer"
   }
 ]

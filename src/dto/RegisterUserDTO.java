@@ -7,19 +7,34 @@ public class RegisterUserDTO {
 
 	private String name;
 	private String surname;
-	private Gender gender;
-	private LocalDate dateOfBirth;
+	private String gender;
+	private String dob;
 	private String username;
 	private String password;
 	
-	public RegisterUserDTO(String name, String surname, Gender gender, LocalDate dateOfBirth, String username,
+	public RegisterUserDTO(String name, String surname, String gender, String dateOfBirth, String username,
 			String password) {
+		this.username = username;
+		this.password = password;
 		this.name = name;
 		this.surname = surname;
 		this.gender = gender;
-		this.dateOfBirth = dateOfBirth;
-		this.username = username;
-		this.password = password;
+		this.dob = dateOfBirth;
+	}
+	
+	public Gender parseGender() {
+		Gender parsed;
+		if(this.gender.trim().toLowerCase().startsWith("m")) {
+			parsed = Gender.MALE;
+		} else {
+			parsed = Gender.FEMALE;
+		}
+		
+		return parsed;
+	}
+	
+	public LocalDate parseDate() {
+		return LocalDate.parse(this.dob);
 	}
 	
 	public String getName() {
@@ -38,22 +53,6 @@ public class RegisterUserDTO {
 		this.surname = surname;
 	}
 
-	public Gender getGender() {
-		return gender;
-	}
-
-	public void setGender(Gender gender) {
-		this.gender = gender;
-	}
-
-	public LocalDate getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(LocalDate dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
 	public String getUsername() {
 		return username;
 	}
@@ -68,6 +67,22 @@ public class RegisterUserDTO {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getDateOfBirth() {
+		return dob;
+	}
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dob = dateOfBirth;
 	}
 	
 	

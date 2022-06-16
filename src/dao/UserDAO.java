@@ -68,12 +68,19 @@ public class UserDAO {
 	}
 
 	public User getUserById(String id) {
-		for (User user : users) {
+		this.load();
+		for (User user : this.users) {
 			if (user.getUsername().equals(id)) {
 				return user;
 			}
 		}
 		return null;
+	}
+	
+	public void addUser(User u) {
+		this.load();
+		this.users.add(u);
+		this.writeUsers();
 	}
 
 	/*public User getUserFromData(String[] data) {
