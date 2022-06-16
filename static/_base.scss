@@ -4,6 +4,7 @@ $main-font: 'Montserrat', sans-serif;
 $bold-font-color: #000b42;
 $regular-font-color: #555557;
 $primary-button-color: #6382ff;
+$subtitle-color: #7ca2ad;
 $primary-button-foreground: white;
 $primary-button-hover: #708cff;
 $visited-link: #7f4cff;
@@ -12,6 +13,21 @@ $invalid-color: #ff5b68;
 
 $navbar-dark-color: $bold-font-color;
 $navbar-dark-hover-color: $primary-button-hover;
+$card-border-radius: 10px;
+$card-inner-border-radius: 10px;
+$card-border-color: white;
+$card-bg: rgba(255, 255, 255, 0.5);
+$card-cap-bg: rgba(255, 255, 255, 0.3);
+$badge-font-size: 10px;
+
+.badge-open {
+  color: #ffffff;
+  background-color: #7cd58a;
+}
+.badge-closed {
+   color: #ffffff;
+   background-color: #d57c91;
+ }
 
 %basic-white-component {
   display: flex;
