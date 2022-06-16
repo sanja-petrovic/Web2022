@@ -76,6 +76,12 @@ public class UserDAO {
 		}
 		return null;
 	}
+	
+	public void addUser(User u) {
+		this.load();
+		this.users.add(u);
+		this.writeUsers();
+	}
 
 	/*public User getUserFromData(String[] data) {
 	}

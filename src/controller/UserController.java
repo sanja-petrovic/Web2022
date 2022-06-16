@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import beans.User;
+import beans.UserType;
 import dao.Repository;
 import dao.UserDAO;
 import dto.LoginUserDTO;
@@ -78,23 +79,12 @@ public class UserController {
 			String payload = req.body();
 			RegisterUserDTO u = gson.fromJson(payload, RegisterUserDTO.class);
 			
-			User user = userDAO.getUserById(u.getUsername());
+			User user = new User(u.getUsername(), u.getPassword(), u.getName(), u.getSurname(), u.parseGender(), u.parseDate(), UserType.BUYER);
+			Repository repository = Repository.getInstance();
+			repository.getUserDAO().addUser(user);
 			
-			if(user != null) {
-				res.status(409);
-				res.body("Korisničko ime je zauzeto.");
-				return res.body();
-			}
-			
-			user.setName(u.getName());
-			user.setSurname(u.getSurname());
-			user.setGender(u.getGender());
-			user.setDateOfBirth(u.getDateOfBirth());
-			user.setDeletedAt(null);
-			user.setUsername(u.getUsername());
-			user.setPassword(u.getPassword());
-			
-			return gson.toJson(u);
+			System.out.println(user);
+			return gson.toJson(user);
 		});
 	}
 
