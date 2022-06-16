@@ -29,23 +29,23 @@ let NavBarLoggedIn = Vue.component('navBarLoggedIn', {
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="../images/sfitness.png" alt="" height="35px"></a>
+                <img src="../images/s.png" alt="SFitness" height="25px"></a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0" v-if="">
                     <li class="nav-item">
-                        <router-link to="/" class="nav-link active" aria-current="page">Početna stranica</router-link>
+                        <router-link to="/" class="nav-link" aria-current="page">Početna stranica</router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color: white" href="#">Treninzi</a>
+                        <a class="nav-link" href="#">Treninzi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color: white" href="#">Članarine</a>
+                        <a class="nav-link" href="#">Članarine</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" style="color: white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ this.name + " " + this.surname }}
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">Profil</a></li>
                             <li><a class="dropdown-item" href="#">Članarina</a></li>
                             <li><a class="dropdown-item" href="#">Istorija treninga</a></li>
@@ -68,26 +68,26 @@ let NavBarLoggedIn = Vue.component('navBarLoggedIn', {
 })
 let NavBarLoggedOut = Vue.component('navBarLoggedOut', {
     template: `
-        <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="width: 100%">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="width: 100%;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="../images/sfitness.png" alt="" height="35px"></a>
+                <img src="../images/s.png" alt="SFitness" height="25px"></a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0" v-if="">
                     <li class="nav-item">
-                        <router-link to="/" class="nav-link active" aria-current="page">Početna stranica</router-link>
+                        <router-link to="/" class="nav-link" aria-current="page">Početna stranica</router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color: white" href="#">Treninzi</a>
+                        <a class="nav-link" href="#">Treninzi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color: white" href="#">Članarine</a>
+                        <a class="nav-link" href="#">Članarine</a>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/login" class="nav-link" style="color: white" href="#">Prijava</router-link>
+                        <router-link to="/login" class="nav-link" href="#">Prijava</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/register" class="nav-link" style="color: white" href="#">Registracija</router-link>
+                        <router-link to="/register" class="nav-link" href="#">Registracija</router-link>
                     </li>
                 </ul>
             </div>
@@ -111,10 +111,10 @@ let LoginPage = Vue.component('login-page', {
             <div class="login-div">
                 <div class="login-content">
                     <h1>Prijava</h1>
-                    <form @submit="login">
+                    <form>
                         <input v-model="username" class="text-box" type="text" id="username" name="username" placeholder="Korisničko ime">
                         <input v-model="password" class="text-box" type="password" id="password" name="password" placeholder="Šifra">
-                        <input class="submit-button" type="submit" value="Prijavi se">
+                        <input class="submit-button" type="submit" v-on:click="login" value="Prijavi se">
                     </form>
                     <p>Nemaš nalog? <router-link to="/register">Registruj se</router-link> </p>
                 </div>
@@ -122,22 +122,15 @@ let LoginPage = Vue.component('login-page', {
         </div>
     </div>`,
     methods: {
-        notEmptyCheck: function () {
-            if(this.username.length === 0 || this.password.length === 0) {
-                return false;
-            } else {
-                return true;
-            }
-        },
         login: function () {
+            event.preventDefault();
             axios.post('/rest/login', {
                 username: this.username,
                 password: this.password
             })
                 .then(function response(resp) {
-                    window.location.href = "/";
-                    router.replace("/");
                     window.localStorage.clear();
+                    router.replace("/");
                     window.localStorage.setItem("username", resp.data.Username);
                     window.localStorage.setItem("name", resp.data.Name);
                     window.localStorage.setItem("surname", resp.data.Surname);
@@ -145,6 +138,7 @@ let LoginPage = Vue.component('login-page', {
                 })
                 .catch(function error(err) {
                     alert(err.response.data);
+                    router.replace("/login");
                 });
         }
     },
@@ -152,46 +146,80 @@ let LoginPage = Vue.component('login-page', {
     }
 })
 let RegisterPage = Vue.component('register-page', {
+    data: function () {
+        return {
+            name: "",
+            surname: "",
+            gender: "",
+            dob: "",
+            username: "",
+            passwordFirst: "",
+            passwordSecond: "",
+            usernameIsUnique: true,
+            passwordsMatch: true,
+            errorExists: false,
+            errorMessage: "",
+        }
+    },
     template:
     `
     <div>
-    <div class="navBar">
-        <div>
-            <img src="images/s.png" width="24px" height="24px">
-            <div>
-                <a href="">Test1</a>
-                <a href="">Test2</a>
-                <a href="">Test3</a>
-            </div>
-        </div>
-        <div>
-            <router-link :to="'/login'">Prijava</router-link>
-        </div>
-    </div>
+    <nav-bar-logged-out></nav-bar-logged-out>
     <div class="register-container">
         <div class="register-div">
             <div class="register-content">
                 <h1 class="myHeading">Registracija</h1>
                 <form class="myForm" action="">
-                    <input class="text-box" type="text" id="name" name="name" placeholder="Ime">
-                    <input class="text-box" type="text" id="surname" name="surname" placeholder="Prezime">
-                    <select name="gender" id="gender">
+                    <input class="text-box" type="text" id="name" name="name" v-model="name" placeholder="Ime" required>
+                    <input class="text-box" type="text" id="surname" name="surname" v-model="surname" placeholder="Prezime"  required>
+                    <select name="gender" v-model="gender" id="gender" required>
                         <option value="" disabled selected>Pol</option>
                         <option value="Muški">Muški</option>
                         <option value="Ženski">Ženski</option>
                     </select>
-                    <input class="text-box" type="date" id="dob" name="dob" placeholder="Datum rođenja">
-                    <input class="text-box" type="text" id="username" name="username" placeholder="Korisničko ime">
-                    <input class="text-box" type="password" id="password" name="password" placeholder="Šifra">
-                    <input class="text-box" type="password" id="passwordcheck" name="passwordcheck" placeholder="Potvrdi šifru">
-                    <input class="submit-button" type="submit" value="Registruj se">
+                    <input class="text-box" type="date" id="dob" name="dob" v-model="dob" placeholder="Datum rođenja" required>
+                    <input class="text-box" type="text" id="username" name="username" v-model="username" v-on:blur="usernameUniqueCheck" placeholder="Korisničko ime" required>
+                    <input class="text-box" type="password" id="password" v-on:blur="passwordMatchCheck" name="password" placeholder="Šifra" v-model="passwordFirst" required>
+                    <input class="text-box" type="password" id="passwordcheck" v-on:blur="passwordMatchCheck" name="passwordcheck" v-model="passwordSecond" placeholder="Potvrdi šifru" required>
+                    <label class="invalid-input" v-if="errorExists">{{ this.errorMessage }}</label>
+                    <input class="submit-button" type="submit" :disabled="!errorExists" v-on:click="register" value="Registruj se">
                 </form>
                 <p>Imaš nalog? <router-link :to="'/login'">Prijavi se</router-link> </p>
             </div>
         </div>
     </div>
 </div>
-    `
+    `,
+    methods: {
+        register: function () {
+            event.preventDefault();
+        },
+        passwordMatchCheck: function () {
+            if(!this.errorExists) {
+                this.errorMessage = "Šifre se ne poklapaju.";
+                this.errorExists = this.passwordFirst !== this.passwordSecond;
+            }
+        },
+        usernameUniqueCheck: async function () {
+            let error = false;
+            await axios.get("/rest/user", { params: { "username" : this.username } })
+                .then(function response(resp) {
+                    if(resp.data) {
+                        error = true;
+                    }
+                }).catch(function error(err) {
+                    console.log(err);
+            });
+
+            if(error) {
+                this.errorExists = true;
+                this.errorMessage = "Korisničko ime je zauzeto.";
+            } else {
+                this.errorExists = false;
+            }
+            event.preventDefault();
+        }
+    }
 })
 let HomePage = Vue.component('home-page', {
     data: function () {
@@ -206,7 +234,7 @@ let HomePage = Vue.component('home-page', {
         <div class="message-container">
             <div class="message">
                 <div class="text-message">
-                    <h1>Welcome to SFitness!</h1>
+                    <h1>Dobrodošli u <span class="outlined-text">SFitness!</span></h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dapibus, ipsum a lobortis aliquet, lacus ipsum volutpat urna, id ullamcorper neque elit sit amet turpis.
                     </p>
                 </div>

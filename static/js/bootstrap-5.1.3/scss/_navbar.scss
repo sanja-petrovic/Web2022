@@ -234,36 +234,6 @@
 // Styles for switching between navbars with light or dark background.
 
 // Dark links against a light background
-.navbar-transparent {
-  .navbar-brand {
-    color: white;
-    font-weight: 600;
-
-    &:hover,
-    &:focus {
-      color: #708cff;
-    }
-  }
-
-  .navbar-nav {
-    .nav-link {
-      color: white;!important;
-
-      &:hover,
-      &:focus {
-        color: #708cff;
-      }
-
-      &.disabled {
-        color: $navbar-light-disabled-color;
-      }
-    }
-
-    .show > .nav-link,
-    .nav-link.active {
-      color: #6382ff;
-    }
-}
 .navbar-light {
   .navbar-brand {
     color: $navbar-light-brand-color;
@@ -276,7 +246,7 @@
 
   .navbar-nav {
     .nav-link {
-      color: white;!important;
+      color: $navbar-light-color;
 
       &:hover,
       &:focus {
@@ -317,22 +287,21 @@
 // White links against a dark background
 .navbar-dark {
   .navbar-brand {
-    color: white;
-    font-weight: 600;
+    color: $navbar-dark-brand-color;
 
     &:hover,
     &:focus {
-      color: #708cff;
+      color: $navbar-dark-brand-hover-color;
     }
   }
 
   .navbar-nav {
     .nav-link {
-      color: white;
+      color: $navbar-dark-color;
 
       &:hover,
       &:focus {
-        color: #708cff;
+        color: $navbar-dark-hover-color;
       }
 
       &.disabled {
@@ -342,7 +311,7 @@
 
     .show > .nav-link,
     .nav-link.active {
-      color: #6382ff;
+      color: $navbar-dark-active-color;
     }
   }
 

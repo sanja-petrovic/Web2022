@@ -29,6 +29,7 @@ public class UserController {
 		path(basePath, () -> {
 			login();
 			getUsers();
+			getUser();
 			register();
 		});
 	}
@@ -51,7 +52,7 @@ public class UserController {
 				res.body("attempted: " + u.getUsername() + " " + u.getPassword());
 				return res.body();
 			}
-			
+			System.out.println("logged in: " + user.getUsername());
 			return gson.toJson(user);
 		});
 	}
@@ -81,7 +82,7 @@ public class UserController {
 			
 			if(user != null) {
 				res.status(409);
-				res.body("Username is taken.");
+				res.body("Korisničko ime je zauzeto.");
 				return res.body();
 			}
 			
@@ -96,4 +97,5 @@ public class UserController {
 			return gson.toJson(u);
 		});
 	}
+
 }

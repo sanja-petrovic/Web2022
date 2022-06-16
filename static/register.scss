@@ -94,6 +94,12 @@ select {
     a:visited {
       color: $visited-link;
     }
+
+    label {
+      color: $invalid-color;
+      font-weight: 500;
+    }
   }
+
 }
 
