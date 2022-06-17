@@ -1,0 +1,46 @@
+[
+    {
+        "name": "MegaGym",
+        "type": "gym",
+        "offers": null,
+        "status": "WORKING",
+        "location": {
+            "latitude": 45.1653,
+            "longitude": 19.50276,
+            "address": {
+                "street": "Temerinska",
+                "number": "95",
+                "city": "Novi Sad",
+                "postcode": "21138"
+            }
+        },
+        "logoIcon": "static/images/gym2.png",
+        "averageGrade": 4.5,
+        "businessHours": {
+            "startTime": "08:00",
+            "endTime": "23:00"
+        }
+    },
+    {
+        "name": "Fit&Fun",
+        "type": "fitness",
+        "offers": null,
+        "status": "WORKING",
+        "location": {
+            "latitude": 45.39506,
+            "longitude": 19.88301,
+            "address": {
+                "street": "Petra Drapsina",
+                "number": "98",
+                "city": "Temerin",
+                "postcode": "21235"
+            }
+        },
+        "logoIcon": "static/images/gym6.png",
+        "averageGrade": 4.8,
+        "businessHours": {
+            "startTime": "10:00",
+            "endTime": "20:00"
+        }
+    }
+]

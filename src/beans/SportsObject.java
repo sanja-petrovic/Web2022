@@ -1,22 +1,32 @@
 package beans;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+
+import com.google.gson.annotations.SerializedName;
 
 public class SportsObject {
 
+	@SerializedName("name")
 	private String name;
+	@SerializedName("type")
 	private String type;
+	@SerializedName("offers")
 	private ArrayList<String> offers;
+	@SerializedName("status")
 	private SportsObjectStatus status; 
+	@SerializedName("location")
 	private Location location;
+	@SerializedName("logoIcon")
 	private String logoIcon;
+	@SerializedName("averageGrade")
 	private double averageGrade;
+	@SerializedName("businessHours")
 	private BusinessHours businessHours;
-	private LocalDateTime deletedAt;
-	
+
+
 	public SportsObject(String name, String type, ArrayList<String> offers, SportsObjectStatus status,
 			Location location, String logoIcon, double averageGrade, BusinessHours businessHours) {
+		super();
 		this.name = name;
 		this.type = type;
 		this.offers = offers;
@@ -90,14 +100,4 @@ public class SportsObject {
 	public void setBusinessHours(BusinessHours businessHours) {
 		this.businessHours = businessHours;
 	}
-
-	public LocalDateTime getDeletedAt() {
-		return deletedAt;
-	}
-
-	public void setDeletedAt(LocalDateTime deletedAt) {
-		this.deletedAt = deletedAt;
-	}
-	
-	
 }
