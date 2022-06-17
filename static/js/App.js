@@ -5,8 +5,7 @@ let NavBarLoggedIn = Vue.component('navBarLoggedIn', {
             name: window.localStorage.getItem("name"),
             surname: window.localStorage.getItem("surname"),
         }
-    },
-    template: `
+    }, template: `
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -41,8 +40,7 @@ let NavBarLoggedIn = Vue.component('navBarLoggedIn', {
             </div>
         </div>
         </nav>
-    `,
-    methods: {
+    `, methods: {
         logOut: function () {
             window.localStorage.clear();
             window.location.href = "/";
@@ -83,12 +81,9 @@ let NavBarLoggedOut = Vue.component('navBarLoggedOut', {
 let LoginPage = Vue.component('login-page', {
     data: function () {
         return {
-            username: "",
-            password: "",
-            errorExists: false
+            username: "", password: "", errorExists: false
         }
-    },
-    template: `
+    }, template: `
         <div class="login-wrapper">
         <nav-bar-logged-out></nav-bar-logged-out>
         <div class="login-container">
@@ -109,14 +104,12 @@ let LoginPage = Vue.component('login-page', {
                 </div>
             </div>
         </div>
-        </div>`,
-    methods: {
+        </div>`, methods: {
         login: async function () {
             let oopsie = false;
             event.preventDefault();
             await axios.post('/rest/login', {
-                username: this.username,
-                password: this.password
+                username: this.username, password: this.password
             })
                 .then(function response(resp) {
                     window.localStorage.clear();
@@ -131,12 +124,10 @@ let LoginPage = Vue.component('login-page', {
                     router.replace("/login");
                 });
             this.errorExists = oopsie;
-        },
-        clearError: function () {
+        }, clearError: function () {
             this.errorExists = false;
         }
-    },
-    mounted() {
+    }, mounted() {
     }
 })
 let RegisterPage = Vue.component('register-page', {
@@ -154,46 +145,43 @@ let RegisterPage = Vue.component('register-page', {
             errorExists: false,
             errorMessage: "",
         }
-    },
-    template:
-        `
-            <div>
-            <nav-bar-logged-out></nav-bar-logged-out>
-            <div class="register-container">
-                <div class="register-div">
-                    <div class="register-content">
-                        <h1 class="myHeading">Registracija</h1>
-                        <form class="myForm" action="">
-                            <input class="text-box" type="text" id="name" name="name" v-model="name" placeholder="Ime"
-                                   required>
-                            <input class="text-box" type="text" id="surname" name="surname" v-model="surname"
-                                   placeholder="Prezime" required>
-                            <select name="gender" v-model="gender" id="gender" required>
-                                <option value="" disabled selected>Pol</option>
-                                <option value="Muški">Muški</option>
-                                <option value="Ženski">Ženski</option>
-                            </select>
-                            <input class="text-box" type="date" id="dob" name="dob" v-model="dob"
-                                   placeholder="Datum rođenja" required>
-                            <input class="text-box" type="text" id="username" name="username" v-model="username"
-                                   v-on:blur="usernameUniqueCheck" placeholder="Korisničko ime" required>
-                            <input class="text-box" type="password" id="password" v-on:blur="passwordMatchCheck"
-                                   name="password" placeholder="Šifra" v-model="passwordFirst" required>
-                            <input class="text-box" type="password" id="passwordcheck" v-on:blur="passwordMatchCheck"
-                                   name="passwordcheck" v-model="passwordSecond" placeholder="Potvrdi šifru" required>
-                            <label class="invalid-input" v-if="errorExists">{{ this.errorMessage }}</label>
-                            <input class="submit-button" type="submit" :disabled="errorExists" v-on:click="register"
-                                   value="Registruj se">
-                        </form>
-                        <p>Imaš nalog?
-                            <router-link :to="'/login'">Prijavi se</router-link>
-                        </p>
-                    </div>
+    }, template: `
+        <div>
+        <nav-bar-logged-out></nav-bar-logged-out>
+        <div class="register-container">
+            <div class="register-div">
+                <div class="register-content">
+                    <h1 class="myHeading">Registracija</h1>
+                    <form class="myForm" action="">
+                        <input class="text-box" type="text" id="name" name="name" v-model="name" placeholder="Ime"
+                               required>
+                        <input class="text-box" type="text" id="surname" name="surname" v-model="surname"
+                               placeholder="Prezime" required>
+                        <select name="gender" v-model="gender" id="gender" required>
+                            <option value="" disabled selected>Pol</option>
+                            <option value="Muški">Muški</option>
+                            <option value="Ženski">Ženski</option>
+                        </select>
+                        <input class="text-box" type="date" id="dob" name="dob" v-model="dob"
+                               placeholder="Datum rođenja" required>
+                        <input class="text-box" type="text" id="username" name="username" v-model="username"
+                               v-on:blur="usernameUniqueCheck" placeholder="Korisničko ime" required>
+                        <input class="text-box" type="password" id="password" v-on:blur="passwordMatchCheck"
+                               name="password" placeholder="Šifra" v-model="passwordFirst" required>
+                        <input class="text-box" type="password" id="passwordcheck" v-on:blur="passwordMatchCheck"
+                               name="passwordcheck" v-model="passwordSecond" placeholder="Potvrdi šifru" required>
+                        <label class="invalid-input" v-if="errorExists">{{ this.errorMessage }}</label>
+                        <input class="submit-button" type="submit" :disabled="errorExists" v-on:click="register"
+                               value="Registruj se">
+                    </form>
+                    <p>Imaš nalog?
+                        <router-link :to="'/login'">Prijavi se</router-link>
+                    </p>
                 </div>
             </div>
-            </div>
-        `,
-    methods: {
+        </div>
+        </div>
+    `, methods: {
         register: async function () {
             event.preventDefault();
             this.passwordMatchCheck();
@@ -218,14 +206,12 @@ let RegisterPage = Vue.component('register-page', {
                     router.replace("/register");
                 });
 
-        },
-        passwordMatchCheck: function () {
+        }, passwordMatchCheck: function () {
             if (this.usernameIsUnique) {
                 this.errorMessage = "Šifre se ne poklapaju.";
                 this.errorExists = this.passwordFirst !== this.passwordSecond;
             }
-        },
-        usernameUniqueCheck: async function () {
+        }, usernameUniqueCheck: async function () {
             let error = false;
             await axios.get("/rest/user", {params: {"username": this.username}})
                 .then(function response(resp) {
@@ -261,51 +247,56 @@ let SingleSportsObjectCard = Vue.component('single-sports-object-card', {
             isOpen: false
         }
     },*/
-    props: ['title', 'logo', 'type', 'businessHours', 'location', 'rating'],
-    template: `
+    props: ['title', 'logo', 'type', 'businessHours', 'location', 'rating'], template: `
         <li>
         <a href="" class="card">
-            <img src="../images/gym6.png" class="card__image" alt="" />
+            <img src="../images/gym6.png" class="card__image" alt=""/>
             <div class="card__overlay">
                 <div class="card__header">
-                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                    <img class="card__thumb" v-bind:src="logo" alt="" />
+                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                        <path/>
+                    </svg>
+                    <img class="card__thumb" v-bind:src="logo" alt=""/>
                     <div class="card__header-text">
-                        <h3 class="card__title"> {{ this.title }}<span class="badge rounded-pill badge-open" v-if="isOpen">Otvoreno</span>
-                        <span class="badge rounded-pill badge-closed" v-else>Zatvoreno</span></h3>
+                        <h3 class="card__title"> {{ this.title }}<span class="badge rounded-pill badge-open"
+                                                                       v-if="isOpen">Otvoreno</span>
+                            <span class="badge rounded-pill badge-closed" v-else>Zatvoreno</span></h3>
                         <span class="card__status">{{ this.type }}</span><br>
                     </div>
                 </div>
                 <p class="card__description">
-                    <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">{{ this.businessHours }}</span></span><br>
-                    <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">{{ this.location }}</span></span><br>
-                    <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">{{ this.rating }}</span></span>
+                    <span class="d-inline-block"><i class="fa fa-business-time"
+                                                    style="margin-right: 0.4em; color: #91D0F7"></i><span
+                        class="d-inline-block">{{ this.businessHours }}</span></span><br>
+                    <span class="d-inline-block"><i class="fa fa-map-location-dot"
+                                                    style="margin-right: 0.4em; color: #9BE3C3"></i><span
+                        class="d-inline-block">{{ this.location }}</span></span><br>
+                    <span class="d-inline-block"><i class="fa fa-star"
+                                                    style="margin-right: 0.4em; color: #ADE9AA"></i><span
+                        class="d-inline-block">{{ this.rating }}</span></span>
                 </p>
             </div>
         </a>
         </li>
-    `,
-    methods: {
+    `, methods: {
         openCheck: function () {
             //if currentTime is before opening time or after closing time => isOpen = false, else => isOpen = true*/
         }
-    },
-    mounted() {
+    }, mounted() {
         this.openCheck();
     }
 })
 
 let SportsObjectCards = Vue.component('sports-object-cards', {
     data: function () {
-        sportsObjects: null
-    },
-    template: `
+        null
+    }, template: `
         <ul class="cards">
         <single-sports-object-card></single-sports-object-card>
         <!--
         remove the others and replace them with <single-sports-object-card></single-sports-object-card>
         -->
-        <li is="single-sports-object-card" 
+        <li is="single-sports-object-card"
             v-for="(object, index) in this.sportsObjects"
             v-bind:key="object.id"
             v-bind:title="object.name"
@@ -316,123 +307,177 @@ let SportsObjectCards = Vue.component('sports-object-cards', {
             v-bind:businessHours="object.businessHours"
         >
         </li>
-        
+
         <li>
             <a href="" class="card">
-                <img src="../images/gym6.png" class="card__image" alt="" />
+                <img src="../images/gym6.png" class="card__image" alt=""/>
                 <div class="card__overlay">
                     <div class="card__header">
-                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                        <img class="card__thumb" src="../images/dance.png" alt="" />
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                            <path/>
+                        </svg>
+                        <img class="card__thumb" src="../images/dance.png" alt=""/>
                         <div class="card__header-text">
-                            <h3 class="card__title">SDance <span class="badge rounded-pill badge-open">Otvoreno</span></h3>
+                            <h3 class="card__title">SDance <span class="badge rounded-pill badge-open">Otvoreno</span>
+                            </h3>
                             <span class="card__status">Plesni studio</span><br>
                         </div>
                     </div>
                     <p class="card__description">
-                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
+                        <span class="d-inline-block"><i class="fa fa-business-time"
+                                                        style="margin-right: 0.4em; color: #91D0F7"></i><span
+                            class="d-inline-block">08:00-12:00</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-map-location-dot"
+                                                        style="margin-right: 0.4em; color: #9BE3C3"></i><span
+                            class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-star"
+                                                        style="margin-right: 0.4em; color: #ADE9AA"></i><span
+                            class="d-inline-block">9.4</span></span>
                     </p>
                 </div>
             </a>
         </li>
         <li>
             <a href="" class="card">
-                <img src="../images/gym7.png" class="card__image" alt="" />
+                <img src="../images/gym7.png" class="card__image" alt=""/>
                 <div class="card__overlay">
                     <div class="card__header">
-                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                        <img class="card__thumb" src="../images/pool.png" alt="" />
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                            <path/>
+                        </svg>
+                        <img class="card__thumb" src="../images/pool.png" alt=""/>
                         <div class="card__header-text">
-                            <h3 class="card__title">SPool <span class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
+                            <h3 class="card__title">SPool <span class="badge rounded-pill badge-closed">Zatvoreno</span>
+                            </h3>
                             <span class="card__status">Zatvoreni bazeni</span><br>
                         </div>
                     </div>
                     <p class="card__description">
-                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
+                        <span class="d-inline-block"><i class="fa fa-business-time"
+                                                        style="margin-right: 0.4em; color: #91D0F7"></i><span
+                            class="d-inline-block">08:00-12:00</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-map-location-dot"
+                                                        style="margin-right: 0.4em; color: #9BE3C3"></i><span
+                            class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-star"
+                                                        style="margin-right: 0.4em; color: #ADE9AA"></i><span
+                            class="d-inline-block">9.4</span></span>
                     </p>
                 </div>
             </a>
         </li>
         <li>
             <a href="" class="card">
-                <img src="../images/gym3.png" class="card__image" alt="" />
+                <img src="../images/gym3.png" class="card__image" alt=""/>
                 <div class="card__overlay">
                     <div class="card__header">
-                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                        <img class="card__thumb" src="../images/gym2.png" alt="" />
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                            <path/>
+                        </svg>
+                        <img class="card__thumb" src="../images/gym2.png" alt=""/>
                         <div class="card__header-text">
-                            <h3 class="card__title">SGym Two <span class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
+                            <h3 class="card__title">SGym Two <span
+                                class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
                             <span class="card__status">Teretana</span><br>
                         </div>
                     </div>
                     <p class="card__description">
-                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
+                        <span class="d-inline-block"><i class="fa fa-business-time"
+                                                        style="margin-right: 0.4em; color: #91D0F7"></i><span
+                            class="d-inline-block">08:00-12:00</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-map-location-dot"
+                                                        style="margin-right: 0.4em; color: #9BE3C3"></i><span
+                            class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-star"
+                                                        style="margin-right: 0.4em; color: #ADE9AA"></i><span
+                            class="d-inline-block">9.4</span></span>
                     </p>
                 </div>
             </a>
         </li>
         <li>
             <a href="" class="card">
-                <img src="../images/gym3.png" class="card__image" alt="" />
+                <img src="../images/gym3.png" class="card__image" alt=""/>
                 <div class="card__overlay">
                     <div class="card__header">
-                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                        <img class="card__thumb" src="../images/stadion.png" alt="" />
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                            <path/>
+                        </svg>
+                        <img class="card__thumb" src="../images/stadion.png" alt=""/>
                         <div class="card__header-text">
-                            <h3 class="card__title">SSport One <span class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
+                            <h3 class="card__title">SSport One <span
+                                class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
                             <span class="card__status">Sportski centar</span><br>
                         </div>
                     </div>
                     <p class="card__description">
-                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
+                        <span class="d-inline-block"><i class="fa fa-business-time"
+                                                        style="margin-right: 0.4em; color: #91D0F7"></i><span
+                            class="d-inline-block">08:00-12:00</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-map-location-dot"
+                                                        style="margin-right: 0.4em; color: #9BE3C3"></i><span
+                            class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-star"
+                                                        style="margin-right: 0.4em; color: #ADE9AA"></i><span
+                            class="d-inline-block">9.4</span></span>
                     </p>
                 </div>
             </a>
         </li>
         <li>
             <a href="" class="card">
-                <img src="../images/gym3.png" class="card__image" alt="" />
+                <img src="../images/gym3.png" class="card__image" alt=""/>
                 <div class="card__overlay">
                     <div class="card__header">
-                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                        <img class="card__thumb" src="../images/sport.png" alt="" />
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                            <path/>
+                        </svg>
+                        <img class="card__thumb" src="../images/sport.png" alt=""/>
                         <div class="card__header-text">
-                            <h3 class="card__title">SSport Two <span class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
+                            <h3 class="card__title">SSport Two <span
+                                class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
                             <span class="card__status">Sportski centar</span><br>
                         </div>
                     </div>
                     <p class="card__description">
-                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
+                        <span class="d-inline-block"><i class="fa fa-business-time"
+                                                        style="margin-right: 0.4em; color: #91D0F7"></i><span
+                            class="d-inline-block">08:00-12:00</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-map-location-dot"
+                                                        style="margin-right: 0.4em; color: #9BE3C3"></i><span
+                            class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-star"
+                                                        style="margin-right: 0.4em; color: #ADE9AA"></i><span
+                            class="d-inline-block">9.4</span></span>
                     </p>
                 </div>
             </a>
         </li>
         <li>
             <a href="" class="card">
-                <img src="../images/gym3.png" class="card__image" alt="" />
+                <img src="../images/gym3.png" class="card__image" alt=""/>
                 <div class="card__overlay">
                     <div class="card__header">
-                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-                        <img class="card__thumb" src="../images/tennis.png" alt="" />
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                            <path/>
+                        </svg>
+                        <img class="card__thumb" src="../images/tennis.png" alt=""/>
                         <div class="card__header-text">
-                            <h3 class="card__title">STennis <span class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
+                            <h3 class="card__title">STennis <span
+                                class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
                             <span class="card__status">Teniski tereni</span><br>
                         </div>
                     </div>
                     <p class="card__description">
-                        <span class="d-inline-block"><i class="fa fa-business-time" style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">08:00-12:00</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-map-location-dot" style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span class="d-inline-block">9.4</span></span>
+                        <span class="d-inline-block"><i class="fa fa-business-time"
+                                                        style="margin-right: 0.4em; color: #91D0F7"></i><span
+                            class="d-inline-block">08:00-12:00</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-map-location-dot"
+                                                        style="margin-right: 0.4em; color: #9BE3C3"></i><span
+                            class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
+                        <span class="d-inline-block"><i class="fa fa-star"
+                                                        style="margin-right: 0.4em; color: #ADE9AA"></i><span
+                            class="d-inline-block">9.4</span></span>
                     </p>
                 </div>
             </a>
@@ -441,13 +486,60 @@ let SportsObjectCards = Vue.component('sports-object-cards', {
     `
 });
 
+let SportsObjectPage = Vue.component('sports-object-page', {});
+
+let SportObjectSearch = Vue.component('sport-object-search', {
+    template: `
+        <div class="input-group mb-3" style="max-width: 80vw">
+  <select class="form-select" >
+  <option selected disabled>Tip objekta</option>
+  <option value="1">Teretana</option>
+  <option value="2">Sportski centar</option>
+  <option value="3">Zatvoreni bazeni</option>
+    </select>
+  <input type="text" class="form-control" placeholder="Lokacija objekta">
+  <input type="text" class="form-control" placeholder="Naziv objekta">
+  <select class="form-select" style="max-width: 20em">
+  <option selected disabled>Prosečna ocena</option>
+  <option value="1">9.1 – 10.0</option>
+  <option value="2">8.1 – 9.0</option>
+  <option value="3">7.1 – 8.0</option>
+  <option value="4">6.1 – 7.0</option>
+  <option value="5">5.1 – 6.0</option>
+  <option value="6">4.1 – 5.0</option>
+  <option value="7">3.1 – 4.0</option>
+  <option value="8">2.1 – 3.0</option>
+  <option value="9">1.1 – 2.0</option>
+  <option value="10">Bez ocene</option>
+    </select>
+  <div class="search-button" type="button"><i class="fa fa-search"></i>
+   </div>
+</div>
+</div>
+
+<div class="input-group">
+  <input type="text" class="form-control" aria-label="Text input with dropdown button">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div role="separator" class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+  </div>
+</div>
+</div>
+    `
+})
+
 let HomePage = Vue.component('home-page', {
     data: function () {
         return {
             loggedIn: window.localStorage.getItem("username") !== null
         }
-    },
-    template: `
+    }, template: `
         <div>
         <nav-bar-logged-in v-if="this.loggedIn"></nav-bar-logged-in>
         <nav-bar-logged-out v-else></nav-bar-logged-out>
@@ -468,34 +560,30 @@ let HomePage = Vue.component('home-page', {
             <div class="main-div">
                 <div class="main-content">
                     <h1>Sportski objekti</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dapibus, ipsum a lobortis aliquet!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dapibus, ipsum a lobortis
+                        aliquet!</p>
+                    <sport-object-search></sport-object-search>
                     <sports-object-cards></sports-object-cards>
+
                 </div>
             </div>
         </div>
         </div>
-    `,
-    methods: {},
-    mounted() {
+    `, methods: {}, mounted() {
     }
 });
 
 const router = new VueRouter({
     mode: 'hash',
-    routes: [
-        {path: '/', component: HomePage, alias: '/home'},
-        {path: '/login', component: LoginPage},
-        {path: '/register', component: RegisterPage}
-    ]
+    routes: [{path: '/', component: HomePage, alias: '/home'}, {
+        path: '/login',
+        component: LoginPage
+    }, {path: '/register', component: RegisterPage}, {path: '/sports-object', component: SportsObjectPage}]
 });
 
-const app = new Vue(
-    {
-        el: "#app",
-        components: {
-            HomePage
-        },
-        router
-    }
-);
+const app = new Vue({
+    el: "#app", components: {
+        HomePage
+    }, router
+});
 

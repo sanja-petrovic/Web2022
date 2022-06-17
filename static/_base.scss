@@ -19,6 +19,10 @@ $card-border-color: white;
 $card-bg: rgba(255, 255, 255, 0.5);
 $card-cap-bg: rgba(255, 255, 255, 0.3);
 $badge-font-size: 10px;
+$input-border-color: white;
+$input-bg: rgba(255, 255, 255, 0.5);
+$form-select-bg: rgba(255, 255, 255, 0.5);
+$form-select-border-color: white;
 
 .badge-open {
   color: #ffffff;
@@ -74,6 +78,16 @@ $badge-font-size: 10px;
 
 %basic-primary-button-hover {
   background-color: $primary-button-hover;
+}
+
+.search-button {
+  @extend %basic-primary-button;
+  padding-right: 2em;
+  padding-left: 2em;
+}
+
+.search-button:hover {
+  @extend %basic-primary-button-hover;
 }
 
 * {
