@@ -24,6 +24,8 @@ $input-bg: rgba(255, 255, 255, 0.5);
 $form-select-bg: rgba(255, 255, 255, 0.5);
 $form-select-border-color: white;
 $form-select-border-radius: 10px;
+$form-check-input-checked-color: white;
+$form-check-input-checked-bg-color: $primary-button-color;
 
 .badge-open {
   color: #ffffff;
@@ -133,7 +135,6 @@ $form-select-border-radius: 10px;
 }
 
 .invalid-input {
-
   color: $invalid-color;
   font-weight: 500;
 }
