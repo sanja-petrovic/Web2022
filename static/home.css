@@ -11164,7 +11164,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.sort-button, .filter-button, .submit-button, .search-button {
+.clear-button, .sort-button, .filter-button, .submit-button, .search-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -22394,7 +22394,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.sort-button, .filter-button, .submit-button, .search-button {
+.clear-button, .sort-button, .filter-button, .submit-button, .search-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -33705,7 +33705,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.sort-button, .filter-button, .search-button, .submit-button {
+.clear-button, .sort-button, .filter-button, .search-button, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -45018,7 +45018,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.sort-button, .filter-button, .search-button, .submit-button {
+.clear-button, .sort-button, .filter-button, .search-button, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -45309,6 +45309,12 @@ body {
 }
 .checkbox-list label .form-check-input {
   margin-right: 0.3em;
+}
+
+.clear-button {
+  font-size: 10px;
+  max-height: 2em;
+  padding: 0.3em 0.7em;
 }
 
 /*# sourceMappingURL=home.css.map */

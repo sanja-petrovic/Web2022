@@ -541,7 +541,7 @@ let HomePage = Vue.component('home-page', {
                         aliquet!</p>
                     <div class="input-group mb-3" style="max-width: 80vw">
                     <select class="form-select" >
-                        <option selected disabled>Tip objekta</option>
+                        <option selected>Tip objekta</option>
                         <option value="1">Teretana</option>
                         <option value="2">Sportski centar</option>
                         <option value="3">Zatvoreni bazeni</option>
@@ -549,7 +549,7 @@ let HomePage = Vue.component('home-page', {
                     <input type="text" class="form-control" placeholder="Lokacija objekta">
                     <input type="text" class="form-control" placeholder="Naziv objekta">
                     <select class="form-select" style="max-width: 20em">
-                        <option selected disabled>Prosečna ocena</option>
+                        <option selected>Prosečna ocena</option>
                         <option value="1">9.1 – 10.0</option>
                         <option value="2">8.1 – 9.0</option>
                         <option value="3">7.1 – 8.0</option>
@@ -559,7 +559,7 @@ let HomePage = Vue.component('home-page', {
                         <option value="7">3.1 – 4.0</option>
                         <option value="8">2.1 – 3.0</option>
                         <option value="9">1.1 – 2.0</option>
-                        <option value="10">Bez ocene</option>
+                        <option value="10">Neocenjeni</option>
                     </select>
                     <div class="search-button" type="button"><i class="fa fa-search"></i>
                     </div>
@@ -581,6 +581,8 @@ let HomePage = Vue.component('home-page', {
                                 <li><hr class="dropdown-divider"></li>
                                 <li><button class="dropdown-item" type="button">Prosečnoj oceni (opadajuće)</button></li>
                                 <li><button class="dropdown-item" type="button">Prosečnoj oceni (rastuće)</button></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><button class="dropdown-item" type="button">Otvoreni prvo</button></li>
                             </ul>
                         </div>
                     </div>
@@ -600,6 +602,9 @@ let HomePage = Vue.component('home-page', {
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="checkbox">Plesni studio
                                 </label>
+                                <button type="button" class="clear-button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="d-inline-block"><i class="fa-regular fa-circle-xmark" style="margin-right: 0.4em;"></i><span class="d-inline-block">Obriši filter</span></span>
+                                </button>
                             </div>
                             <p>Status</p>
                             <div class="checkbox-list">
@@ -609,6 +614,9 @@ let HomePage = Vue.component('home-page', {
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="status" type="radio">Zatvoreno
                                 </label>
+                                <button type="button" class="clear-button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="d-inline-block"><i class="fa-regular fa-circle-xmark" style="margin-right: 0.4em;"></i><span class="d-inline-block">Obriši filter</span></span>
+                                </button>
                             </div>
                         </div>
                     </div>
