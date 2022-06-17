@@ -93,10 +93,16 @@ body {
 }
 
 .card__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1em;
   margin: 0 0 0em;
   color: $bold-font-color;
   font-weight: 700;
+  span {
+    margin-left: 0.7em;
+  }
 }
 
 .card__tagline {

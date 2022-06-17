@@ -11201,7 +11201,6 @@ select, .text-box {
   background-size: 100%;
   background-attachment: fixed;
   height: 100vh;
-  backdrop-filter: blur(5px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13587,7 +13586,7 @@ textarea.form-control-lg {
   background-position: right 0.75rem center;
   background-size: 16px 12px;
   border: 1px solid white;
-  border-radius: 0.25rem;
+  border-radius: 10px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   appearance: none;
 }
@@ -22432,7 +22431,6 @@ select, .text-box {
   background-size: 100%;
   background-attachment: fixed;
   height: 100vh;
-  backdrop-filter: blur(5px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24899,7 +24897,7 @@ textarea.form-control-lg {
   background-position: right 0.75rem center;
   background-size: 16px 12px;
   border: 1px solid white;
-  border-radius: 0.25rem;
+  border-radius: 10px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   appearance: none;
 }
@@ -33744,7 +33742,6 @@ select, .text-box {
   background-size: 100%;
   background-attachment: fixed;
   height: 100vh;
-  backdrop-filter: blur(5px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36213,7 +36210,7 @@ textarea.form-control-lg {
   background-position: right 0.75rem center;
   background-size: 16px 12px;
   border: 1px solid white;
-  border-radius: 0.25rem;
+  border-radius: 10px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   appearance: none;
 }
@@ -45058,7 +45055,6 @@ textarea.form-control-lg {
   background-size: 100%;
   background-attachment: fixed;
   height: 100vh;
-  backdrop-filter: blur(5px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45181,10 +45177,16 @@ body {
 }
 
 .card__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1em;
   margin: 0 0 0em;
   color: #000b42;
   font-weight: 700;
+}
+.card__title span {
+  margin-left: 0.7em;
 }
 
 .card__tagline {

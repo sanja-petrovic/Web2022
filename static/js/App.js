@@ -289,8 +289,11 @@ let SingleSportsObjectCard = Vue.component('single-sports-object-card', {
 
 let SportsObjectCards = Vue.component('sports-object-cards', {
     data: function () {
-        null
-    }, template: `
+        return {
+            sportsObjects: null
+        }
+    },
+    template: `
         <ul class="cards">
         <single-sports-object-card></single-sports-object-card>
         <!--
@@ -483,7 +486,27 @@ let SportsObjectCards = Vue.component('sports-object-cards', {
             </a>
         </li>
         </ul>
-    `
+    `,
+    methods: {
+        search: function (type, location, name, rating) {
+
+        },
+        filter: function (type, isOpened) {
+
+        },
+        sortByTitle: function (asc=false) {
+
+        },
+        sortByLocation: function (asc=false) {
+
+        },
+        sortByRating: function (asc=false) {
+
+        },
+        sortByOpenStatus: function (asc=false) {
+            //default sort
+        }
+    }
 });
 
 let SportsObjectPage = Vue.component('sports-object-page', {});
@@ -514,22 +537,6 @@ let SportObjectSearch = Vue.component('sport-object-search', {
     </select>
   <div class="search-button" type="button"><i class="fa fa-search"></i>
    </div>
-</div>
-</div>
-
-<div class="input-group">
-  <input type="text" class="form-control" aria-label="Text input with dropdown button">
-  <div class="input-group-append">
-    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div role="separator" class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
-    </div>
-  </div>
-</div>
 </div>
     `
 })
@@ -575,10 +582,11 @@ let HomePage = Vue.component('home-page', {
 
 const router = new VueRouter({
     mode: 'hash',
-    routes: [{path: '/', component: HomePage, alias: '/home'}, {
-        path: '/login',
-        component: LoginPage
-    }, {path: '/register', component: RegisterPage}, {path: '/sports-object', component: SportsObjectPage}]
+    routes: [
+        {path: '/', component: HomePage, alias: '/home'},
+        {path: '/login', component: LoginPage},
+        {path: '/register', component: RegisterPage}
+    ]
 });
 
 const app = new Vue({
