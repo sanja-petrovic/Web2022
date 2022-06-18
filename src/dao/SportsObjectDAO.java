@@ -53,4 +53,15 @@ public class SportsObjectDAO {
 		}
 		return searchedObjects;
 	}
+	
+	public List<SportsObject> getSportsObjectByName(String name) {
+		List<SportsObject> searchedObjects = new ArrayList<SportsObject>();
+		for (SportsObject sportsObject : this.sportsObjects) {
+			if(sportsObject.getName().equals(name)) {
+				searchedObjects.add(sportsObject);
+			}
+		}
+		return searchedObjects;
+	}
+	
 }

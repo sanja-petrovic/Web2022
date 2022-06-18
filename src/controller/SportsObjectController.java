@@ -25,6 +25,7 @@ public class SportsObjectController {
 		path(basePath, () -> {
 			getSportsObjects();
 			getSportsObjectByType();
+			getSportsObjectByName();
 		});
 	}
 	
@@ -42,6 +43,16 @@ public class SportsObjectController {
 			String type = req.queryParams("type");
 			res.status(200);
 			List<SportsObject> searchedObjects = sportsObjectDAO.getSportsObjectByType(type);
+			return gson.toJson(searchedObjects);
+		});
+	}
+	
+	public static void getSportsObjectByName() {
+		get("/getSportsObjectByName", (req, res) -> {  
+			res.type("application/json");
+			String name = req.queryParams("name");
+			res.status(200);
+			List<SportsObject> searchedObjects = sportsObjectDAO.getSportsObjectByName(name);
 			return gson.toJson(searchedObjects);
 		});
 	}

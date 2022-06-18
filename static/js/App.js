@@ -418,21 +418,30 @@ let HomePage = Vue.component('home-page', {
 				return false;
 		},
 		search: function() {
-
-			console.log(this.searchParam.searchType);
-			if (this.searchParam.searchType == '') {
-				alert("Test");
+			if (this.searchParam.searchType !== '') {
+				axios.get('rest/getSportsObjectByType', {
+					params: {
+						type: this.searchParam.searchType
+					}
+				})
+				.then(response => {
+					this.sportsObjects = response.data;
+				})
+				.catch(error => console.log(error));
+			} 
+			else if (this.searchParam.searchName !== '') {
+				axios.get('rest/getSportsObjectByName', {
+					params: {
+						name: this.searchParam.searchName
+					}
+				})
+				.then(response => {
+					console.log(this.searchParam.searchName);
+					this.sportsObjects = response.data;
+					console.log(this.sportsObjects);
+				})
+				.catch(error => console.log(error));
 			}
-
-			axios.get('rest/getSportsObjectByType', {
-				params: {
-					type: this.searchParam.searchType
-				}
-			})
-			.then(response => {
-				this.sportsObjects = response.data;
-			})
-			.catch(error => console.log(error));
 		}
 	}
 })
