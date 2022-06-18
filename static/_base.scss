@@ -101,6 +101,19 @@ $form-check-input-checked-bg-color: $primary-button-color;
   color: $bold-font-color;
 }
 
+h1 {
+  font-weight: 600;
+  color: $bold-font-color;
+}
+
+
+h4 {
+  color: $bold-font-color;
+  font-weight: 700;
+  margin-left: 2vw;
+  font-size: 28px;
+}
+
 .background {
   margin: 0;
   font-family: $main-font;

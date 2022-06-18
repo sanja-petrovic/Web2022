@@ -34,5 +34,14 @@
     "Gender": "Female",
     "DateOfBirth": "1997-10-10",
     "UserType": "Buyer"
+  },
+  {
+    "Username": "ivana",
+    "Password": "ivana",
+    "Name": "Ivana",
+    "Surname": "Ivanović",
+    "Gender": "Female",
+    "DateOfBirth": "2022-05-30",
+    "UserType": "Buyer"
   }
 ]

@@ -16,7 +16,7 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException {
 		Repository.getInstance().loadData();
-		port(3030);
+		port(3000);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
 		UserController userController = new UserController();
 		userController.init();
