@@ -26,6 +26,7 @@ public class SportsObjectController {
 			getSportsObjects();
 			getSportsObjectByType();
 			getSportsObjectByName();
+			getSportsObjectByLocation();
 		});
 	}
 	
@@ -53,6 +54,16 @@ public class SportsObjectController {
 			String name = req.queryParams("name");
 			res.status(200);
 			List<SportsObject> searchedObjects = sportsObjectDAO.getSportsObjectByName(name);
+			return gson.toJson(searchedObjects);
+		});
+	}
+	
+	public static void getSportsObjectByLocation() {
+		get("/getSportsObjectByLocation", (req, res) -> {  
+			res.type("application/json");
+			String location = req.queryParams("location");
+			res.status(200);
+			List<SportsObject> searchedObjects = sportsObjectDAO.getSportsObjectByLocation(location);
 			return gson.toJson(searchedObjects);
 		});
 	}

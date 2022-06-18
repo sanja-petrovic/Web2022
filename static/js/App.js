@@ -432,11 +432,24 @@ let HomePage = Vue.component('home-page', {
 			else if (this.searchParam.searchName !== '') {
 				axios.get('rest/getSportsObjectByName', {
 					params: {
-						name: this.searchParam.searchName
+						name: this.searchParam.searchName.toLowerCase()
 					}
 				})
 				.then(response => {
 					console.log(this.searchParam.searchName);
+					this.sportsObjects = response.data;
+					console.log(this.sportsObjects);
+				})
+				.catch(error => console.log(error));
+			}
+			else if(this.searchParam.searchLocation !== '') {
+				axios.get('rest/getSportsObjectByLocation', {
+					params: {
+						location: this.searchParam.searchLocation.toLowerCase()
+					}
+				})
+				.then(response => {
+					console.log(this.searchParam.searchLocation);
 					this.sportsObjects = response.data;
 					console.log(this.sportsObjects);
 				})

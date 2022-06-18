@@ -57,11 +57,23 @@ public class SportsObjectDAO {
 	public List<SportsObject> getSportsObjectByName(String name) {
 		List<SportsObject> searchedObjects = new ArrayList<SportsObject>();
 		for (SportsObject sportsObject : this.sportsObjects) {
-			if(sportsObject.getName().equals(name)) {
+			if(sportsObject.getName().toLowerCase().contains(name)) {
 				searchedObjects.add(sportsObject);
 			}
 		}
 		return searchedObjects;
 	}
+	
+	public List<SportsObject> getSportsObjectByLocation(String location) {
+		List<SportsObject> searchedObjects = new ArrayList<SportsObject>();
+		for (SportsObject sportsObject : this.sportsObjects) {
+			if(sportsObject.getLocation().getAddress().getCity().toLowerCase().contains(location)) {
+				searchedObjects.add(sportsObject);
+			}
+		}
+		return searchedObjects;
+	}
+	
+	
 	
 }
