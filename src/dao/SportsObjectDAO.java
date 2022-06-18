@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -41,5 +42,15 @@ public class SportsObjectDAO {
 	public ArrayList<SportsObject> getSportsObjects() {
 		this.load();
 		return this.sportsObjects;
+	}
+	
+	public List<SportsObject> getSportsObjectByType(String type) {
+		List<SportsObject> searchedObjects = new ArrayList<SportsObject>();
+		for (SportsObject sportsObject : this.sportsObjects) {
+			if(sportsObject.getType().equals(type)) {
+				searchedObjects.add(sportsObject);
+			}
+		}
+		return searchedObjects;
 	}
 }

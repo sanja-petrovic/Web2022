@@ -5,10 +5,12 @@ import static spark.Spark.path;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import beans.SportsObject;
 import dao.SportsObjectDAO;
 import util.LocalDateTimeAdapter;
 import util.LocalTimeAdapter;
@@ -22,6 +24,7 @@ public class SportsObjectController {
 	public void init() {
 		path(basePath, () -> {
 			getSportsObjects();
+			getSportsObjectByType();
 		});
 	}
 	
@@ -30,6 +33,16 @@ public class SportsObjectController {
 			res.type("application/json");
 			res.status(200);
 			return gson.toJson(sportsObjectDAO.getSportsObjects());
+		});
+	}
+	
+	public static void getSportsObjectByType() {
+		get("/getSportsObjectByType", (req, res) -> {  
+			res.type("application/json");
+			String type = req.queryParams("type");
+			res.status(200);
+			List<SportsObject> searchedObjects = sportsObjectDAO.getSportsObjectByType(type);
+			return gson.toJson(searchedObjects);
 		});
 	}
 	

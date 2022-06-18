@@ -1,7 +1,7 @@
 [
     {
         "name": "Mega Gym",
-        "type": "teretana",
+        "type": "Teretana",
         "offers": null,
         "status": "WORKING",
         "location": {
@@ -15,7 +15,7 @@
             }
         },
         "logoIcon": "../images/gym2.png",
-        "averageGrade": 4.5,
+        "averageGrade": 4.0,
         "businessHours": {
             "startTime": "08:00",
             "endTime": "23:00"
@@ -23,7 +23,7 @@
     },
     {
         "name": "Fit&Fun",
-        "type": "fitnes",
+        "type": "Fitnes centar",
         "offers": null,
         "status": "WORKING",
         "location": {
@@ -45,7 +45,7 @@
     },
     {
         "name": "Novak Tennis Center",
-        "type": "tenis",
+        "type": "Teniski centar",
         "offers": null,
         "status": "WORKING",
         "location": {
@@ -67,7 +67,7 @@
     },
       {
         "name": "Plesni centar Allegro",
-        "type": "ples",
+        "type": "Plesni studio",
         "offers": null,
         "status": "WORKING",
         "location": {
@@ -89,7 +89,7 @@
     },
     {
         "name": "Šmek",
-        "type": "teretana",
+        "type": "Teretana",
         "offers": null,
         "status": "WORKING",
         "location": {
@@ -109,9 +109,9 @@
             "endTime": "22:00"
         }
     },
-        {
+    {
         "name": "Joga Studio",
-        "type": "joga",
+        "type": "Joga studio",
         "offers": null,
         "status": "WORKING",
         "location": {
@@ -129,6 +129,28 @@
         "businessHours": {
             "startTime": "09:00",
             "endTime": "17:30"
+        }
+    },
+       {
+        "name": "Bazeni Spens",
+        "type": "Zatvoreni bazeni",
+        "offers": null,
+        "status": "WORKING",
+        "location": {
+            "latitude": 45.247500,
+            "longitude": 19.845560,
+            "address": {
+                "street": "Sutjeska",
+                "number": "2",
+                "city": "Novi Sad",
+                "postcode": "21000"
+            }
+        },
+        "logoIcon": "../images/pool.png",
+        "averageGrade": 3.9,
+        "businessHours": {
+            "startTime": "06:00",
+            "endTime": "19:00"
         }
     }
 ]
