@@ -1,20 +1,20 @@
 [
     {
-        "name": "MegaGym",
-        "type": "gym",
+        "name": "Mega Gym",
+        "type": "teretana",
         "offers": null,
         "status": "WORKING",
         "location": {
-            "latitude": 45.1653,
+            "latitude": 45.1653,  
             "longitude": 19.50276,
             "address": {
                 "street": "Temerinska",
                 "number": "95",
                 "city": "Novi Sad",
-                "postcode": "21138"
+                "postcode": "21000"
             }
         },
-        "logoIcon": "static/images/gym2.png",
+        "logoIcon": "../images/gym2.png",
         "averageGrade": 4.5,
         "businessHours": {
             "startTime": "08:00",
@@ -23,12 +23,12 @@
     },
     {
         "name": "Fit&Fun",
-        "type": "fitness",
+        "type": "fitnes",
         "offers": null,
         "status": "WORKING",
         "location": {
-            "latitude": 45.39506,
-            "longitude": 19.88301,
+            "latitude": 45.390568,
+            "longitude": 19.883015,
             "address": {
                 "street": "Petra Drapsina",
                 "number": "98",
@@ -36,11 +36,99 @@
                 "postcode": "21235"
             }
         },
-        "logoIcon": "static/images/gym6.png",
+        "logoIcon": "../images/fitnes.png",
         "averageGrade": 4.8,
         "businessHours": {
             "startTime": "10:00",
             "endTime": "20:00"
+        }
+    },
+    {
+        "name": "Novak Tennis Center",
+        "type": "tenis",
+        "offers": null,
+        "status": "WORKING",
+        "location": {
+            "latitude": 44.830158,
+            "longitude": 20.452509,
+            "address": {
+                "street": "Tadeuša Košćučka",
+                "number": "65",
+                "city": "Beograd",
+                "postcode": "11000"
+            }
+        },
+        "logoIcon": "../images/tennis.png",
+        "averageGrade": 5.0,
+        "businessHours": {
+            "startTime": "08:00",
+            "endTime": "20:00"
+        }
+    },
+      {
+        "name": "Plesni centar Allegro",
+        "type": "ples",
+        "offers": null,
+        "status": "WORKING",
+        "location": {
+            "latitude": 45.260277,
+            "longitude": 19.842306, 
+            "address": {
+                "street": "Kisačka",
+                "number": "3",
+                "city": "Novi Sad",
+                "postcode": "21000"
+            }
+        },
+        "logoIcon": "../images/dance.png",
+        "averageGrade": 4.7,
+        "businessHours": {
+            "startTime": "11:00",
+            "endTime": "21:00"
+        }
+    },
+    {
+        "name": "Šmek",
+        "type": "teretana",
+        "offers": null,
+        "status": "WORKING",
+        "location": {
+            "latitude": 45.262012,
+            "longitude": 19.832575, 
+            "address": {
+                "street": "Bulevar Oslobođenja",
+                "number": "30b",
+                "city": "Novi Sad",
+                "postcode": "21000"
+            }
+        },
+        "logoIcon": "../images/flexgym.jpg",
+        "averageGrade": 4.9,
+        "businessHours": {
+            "startTime": "06:00",
+            "endTime": "22:00"
+        }
+    },
+        {
+        "name": "Joga Studio",
+        "type": "joga",
+        "offers": null,
+        "status": "WORKING",
+        "location": {
+            "latitude": 45.256420,
+            "longitude": 19.811140,
+            "address": {
+                "street": "Bulevar Evrope",
+                "number": "17A",
+                "city": "Novi Sad",
+                "postcode": "21000"
+            }
+        },
+        "logoIcon": "../images/gym6.png",
+        "averageGrade": 4.5,
+        "businessHours": {
+            "startTime": "09:00",
+            "endTime": "17:30"
         }
     }
 ]
