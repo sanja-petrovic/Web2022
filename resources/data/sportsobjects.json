@@ -103,7 +103,7 @@
             }
         },
         "logoIcon": "../images/flexgym.jpg",
-        "averageGrade": 4.9,
+        "averageGrade": 3.5,
         "businessHours": {
             "startTime": "06:00",
             "endTime": "22:00"
@@ -147,7 +147,7 @@
             }
         },
         "logoIcon": "../images/pool.png",
-        "averageGrade": 3.9,
+        "averageGrade": 0.0,
         "businessHours": {
             "startTime": "06:00",
             "endTime": "19:00"

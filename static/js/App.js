@@ -246,7 +246,7 @@ let HomePage = Vue.component('home-page', {
 			searchParam: {
 				searchName: "",
 				searchLocation: "",
-				searchGrade: 0.0,
+				searchGrade: "",
 				searchType: ""
 			}
 		}
@@ -288,11 +288,11 @@ let HomePage = Vue.component('home-page', {
                     <input type="text" class="form-control" placeholder="Naziv objekta" v-model="searchParam.searchName">
                     <select class="form-select" style="max-width: 20em" v-model = "searchParam.searchGrade">
                         <optgroup label="Prosečna ocena">
-	                        <option value="1">4.1 – 5.0</option>
-	                        <option value="2">3.1 – 4.0</option>
-	                        <option value="3">2.1 – 3.0</option>
-	                        <option value="4">1.0 – 2.0</option>
-	                        <option value="5">Neocenjeni</option>
+	                        <option>4.1 – 5.0</option>
+	                        <option>3.1 – 4.0</option>
+	                        <option>2.1 – 3.0</option>
+	                        <option>1.0 – 2.0</option>
+	                        <option>Neocenjeni</option>
                         </optgroup>
                     </select>
                     <div class="search-button" type="button" v-on:click="search">
@@ -454,6 +454,39 @@ let HomePage = Vue.component('home-page', {
 					console.log(this.sportsObjects);
 				})
 				.catch(error => console.log(error));
+			}
+			else if(this.searchParam.searchGrade !== '') {
+				
+				if (this.searchParam.searchGrade === 'Neocenjeni') {
+					axios.get('rest/getSportsObjectByRatingInterval', {
+						params: {
+							minRating: '0.0',
+							maxRating: '0.0',
+						}
+					})
+					.then(response => {
+						
+						this.sportsObjects = response.data;
+						
+					})
+					.catch(error => console.log(error));
+				}
+				else {
+					let ratingInterval = this.searchParam.searchGrade.replace(/\s/g,'').split('–');
+					console.log(ratingInterval[0]);
+					axios.get('rest/getSportsObjectByRatingInterval', {
+						params: {
+							minRating: ratingInterval[0],
+							maxRating: ratingInterval[1],
+						}
+					})
+					.then(response => {
+						
+						this.sportsObjects = response.data;
+						
+					})
+					.catch(error => console.log(error));
+				}
 			}
 		}
 	}

@@ -73,6 +73,17 @@ public class SportsObjectDAO {
 		}
 		return searchedObjects;
 	}
+
+
+	public List<SportsObject> getSportsObjectByRatingInterval(Double minRating, Double maxRating) {
+		List<SportsObject> searchedObjects = new ArrayList<SportsObject>();
+		for (SportsObject sportsObject : this.sportsObjects) {
+			if(sportsObject.getAverageGrade() >= minRating && sportsObject.getAverageGrade() <= maxRating) {
+				searchedObjects.add(sportsObject);
+			}
+		}
+		return searchedObjects;
+	}
 	
 	
 	
