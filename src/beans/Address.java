@@ -1,10 +1,16 @@
 package beans;
 
+import com.google.gson.annotations.Expose;
+
 public class Address {
 	
-	private String street;
+	@Expose
+	private String street;	
+	@Expose
 	private String number;
+	@Expose
 	private String city;
+	@Expose
 	private String postcode;
 	
 	public Address(String street, String number, String city, String postcode) {

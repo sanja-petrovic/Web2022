@@ -4,7 +4,7 @@
     "Password": "petar",
     "Name": "Petar",
     "Surname": "Petrović",
-    "Gender": "Female",
+    "Gender": "Ženski",
     "DateOfBirth": "1998-05-02",
     "UserType": "Trainer"
   },
@@ -13,7 +13,7 @@
     "Password": "marko",
     "Name": "Marko",
     "Surname": "Marković",
-    "Gender": "Male",
+    "Gender": "Muški",
     "DateOfBirth": "1994-06-03",
     "UserType": "Manager"
   },
@@ -22,7 +22,7 @@
     "Password": "jana",
     "Name": "Jana",
     "Surname": "Janković",
-    "Gender": "Female",
+    "Gender": "Ženski",
     "DateOfBirth": "1989-12-13",
     "UserType": "Admin"
   },
@@ -31,8 +31,35 @@
     "Password": "milica",
     "Name": "Milica",
     "Surname": "Miličević",
-    "Gender": "Female",
+    "Gender": "Ženski",
     "DateOfBirth": "1997-10-10",
+    "UserType": "Buyer"
+  },
+  {
+    "Username": "ivana",
+    "Password": "ivana",
+    "Name": "Ivana",
+    "Surname": "Ivanović",
+    "Gender": "Ženski",
+    "DateOfBirth": "2001-05-30",
+    "UserType": "Buyer"
+  },
+  {
+    "Username": "a",
+    "Password": "a",
+    "Name": "a",
+    "Surname": "a",
+    "Gender": "Muški",
+    "DateOfBirth": "2022-06-22",
+    "UserType": "Buyer"
+  },
+  {
+    "Username": "filip",
+    "Password": "filip",
+    "Name": "Filip",
+    "Surname": "Filipović",
+    "Gender": "Muški",
+    "DateOfBirth": "2022-06-08",
     "UserType": "Buyer"
   }
 ]

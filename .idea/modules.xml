@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/FitnessCenter.iml" filepath="$PROJECT_DIR$/.idea/FitnessCenter.iml" />
+      <module fileurl="file://$USER_HOME$/Desktop/SparkREST/SparkREST.iml" filepath="$USER_HOME$/Desktop/SparkREST/SparkREST.iml" />
     </modules>
   </component>
 </project>

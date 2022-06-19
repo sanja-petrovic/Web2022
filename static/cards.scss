@@ -115,6 +115,10 @@ body {
   color: $subtitle-color;
 }
 
+.card-title-container {
+  display: flex;
+}
+
 .card__status {
   font-size: .8em;
   color: $subtitle-color;

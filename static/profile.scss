@@ -1,0 +1,55 @@
+@import 'base';
+
+.profile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  h4 {
+    width: 60vw;
+  }
+}
+
+.about-section {
+  @extend %basic-white-component;
+  width: 60vw;
+  min-height: 60vh;
+  padding: 2vw;
+  flex-direction: row;
+}
+
+.about-section:before {
+  @extend %basic-white-component-before;
+}
+
+.info, .membership {
+  display: flex;
+  flex-direction: column;
+  input, select {
+    width: 20em;
+    margin-bottom: 1em;
+  }
+
+  label {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 0.7em;
+    color: $subtitle-color;
+  }
+}
+
+.membership {
+  margin-left: 2em;
+}
+
+.membership-card {
+  @extend %basic-white-component;
+  display: flex;
+  flex-direction: column;
+  padding: 2vw;
+}
+
+.membership-card:before {
+  @extend %basic-white-component-before;
+}
