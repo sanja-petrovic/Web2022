@@ -3,6 +3,8 @@ package beans;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import com.google.gson.annotations.Expose;
+
 public class SportsObject {
 
 	private String name;

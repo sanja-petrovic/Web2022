@@ -3,6 +3,7 @@ package dao;
 public class Repository {
 	
 	private UserDAO userDAO;
+	private BuyerDAO buyerDAO;
 	public static Repository instance;
 	
 	private Repository() { }
@@ -11,6 +12,7 @@ public class Repository {
 		if(instance == null) {
 			instance = new Repository();
 			instance.setUserDAO(new UserDAO());
+			instance.setBuyerDAO(new BuyerDAO());
 		}
 		return instance;
 	}
@@ -25,6 +27,14 @@ public class Repository {
 
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
+	}
+
+	public BuyerDAO getBuyerDAO() {
+		return buyerDAO;
+	}
+
+	public void setBuyerDAO(BuyerDAO buyerDAO) {
+		this.buyerDAO = buyerDAO;
 	}
 
 }

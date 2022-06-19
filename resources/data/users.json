@@ -33,8 +33,7 @@
     "Surname": "Miličević",
     "Gender": "Ženski",
     "DateOfBirth": "1997-10-10",
-    "UserType": "Buyer",
-    "Points": 1234
+    "UserType": "Buyer"
   },
   {
     "Username": "ivana",
@@ -43,7 +42,24 @@
     "Surname": "Ivanović",
     "Gender": "Ženski",
     "DateOfBirth": "2001-05-30",
-    "UserType": "Buyer",
-    "Points": 1234
+    "UserType": "Buyer"
+  },
+  {
+    "Username": "a",
+    "Password": "a",
+    "Name": "a",
+    "Surname": "a",
+    "Gender": "Muški",
+    "DateOfBirth": "2022-06-22",
+    "UserType": "Buyer"
+  },
+  {
+    "Username": "filip",
+    "Password": "filip",
+    "Name": "Filip",
+    "Surname": "Filipović",
+    "Gender": "Muški",
+    "DateOfBirth": "2022-06-08",
+    "UserType": "Buyer"
   }
 ]

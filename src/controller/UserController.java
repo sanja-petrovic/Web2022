@@ -23,8 +23,8 @@ import java.util.Date;
 
 public class UserController {
 	private static Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
-	private static UserDAO userDAO = new UserDAO();
 	private static String basePath = "/rest";
+	private static Repository repository;
 	
 	public void init() {
 		path(basePath, () -> {
@@ -42,7 +42,7 @@ public class UserController {
 			String payload = req.body();
 			LoginUserDTO u = gson.fromJson(payload, LoginUserDTO.class);
 			
-			User user = userDAO.getUserById(u.getUsername().trim());
+			User user = repository.getInstance().getUserDAO().getUserById(u.getUsername().trim());
 			
 			if(user == null) {
 				res.status(401);
@@ -60,25 +60,16 @@ public class UserController {
 	
 	public static void getUsers() {
 		get("/users", (req, res) -> {
-			return gson.toJson(userDAO.getUsers());
+			return gson.toJson(repository.getInstance().getUserDAO().getUsers());
 		});
 	}
 	
-	/*public static void getUser() {
-		get("/users", (req, res) -> {
-			String username = req.queryParams("username");
-			Repository repository = Repository.getInstance();
-			User user = repository.getUserDAO().getUserById(username);
-			return gson.toJson(user);
-		});
-	}*/
 	
 	public static void getUser() {
 		get("/users/:id", (req, res) -> {
 			res.type("application/json");
 			String id = req.params(":id");
-			Repository repository = Repository.getInstance();
-			User user = repository.getUserDAO().getUserById(id);
+			User user = repository.getInstance().getUserDAO().getUserById(id);
 			return gson.toJson(user);
 		});
 	}
@@ -90,9 +81,7 @@ public class UserController {
 			RegisterUserDTO u = gson.fromJson(payload, RegisterUserDTO.class);
 			
 			User user = new User(u.getUsername(), u.getPassword(), u.getName(), u.getSurname(), u.parseGender(), u.parseDate(), UserType.BUYER);
-			Repository repository = Repository.getInstance();
-			repository.getUserDAO().addUser(user);
-			
+			repository.getInstance().getUserDAO().addUser(user);
 			System.out.println(user);
 			return gson.toJson(user);
 		});

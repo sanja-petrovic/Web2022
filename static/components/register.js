@@ -87,7 +87,7 @@ Vue.component('register-page', {
             }
         }, usernameUniqueCheck: async function () {
             let error = false;
-            await axios.get("/rest/user", {params: {"username": this.username}})
+            await axios.get(`/rest/users/${this.username}`)
                 .then(function response(resp) {
                     if (resp.data) {
                         error = true;

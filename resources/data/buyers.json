@@ -1,0 +1,25 @@
+[
+  {
+    "Points": 1234.0,
+    "BuyerType": {
+      "Tier": "Bronzani",
+      "Discount": 5.0,
+      "PointRequirement": 1000
+    },
+    "Username": "milica"
+  },
+  {
+    "Points": 4321.0,
+    "Username": "ivana"
+  },
+  {
+    "VisitedObjects": [],
+    "Points": 0.0,
+    "Username": "a"
+  },
+  {
+    "VisitedObjects": [],
+    "Points": 0.0,
+    "Username": "filip"
+  }
+]
