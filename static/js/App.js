@@ -481,6 +481,7 @@ let SportsObjectPage = Vue.component('sports-object-page', {
     `
 
 });
+
 let HomePage = Vue.component('home-page', {
 	data: function() {
 		return {
@@ -542,6 +543,9 @@ let HomePage = Vue.component('home-page', {
                     <div class="search-button" type="button" v-on:click="search">
                     	<i class="fa fa-search"></i>
                     </div>
+                    <div class="cancel_button" type="button" v-on:click="cancelSearch">
+                    	 Poništi pretragu
+					</div>
                 </div>
                     <div class="filter-div">
                     <div class="buttons">
@@ -645,16 +649,19 @@ let HomePage = Vue.component('home-page', {
         </div>
     `,
 	mounted() {
-		axios.get('rest/sportsobjects')
+		this.displaySportsObjects();
+	},
+	methods:
+	{
+		displaySportsObjects: function() {
+			axios.get('rest/sportsobjects')
 			.then(response => {
 
 				this.sportsObjects = response.data;
 				console.log(response.data);
 			})
 			.catch(error => console.log(error));
-	},
-	methods:
-	{
+		},
 		openCheck: function(status) {
 			if (status == 'WORKING')
 				return true;
@@ -662,6 +669,7 @@ let HomePage = Vue.component('home-page', {
 				return false;
 		},
 		search: function() {
+			this.isSearchButtonVisible = false;
 			if (this.searchParam.searchType !== '') {
 				axios.get('rest/getSportsObjectByType', {
 					params: {
@@ -732,6 +740,13 @@ let HomePage = Vue.component('home-page', {
 					.catch(error => console.log(error));
 				}
 			}
+		},
+		cancelSearch: function() {
+			this.searchParam.searchType = "";
+			this.searchParam.searchLocation = "";
+			this.searchParam.searchName = "";
+			this.searchParam.searchGrade = "";
+			this.displaySportsObjects();
 		}
 	}
 });
