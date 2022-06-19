@@ -587,7 +587,7 @@ let HomePage = Vue.component('home-page', {
 	                        <option>Neocenjeni</option>
                         </optgroup>
                     </select>
-                    <div class="search-button" type="button" v-on:click="search">
+                    <div class="search-button" type="button" v-on:click="combinedSearch">
                     	<i class="fa fa-search"></i>
                     </div>
                 </div>
@@ -676,9 +676,9 @@ let HomePage = Vue.component('home-page', {
 					                        style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">{{
 					                        item.businessHours.startTime }}-{{ item.businessHours.endTime }}</span></span><br>
 					                <span class="d-inline-block"><i class="fa fa-map-location-dot"
-					                        style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">{{
+					                        style="margin-right: 0.4em; color: #9BE3C3"></i>{{
 					                        item.location.address.street }} {{ item.location.address.number }}, {{
-					                        item.location.address.city }} {{item.location.address.postcode }}, {{item.location.address.country}}</span></span><br>
+					                        item.location.address.city }} {{item.location.address.postcode }}, {{item.location.address.country}}</span><br>
 					                <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span
 					                        class="d-inline-block">{{ item.averageGrade }}</span></span>
 					            </p>
@@ -775,6 +775,28 @@ let HomePage = Vue.component('home-page', {
 					.catch(error => console.log(error));
 				}
 			}
+		},
+		combinedSearch: function () {
+			let searchResult = [];
+			let ratingInterval = [0, 5];
+			if(this.searchParam.searchGrade !== "Prosečna ocena") {
+				ratingInterval = this.searchParam.searchGrade.replace(/\s/g,'').split('–');
+			}
+			for(let i = 0; i < this.sportsObjects.length; i++) {
+				let invalidCount = 0;
+
+				if(this.sportsObjects[i].name.toLowerCase().includes(this.searchParam.searchName.toLowerCase().trim())
+				&& (this.sportsObjects[i].type.toLowerCase().includes(this.searchParam.searchType.toLowerCase().trim()) || this.searchParam.searchType === "Tip objekta")
+				&& (this.sportsObjects[i].location.address.city.toLowerCase().includes(this.searchParam.searchLocation.toLowerCase().trim())
+						|| this.sportsObjects[i].location.address.country.toLowerCase().includes(this.searchParam.searchLocation.toLowerCase().trim()))
+				&& (this.sportsObjects[i].averageGrade >= ratingInterval[0] && this.sportsObjects[i].averageGrade <= ratingInterval[1])
+				) {
+					searchResult.push(this.sportsObjects[i]);
+				} else {
+					invalidCount += 1;
+				}
+			}
+			this.displayedObjects = searchResult;
 		},
 		cancelSearch: function() {
 			this.searchParam.searchType = "";

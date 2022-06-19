@@ -112,6 +112,7 @@
 
 .clear-button {
   @extend %basic-tertiary-button;
+  padding-left: 0;
 }
 
 .clear-button:hover {
