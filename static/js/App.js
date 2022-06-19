@@ -562,7 +562,6 @@ let HomePage = Vue.component('home-page', {
                         aliquet!</p>
                     <div class="input-group mb-3" style="max-width: 80vw">
                     <select class="form-select" v-model="searchParam.searchType">
-						<option selected disabled hidden>Tip objekta</option>
                     	<optgroup label="Tip objekta">
 	                        <option>Teretana</option>
 	                        <option>Fitnes centar</option>
@@ -575,9 +574,8 @@ let HomePage = Vue.component('home-page', {
                     <input type="text" class="form-control" placeholder="Lokacija objekta" v-model="searchParam.searchLocation">
                     <input type="text" class="form-control" placeholder="Naziv objekta" v-model="searchParam.searchName">
                     <select class="form-select" style="max-width: 20em" v-model = "searchParam.searchGrade">
-						<option selected disabled hidden>Prosečna ocena</option>
-						<optgroup label="Prosečna ocena">
-							<option>4.1 – 5.0</option>
+                        <optgroup label="Prosečna ocena">
+	                        <option>4.1 – 5.0</option>
 	                        <option>3.1 – 4.0</option>
 	                        <option>2.1 – 3.0</option>
 	                        <option>1.0 – 2.0</option>
@@ -717,7 +715,7 @@ let HomePage = Vue.component('home-page', {
 					this.sportsObjects = response.data;
 				})
 				.catch(error => console.log(error));
-			}
+			} 
 			else if (this.searchParam.searchName !== '') {
 				axios.get('rest/getSportsObjectByName', {
 					params: {
@@ -745,7 +743,7 @@ let HomePage = Vue.component('home-page', {
 				.catch(error => console.log(error));
 			}
 			else if(this.searchParam.searchGrade !== '') {
-
+				
 				if (this.searchParam.searchGrade === 'Neocenjeni') {
 					axios.get('rest/getSportsObjectByRatingInterval', {
 						params: {
@@ -754,9 +752,9 @@ let HomePage = Vue.component('home-page', {
 						}
 					})
 					.then(response => {
-
+						
 						this.sportsObjects = response.data;
-
+						
 					})
 					.catch(error => console.log(error));
 				}
@@ -770,9 +768,9 @@ let HomePage = Vue.component('home-page', {
 						}
 					})
 					.then(response => {
-
+						
 						this.sportsObjects = response.data;
-
+						
 					})
 					.catch(error => console.log(error));
 				}
