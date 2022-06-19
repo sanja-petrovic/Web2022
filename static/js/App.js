@@ -529,7 +529,9 @@ let HomePage = Vue.component('home-page', {
 		return {
 			loggedIn: window.localStorage.getItem("username") !== null,
 			sportsObjects: null,
-			isOpen: false,
+			previousDisplay: null,
+			openStatus: "",
+			typeObject: "",
 			searchParam: {
 				searchName: "",
 				searchLocation: "",
@@ -585,6 +587,9 @@ let HomePage = Vue.component('home-page', {
                     <div class="search-button" type="button" v-on:click="search">
                     	<i class="fa fa-search"></i>
                     </div>
+                    <div class="cancel_button" type="button" v-on:click="cancelSearch">
+                    	 Poništi pretragu
+					</div>
                 </div>
                     <div class="filter-div">
                     <div class="buttons">
@@ -595,16 +600,16 @@ let HomePage = Vue.component('home-page', {
                                 <span class="d-inline-block"><i class="fa-solid fa-chevron-down" style="margin-right: 0.4em;"></i><span class="d-inline-block">Sortiraj po...</span></span>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="sort-button">
-                                <li><button class="dropdown-item" type="button">Nazivu (opadajuće)</button></li>
-                                <li><button class="dropdown-item" type="button">Nazivu (rastuće)</button></li>
+                                <li><button class="dropdown-item" type="button" v-on:click="sortByNameDesc">Nazivu (opadajuće)</button></li>
+                                <li><button class="dropdown-item" type="button" v-on:click="sortByNameAsc">Nazivu (rastuće)</button></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item" type="button">Lokaciji (opadajuće)</button></li>
-                                <li><button class="dropdown-item" type="button">Lokaciji (rastuće)</button></li>
+                                <li><button class="dropdown-item" type="button" v-on:click="sortByLocationDesc">Lokaciji (opadajuće)</button></li>
+                                <li><button class="dropdown-item" type="button" v-on:click="sortByLocationAsc">Lokaciji (rastuće)</button></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item" type="button">Prosečnoj oceni (opadajuće)</button></li>
-                                <li><button class="dropdown-item" type="button">Prosečnoj oceni (rastuće)</button></li>
+                                <li><button class="dropdown-item" type="button" v-on:click="sortByRatingDesc">Prosečnoj oceni (opadajuće)</button></li>
+                                <li><button class="dropdown-item" type="button"v-on:click="sortByRatingAsc">Prosečnoj oceni (rastuće)</button></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item" type="button">Otvoreni prvo</button></li>
+                                <li><button class="dropdown-item" type="button" v-on:click="sortByStatus">Otvoreni prvo</button></li>
                             </ul>
                         </div>
                     </div>
@@ -613,38 +618,40 @@ let HomePage = Vue.component('home-page', {
                             <p>Tip objekta</p>
                             <div class="checkbox-list">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox">Teretana
+                                    <input class="form-check-input" name="type" type="radio" value="Teretana" v-model="typeObject">Teretana
                                 </label>
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox">Fitnes centar
+                                    <input class="form-check-input" name="type" type="radio" value="Fitnes centar" v-model="typeObject">Fitnes centar
                                 </label>
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox">Teniski centar
+                                    <input class="form-check-input" name="type" type="radio" value="Teniski centar" v-model="typeObject">Teniski centar
                                 </label>
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox">Plesni studio
+                                    <input class="form-check-input" name="type" type="radio" value="Plesni studio" v-model="typeObject">Plesni studio
                                 </label>
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox">Joga studio
+                                    <input class="form-check-input" name="type" type="radio" value="Joga studio" v-model="typeObject">Joga studio
                                 </label>
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox">Zatvoreni bazeni
+                                    <input class="form-check-input" name="type" type="radio" value="Zatvoreni bazeni" v-model="typeObject">Zatvoreni bazeni
                                 </label>
-                                <button type="button" class="clear-button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="d-inline-block"><i class="fa-regular fa-circle-xmark" style="margin-right: 0.4em;"></i><span class="d-inline-block">Obriši filter</span></span>
-                                </button>
                             </div>
                             <p>Status</p>
                             <div class="checkbox-list">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" name="status" type="radio">Otvoreno
+                                    <input class="form-check-input" name="status" v-model="openStatus" value="WORKING" type="radio">Otvoreno
                                 </label>
                                 <label class="form-check-label">
-                                    <input class="form-check-input" name="status" type="radio">Zatvoreno
+                                    <input class="form-check-input" name="status" v-model="openStatus" value="NOT_WORKING" type="radio">Zatvoreno
                                 </label>
-                                <button type="button" class="clear-button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="d-inline-block"><i class="fa-regular fa-circle-xmark" style="margin-right: 0.4em;"></i><span class="d-inline-block">Obriši filter</span></span>
+                            </div>
+                            <div class="checkbox-list">
+                            <button type="button" v-on:click="filterSportsObjects" class="filter-type-button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="d-inline-block"><i class="fa-regular" style="margin-right: 0.4em;"></i><span class="d-inline-block">Primeni filter</span></span>
                                 </button>
+                            <button type="button" v-on:click="cancelFilter" class="clear-button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="d-inline-block"><i class="fa-regular fa-circle-xmark" style="margin-right: 0.4em;"></i><span class="d-inline-block">Obriši filter</span></span>
+                            </button>
                             </div>
                         </div>
                     </div>
@@ -674,7 +681,7 @@ let HomePage = Vue.component('home-page', {
 					                <span class="d-inline-block"><i class="fa fa-map-location-dot"
 					                        style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">{{
 					                        item.location.address.street }} {{ item.location.address.number }}, {{
-					                        item.location.address.city }} {{item.location.address.postcode }}</span></span><br>
+					                        item.location.address.city }} {{item.location.address.postcode }}, {{item.location.address.country}}</span></span><br>
 					                <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span
 					                        class="d-inline-block">{{ item.averageGrade }}</span></span>
 					            </p>
@@ -688,16 +695,21 @@ let HomePage = Vue.component('home-page', {
         </div>
     `,
 	mounted() {
-		axios.get('rest/sportsobjects')
-			.then(response => {
-
-				this.sportsObjects = response.data;
-				console.log(response.data);
-			})
-			.catch(error => console.log(error));
+		this.displaySportsObjects();
 	},
 	methods:
 	{
+		displaySportsObjects: function() {
+			axios.get('rest/sportsobjects')
+			.then(response => {
+
+				this.sportsObjects = response.data;
+				this.sportsObjects.sort((b, a) => (a.status > b.status) ? 1 : ((b.status > a.status) ? -1 : 0));
+				let pom = this.sportsObjects;
+				this.previousDisplay = pom;
+			})
+			.catch(error => console.log(error));
+		},
 		openCheck: function(status) {
 			if (status == 'WORKING')
 				return true;
@@ -705,6 +717,7 @@ let HomePage = Vue.component('home-page', {
 				return false;
 		},
 		search: function() {
+			this.isSearchButtonVisible = false;
 			if (this.searchParam.searchType !== '') {
 				axios.get('rest/getSportsObjectByType', {
 					params: {
@@ -713,6 +726,8 @@ let HomePage = Vue.component('home-page', {
 				})
 				.then(response => {
 					this.sportsObjects = response.data;
+					let pom = this.sportsObjects;
+					this.previousDisplay = pom;
 				})
 				.catch(error => console.log(error));
 			} 
@@ -725,6 +740,8 @@ let HomePage = Vue.component('home-page', {
 				.then(response => {
 					console.log(this.searchParam.searchName);
 					this.sportsObjects = response.data;
+					let pom = this.sportsObjects;
+					this.previousDisplay = pom;
 					console.log(this.sportsObjects);
 				})
 				.catch(error => console.log(error));
@@ -736,9 +753,10 @@ let HomePage = Vue.component('home-page', {
 					}
 				})
 				.then(response => {
-					console.log(this.searchParam.searchLocation);
+					
 					this.sportsObjects = response.data;
-					console.log(this.sportsObjects);
+					let pom = this.sportsObjects;
+					this.previousDisplay = pom;
 				})
 				.catch(error => console.log(error));
 			}
@@ -754,6 +772,8 @@ let HomePage = Vue.component('home-page', {
 					.then(response => {
 						
 						this.sportsObjects = response.data;
+						let pom = this.sportsObjects;
+						this.previousDisplay = pom;
 						
 					})
 					.catch(error => console.log(error));
@@ -770,12 +790,75 @@ let HomePage = Vue.component('home-page', {
 					.then(response => {
 						
 						this.sportsObjects = response.data;
+						let pom = this.sportsObjects;
+						this.previousDisplay = pom;
+						
 						
 					})
 					.catch(error => console.log(error));
 				}
 			}
+		},
+		cancelSearch: function() {
+			this.searchParam.searchType = "";
+			this.searchParam.searchLocation = "";
+			this.searchParam.searchName = "";
+			this.searchParam.searchGrade = "";
+			this.displaySportsObjects();
+		},
+		sortByNameDesc: function() {
+			this.sportsObjects.sort((b, a) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+		},
+		sortByNameAsc: function() {
+			this.sportsObjects.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+		},
+		sortByLocationAsc: function() {
+			this.sportsObjects.sort((a, b) => (a.location.address.city > b.location.address.city) ? 1 : ((b.location.address.city > a.location.address.city) ? -1 : 0));
+		},
+		sortByLocationDesc: function() {
+			this.sportsObjects.sort((b, a) => (a.location.address.city > b.location.address.city) ? 1 : ((b.location.address.city > a.location.address.city) ? -1 : 0));
+		},
+		sortByRatingDesc: function() {
+			this.sportsObjects.sort((b, a) => (a.averageGrade > b.averageGrade) ? 1 : ((b.averageGrade > a.averageGrade) ? -1 : 0));
+		},
+		sortByRatingAsc: function() {
+			this.sportsObjects.sort((a, b) => (a.averageGrade > b.averageGrade) ? 1 : ((b.averageGrade > a.averageGrade) ? -1 : 0));
+		},
+		sortByStatus: function() {
+			this.sportsObjects.sort((b, a) => (a.status > b.status) ? 1 : ((b.status > a.status) ? -1 : 0));
+		},
+		filterSportsObjects: function() {
+			let filteredObjects = [];
+			console.log(this.openStatus);
+			console.log(this.typeObject);
+			if (this.openStatus !== "" && this.typeObject !== "") {
+				for (let i = 0; i < this.sportsObjects.length; i++) {
+					if(this.sportsObjects[i].type === this.typeObject && this.sportsObjects[i].status === this.openStatus) {
+	 					filteredObjects.push(this.sportsObjects[i]);
+	 				}
+ 				}
+			}
+			else if (this.openStatus !== "") {
+				for (let i = 0; i < this.sportsObjects.length; i++) {
+					if(this.sportsObjects[i].status === this.openStatus) {
+	 					filteredObjects.push(this.sportsObjects[i]);
+	 					
+	 				}
+	 			}
+			} else {
+				for (let i = 0; i < this.sportsObjects.length; i++) {
+					if(this.sportsObjects[i].type === this.typeObject) {
+	 					filteredObjects.push(this.sportsObjects[i]);
+	 					
+	 				}
+ 				}
+			}
+			this.sportsObjects = filteredObjects;
+		},
+		cancelFilter: function() {
+			this.sportsObjects = this.previousDisplay;
 		}
+		
 	}
 });
 
