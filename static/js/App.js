@@ -1,11 +1,11 @@
 let NavBarLoggedIn = Vue.component('navBarLoggedIn', {
-    data: function () {
-        return {
-            username: window.localStorage.getItem("username"),
-            name: window.localStorage.getItem("name"),
-            surname: window.localStorage.getItem("surname"),
-        }
-    }, template: `
+	data: function() {
+		return {
+			username: window.localStorage.getItem("username"),
+			name: window.localStorage.getItem("name"),
+			surname: window.localStorage.getItem("surname"),
+		}
+	}, template: `
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -41,15 +41,15 @@ let NavBarLoggedIn = Vue.component('navBarLoggedIn', {
         </div>
         </nav>
     `, methods: {
-        logOut: function () {
-            window.localStorage.clear();
-            window.location.href = "/";
-            router.replace("/");
-        }
-    }
+		logOut: function() {
+			window.localStorage.clear();
+			window.location.href = "/";
+			router.replace("/");
+		}
+	}
 })
 let NavBarLoggedOut = Vue.component('navBarLoggedOut', {
-    template: `
+	template: `
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="width: 100%;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -79,11 +79,11 @@ let NavBarLoggedOut = Vue.component('navBarLoggedOut', {
 })
 
 let LoginPage = Vue.component('login-page', {
-    data: function () {
-        return {
-            username: "", password: "", errorExists: false
-        }
-    }, template: `
+	data: function() {
+		return {
+			username: "", password: "", errorExists: false
+		}
+	}, template: `
         <div class="login-wrapper">
         <nav-bar-logged-out></nav-bar-logged-out>
         <div class="login-container">
@@ -131,21 +131,21 @@ let LoginPage = Vue.component('login-page', {
     }
 })
 let RegisterPage = Vue.component('register-page', {
-    data: function () {
-        return {
-            name: "",
-            surname: "",
-            gender: "",
-            dob: new Date(),
-            username: "",
-            passwordFirst: "",
-            passwordSecond: "",
-            usernameIsUnique: true,
-            passwordsMatch: true,
-            errorExists: false,
-            errorMessage: "",
-        }
-    }, template: `
+	data: function() {
+		return {
+			name: "",
+			surname: "",
+			gender: "",
+			dob: new Date(),
+			username: "",
+			passwordFirst: "",
+			passwordSecond: "",
+			usernameIsUnique: true,
+			passwordsMatch: true,
+			errorExists: false,
+			errorMessage: "",
+		}
+	}, template: `
         <div>
         <nav-bar-logged-out></nav-bar-logged-out>
         <div class="register-container">
@@ -205,309 +205,34 @@ let RegisterPage = Vue.component('register-page', {
                     oopsie = true;
                     router.replace("/registracija");
                 });
+		}, passwordMatchCheck: function() {
+			if (this.usernameIsUnique) {
+				this.errorMessage = "Šifre se ne poklapaju.";
+				this.errorExists = this.passwordFirst !== this.passwordSecond;
+			}
+		}, usernameUniqueCheck: async function() {
+			let error = false;
+			await axios.get("/rest/user", { params: { "username": this.username } })
+				.then(function response(resp) {
+					if (resp.data) {
+						error = true;
+					}
+				}).catch(function error(err) {
+					console.log(err);
+				});
 
-        }, passwordMatchCheck: function () {
-            if (this.usernameIsUnique) {
-                this.errorMessage = "Šifre se ne poklapaju.";
-                this.errorExists = this.passwordFirst !== this.passwordSecond;
-            }
-        }, usernameUniqueCheck: async function () {
-            let error = false;
-            await axios.get("/rest/user", {params: {"username": this.username}})
-                .then(function response(resp) {
-                    if (resp.data) {
-                        error = true;
-                    }
-                }).catch(function error(err) {
-                    console.log(err);
-                });
-
-            if (error) {
-                this.errorExists = true;
-                this.usernameIsUnique = false;
-                this.errorMessage = "Korisničko ime je zauzeto.";
-            } else {
-                this.usernameIsUnique = true;
-                this.errorExists = false;
-            }
-            event.preventDefault();
-        }
-    }
+			if (error) {
+				this.errorExists = true;
+				this.usernameIsUnique = false;
+				this.errorMessage = "Korisničko ime je zauzeto.";
+			} else {
+				this.usernameIsUnique = true;
+				this.errorExists = false;
+			}
+			event.preventDefault();
+		}
+	}
 })
-
-let SingleSportsObjectCard = Vue.component('single-sports-object-card', {
-    /*data: function () {
-        return {
-            title: "",
-            logo: "",
-            type: "",
-            businessHours: "",
-            location: "",
-            rating: 0.0,
-            isOpen: false
-        }
-    },*/
-    props: ['title', 'logo', 'type', 'businessHours', 'location', 'rating'], template: `
-        <li>
-        <a href="" class="card">
-            <img src="../images/gym6.png" class="card__image" alt=""/>
-            <div class="card__overlay">
-                <div class="card__header">
-                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
-                        <path/>
-                    </svg>
-                    <img class="card__thumb" v-bind:src="logo" alt=""/>
-                    <div class="card__header-text">
-                        <h3 class="card__title"> {{ this.title }}<span class="badge rounded-pill badge-open"
-                                                                       v-if="isOpen">Otvoreno</span>
-                            <span class="badge rounded-pill badge-closed" v-else>Zatvoreno</span></h3>
-                        <span class="card__status">{{ this.type }}</span><br>
-                    </div>
-                </div>
-                <p class="card__description">
-                    <span class="d-inline-block"><i class="fa fa-business-time"
-                                                    style="margin-right: 0.4em; color: #91D0F7"></i><span
-                        class="d-inline-block">{{ this.businessHours }}</span></span><br>
-                    <span class="d-inline-block"><i class="fa fa-map-location-dot"
-                                                    style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                        class="d-inline-block">{{ this.location }}</span></span><br>
-                    <span class="d-inline-block"><i class="fa fa-star"
-                                                    style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                        class="d-inline-block">{{ this.rating }}</span></span>
-                </p>
-            </div>
-        </a>
-        </li>
-    `, methods: {
-        openCheck: function () {
-            //if currentTime is before opening time or after closing time => isOpen = false, else => isOpen = true*/
-        }
-    }, mounted() {
-        this.openCheck();
-    }
-})
-
-let SportsObjectCards = Vue.component('sports-object-cards', {
-    data: function () {
-        return {
-            sportsObjects: null
-        }
-    },
-    template: `
-        <ul class="cards">
-        <single-sports-object-card></single-sports-object-card>
-        <!--
-        remove the others and replace them with <single-sports-object-card></single-sports-object-card>
-        -->
-        <li is="single-sports-object-card"
-            v-for="(object, index) in this.sportsObjects"
-            v-bind:key="object.id"
-            v-bind:title="object.name"
-            v-bind:type="object.type"
-            v-bind:location="object.location"
-            v-bind:logo="object.logoIcon"
-            v-bind:rating="object.averageGrade"
-            v-bind:businessHours="object.businessHours"
-        >
-        </li>
-
-        <li>
-            <router-link :to="{ name: 'sportsObject', params: { title: 'sdance' }}"  target="_blank" class="card">
-                <img src="../images/gym6.png" class="card__image" alt=""/>
-                <div class="card__overlay">
-                    <div class="card__header">
-                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
-                            <path/>
-                        </svg>
-                        <img class="card__thumb" src="../images/dance.png" alt=""/>
-                        <div class="card__header-text">
-                            <h3 class="card__title">SDance <span class="badge rounded-pill badge-open">Otvoreno</span>
-                            </h3>
-                            <span class="card__status">Plesni studio</span><br>
-                        </div>
-                    </div>
-                    <p class="card__description">
-                        <span class="d-inline-block"><i class="fa fa-business-time"
-                                                        style="margin-right: 0.4em; color: #91D0F7"></i><span
-                            class="d-inline-block">08:00-12:00</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-map-location-dot"
-                                                        style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                            class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-star"
-                                                        style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                            class="d-inline-block">9.4</span></span>
-                    </p>
-                </div>
-            </router-link>
-        </li>
-        <li>
-            <a href="" class="card">
-                <img src="../images/gym7.png" class="card__image" alt=""/>
-                <div class="card__overlay">
-                    <div class="card__header">
-                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
-                            <path/>
-                        </svg>
-                        <img class="card__thumb" src="../images/pool.png" alt=""/>
-                        <div class="card__header-text">
-                            <h3 class="card__title">SPool <span class="badge rounded-pill badge-closed">Zatvoreno</span>
-                            </h3>
-                            <span class="card__status">Zatvoreni bazeni</span><br>
-                        </div>
-                    </div>
-                    <p class="card__description">
-                        <span class="d-inline-block"><i class="fa fa-business-time"
-                                                        style="margin-right: 0.4em; color: #91D0F7"></i><span
-                            class="d-inline-block">08:00-12:00</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-map-location-dot"
-                                                        style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                            class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-star"
-                                                        style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                            class="d-inline-block">9.4</span></span>
-                    </p>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="" class="card">
-                <img src="../images/gym3.png" class="card__image" alt=""/>
-                <div class="card__overlay">
-                    <div class="card__header">
-                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
-                            <path/>
-                        </svg>
-                        <img class="card__thumb" src="../images/gym2.png" alt=""/>
-                        <div class="card__header-text">
-                            <h3 class="card__title">SGym Two <span
-                                class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
-                            <span class="card__status">Teretana</span><br>
-                        </div>
-                    </div>
-                    <p class="card__description">
-                        <span class="d-inline-block"><i class="fa fa-business-time"
-                                                        style="margin-right: 0.4em; color: #91D0F7"></i><span
-                            class="d-inline-block">08:00-12:00</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-map-location-dot"
-                                                        style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                            class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-star"
-                                                        style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                            class="d-inline-block">9.4</span></span>
-                    </p>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="" class="card">
-                <img src="../images/gym3.png" class="card__image" alt=""/>
-                <div class="card__overlay">
-                    <div class="card__header">
-                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
-                            <path/>
-                        </svg>
-                        <img class="card__thumb" src="../images/stadion.png" alt=""/>
-                        <div class="card__header-text">
-                            <h3 class="card__title">SSport One <span
-                                class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
-                            <span class="card__status">Sportski centar</span><br>
-                        </div>
-                    </div>
-                    <p class="card__description">
-                        <span class="d-inline-block"><i class="fa fa-business-time"
-                                                        style="margin-right: 0.4em; color: #91D0F7"></i><span
-                            class="d-inline-block">08:00-12:00</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-map-location-dot"
-                                                        style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                            class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-star"
-                                                        style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                            class="d-inline-block">9.4</span></span>
-                    </p>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="" class="card">
-                <img src="../images/gym3.png" class="card__image" alt=""/>
-                <div class="card__overlay">
-                    <div class="card__header">
-                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
-                            <path/>
-                        </svg>
-                        <img class="card__thumb" src="../images/sport.png" alt=""/>
-                        <div class="card__header-text">
-                            <h3 class="card__title">SSport Two <span
-                                class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
-                            <span class="card__status">Sportski centar</span><br>
-                        </div>
-                    </div>
-                    <p class="card__description">
-                        <span class="d-inline-block"><i class="fa fa-business-time"
-                                                        style="margin-right: 0.4em; color: #91D0F7"></i><span
-                            class="d-inline-block">08:00-12:00</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-map-location-dot"
-                                                        style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                            class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-star"
-                                                        style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                            class="d-inline-block">9.4</span></span>
-                    </p>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="" class="card">
-                <img src="../images/gym3.png" class="card__image" alt=""/>
-                <div class="card__overlay">
-                    <div class="card__header">
-                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
-                            <path/>
-                        </svg>
-                        <img class="card__thumb" src="../images/tennis.png" alt=""/>
-                        <div class="card__header-text">
-                            <h3 class="card__title">STennis <span
-                                class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
-                            <span class="card__status">Teniski tereni</span><br>
-                        </div>
-                    </div>
-                    <p class="card__description">
-                        <span class="d-inline-block"><i class="fa fa-business-time"
-                                                        style="margin-right: 0.4em; color: #91D0F7"></i><span
-                            class="d-inline-block">08:00-12:00</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-map-location-dot"
-                                                        style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                            class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-star"
-                                                        style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                            class="d-inline-block">9.4</span></span>
-                    </p>
-                </div>
-            </a>
-        </li>
-        </ul>
-    `,
-    methods: {
-        search: function (type, location, name, rating) {
-
-        },
-        filter: function (type, isOpened) {
-
-        },
-        sortByTitle: function (asc = false) {
-
-        },
-        sortByLocation: function (asc = false) {
-
-        },
-        sortByRating: function (asc = false) {
-
-        },
-        sortByOpenStatus: function (asc = false) {
-            //default sort
-        }
-    }
-});
 
 let SportsObjectPage = Vue.component('sports-object-page', {
     data: function () {
@@ -541,12 +266,10 @@ let SportsObjectPage = Vue.component('sports-object-page', {
                     </p>
                 </div>
                 <div class="sports-object-map">
-
                 </div>
             </div>
             <div class="sports-object-trainings">
                 <h4>Treninzi u ponudi</h4>
-
                 <ul class="cards">
                     <li>
                         <div class="card">
@@ -564,7 +287,6 @@ let SportsObjectPage = Vue.component('sports-object-page', {
                                     </div>
                                 </div>
                                 <p class="card__description">                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed accumsan risus. Aliquam erat volutpat. Sed ut est eros. Phasellus et orci sapien.
-
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed accumsan risus. Aliquam erat volutpat. Sed ut est eros. Phasellus et orci sapien.
                                 </p>
                             </div>
@@ -759,71 +481,20 @@ let SportsObjectPage = Vue.component('sports-object-page', {
     `
 
 });
-/*<ul class="cards">
-                <li>
-                    <a href="" class="card">
-                        <img src="../images/danceclass2.png" class="card__image" alt=""/>
-                        <div class="card__overlay">
-                            <div class="card__header">
-                                <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
-                                    <path/>
-                                </svg>
-                                <img class="card__thumb" src="../images/dance.png" alt=""/>
-                                <div class="card__header-text">
-                                    <h3 class="card__title">Čas plesa</h3>
-                                    <span class="card__status">Jana Janković</span><br>
-                                </div>
-                            </div>
-                            <p class="card__description">
-                        <span class="d-inline-block"><i class="fa fa-business-time"
-                                                        style="margin-right: 0.4em; color: #91D0F7"></i><span
-                            class="d-inline-block">08:00-12:00</span></span><br>
-                                <span class="d-inline-block"><i class="fa fa-map-location-dot"
-                                                                style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                                    class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                                <span class="d-inline-block"><i class="fa fa-star"
-                                                                style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                                    class="d-inline-block">9.4</span></span>
-                            </p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="card">
-                        <img src="../images/dance.png" class="card__image" alt=""/>
-                        <div class="card__overlay">
-                            <div class="card__header">
-                                <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
-                                    <path/>
-                                </svg>
-                                <img class="card__thumb" src="../images/tennis.png" alt=""/>
-                                <div class="card__header-text">
-                                    <h3 class="card__title">STennis</h3>
-                                    <span class="card__status">Teniski tereni</span><br>
-                                </div>
-                            </div>
-                            <p class="card__description">
-                        <span class="d-inline-block"><i class="fa fa-business-time"
-                                                        style="margin-right: 0.4em; color: #91D0F7"></i><span
-                            class="d-inline-block">08:00-12:00</span></span><br>
-                                <span class="d-inline-block"><i class="fa fa-map-location-dot"
-                                                                style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                                    class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                                <span class="d-inline-block"><i class="fa fa-star"
-                                                                style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                                    class="d-inline-block">9.4</span></span>
-                            </p>
-                        </div>
-                    </a>
-                </li>
-            </ul>*/
 let HomePage = Vue.component('home-page', {
-    data: function () {
-        return {
-            loggedIn: window.localStorage.getItem("username") !== null
-        }
-    },
-    template: `
+	data: function() {
+		return {
+			loggedIn: window.localStorage.getItem("username") !== null,
+			sportsObjects: null,
+			isOpen: false,
+			searchParam: {
+				searchName: "",
+				searchLocation: "",
+				searchGrade: "",
+				searchType: ""
+			}
+		}
+	}, template: `
         <div>
         <nav-bar-logged-in v-if="this.loggedIn"></nav-bar-logged-in>
         <nav-bar-logged-out v-else></nav-bar-logged-out>
@@ -847,28 +518,29 @@ let HomePage = Vue.component('home-page', {
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dapibus, ipsum a lobortis
                         aliquet!</p>
                     <div class="input-group mb-3" style="max-width: 80vw">
-                    <select class="form-select" >
-                        <option selected>Tip objekta</option>
-                        <option value="1">Teretana</option>
-                        <option value="2">Sportski centar</option>
-                        <option value="3">Zatvoreni bazeni</option>
+                    <select class="form-select" v-model="searchParam.searchType">
+                    	<optgroup label="Tip objekta">
+	                        <option>Teretana</option>
+	                        <option>Fitnes centar</option>
+	                        <option>Teniski centar</option>
+	                    	<option>Plesni studio</option>
+	                    	<option>Joga studio</option>
+	                    	<option>Zatvoreni bazeni</option>
+	                    </optgroup>
                     </select>
-                    <input type="text" class="form-control" placeholder="Lokacija objekta">
-                    <input type="text" class="form-control" placeholder="Naziv objekta">
-                    <select class="form-select" style="max-width: 20em">
-                        <option selected>Prosečna ocena</option>
-                        <option value="1">9.1 – 10.0</option>
-                        <option value="2">8.1 – 9.0</option>
-                        <option value="3">7.1 – 8.0</option>
-                        <option value="4">6.1 – 7.0</option>
-                        <option value="5">5.1 – 6.0</option>
-                        <option value="6">4.1 – 5.0</option>
-                        <option value="7">3.1 – 4.0</option>
-                        <option value="8">2.1 – 3.0</option>
-                        <option value="9">1.1 – 2.0</option>
-                        <option value="10">Neocenjeni</option>
+                    <input type="text" class="form-control" placeholder="Lokacija objekta" v-model="searchParam.searchLocation">
+                    <input type="text" class="form-control" placeholder="Naziv objekta" v-model="searchParam.searchName">
+                    <select class="form-select" style="max-width: 20em" v-model = "searchParam.searchGrade">
+                        <optgroup label="Prosečna ocena">
+	                        <option>4.1 – 5.0</option>
+	                        <option>3.1 – 4.0</option>
+	                        <option>2.1 – 3.0</option>
+	                        <option>1.0 – 2.0</option>
+	                        <option>Neocenjeni</option>
+                        </optgroup>
                     </select>
-                    <div class="search-button" type="button"><i class="fa fa-search"></i>
+                    <div class="search-button" type="button" v-on:click="search">
+                    	<i class="fa fa-search"></i>
                     </div>
                 </div>
                     <div class="filter-div">
@@ -901,13 +573,19 @@ let HomePage = Vue.component('home-page', {
                                     <input class="form-check-input" type="checkbox">Teretana
                                 </label>
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox">Sportski centar
+                                    <input class="form-check-input" type="checkbox">Fitnes centar
                                 </label>
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox">Zatvoreni bazeni
+                                    <input class="form-check-input" type="checkbox">Teniski centar
                                 </label>
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="checkbox">Plesni studio
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox">Joga studio
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox">Zatvoreni bazeni
                                 </label>
                                 <button type="button" class="clear-button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span class="d-inline-block"><i class="fa-regular fa-circle-xmark" style="margin-right: 0.4em;"></i><span class="d-inline-block">Obriši filter</span></span>
@@ -928,15 +606,134 @@ let HomePage = Vue.component('home-page', {
                         </div>
                     </div>
                 </div>
-                    
-                    <sports-object-cards></sports-object-cards>
-
+                <ul class="cards" v-for="item in this.sportsObjects">
+                 	<li>
+					    <a class="card">
+					        <img src="{{ item.logoIcon }}" class="card__image" alt="" />
+					        <div class="card__overlay">
+					            <div class="card__header">
+					                <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+					                    <path />
+					                </svg>
+					                <img class="card__thumb" v-bind:src="item.logoIcon" alt="" />
+					                <div class="card__header-text">
+					                    <h3 class="card__title"> {{ item.name }}
+					                    	<span class="badge rounded-pill badge-open" v-if="openCheck(item.status)">Otvoreno</span>
+					                    	<span class="badge rounded-pill badge-closed" v-if="!openCheck(item.status)">Zatvoreno</span>
+					                    </h3>
+					                    <span class="card__status">{{ item.type }}</span><br>
+					                </div>
+					            </div>
+					            <p class="card__description">
+					                <span class="d-inline-block"><i class="fa fa-business-time"
+					                        style="margin-right: 0.4em; color: #91D0F7"></i><span class="d-inline-block">{{
+					                        item.businessHours.startTime }}-{{ item.businessHours.endTime }}</span></span><br>
+					                <span class="d-inline-block"><i class="fa fa-map-location-dot"
+					                        style="margin-right: 0.4em; color: #9BE3C3"></i><span class="d-inline-block">{{
+					                        item.location.address.street }} {{ item.location.address.number }}, {{
+					                        item.location.address.city }} {{item.location.address.postcode }}</span></span><br>
+					                <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span
+					                        class="d-inline-block">{{ item.averageGrade }}</span></span>
+					            </p>
+					        </div>
+					    </a>
+					</li>
+       			 </ul>
                 </div>
             </div>
         </div>
         </div>
-    `, methods: {}, mounted() {
-    }
+    `,
+	mounted() {
+		axios.get('rest/sportsobjects')
+			.then(response => {
+
+				this.sportsObjects = response.data;
+				console.log(response.data);
+			})
+			.catch(error => console.log(error));
+	},
+	methods:
+	{
+		openCheck: function(status) {
+			if (status == 'WORKING')
+				return true;
+			else
+				return false;
+		},
+		search: function() {
+			if (this.searchParam.searchType !== '') {
+				axios.get('rest/getSportsObjectByType', {
+					params: {
+						type: this.searchParam.searchType
+					}
+				})
+				.then(response => {
+					this.sportsObjects = response.data;
+				})
+				.catch(error => console.log(error));
+			} 
+			else if (this.searchParam.searchName !== '') {
+				axios.get('rest/getSportsObjectByName', {
+					params: {
+						name: this.searchParam.searchName.toLowerCase()
+					}
+				})
+				.then(response => {
+					console.log(this.searchParam.searchName);
+					this.sportsObjects = response.data;
+					console.log(this.sportsObjects);
+				})
+				.catch(error => console.log(error));
+			}
+			else if(this.searchParam.searchLocation !== '') {
+				axios.get('rest/getSportsObjectByLocation', {
+					params: {
+						location: this.searchParam.searchLocation.toLowerCase()
+					}
+				})
+				.then(response => {
+					console.log(this.searchParam.searchLocation);
+					this.sportsObjects = response.data;
+					console.log(this.sportsObjects);
+				})
+				.catch(error => console.log(error));
+			}
+			else if(this.searchParam.searchGrade !== '') {
+				
+				if (this.searchParam.searchGrade === 'Neocenjeni') {
+					axios.get('rest/getSportsObjectByRatingInterval', {
+						params: {
+							minRating: '0.0',
+							maxRating: '0.0',
+						}
+					})
+					.then(response => {
+						
+						this.sportsObjects = response.data;
+						
+					})
+					.catch(error => console.log(error));
+				}
+				else {
+					let ratingInterval = this.searchParam.searchGrade.replace(/\s/g,'').split('–');
+					console.log(ratingInterval[0]);
+					axios.get('rest/getSportsObjectByRatingInterval', {
+						params: {
+							minRating: ratingInterval[0],
+							maxRating: ratingInterval[1],
+						}
+					})
+					.then(response => {
+						
+						this.sportsObjects = response.data;
+						
+					})
+					.catch(error => console.log(error));
+				}
+			}
+		}
+	}
 });
 
 const router = new VueRouter({
@@ -950,8 +747,8 @@ const router = new VueRouter({
 });
 
 const app = new Vue({
-    el: "#app", components: {
-        HomePage
-    }, router
+	el: "#app", components: {
+		HomePage
+	}, router
 });
 
