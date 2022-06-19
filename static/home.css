@@ -45194,6 +45194,7 @@ body {
 .card__header {
   position: relative;
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 2em;
   padding: 2em;
@@ -45248,6 +45249,10 @@ body {
   color: #7ca2ad;
 }
 
+.card-title-container {
+  display: flex;
+}
+
 .card__status {
   font-size: 0.8em;
   color: #7ca2ad;
@@ -45266,6 +45271,7 @@ body {
   -webkit-line-clamp: 3;
   overflow: hidden;
   background-color: white;
+  font-size: 14px;
 }
 
 /*!

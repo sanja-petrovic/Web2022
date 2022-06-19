@@ -13,7 +13,7 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
 public class LocalTimeAdapter implements JsonSerializer<LocalTime>, JsonDeserializer<LocalTime> {
-
+    
     @Override
     public LocalTime deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         String ltString = jsonElement.getAsString();
@@ -23,9 +23,7 @@ public class LocalTimeAdapter implements JsonSerializer<LocalTime>, JsonDeserial
 
     @Override
     public JsonElement serialize(LocalTime localTime, Type type, JsonSerializationContext jsonSerializationContext) {
-    	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
         return new JsonPrimitive(localTime.format(dtf));
     }
 }
-
-

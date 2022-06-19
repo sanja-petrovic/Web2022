@@ -25,10 +25,12 @@ public class UserController {
 	private static Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
 	private static String basePath = "/rest";
 	private static Repository repository;
+	private static User currentlyLoggedIn;
 	
 	public void init() {
 		path(basePath, () -> {
 			login();
+			getCurrentlyLoggedInUser();
 			getUsers();
 			getUser();
 			register();
@@ -54,13 +56,28 @@ public class UserController {
 				return res.body();
 			}
 			System.out.println("logged in: " + user.getUsername());
+			currentlyLoggedIn = user;
 			return gson.toJson(user);
+		});
+	}
+	
+	public static void logout() {
+		post("/logout", (req, res) -> {
+			currentlyLoggedIn = null;
+			res.status(200);
+			return res.body();
 		});
 	}
 	
 	public static void getUsers() {
 		get("/users", (req, res) -> {
 			return gson.toJson(repository.getInstance().getUserDAO().getUsers());
+		});
+	}
+	
+	public static void getCurrentlyLoggedInUser() {
+		get("/loggedInUser", (req, res) -> {
+			return gson.toJson(currentlyLoggedIn);
 		});
 	}
 	

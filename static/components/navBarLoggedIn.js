@@ -45,6 +45,16 @@ Vue.component('navBarLoggedIn', {
             window.localStorage.clear();
             window.location.href = "/";
             router.replace("/");
+            axios.post('/rest/logout', {
+                username: this.username, password: this.password
+            })
+                .then(function response(resp) {
+                    window.localStorage.clear();
+                    window.location.href = "/";
+                })
+                .catch(function error(err) {
+                    console.log(err);
+                });
         }
     }
 })
