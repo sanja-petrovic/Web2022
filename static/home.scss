@@ -115,5 +115,50 @@
   @extend %basic-primary-button;
   font-size: 10px;
   max-height: 2em;
+  background-color: #dc3545;
+  padding: 0.3em 0.7em;
+}
+
+.cancel_button {
+  border: 0;
+  padding: 10px;
+  background-color: #dc3545;
+  color: white;
+  font-weight: 500;
+  border-radius: 10px;
+  align-items: center;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.buttons-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clear-button:hover, .cancel_button:hover {
+  background-color:  #E66262;
+}
+
+.sort-button, .cancel-button, .filter-button, .search-button, .submit-button, .filter-type-button {
+  border: 0;
+  padding: 10px;
+  background-color: #6382ff;
+  color: white;
+  font-weight: 500;
+  border-radius: 10px;
+  box-shadow: 0 0 1em 0 rgba(99, 130, 255, 0.5);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.filter-type-button:hover, .search-button:hover, .submit-button:hover {
+  background-color: #708cff;
+}
+
+.filter-type-button {
+  font-size: 10px;
+  max-height: 2em;
   padding: 0.3em 0.7em;
 }

@@ -11166,7 +11166,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.sort-button, .filter-button, .submit-button, .search-button {
+.clear-button, .sort-button, .filter-button, .submit-button, .search-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -11176,22 +11176,6 @@ select, .text-box {
   box-shadow: 0 0 1em 0 rgba(99, 130, 255, 0.5);
   transition: 0.3s;
   cursor: pointer;
-}
-
-.clear-button, .cancel_button {
-  border: 0;
-  padding: 10px;
-  background-color: #dc3545;
-  color: white;
-  font-weight: 500;
-  border-radius: 10px;
-  align-items: center;
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-.clear-button:hover, .cancel_button:hover {
-  background-color:  #E66262;
 }
 
 .filter-button:hover, .submit-button:hover, .search-button:hover {
@@ -22424,7 +22408,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.sort-button, .filter-button, .submit-button, .search-button {
+.clear-button, .sort-button, .filter-button, .submit-button, .search-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -33747,7 +33731,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.sort-button, .filter-button, .search-button, .submit-button {
+.clear-button, .sort-button, .filter-button, .search-button, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -45072,7 +45056,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.sort-button, .filter-button, .search-button, .submit-button {
+.clear-button, .sort-button, .filter-button, .search-button, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -45166,9 +45150,9 @@ body {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1.0fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 0.9fr));
   gap: 2rem;
-  margin: 1rem 1vw;
+  margin: 2rem 2vw;
   padding: 0;
   list-style-type: none;
   max-width: 80vw;
@@ -45177,7 +45161,7 @@ body {
 .card {
   position: relative;
   display: block;
-  height: 15vw;
+  height: 11vw;
   border-radius: calc(var(--curve) * 1px);
   overflow: hidden;
   text-decoration: none;
@@ -45200,7 +45184,7 @@ body {
   border-bottom-right-radius: 0;
   background-color: var(--surface-color);
   transform: translateY(100%);
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .card:hover .card__overlay {
@@ -45249,7 +45233,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2em;
+  font-size: 1em;
   margin: 0 0 0em;
   color: #000b42;
   font-weight: 700;
@@ -56454,7 +56438,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.sort-button, .filter-button, .search-button, .submit-button, .filter-type-button {
+.clear-button, .sort-button, .filter-button, .search-button, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -56466,7 +56450,7 @@ textarea.form-control-lg {
   cursor: pointer;
 }
 
-.filter-type-button:hover, .search-button:hover, .submit-button:hover {
+.filter-button:hover, .search-button:hover, .submit-button:hover {
   background-color: #708cff;
 }
 
@@ -68030,9 +68014,47 @@ h4, .h4 {
 .clear-button {
   font-size: 10px;
   max-height: 2em;
+  background-color: #dc3545;
   padding: 0.3em 0.7em;
 }
 
+.cancel_button {
+  border: 0;
+  padding: 10px;
+  background-color: #dc3545;
+  color: white;
+  font-weight: 500;
+  border-radius: 10px;
+  align-items: center;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.buttons-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clear-button:hover, .cancel_button:hover {
+  background-color: #E66262;
+}
+
+.sort-button, .cancel-button, .filter-button, .search-button, .submit-button, .filter-type-button {
+  border: 0;
+  padding: 10px;
+  background-color: #6382ff;
+  color: white;
+  font-weight: 500;
+  border-radius: 10px;
+  box-shadow: 0 0 1em 0 rgba(99, 130, 255, 0.5);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.filter-type-button:hover, .search-button:hover, .submit-button:hover {
+  background-color: #708cff;
+}
 
 .filter-type-button {
   font-size: 10px;
