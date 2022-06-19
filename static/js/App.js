@@ -606,8 +606,8 @@ let HomePage = Vue.component('home-page', {
                         </div>
                     </div>
                 </div>
-                <ul class="cards" v-for="item in this.sportsObjects">
-                 	<li>
+                <ul class="cards" style="width: 100vw;">
+                 	<li v-for="item in this.sportsObjects">
 					    <a class="card">
 					        <img src="{{ item.logoIcon }}" class="card__image" alt="" />
 					        <div class="card__overlay">
