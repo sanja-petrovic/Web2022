@@ -3,13 +3,13 @@ package beans;
 import com.google.gson.annotations.SerializedName;
 
 public enum Gender {
-	@SerializedName("Female")
+	@SerializedName("Ženski")
 	FEMALE {
         public String toString() {
             return "Ženski";
         }
 	},
-	@SerializedName("Male")
+	@SerializedName("Muški")
 	MALE {
         public String toString() {
             return "Muški";

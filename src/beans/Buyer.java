@@ -4,13 +4,26 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Buyer extends User {
 
+	@Expose
+	@SerializedName("Membership")
 	private Membership membership;
+	
+	@Expose
+	@SerializedName("VisitedObjects")
 	private ArrayList<SportsObject> visitedObjects;
+	
+	@Expose
+	@SerializedName("Points")
 	private double points;
+	
+	@Expose
+	@SerializedName("BuyerType")
 	private BuyerType type;
-	private LocalDateTime deletedAt;
 	
 	public Buyer(String username, String password, String name, String surname, Gender gender, LocalDate dateOfBirth, BuyerType buyerType) {
 		super(username, password, name, surname, gender, dateOfBirth, UserType.BUYER);
@@ -26,6 +39,12 @@ public class Buyer extends User {
 		this.visitedObjects = visitedObjects;
 		this.points = points;
 		this.type = type;
+	}
+	
+	public Buyer(User u) {
+		super(u);
+		this.visitedObjects = new ArrayList<>();
+		this.points = 0;
 	}
 
 	public Membership getMembership() {
@@ -51,12 +70,6 @@ public class Buyer extends User {
 	}
 	public void setType(BuyerType type) {
 		this.type = type;
-	}
-	public LocalDateTime getDeletedAt() {
-		return deletedAt;
-	}
-	public void setDeletedAt(LocalDateTime deletedAt) {
-		this.deletedAt = deletedAt;
 	}
 	
 }

@@ -17,15 +17,19 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
+import beans.Buyer;
 import beans.Gender;
 import beans.User;
+import beans.UserType;
 
 public class UserDAO {
 	
 	private ArrayList<User> users;
+	private static Repository repository;
 	
 	public UserDAO() {
 		this.users = new ArrayList<>();
+		this.load();
 	}
 	
 	public void load() {
@@ -59,7 +63,6 @@ public class UserDAO {
 	}
 
 	public ArrayList<User> getUsers() {
-		this.load();
 		return this.users;
 	}
 
@@ -68,7 +71,6 @@ public class UserDAO {
 	}
 
 	public User getUserById(String id) {
-		this.load();
 		for (User user : this.users) {
 			if (user.getUsername().equals(id)) {
 				return user;
@@ -78,16 +80,11 @@ public class UserDAO {
 	}
 	
 	public void addUser(User u) {
-		this.load();
 		this.users.add(u);
+		if(u.getUserType().equals(UserType.BUYER)) {
+			repository.getInstance().getBuyerDAO().addBuyer(new Buyer(u));
+		}
 		this.writeUsers();
 	}
-
-	/*public User getUserFromData(String[] data) {
-	}
-
-	public ArrayList<User> searchUsers(String name, String surname, String startDateOfBirth, String endDateOfBirth,
-			String sort) {
-	}*/
 
 }

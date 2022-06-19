@@ -31,7 +31,7 @@
             "latitude": 45.390568,
             "longitude": 19.883015,
             "address": {
-                "street": "Petra Drapsina",
+                "street": "Petra Drapšina",
                 "number": "98",
                 "city": "Temerin",
                 "postcode": "21235",
@@ -107,7 +107,7 @@
                 "country": "Srbija"
             }
         },
-        "logoIcon": "../images/flexgym.jpg",
+        "logoIcon": "../images/gym1.png",
         "averageGrade": 3.5,
         "businessHours": {
             "startTime": "06:00",
@@ -130,7 +130,7 @@
                 "country": "Srbija"
             }
         },
-        "logoIcon": "../images/gym6.png",
+        "logoIcon": "../images/yoga.png",
         "averageGrade": 4.5,
         "businessHours": {
             "startTime": "09:00",

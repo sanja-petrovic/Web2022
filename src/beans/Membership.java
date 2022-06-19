@@ -4,15 +4,37 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Membership {
+
+	@Expose
+	@SerializedName("Id")
 	private String id;
+	
+	@SerializedName("Type")
 	private String type;
+	
+	@SerializedName("PaymentDate")
 	private LocalDate paymentDate;
+	
+	@SerializedName("DateTimeOfExpiration")
 	private LocalDateTime dateTimeOfExpiration;
+	
+	@SerializedName("Price")
 	private double price;
+	
+	@SerializedName("Buyer")
 	private Buyer buyer;
+	
+	@SerializedName("Status")
 	private MembershipStatus status;
+	
+	@SerializedName("DailyLimit")
 	private int dailyLimit;
+	
+	@SerializedName("DeletedAt")
 	private LocalDateTime deletedAt;
 	
 	public String getId() {
