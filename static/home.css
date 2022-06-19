@@ -11165,7 +11165,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.clear-button, .sort-button, .filter-button, .submit-button, .search-button {
+.sort-button, .filter-button, .submit-button, .search-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -11177,7 +11177,7 @@ select, .text-box {
   cursor: pointer;
 }
 
-.cancel_button {
+.clear-button, .cancel_button {
   border: 0;
   padding: 10px;
   background-color: #dc3545;
@@ -11189,7 +11189,7 @@ select, .text-box {
   cursor: pointer;
 }
 
-.cancel_button:hover {
+.clear-button:hover, .cancel_button:hover {
   background-color:  #E66262;
 }
 
@@ -22411,7 +22411,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.clear-button, .sort-button, .filter-button, .submit-button, .search-button {
+.sort-button, .filter-button, .submit-button, .search-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -33722,7 +33722,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.clear-button, .sort-button, .filter-button, .search-button, .submit-button {
+.sort-button, .filter-button, .search-button, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -45035,7 +45035,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.clear-button, .sort-button, .filter-button, .search-button, .submit-button {
+.sort-button, .filter-button, .search-button, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -56399,7 +56399,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.clear-button, .sort-button, .filter-button, .search-button, .submit-button {
+.sort-button, .filter-button, .search-button, .submit-button, .filter-type-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -56411,7 +56411,7 @@ textarea.form-control-lg {
   cursor: pointer;
 }
 
-.filter-button:hover, .search-button:hover, .submit-button:hover {
+.filter-type-button:hover, .search-button:hover, .submit-button:hover {
   background-color: #708cff;
 }
 
@@ -56683,6 +56683,13 @@ h4, .h4 {
 }
 
 .clear-button {
+  font-size: 10px;
+  max-height: 2em;
+  padding: 0.3em 0.7em;
+}
+
+
+.filter-type-button {
   font-size: 10px;
   max-height: 2em;
   padding: 0.3em 0.7em;

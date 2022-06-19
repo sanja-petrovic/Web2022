@@ -6,12 +6,15 @@ public class Address {
 	private String number;
 	private String city;
 	private String postcode;
-	
-	public Address(String street, String number, String city, String postcode) {
+	private String country;
+
+	public Address(String street, String number, String city, String postcode, String country) {
+		super();
 		this.street = street;
 		this.number = number;
 		this.city = city;
 		this.postcode = postcode;
+		this.country = country;
 	}
 	
 	public String getStreet() {
@@ -38,5 +41,15 @@ public class Address {
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
 	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	
+	
 
 }

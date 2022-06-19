@@ -70,6 +70,9 @@ public class SportsObjectDAO {
 			if(sportsObject.getLocation().getAddress().getCity().toLowerCase().contains(location)) {
 				searchedObjects.add(sportsObject);
 			}
+			else if(sportsObject.getLocation().getAddress().getCountry().toLowerCase().contains(location)) {
+				searchedObjects.add(sportsObject);
+			}
 		}
 		return searchedObjects;
 	}
