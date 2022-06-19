@@ -4,11 +4,16 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Buyer extends User {
 
+	@SerializedName("Membership")
 	private Membership membership;
 	private ArrayList<SportsObject> visitedObjects;
+	@SerializedName("Points")
 	private double points;
+	@SerializedName("BuyerType")
 	private BuyerType type;
 	private LocalDateTime deletedAt;
 	

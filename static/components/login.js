@@ -44,7 +44,6 @@ Vue.component('login-page', {
                 })
                 .catch(function error(err) {
                     oopsie = true;
-                    Vue.router.replace("/prijava");
                 });
 
             if(oopsie) {

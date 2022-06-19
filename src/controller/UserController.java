@@ -64,11 +64,21 @@ public class UserController {
 		});
 	}
 	
-	public static void getUser() {
-		get("/user", (req, res) -> {
+	/*public static void getUser() {
+		get("/users", (req, res) -> {
 			String username = req.queryParams("username");
 			Repository repository = Repository.getInstance();
 			User user = repository.getUserDAO().getUserById(username);
+			return gson.toJson(user);
+		});
+	}*/
+	
+	public static void getUser() {
+		get("/users/:id", (req, res) -> {
+			res.type("application/json");
+			String id = req.params(":id");
+			Repository repository = Repository.getInstance();
+			User user = repository.getUserDAO().getUserById(id);
 			return gson.toJson(user);
 		});
 	}

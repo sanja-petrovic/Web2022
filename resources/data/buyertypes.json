@@ -1,0 +1,17 @@
+[
+    {
+        "Tier": "Zlatni",
+        "Discount": 20,
+        "PointRequirement": 3000
+    },
+    {
+        "Tier": "Srebrni",
+        "Discount": 10,
+        "PointRequirement": 2000
+    },
+    {
+        "Tier": "Bronzani",
+        "Discount": 5,
+        "PointRequirement": 1000
+    }
+]
