@@ -529,17 +529,18 @@ let HomePage = Vue.component('home-page', {
 		return {
 			loggedIn: window.localStorage.getItem("username") !== null,
 			sportsObjects: null,
-			previousDisplay: null,
+			displayedObjects: null,
 			openStatus: "",
 			typeObject: "",
 			searchParam: {
 				searchName: "",
 				searchLocation: "",
-				searchGrade: "",
-				searchType: ""
+				searchGrade: "Prosečna ocena",
+				searchType: "Tip objekta"
 			}
 		}
-	}, template: `
+	},
+	template: `
         <div>
         <nav-bar-logged-in v-if="this.loggedIn"></nav-bar-logged-in>
         <nav-bar-logged-out v-else></nav-bar-logged-out>
@@ -564,6 +565,7 @@ let HomePage = Vue.component('home-page', {
                         aliquet!</p>
                     <div class="input-group mb-3" style="max-width: 80vw">
                     <select class="form-select" v-model="searchParam.searchType">
+						<option disabled selected hidden>Tip objekta</option>
                     	<optgroup label="Tip objekta">
 	                        <option>Teretana</option>
 	                        <option>Fitnes centar</option>
@@ -576,6 +578,7 @@ let HomePage = Vue.component('home-page', {
                     <input type="text" class="form-control" placeholder="Lokacija objekta" v-model="searchParam.searchLocation">
                     <input type="text" class="form-control" placeholder="Naziv objekta" v-model="searchParam.searchName">
                     <select class="form-select" style="max-width: 20em" v-model = "searchParam.searchGrade">
+						<option disabled selected hidden>Prosečna ocena</option>
                         <optgroup label="Prosečna ocena">
 	                        <option>4.1 – 5.0</option>
 	                        <option>3.1 – 4.0</option>
@@ -587,9 +590,6 @@ let HomePage = Vue.component('home-page', {
                     <div class="search-button" type="button" v-on:click="search">
                     	<i class="fa fa-search"></i>
                     </div>
-                    <div class="cancel_button" type="button" v-on:click="cancelSearch">
-                    	 Poništi pretragu
-					</div>
                 </div>
                     <div class="filter-div">
                     <div class="buttons">
@@ -618,46 +618,43 @@ let HomePage = Vue.component('home-page', {
                             <p>Tip objekta</p>
                             <div class="checkbox-list">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" name="type" type="radio" value="Teretana" v-model="typeObject">Teretana
+                                    <input class="form-check-input" name="type" type="radio" value="Teretana" v-on:change="filterSportsObjects" v-model="typeObject">Teretana
                                 </label>
                                 <label class="form-check-label">
-                                    <input class="form-check-input" name="type" type="radio" value="Fitnes centar" v-model="typeObject">Fitnes centar
+                                    <input class="form-check-input" name="type" type="radio" value="Fitnes centar" v-on:change="filterSportsObjects" v-model="typeObject">Fitnes centar
                                 </label>
                                 <label class="form-check-label">
-                                    <input class="form-check-input" name="type" type="radio" value="Teniski centar" v-model="typeObject">Teniski centar
+                                    <input class="form-check-input" name="type" type="radio" value="Teniski centar" v-on:change="filterSportsObjects" v-model="typeObject">Teniski centar
                                 </label>
                                 <label class="form-check-label">
-                                    <input class="form-check-input" name="type" type="radio" value="Plesni studio" v-model="typeObject">Plesni studio
+                                    <input class="form-check-input" name="type" type="radio" value="Plesni studio" v-on:change="filterSportsObjects" v-model="typeObject">Plesni studio
                                 </label>
                                 <label class="form-check-label">
-                                    <input class="form-check-input" name="type" type="radio" value="Joga studio" v-model="typeObject">Joga studio
+                                    <input class="form-check-input" name="type" type="radio" value="Joga studio" v-on:change="filterSportsObjects" v-model="typeObject">Joga studio
                                 </label>
                                 <label class="form-check-label">
-                                    <input class="form-check-input" name="type" type="radio" value="Zatvoreni bazeni" v-model="typeObject">Zatvoreni bazeni
+                                    <input class="form-check-input" name="type" type="radio" value="Zatvoreni bazeni" v-on:change="filterSportsObjects" v-model="typeObject">Zatvoreni bazeni
                                 </label>
                             </div>
                             <p>Status</p>
                             <div class="checkbox-list">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" name="status" v-model="openStatus" value="WORKING" type="radio">Otvoreno
+                                    <input class="form-check-input" name="status" v-model="openStatus" v-on:change="filterSportsObjects" value="WORKING" type="radio">Otvoreno
                                 </label>
                                 <label class="form-check-label">
-                                    <input class="form-check-input" name="status" v-model="openStatus" value="NOT_WORKING" type="radio">Zatvoreno
+                                    <input class="form-check-input" name="status" v-model="openStatus" v-on:change="filterSportsObjects" value="NOT_WORKING" type="radio">Zatvoreno
                                 </label>
                             </div>
                             <div class="checkbox-list">
-                            <button type="button" v-on:click="filterSportsObjects" class="filter-type-button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="d-inline-block"><i class="fa-regular" style="margin-right: 0.4em;"></i><span class="d-inline-block">Primeni filter</span></span>
-                                </button>
                             <button type="button" v-on:click="cancelFilter" class="clear-button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="d-inline-block"><i class="fa-regular fa-circle-xmark" style="margin-right: 0.4em;"></i><span class="d-inline-block">Obriši filter</span></span>
+                                    <span class="d-inline-block"><i class="fa-regular fa-circle-xmark" style="margin-right: 0.4em;"></i><span class="d-inline-block">Poništi sve filtere</span></span>
                             </button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <ul class="cards" style="width: 100vw;">
-                 	<li v-for="item in this.sportsObjects">
+                 	<li v-for="item in this.displayedObjects">
 					    <a class="card">
 					        <img v-bind:src="item.logoIcon" class="card__image" alt="" />
 					        <div class="card__overlay">
@@ -702,11 +699,9 @@ let HomePage = Vue.component('home-page', {
 		displaySportsObjects: function() {
 			axios.get('rest/sportsobjects')
 			.then(response => {
-
 				this.sportsObjects = response.data;
 				this.sportsObjects.sort((b, a) => (a.status > b.status) ? 1 : ((b.status > a.status) ? -1 : 0));
-				let pom = this.sportsObjects;
-				this.previousDisplay = pom;
+				this.displayedObjects = this.sportsObjects;
 			})
 			.catch(error => console.log(error));
 		},
@@ -717,17 +712,14 @@ let HomePage = Vue.component('home-page', {
 				return false;
 		},
 		search: function() {
-			this.isSearchButtonVisible = false;
-			if (this.searchParam.searchType !== '') {
+			if (this.searchParam.searchType !== 'Tip objekta') {
 				axios.get('rest/getSportsObjectByType', {
 					params: {
 						type: this.searchParam.searchType
 					}
 				})
 				.then(response => {
-					this.sportsObjects = response.data;
-					let pom = this.sportsObjects;
-					this.previousDisplay = pom;
+					this.displayedObjects = response.data;
 				})
 				.catch(error => console.log(error));
 			} 
@@ -739,10 +731,7 @@ let HomePage = Vue.component('home-page', {
 				})
 				.then(response => {
 					console.log(this.searchParam.searchName);
-					this.sportsObjects = response.data;
-					let pom = this.sportsObjects;
-					this.previousDisplay = pom;
-					console.log(this.sportsObjects);
+					this.displayedObjects = response.data;
 				})
 				.catch(error => console.log(error));
 			}
@@ -753,14 +742,11 @@ let HomePage = Vue.component('home-page', {
 					}
 				})
 				.then(response => {
-					
-					this.sportsObjects = response.data;
-					let pom = this.sportsObjects;
-					this.previousDisplay = pom;
+					this.displayedObjects = response.data;
 				})
 				.catch(error => console.log(error));
 			}
-			else if(this.searchParam.searchGrade !== '') {
+			else if(this.searchParam.searchGrade !== 'Prosečna ocena') {
 				
 				if (this.searchParam.searchGrade === 'Neocenjeni') {
 					axios.get('rest/getSportsObjectByRatingInterval', {
@@ -770,11 +756,7 @@ let HomePage = Vue.component('home-page', {
 						}
 					})
 					.then(response => {
-						
-						this.sportsObjects = response.data;
-						let pom = this.sportsObjects;
-						this.previousDisplay = pom;
-						
+						this.displayedObjects = response.data;
 					})
 					.catch(error => console.log(error));
 				}
@@ -788,12 +770,7 @@ let HomePage = Vue.component('home-page', {
 						}
 					})
 					.then(response => {
-						
-						this.sportsObjects = response.data;
-						let pom = this.sportsObjects;
-						this.previousDisplay = pom;
-						
-						
+						this.displayedObjects = response.data;
 					})
 					.catch(error => console.log(error));
 				}
@@ -803,29 +780,29 @@ let HomePage = Vue.component('home-page', {
 			this.searchParam.searchType = "";
 			this.searchParam.searchLocation = "";
 			this.searchParam.searchName = "";
-			this.searchParam.searchGrade = "";
-			this.displaySportsObjects();
+			this.searchParam.searchGrade = "Prosečna ocena";
+			this.displayedObjects = this.sportsObjects;
 		},
 		sortByNameDesc: function() {
-			this.sportsObjects.sort((b, a) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+			this.displayedObjects.sort((b, a) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
 		},
 		sortByNameAsc: function() {
-			this.sportsObjects.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+			this.displayedObjects.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
 		},
 		sortByLocationAsc: function() {
-			this.sportsObjects.sort((a, b) => (a.location.address.city > b.location.address.city) ? 1 : ((b.location.address.city > a.location.address.city) ? -1 : 0));
+			this.displayedObjects.sort((a, b) => (a.location.address.city > b.location.address.city) ? 1 : ((b.location.address.city > a.location.address.city) ? -1 : 0));
 		},
 		sortByLocationDesc: function() {
-			this.sportsObjects.sort((b, a) => (a.location.address.city > b.location.address.city) ? 1 : ((b.location.address.city > a.location.address.city) ? -1 : 0));
+			this.displayedObjects.sort((b, a) => (a.location.address.city > b.location.address.city) ? 1 : ((b.location.address.city > a.location.address.city) ? -1 : 0));
 		},
 		sortByRatingDesc: function() {
-			this.sportsObjects.sort((b, a) => (a.averageGrade > b.averageGrade) ? 1 : ((b.averageGrade > a.averageGrade) ? -1 : 0));
+			this.displayedObjects.sort((b, a) => (a.averageGrade > b.averageGrade) ? 1 : ((b.averageGrade > a.averageGrade) ? -1 : 0));
 		},
 		sortByRatingAsc: function() {
-			this.sportsObjects.sort((a, b) => (a.averageGrade > b.averageGrade) ? 1 : ((b.averageGrade > a.averageGrade) ? -1 : 0));
+			this.displayedObjects.sort((a, b) => (a.averageGrade > b.averageGrade) ? 1 : ((b.averageGrade > a.averageGrade) ? -1 : 0));
 		},
 		sortByStatus: function() {
-			this.sportsObjects.sort((b, a) => (a.status > b.status) ? 1 : ((b.status > a.status) ? -1 : 0));
+			this.displayedObjects.sort((b, a) => (a.status > b.status) ? 1 : ((b.status > a.status) ? -1 : 0));
 		},
 		filterSportsObjects: function() {
 			let filteredObjects = [];
@@ -853,10 +830,10 @@ let HomePage = Vue.component('home-page', {
 	 				}
  				}
 			}
-			this.sportsObjects = filteredObjects;
+			this.displayedObjects = filteredObjects;
 		},
 		cancelFilter: function() {
-			this.sportsObjects = this.previousDisplay;
+			this.displayedObjects = this.sportsObjects;
 		}
 		
 	}
