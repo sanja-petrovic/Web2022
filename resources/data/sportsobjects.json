@@ -25,7 +25,7 @@
         "name": "Fit&Fun",
         "type": "Fitnes centar",
         "offers": null,
-        "status": "WORKING",
+        "status": "NOT_WORKING",
         "location": {
             "latitude": 45.390568,
             "longitude": 19.883015,

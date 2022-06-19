@@ -556,16 +556,16 @@ let HomePage = Vue.component('home-page', {
                                 <span class="d-inline-block"><i class="fa-solid fa-chevron-down" style="margin-right: 0.4em;"></i><span class="d-inline-block">Sortiraj po...</span></span>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="sort-button">
-                                <li><button class="dropdown-item" type="button">Nazivu (opadajuće)</button></li>
-                                <li><button class="dropdown-item" type="button">Nazivu (rastuće)</button></li>
+                                <li><button class="dropdown-item" type="button" v-on:click="sortByNameDesc">Nazivu (opadajuće)</button></li>
+                                <li><button class="dropdown-item" type="button" v-on:click="sortByNameAsc">Nazivu (rastuće)</button></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item" type="button">Lokaciji (opadajuće)</button></li>
-                                <li><button class="dropdown-item" type="button">Lokaciji (rastuće)</button></li>
+                                <li><button class="dropdown-item" type="button" v-on:click="sortByLocationDesc">Lokaciji (opadajuće)</button></li>
+                                <li><button class="dropdown-item" type="button" v-on:click="sortByLocationAsc">Lokaciji (rastuće)</button></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item" type="button">Prosečnoj oceni (opadajuće)</button></li>
-                                <li><button class="dropdown-item" type="button">Prosečnoj oceni (rastuće)</button></li>
+                                <li><button class="dropdown-item" type="button" v-on:click="sortByRatingDesc">Prosečnoj oceni (opadajuće)</button></li>
+                                <li><button class="dropdown-item" type="button"v-on:click="sortByRatingAsc">Prosečnoj oceni (rastuće)</button></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item" type="button">Otvoreni prvo</button></li>
+                                <li><button class="dropdown-item" type="button" v-on:click="sortByStatus">Otvoreni prvo</button></li>
                             </ul>
                         </div>
                     </div>
@@ -658,6 +658,7 @@ let HomePage = Vue.component('home-page', {
 			.then(response => {
 
 				this.sportsObjects = response.data;
+				this.sportsObjects.sort((b, a) => (a.status > b.status) ? 1 : ((b.status > a.status) ? -1 : 0));
 				console.log(response.data);
 			})
 			.catch(error => console.log(error));
@@ -747,7 +748,29 @@ let HomePage = Vue.component('home-page', {
 			this.searchParam.searchName = "";
 			this.searchParam.searchGrade = "";
 			this.displaySportsObjects();
+		},
+		sortByNameDesc: function() {
+			this.sportsObjects.sort((b, a) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+		},
+		sortByNameAsc: function() {
+			this.sportsObjects.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+		},
+		sortByLocationAsc: function() {
+			this.sportsObjects.sort((a, b) => (a.location.address.city > b.location.address.city) ? 1 : ((b.location.address.city > a.location.address.city) ? -1 : 0));
+		},
+		sortByLocationDesc: function() {
+			this.sportsObjects.sort((b, a) => (a.location.address.city > b.location.address.city) ? 1 : ((b.location.address.city > a.location.address.city) ? -1 : 0));
+		},
+		sortByRatingDesc: function() {
+			this.sportsObjects.sort((b, a) => (a.averageGrade > b.averageGrade) ? 1 : ((b.averageGrade > a.averageGrade) ? -1 : 0));
+		},
+		sortByRatingAsc: function() {
+			this.sportsObjects.sort((a, b) => (a.averageGrade > b.averageGrade) ? 1 : ((b.averageGrade > a.averageGrade) ? -1 : 0));
+		},
+		sortByStatus: function() {
+			this.sportsObjects.sort((b, a) => (a.status > b.status) ? 1 : ((b.status > a.status) ? -1 : 0));
 		}
+		
 	}
 });
 
