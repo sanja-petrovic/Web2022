@@ -78,7 +78,7 @@ $form-check-input-checked-bg-color: $primary-button-color;
   border-radius: 10px;
   box-shadow: 0 0 1em 0 rgba(99, 130, 255, 0.5);
   transition: 0.3s;
-  cursor: pointer;
+  cursor: hand;
 }
 
 %basic-secondary-button {
@@ -106,7 +106,7 @@ $form-check-input-checked-bg-color: $primary-button-color;
   color: $primary-button-color;
   font-weight: 500;
   transition: 0.3s;
-  cursor: pointer;
+  cursor: hand;
 }
 
 %basic-tertiary-button-hover {

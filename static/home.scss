@@ -3,6 +3,7 @@
 @import 'register';
 @import 'cards';
 @import 'sports-object';
+@import 'profile';
 
 .main-container {
   display: flex;
@@ -125,4 +126,28 @@
 
 .filter-type-button:hover {
   @extend %basic-secondary-button-hover;
+}
+
+.filter-tag-unchecked {
+  @extend %basic-secondary-button;
+  pointer: hand;
+}
+
+.filter-tag-checked {
+  @extend %basic-primary-button;
+}
+
+.filter-list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+
+  li {
+    display: inline;
+    margin-right: 1.2em;
+  }
+  input[type=radio] {
+    margin-right: 0.4em;
+  }
 }

@@ -529,7 +529,9 @@ let HomePage = Vue.component('home-page', {
 		return {
 			loggedIn: window.localStorage.getItem("username") !== null,
 			sportsObjects: null,
+			typesOfObjects: [],
 			displayedObjects: null,
+			searchResult: null,
 			openStatus: "",
 			typeObject: "",
 			searchParam: {
@@ -567,12 +569,7 @@ let HomePage = Vue.component('home-page', {
                     <select class="form-select" v-model="searchParam.searchType">
 						<option disabled selected hidden>Tip objekta</option>
                     	<optgroup label="Tip objekta">
-	                        <option>Teretana</option>
-	                        <option>Fitnes centar</option>
-	                        <option>Teniski centar</option>
-	                    	<option>Plesni studio</option>
-	                    	<option>Joga studio</option>
-	                    	<option>Zatvoreni bazeni</option>
+	                        <option v-for="item in this.typesOfObjects" :value="item">{{ item }}</option>
 	                    </optgroup>
                     </select>
                     <input type="text" class="form-control" placeholder="Lokacija objekta" v-model="searchParam.searchLocation">
@@ -616,7 +613,7 @@ let HomePage = Vue.component('home-page', {
                     <div class="collapse" id="filters">
                         <div class="card card-body">
                             <p>Tip objekta</p>
-                            <div class="checkbox-list">
+                            <!--<div class="checkbox-list">
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="type" type="radio" value="Teretana" v-on:change="filterSportsObjects" v-model="typeObject">Teretana
                                 </label>
@@ -635,11 +632,18 @@ let HomePage = Vue.component('home-page', {
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="type" type="radio" value="Zatvoreni bazeni" v-on:change="filterSportsObjects" v-model="typeObject">Zatvoreni bazeni
                                 </label>
-                            </div>
+                            </div>-->
+							<ul class="filter-list">
+								<li v-for="item in this.typesOfObjects">
+									<label class="form-check-label">
+										<input class="form-check-input filter" name="type" type="radio" v-bind:value="item" v-on:change="filterSportsObjects" v-model="typeObject">{{ item }}
+									</label>
+								</li>
+							</ul>
                             <p>Status</p>
                             <div class="checkbox-list">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" name="status" v-model="openStatus" v-on:change="filterSportsObjects" value="WORKING" type="radio">Otvoreno
+                                    <input class="form-check-input filter" name="status" v-model="openStatus" v-on:change="filterSportsObjects" value="WORKING" type="radio">Otvoreno
                                 </label>
                                 <label class="form-check-label">
                                     <input class="form-check-input" name="status" v-model="openStatus" v-on:change="filterSportsObjects" value="NOT_WORKING" type="radio">Zatvoreno
@@ -702,6 +706,8 @@ let HomePage = Vue.component('home-page', {
 				this.sportsObjects = response.data;
 				this.sportsObjects.sort((b, a) => (a.status > b.status) ? 1 : ((b.status > a.status) ? -1 : 0));
 				this.displayedObjects = this.sportsObjects;
+				this.searchResult = this.sportsObjects;
+				this.getAllTypesOfObjects();
 			})
 			.catch(error => console.log(error));
 		},
@@ -722,7 +728,7 @@ let HomePage = Vue.component('home-page', {
 					this.displayedObjects = response.data;
 				})
 				.catch(error => console.log(error));
-			} 
+			}
 			else if (this.searchParam.searchName !== '') {
 				axios.get('rest/getSportsObjectByName', {
 					params: {
@@ -747,7 +753,7 @@ let HomePage = Vue.component('home-page', {
 				.catch(error => console.log(error));
 			}
 			else if(this.searchParam.searchGrade !== 'Prosečna ocena') {
-				
+
 				if (this.searchParam.searchGrade === 'Neocenjeni') {
 					axios.get('rest/getSportsObjectByRatingInterval', {
 						params: {
@@ -780,7 +786,11 @@ let HomePage = Vue.component('home-page', {
 			let searchResult = [];
 			let ratingInterval = [0, 5];
 			if(this.searchParam.searchGrade !== "Prosečna ocena") {
-				ratingInterval = this.searchParam.searchGrade.replace(/\s/g,'').split('–');
+				if(this.searchParam.searchGrade === "Neocenjeni") {
+					ratingInterval = [0, 0];
+				} else {
+					ratingInterval = this.searchParam.searchGrade.replace(/\s/g,'').split('–');
+				}
 			}
 			for(let i = 0; i < this.sportsObjects.length; i++) {
 				let invalidCount = 0;
@@ -797,6 +807,8 @@ let HomePage = Vue.component('home-page', {
 				}
 			}
 			this.displayedObjects = searchResult;
+			this.searchResult = searchResult;
+			this.cancelFilter();
 		},
 		cancelSearch: function() {
 			this.searchParam.searchType = "";
@@ -804,6 +816,16 @@ let HomePage = Vue.component('home-page', {
 			this.searchParam.searchName = "";
 			this.searchParam.searchGrade = "Prosečna ocena";
 			this.displayedObjects = this.sportsObjects;
+			this.searchResult = this.sportsObjects;
+		},
+		getAllTypesOfObjects: function () {
+			for(let i = 0; i < this.sportsObjects.length; i++) {
+					this.typesOfObjects.push(this.sportsObjects[i].type);
+			}
+			this.typesOfObjects = this.typesOfObjects.filter( function( item, index, inputArray ) {
+				return inputArray.indexOf(item) == index;
+			});
+			this.typesOfObjects.sort((b, a) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
 		},
 		sortByNameDesc: function() {
 			this.displayedObjects.sort((b, a) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
@@ -831,33 +853,40 @@ let HomePage = Vue.component('home-page', {
 			console.log(this.openStatus);
 			console.log(this.typeObject);
 			if (this.openStatus !== "" && this.typeObject !== "") {
-				for (let i = 0; i < this.sportsObjects.length; i++) {
-					if(this.sportsObjects[i].type === this.typeObject && this.sportsObjects[i].status === this.openStatus) {
-	 					filteredObjects.push(this.sportsObjects[i]);
+				for (let i = 0; i < this.searchResult.length; i++) {
+					if(this.searchResult[i].type === this.typeObject && this.searchResult[i].status === this.openStatus) {
+	 					filteredObjects.push(this.searchResult[i]);
 	 				}
  				}
 			}
 			else if (this.openStatus !== "") {
-				for (let i = 0; i < this.sportsObjects.length; i++) {
-					if(this.sportsObjects[i].status === this.openStatus) {
-	 					filteredObjects.push(this.sportsObjects[i]);
-	 					
+				for (let i = 0; i < this.searchResult.length; i++) {
+					if(this.searchResult[i].status === this.openStatus) {
+	 					filteredObjects.push(this.searchResult[i]);
+
 	 				}
 	 			}
 			} else {
-				for (let i = 0; i < this.sportsObjects.length; i++) {
-					if(this.sportsObjects[i].type === this.typeObject) {
-	 					filteredObjects.push(this.sportsObjects[i]);
-	 					
+				for (let i = 0; i < this.searchResult.length; i++) {
+					if(this.searchResult[i].type === this.typeObject) {
+	 					filteredObjects.push(this.searchResult[i]);
+
 	 				}
  				}
 			}
 			this.displayedObjects = filteredObjects;
 		},
 		cancelFilter: function() {
-			this.displayedObjects = this.sportsObjects;
+			event.preventDefault();
+			let radioButtons = document.getElementsByClassName("filter");
+			this.typeObject = "";
+			this.openStatus = "";
+			for(let i = 0; i < radioButtons.length; i++) {
+				radioButtons[i].checked = false;
+			}
+			this.displayedObjects = this.searchResult;
 		}
-		
+
 	}
 });
 
