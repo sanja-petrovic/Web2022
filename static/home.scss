@@ -151,3 +151,14 @@
     margin-right: 0.4em;
   }
 }
+
+.cancel-button {
+  @extend %basic-primary-button;
+  background-color: $invalid-color;
+  color: $primary-button-foreground;
+  box-shadow: 0 0 1em 0 rgba(255, 99, 128, 0.5);
+}
+
+.cancel-button:hover {
+  background-color: $invalid-color-hover;
+}

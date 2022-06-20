@@ -11166,7 +11166,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.filter-tag-checked, .sort-button, .filter-button, .submit-button, .search-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .submit-button, .search-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -22440,7 +22440,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.filter-tag-checked, .sort-button, .filter-button, .submit-button, .search-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .submit-button, .search-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -33795,7 +33795,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.filter-tag-checked, .sort-button, .filter-button, .search-button, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -45152,7 +45152,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.filter-tag-checked, .sort-button, .filter-button, .search-button, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -56567,7 +56567,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.filter-tag-checked, .sort-button, .filter-button, .search-button, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -67955,7 +67955,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.filter-tag-checked, .sort-button, .filter-button, .search-button, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -68234,6 +68234,16 @@ h4, .h4 {
 }
 .filter-list input[type=radio] {
   margin-right: 0.4em;
+}
+
+.cancel-button {
+  background-color: #ff5b68;
+  color: white;
+  box-shadow: 0 0 1em 0 rgba(255, 99, 128, 0.5);
+}
+
+.cancel-button:hover {
+  background-color: #ff7e8b;
 }
 
 /*# sourceMappingURL=home.css.map */

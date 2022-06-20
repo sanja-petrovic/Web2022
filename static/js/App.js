@@ -568,21 +568,19 @@ let HomePage = Vue.component('home-page', {
                     <div class="input-group mb-3" style="max-width: 80vw">
                     <select class="form-select" v-model="searchParam.searchType">
 						<option disabled selected hidden>Tip objekta</option>
-                    	<optgroup label="Tip objekta">
-	                        <option v-for="item in this.typesOfObjects" :value="item">{{ item }}</option>
-	                    </optgroup>
+						<option>Svi</option>
+						<option v-for="item in this.typesOfObjects" :value="item">{{ item }}</option>
                     </select>
                     <input type="text" class="form-control" placeholder="Lokacija objekta" v-model="searchParam.searchLocation">
                     <input type="text" class="form-control" placeholder="Naziv objekta" v-model="searchParam.searchName">
                     <select class="form-select" style="max-width: 20em" v-model = "searchParam.searchGrade">
 						<option disabled selected hidden>Prosečna ocena</option>
-                        <optgroup label="Prosečna ocena">
-	                        <option>4.1 – 5.0</option>
-	                        <option>3.1 – 4.0</option>
-	                        <option>2.1 – 3.0</option>
-	                        <option>1.0 – 2.0</option>
-	                        <option>Neocenjeni</option>
-                        </optgroup>
+						<option>Svi</option>
+						<option>4.1 – 5.0</option>
+						<option>3.1 – 4.0</option>
+						<option>2.1 – 3.0</option>
+						<option>1.0 – 2.0</option>
+						<option>Neocenjeni</option>
                     </select>
                     <div class="search-button" type="button" v-on:click="combinedSearch">
                     	<i class="fa fa-search"></i>
@@ -613,26 +611,6 @@ let HomePage = Vue.component('home-page', {
                     <div class="collapse" id="filters">
                         <div class="card card-body">
                             <p>Tip objekta</p>
-                            <!--<div class="checkbox-list">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" name="type" type="radio" value="Teretana" v-on:change="filterSportsObjects" v-model="typeObject">Teretana
-                                </label>
-                                <label class="form-check-label">
-                                    <input class="form-check-input" name="type" type="radio" value="Fitnes centar" v-on:change="filterSportsObjects" v-model="typeObject">Fitnes centar
-                                </label>
-                                <label class="form-check-label">
-                                    <input class="form-check-input" name="type" type="radio" value="Teniski centar" v-on:change="filterSportsObjects" v-model="typeObject">Teniski centar
-                                </label>
-                                <label class="form-check-label">
-                                    <input class="form-check-input" name="type" type="radio" value="Plesni studio" v-on:change="filterSportsObjects" v-model="typeObject">Plesni studio
-                                </label>
-                                <label class="form-check-label">
-                                    <input class="form-check-input" name="type" type="radio" value="Joga studio" v-on:change="filterSportsObjects" v-model="typeObject">Joga studio
-                                </label>
-                                <label class="form-check-label">
-                                    <input class="form-check-input" name="type" type="radio" value="Zatvoreni bazeni" v-on:change="filterSportsObjects" v-model="typeObject">Zatvoreni bazeni
-                                </label>
-                            </div>-->
 							<ul class="filter-list">
 								<li v-for="item in this.typesOfObjects">
 									<label class="form-check-label">
@@ -785,7 +763,7 @@ let HomePage = Vue.component('home-page', {
 		combinedSearch: function () {
 			let searchResult = [];
 			let ratingInterval = [0, 5];
-			if(this.searchParam.searchGrade !== "Prosečna ocena") {
+			if(this.searchParam.searchGrade !== "Prosečna ocena" && this.searchParam.searchGrade !== "Svi") {
 				if(this.searchParam.searchGrade === "Neocenjeni") {
 					ratingInterval = [0, 0];
 				} else {
@@ -796,7 +774,7 @@ let HomePage = Vue.component('home-page', {
 				let invalidCount = 0;
 
 				if(this.sportsObjects[i].name.toLowerCase().includes(this.searchParam.searchName.toLowerCase().trim())
-				&& (this.sportsObjects[i].type.toLowerCase().includes(this.searchParam.searchType.toLowerCase().trim()) || this.searchParam.searchType === "Tip objekta")
+				&& (this.sportsObjects[i].type.toLowerCase().includes(this.searchParam.searchType.toLowerCase().trim()) || this.searchParam.searchType === "Tip objekta" || this.searchParam.searchType === "Svi")
 				&& (this.sportsObjects[i].location.address.city.toLowerCase().includes(this.searchParam.searchLocation.toLowerCase().trim())
 						|| this.sportsObjects[i].location.address.country.toLowerCase().includes(this.searchParam.searchLocation.toLowerCase().trim()))
 				&& (this.sportsObjects[i].averageGrade >= ratingInterval[0] && this.sportsObjects[i].averageGrade <= ratingInterval[1])
