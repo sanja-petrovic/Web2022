@@ -24,6 +24,7 @@ public class SportsObjectDAO {
 
 	public SportsObjectDAO() {
 		this.sportsObjects = new ArrayList<>();
+		this.load();
 	}
 
 
@@ -42,6 +43,18 @@ public class SportsObjectDAO {
 	public ArrayList<SportsObject> getSportsObjects() {
 		this.load();
 		return this.sportsObjects;
+	}
+	
+	public SportsObject getSportsObjectById(String name) {
+		SportsObject retVal = null;
+		for(SportsObject sportsObject : this.sportsObjects) {
+			if(sportsObject.getName().equals(name)) {
+				retVal = sportsObject;
+				break;
+			}
+		}
+		
+		return retVal;
 	}
 	
 	public List<SportsObject> getSportsObjectByType(String type) {

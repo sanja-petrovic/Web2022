@@ -2,7 +2,8 @@ package dto;
 import java.time.LocalDate;
 
 import beans.Gender;
-import beans.User; 
+import beans.User;
+import beans.UserType; 
 public class RegisterUserDTO {
 
 	private String name;
@@ -11,6 +12,7 @@ public class RegisterUserDTO {
 	private String dob;
 	private String username;
 	private String password;
+	private String userType;
 	
 	public RegisterUserDTO(String name, String surname, String gender, String dateOfBirth, String username,
 			String password) {
@@ -20,6 +22,18 @@ public class RegisterUserDTO {
 		this.surname = surname;
 		this.gender = gender;
 		this.dob = dateOfBirth;
+		this.userType = "Kupac";
+	}
+	
+	public RegisterUserDTO(String userType, String name, String surname, String gender, String dateOfBirth, String username,
+			String password) {
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.surname = surname;
+		this.gender = gender;
+		this.dob = dateOfBirth;
+		this.userType = userType;
 	}
 	
 	public Gender parseGender() {
@@ -28,6 +42,19 @@ public class RegisterUserDTO {
 			parsed = Gender.MALE;
 		} else {
 			parsed = Gender.FEMALE;
+		}
+		
+		return parsed;
+	}
+	
+	public UserType parseUserType() {
+		UserType parsed;
+		if(this.userType.trim().toLowerCase().startsWith("m")) {
+			parsed = UserType.MANAGER;
+		} else if(this.userType.trim().toLowerCase().startsWith("t")) {
+			parsed = UserType.TRAINER;
+		} else {
+			parsed = UserType.BUYER;
 		}
 		
 		return parsed;

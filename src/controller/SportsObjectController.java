@@ -2,6 +2,7 @@ package controller;
 
 import static spark.Spark.get;
 import static spark.Spark.path;
+import static spark.Spark.post;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -11,7 +12,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import beans.SportsObject;
+import beans.User;
+import beans.UserType;
+import dao.Repository;
 import dao.SportsObjectDAO;
+import dto.RegisterUserDTO;
+import dto.SportsObjectDTO;
+import services.PasswordService;
 import util.LocalDateTimeAdapter;
 import util.LocalTimeAdapter;
 
@@ -29,6 +36,23 @@ public class SportsObjectController {
 			getSportsObjectByLocation();
 			getSportsObjectByRatingInterval();
 		});
+	}
+	
+	
+	public void createSportsObject() {
+		/*post("/createSportsObject", (req, res) -> {
+			res.type("application/json");
+			String payload = req.body();
+			SportsObjectDTO s = gson.fromJson(payload, SportsObjectDTO.class);
+			
+			SportsObject sportsObject = new SportsObject(s.getName(), s.getType(), s.parseLocation(), s.getLogoIcon());
+			User user = new User(u.getUsername(), PasswordService.generateStrongPasswordHash(u.getPassword()), u.getName(), u.getSurname(), u.parseGender(), u.parseDate(), UserType.BUYER);
+			Repository.getInstance().getUserDAO().addUser(user);
+			System.out.println(user);
+			req.session().attribute("user", user);
+			
+			return gson.toJson(user);
+		});*/
 	}
 	
 	public static void getSportsObjects() {

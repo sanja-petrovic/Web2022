@@ -1,21 +1,23 @@
 [
   {
-    "Points": 1234.0,
-    "BuyerType": {
-      "Tier": "Bronzani",
-      "Discount": 5.0,
-      "PointRequirement": 1000
-    },
-    "Username": "milica"
-  },
-  {
-    "Points": 4321.0,
+    "VisitedObjects": [],
+    "Points": 0.0,
     "Username": "ivana"
   },
   {
     "VisitedObjects": [],
     "Points": 0.0,
-    "Username": "a"
+    "Username": "petar"
+  },
+  {
+    "VisitedObjects": [],
+    "Points": 0.0,
+    "Username": "david"
+  },
+  {
+    "VisitedObjects": [],
+    "Points": 0.0,
+    "Username": "milica"
   },
   {
     "VisitedObjects": [],
@@ -25,16 +27,6 @@
   {
     "VisitedObjects": [],
     "Points": 0.0,
-    "Username": "b"
-  },
-  {
-    "VisitedObjects": [],
-    "Points": 0.0,
-    "Username": "s"
-  },
-  {
-    "VisitedObjects": [],
-    "Points": 0.0,
-    "Username": "ivana"
+    "Username": "jana"
   }
 ]

@@ -34,7 +34,6 @@ public class MembershipDAO {
 		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/memberships.json"));
 		    this.memberships = gson.fromJson(reader, new TypeToken<ArrayList<Membership>>() {}.getType());
 		    reader.close();
-
 		} catch (Exception ex) {
 		    ex.printStackTrace();
 		}

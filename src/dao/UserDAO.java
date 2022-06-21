@@ -1,6 +1,5 @@
 package dao;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
@@ -18,7 +17,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
 import beans.Buyer;
-import beans.Gender;
+import beans.Manager;
 import beans.User;
 import beans.UserType;
 
@@ -81,9 +80,16 @@ public class UserDAO {
 	
 	public void addUser(User u) {
 		this.users.add(u);
-		if(u.getUserType().equals(UserType.BUYER)) {
-			repository.getInstance().getBuyerDAO().addBuyer(new Buyer(u));
+		UserType type = u.getUserType();
+		switch(type) {
+			case BUYER: 
+				Repository.getInstance().getBuyerDAO().addBuyer(new Buyer(u));
+				break;
+			case MANAGER:
+				Repository.getInstance().getManagerDAO().addManager(new Manager(u));
+				break;
 		}
+		
 		this.writeUsers();
 	}
 

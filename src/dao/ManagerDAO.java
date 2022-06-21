@@ -13,17 +13,17 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
-import beans.Buyer;
+import beans.Manager;
 import beans.User;
 import util.LocalDateTimeAdapter;
 
-public class BuyerDAO {
-	private ArrayList<Buyer> buyers;
+public class ManagerDAO {
 	private Gson gson;
+	private ArrayList<Manager> managers;
 	
-	public BuyerDAO() {
-		this.buyers = new ArrayList<>();
-		this.load();
+	
+	public ManagerDAO() {
+		this.managers = new ArrayList<>();
 	}
 	
 	public void createGson() {
@@ -33,32 +33,28 @@ public class BuyerDAO {
 	public void load() {
 		try {
 			this.createGson();
-		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/buyers.json"));
-		    this.buyers = gson.fromJson(reader, new TypeToken<ArrayList<Buyer>>() {}.getType());
-		    for(Buyer b : this.buyers) {
-		    	this.fillData(b);
+		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/managers.json"));
+		    this.managers = gson.fromJson(reader, new TypeToken<ArrayList<Manager>>() {}.getType());
+		    for(Manager m : this.managers) {
+		    	this.fillData(m);
 		    }
 		    reader.close();
-
 		} catch (Exception ex) {
 		    ex.printStackTrace();
 		}
 	}
 	
-	public void fillData(Buyer b) {
-		User u = Repository.getInstance().getUserDAO().getUserById(b.getUsername());
+	public void fillData(Manager m) {
+		User u = Repository.getInstance().getUserDAO().getUserById(m.getUsername());
 		if(u != null) {
-			b.setName(u.getName());
-			b.setSurname(u.getSurname());
-			b.setDateOfBirth(u.getDateOfBirth());
-			b.setGender(u.getGender());
-			b.setPassword(u.getPassword());
-			b.setDeletedAt(u.getDeletedAt());
-			if(b.getType() != null) {
-				b.setType(Repository.getInstance().getBuyerTypeDAO().getBuyerTypeByTier(b.getType().getTier()));
-			}
-			if(b.getMembership() != null) {
-				b.setMembership(Repository.getInstance().getMembershipDAO().getMembershipById(b.getMembership().getId()));
+			m.setName(u.getName());
+			m.setSurname(u.getSurname());
+			m.setDateOfBirth(u.getDateOfBirth());
+			m.setGender(u.getGender());
+			m.setPassword(u.getPassword());
+			m.setDeletedAt(u.getDeletedAt());
+			if(m.getSportsObject() != null) {
+				m.setSportsObject(Repository.getInstance().getSportsObjectDAO().getSportsObjectById(m.getSportsObject().getName()));
 			}
 		}
 	}
@@ -68,10 +64,9 @@ public class BuyerDAO {
 		try {
 			this.createGson();
 			FileWriter writer = new FileWriter("resources/data/buyers.json");
-			gson.toJson(this.buyers, writer);
+			gson.toJson(this.managers, writer);
 			writer.flush();
 			writer.close();
-			
 		} catch (JsonIOException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -79,9 +74,8 @@ public class BuyerDAO {
 		}
 	}
 	
-	public void addBuyer(Buyer b) {
-		this.buyers.add(b);
+	public void addManager(Manager m) {
+		this.managers.add(m);
 		this.writeBuyers();
 	}
-
 }
