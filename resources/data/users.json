@@ -1,83 +1,11 @@
 [
   {
-    "Username": "petar",
-    "Password": "petar",
-    "Name": "Petar",
-    "Surname": "Petrović",
-    "Gender": "Ženski",
-    "DateOfBirth": "1998-05-02",
-    "UserType": "Trainer"
-  },
-  {
-    "Username": "marko",
-    "Password": "marko",
-    "Name": "Marko",
-    "Surname": "Marković",
-    "Gender": "Muški",
-    "DateOfBirth": "1994-06-03",
-    "UserType": "Manager"
-  },
-  {
-    "Username": "jana",
-    "Password": "jana",
-    "Name": "Jana",
-    "Surname": "Janković",
-    "Gender": "Ženski",
-    "DateOfBirth": "1989-12-13",
-    "UserType": "Admin"
-  },
-  {
-    "Username": "milica",
-    "Password": "milica",
-    "Name": "Milica",
-    "Surname": "Miličević",
-    "Gender": "Ženski",
-    "DateOfBirth": "1997-10-10",
-    "UserType": "Buyer"
-  },
-  {
     "Username": "ivana",
-    "Password": "ivana",
+    "Password": "1000:889f68ec2a80a27e8a488dcd38c447c6:aa8552c1273a3060b3d0b27da9b1bc42406a5929fcecde8e4b44d01af7701cfe664aac3bfa0fdd080f58ba02e6d4853af53f15e1e73d95149f4daf7df68fa749",
     "Name": "Ivana",
     "Surname": "Ivanović",
     "Gender": "Ženski",
-    "DateOfBirth": "2001-05-30",
-    "UserType": "Buyer"
-  },
-  {
-    "Username": "a",
-    "Password": "a",
-    "Name": "a",
-    "Surname": "a",
-    "Gender": "Muški",
-    "DateOfBirth": "2022-06-22",
-    "UserType": "Buyer"
-  },
-  {
-    "Username": "filip",
-    "Password": "filip",
-    "Name": "Filip",
-    "Surname": "Filipović",
-    "Gender": "Muški",
-    "DateOfBirth": "2022-06-08",
-    "UserType": "Buyer"
-  },
-  {
-    "Username": "b",
-    "Password": "b",
-    "Name": "b",
-    "Surname": "b",
-    "Gender": "Muški",
-    "DateOfBirth": "2022-06-02",
-    "UserType": "Buyer"
-  },
-  {
-    "Username": "s",
-    "Password": "s",
-    "Name": "s",
-    "Surname": "s",
-    "Gender": "Muški",
-    "DateOfBirth": "2022-06-13",
+    "DateOfBirth": "2022-06-09",
     "UserType": "Buyer"
   }
 ]
