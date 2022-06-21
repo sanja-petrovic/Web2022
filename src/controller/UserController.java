@@ -1,6 +1,7 @@
 package controller;
 
 import com.google.gson.Gson;
+import javax.servlet.http.HttpSession;  
 import com.google.gson.GsonBuilder;
 
 import beans.User;
@@ -30,6 +31,7 @@ public class UserController {
 	public void init() {
 		path(basePath, () -> {
 			login();
+			logout();
 			getCurrentlyLoggedInUser();
 			getUsers();
 			getUser();
@@ -56,14 +58,16 @@ public class UserController {
 				return res.body();
 			}
 			System.out.println("logged in: " + user.getUsername());
-			currentlyLoggedIn = user;
+			req.session().attribute("user", user);
 			return gson.toJson(user);
 		});
 	}
 	
 	public static void logout() {
 		post("/logout", (req, res) -> {
-			currentlyLoggedIn = null;
+			res.type("application/json");
+			req.session().removeAttribute("user");
+			System.out.println("logging out!");
 			res.status(200);
 			return res.body();
 		});
@@ -77,7 +81,8 @@ public class UserController {
 	
 	public static void getCurrentlyLoggedInUser() {
 		get("/loggedInUser", (req, res) -> {
-			return gson.toJson(currentlyLoggedIn);
+			User user = req.session().attribute("user");
+			return gson.toJson(user);
 		});
 	}
 	
@@ -100,6 +105,8 @@ public class UserController {
 			User user = new User(u.getUsername(), u.getPassword(), u.getName(), u.getSurname(), u.parseGender(), u.parseDate(), UserType.BUYER);
 			repository.getInstance().getUserDAO().addUser(user);
 			System.out.println(user);
+			req.session().attribute("user", user);
+			
 			return gson.toJson(user);
 		});
 	}

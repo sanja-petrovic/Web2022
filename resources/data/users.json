@@ -70,5 +70,14 @@
     "Gender": "Muški",
     "DateOfBirth": "2022-06-02",
     "UserType": "Buyer"
+  },
+  {
+    "Username": "s",
+    "Password": "s",
+    "Name": "s",
+    "Surname": "s",
+    "Gender": "Muški",
+    "DateOfBirth": "2022-06-13",
+    "UserType": "Buyer"
   }
 ]

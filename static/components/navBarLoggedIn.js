@@ -33,7 +33,7 @@ Vue.component('navBarLoggedIn', {
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#" v-on:click="this.logOut">Odjavi se</a></li>
+                            <li><a class="dropdown-item" href="#" v-on:click="logOut">Odjavi se</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -41,11 +41,10 @@ Vue.component('navBarLoggedIn', {
         </div>
         </nav>
     `, methods: {
-        logOut: function () {
-            window.localStorage.clear();
-            window.location.href = "/";
-            router.replace("/");
-            axios.post('/rest/logout', {
+        logOut: async function () {
+            this.$router.replace("/");
+            event.preventDefault();
+            await axios.post('/rest/logout', {
                 username: this.username, password: this.password
             })
                 .then(function response(resp) {
@@ -53,6 +52,8 @@ Vue.component('navBarLoggedIn', {
                     window.location.href = "/";
                 })
                 .catch(function error(err) {
+                    window.localStorage.clear();
+                    window.location.href = "/";
                     console.log(err);
                 });
         }
