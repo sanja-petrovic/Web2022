@@ -13,8 +13,8 @@ import com.google.gson.reflect.TypeToken;
 
 import beans.BuyerType;
 import beans.Membership;
-import util.LocalDateAdapter;
-import util.LocalDateTimeAdapter;
+import util.adapters.LocalDateAdapter;
+import util.adapters.LocalDateTimeAdapter;
 
 public class MembershipDAO {
 	private ArrayList<Membership> memberships;

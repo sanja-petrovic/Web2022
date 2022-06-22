@@ -15,7 +15,7 @@ import com.google.gson.reflect.TypeToken;
 
 import beans.Buyer;
 import beans.User;
-import util.LocalDateTimeAdapter;
+import util.adapters.LocalDateTimeAdapter;
 
 public class BuyerDAO {
 	private ArrayList<Buyer> buyers;
@@ -46,7 +46,7 @@ public class BuyerDAO {
 	}
 	
 	public void fillData(Buyer b) {
-		User u = Repository.getInstance().getUserDAO().getUserById(b.getUsername());
+		User u = Repository.getInstance().getUserDAO().getUserByUsername(b.getUsername());
 		if(u != null) {
 			b.setName(u.getName());
 			b.setSurname(u.getSurname());

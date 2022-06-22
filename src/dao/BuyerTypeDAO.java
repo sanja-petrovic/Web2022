@@ -11,7 +11,7 @@ import com.google.gson.reflect.TypeToken;
 
 import beans.Buyer;
 import beans.BuyerType;
-import util.LocalDateTimeAdapter;;
+import util.adapters.LocalDateTimeAdapter;;
 
 public class BuyerTypeDAO {
 

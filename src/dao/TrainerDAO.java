@@ -5,10 +5,11 @@ import java.util.ArrayList;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import beans.Trainer;
 import beans.User;
 import beans.UserType;
-import util.LocalDateTimeAdapter;
+import util.adapters.LocalDateTimeAdapter;
 
 public class TrainerDAO {
 

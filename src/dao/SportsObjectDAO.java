@@ -13,8 +13,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import beans.SportsObject;
-import util.LocalDateTimeAdapter;
-import util.LocalTimeAdapter;
+import util.adapters.LocalDateTimeAdapter;
+import util.adapters.LocalTimeAdapter;
 
 public class SportsObjectDAO {
 

@@ -39,6 +39,10 @@ public class SportsObject {
 		this.businessHours = businessHours;
 	}
 
+	public SportsObject() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getName() {
 		return name;
 	}

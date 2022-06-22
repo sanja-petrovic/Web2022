@@ -1,7 +1,6 @@
 Vue.component('buyer-profile-page', {
     data: function () {
         return {
-            username: window.localStorage.getItem("username"),
             user: null
         }
     },
@@ -14,7 +13,7 @@ Vue.component('buyer-profile-page', {
                 <div class="about-section">
                     <div class="info">
                         <label for="username">Korisničko ime</label>
-                        <input readonly class="text-box" type="text" id="username" name="username" v-model="username">
+                        <input readonly class="text-box" type="text" id="username" name="username" v-model="user.Username">
                         <label for="name">Ime</label>
                         <input readonly class="text-box" type="text" id="name" name="name" v-model="user.Name" >
                         <label for="surname">Prezime</label>
@@ -46,11 +45,8 @@ Vue.component('buyer-profile-page', {
         </div>
     `,
     mounted() {
-        axios.get(`/rest/users/${this.username}`)
+        axios.get(`/rest/loggedInUser`)
             .then(response => (this.user = response.data))
             .catch(error => console.log(error));
-        if(this.user.Gender === "Female") {
-            this.user.Gender = "Ženski";
-        }
     }
 });

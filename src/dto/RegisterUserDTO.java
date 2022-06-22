@@ -36,34 +36,6 @@ public class RegisterUserDTO {
 		this.userType = userType;
 	}
 	
-	public Gender parseGender() {
-		Gender parsed;
-		if(this.gender.trim().toLowerCase().startsWith("m")) {
-			parsed = Gender.MALE;
-		} else {
-			parsed = Gender.FEMALE;
-		}
-		
-		return parsed;
-	}
-	
-	public UserType parseUserType() {
-		UserType parsed;
-		if(this.userType.trim().toLowerCase().startsWith("m")) {
-			parsed = UserType.MANAGER;
-		} else if(this.userType.trim().toLowerCase().startsWith("t")) {
-			parsed = UserType.TRAINER;
-		} else {
-			parsed = UserType.BUYER;
-		}
-		
-		return parsed;
-	}
-	
-	public LocalDate parseDate() {
-		return LocalDate.parse(this.dob);
-	}
-	
 	public String getName() {
 		return name;
 	}
@@ -107,6 +79,7 @@ public class RegisterUserDTO {
 	public String getDateOfBirth() {
 		return dob;
 	}
+	
 
 	public void setDateOfBirth(String dateOfBirth) {
 		this.dob = dateOfBirth;

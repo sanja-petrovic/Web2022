@@ -12,6 +12,7 @@ public class SportsObjectDTO {
 	private String type;
 	private String location;
 	private String logoIcon;
+	private String manager;
 	
 	public String getName() {
 		return name;
@@ -36,6 +37,12 @@ public class SportsObjectDTO {
 	}
 	public void setLogoIcon(String logoIcon) {
 		this.logoIcon = logoIcon;
+	}
+	public String getManager() {
+		return manager;
+	}
+	public void setManager(String manager) {
+		this.manager = manager;
 	}
 	
 	

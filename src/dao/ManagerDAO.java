@@ -15,7 +15,7 @@ import com.google.gson.reflect.TypeToken;
 
 import beans.Manager;
 import beans.User;
-import util.LocalDateTimeAdapter;
+import util.adapters.LocalDateTimeAdapter;
 
 public class ManagerDAO {
 	private Gson gson;
@@ -45,7 +45,7 @@ public class ManagerDAO {
 	}
 	
 	public void fillData(Manager m) {
-		User u = Repository.getInstance().getUserDAO().getUserById(m.getUsername());
+		User u = Repository.getInstance().getUserDAO().getUserByUsername(m.getUsername());
 		if(u != null) {
 			m.setName(u.getName());
 			m.setSurname(u.getSurname());
@@ -77,5 +77,17 @@ public class ManagerDAO {
 	public void addManager(Manager m) {
 		this.managers.add(m);
 		this.writeBuyers();
+	}
+	
+	public Manager getManagerById(String username) {
+		Manager retVal = null;
+		for(Manager m : this.managers) {
+			if(m.getUsername().equals(username)) {
+				retVal = m;
+				break;
+			}
+		}
+		
+		return retVal;
 	}
 }

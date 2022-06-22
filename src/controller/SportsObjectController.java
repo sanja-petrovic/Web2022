@@ -11,7 +11,9 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import beans.Manager;
 import beans.SportsObject;
+import beans.SportsObjectStatus;
 import beans.User;
 import beans.UserType;
 import dao.Repository;
@@ -19,8 +21,8 @@ import dao.SportsObjectDAO;
 import dto.RegisterUserDTO;
 import dto.SportsObjectDTO;
 import services.PasswordService;
-import util.LocalDateTimeAdapter;
-import util.LocalTimeAdapter;
+import util.adapters.LocalDateTimeAdapter;
+import util.adapters.LocalTimeAdapter;
 
 public class SportsObjectController {
 	
@@ -40,19 +42,23 @@ public class SportsObjectController {
 	
 	
 	public void createSportsObject() {
-		/*post("/createSportsObject", (req, res) -> {
+		post("/createSportsObject", (req, res) -> {
 			res.type("application/json");
 			String payload = req.body();
 			SportsObjectDTO s = gson.fromJson(payload, SportsObjectDTO.class);
 			
-			SportsObject sportsObject = new SportsObject(s.getName(), s.getType(), s.parseLocation(), s.getLogoIcon());
-			User user = new User(u.getUsername(), PasswordService.generateStrongPasswordHash(u.getPassword()), u.getName(), u.getSurname(), u.parseGender(), u.parseDate(), UserType.BUYER);
-			Repository.getInstance().getUserDAO().addUser(user);
-			System.out.println(user);
-			req.session().attribute("user", user);
+			Manager m = Repository.getInstance().getManagerDAO().getManagerById(s.getManager());
 			
-			return gson.toJson(user);
-		});*/
+			SportsObject sportsObject = new SportsObject();
+			sportsObject.setName(s.getName());
+			sportsObject.setLogoIcon(s.getLogoIcon());
+			sportsObject.setType(s.getType());
+			sportsObject.setStatus(SportsObjectStatus.WORKING);
+			//location ??
+			m.setSportsObject(sportsObject);
+			
+			return gson.toJson(sportsObject);
+		});
 	}
 	
 	public static void getSportsObjects() {

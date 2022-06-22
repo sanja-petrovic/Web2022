@@ -8,8 +8,6 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import util.LocalDateAdapter;
-import util.LocalDateTimeAdapter;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -20,6 +18,8 @@ import beans.Buyer;
 import beans.Manager;
 import beans.User;
 import beans.UserType;
+import util.adapters.LocalDateAdapter;
+import util.adapters.LocalDateTimeAdapter;
 
 public class UserDAO {
 	
@@ -69,9 +69,9 @@ public class UserDAO {
 		this.users = users;
 	}
 
-	public User getUserById(String id) {
+	public User getUserByUsername(String username) {
 		for (User user : this.users) {
-			if (user.getUsername().equals(id)) {
+			if (user.getUsername().equals(username)) {
 				return user;
 			}
 		}
@@ -91,6 +91,12 @@ public class UserDAO {
 		}
 		
 		this.writeUsers();
+	}
+	
+	public void removeUser(User u) {
+		if(this.users.contains(u)) {
+			u.setDeletedAt(LocalDateTime.now());
+		}
 	}
 
 }

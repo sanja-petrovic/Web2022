@@ -1,56 +1,42 @@
 [
   {
-    "Username": "ivana",
-    "Password": "1000:889f68ec2a80a27e8a488dcd38c447c6:aa8552c1273a3060b3d0b27da9b1bc42406a5929fcecde8e4b44d01af7701cfe664aac3bfa0fdd080f58ba02e6d4853af53f15e1e73d95149f4daf7df68fa749",
-    "Name": "Ivana",
-    "Surname": "Ivanović",
-    "Gender": "Ženski",
-    "DateOfBirth": "2022-06-09",
-    "UserType": "Buyer"
-  },
-  {
+    "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
     "Username": "petar",
-    "Password": "1000:3defec8d95bfecffb5d702576c209197:65119f2ce567637b7ff272d83c3b95b0e01e0ec47864ae40ab9ddbe43a2832a1f478de04eda09d57bd6aefca43a4be0f0629d2d82cea03a27da2ef926a86fe6d",
+    "Password": "1000:d0dcd12844a00cce484afa718fca0159:8fef6b681344cc13bf417ae0069e0d88a3479bc46ce72f704fb92ba7117b0fda22c8cc150e3573c95571c1d299731733953e10b353d5f1974625774ab1c4fada",
     "Name": "Petar",
     "Surname": "Petrović",
-    "Gender": "Muški",
-    "DateOfBirth": "2022-06-08",
-    "UserType": "Buyer"
-  },
-  {
-    "Username": "david",
-    "Password": "1000:708c80ff86fa7b59144d3317507853db:d21bf3695b52202e40441921616fede5427dc04a5f8a9c2526dfc9aecedf427124c194f4a5fda86f9f78475b9a2e702ada9a98e7a7801e17754c915f55e70c73",
-    "Name": "David",
-    "Surname": "Davidović",
-    "Gender": "Muški",
-    "DateOfBirth": "2022-06-04",
-    "UserType": "Buyer"
-  },
-  {
-    "Username": "milica",
-    "Password": "1000:811a22db4efa82ed4cb1b85a034d844d:798cee1d2d8460f3ffa1ad87f06acdfc8d77c0cef9a848409564fa72f34103cc1910b0276ef8f62f58f2956cc2c5361143ea0984fa2fa52f0853dd6d5617c91a",
-    "Name": "Milica",
-    "Surname": "Miličević",
-    "Gender": "Ženski",
-    "DateOfBirth": "2022-06-04",
-    "UserType": "Buyer"
-  },
-  {
-    "Username": "filip",
-    "Password": "1000:b4425729179f8c70c828d732c2e7832f:cda6d128a78c4e15b23c60324e6497a1831260e594377971516940133210192f98e140b3823df2297867ffb7cb2d5ce90f6ffaf64a541c6e7f599d0b11d8fd6a",
-    "Name": "Filip",
-    "Surname": "Filipović",
     "Gender": "Muški",
     "DateOfBirth": "2022-06-02",
     "UserType": "Buyer"
   },
   {
+    "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+    "Username": "ivana",
+    "Password": "1000:135809f7f95f606d4828b69a1cf03af0:1c9ff09327c18fedfa53231b729ac680f88312c57cc9ac40528a20bc4ee40aed276da2bab60019d4cf0e896965f905d49bbf91d40096dab528d7634d491659fc",
+    "Name": "Ivana",
+    "Surname": "Ivanović",
+    "Gender": "Ženski",
+    "DateOfBirth": "2022-06-10",
+    "UserType": "Buyer"
+  },
+  {
+    "Id": "a3bd0158-1f31-42dc-94ac-e21adbf100ad",
+    "Username": "marko",
+    "Password": "1000:8be87e24efb117a19aa732e1db48d2a7:8751bf6ada02cede67026f64682dbfc420d81cf9b7a4252d96f0d4cf9e42c6c560c181fdc310871001b79e6bd3d98ec77fd1d6fcfe63e9bd68a839efdb0912ae",
+    "Name": "Marko",
+    "Surname": "Marković",
+    "Gender": "Muški",
+    "DateOfBirth": "2022-05-31",
+    "UserType": "Buyer"
+  },
+  {
+    "Id": "bb69a589-3908-4e64-a7dc-48ca9c1fa00d",
     "Username": "jana",
-    "Password": "1000:a1ca848f893d1d0a9b8b82b8daf25a45:e607808a420ef317a47f44680f947c9e6f9d41347845a543af85a1e5f1e1e69d1f423eac4798b3f2f05b0367e5247655b34fb07b07514f7ed210b74c9af1e28d",
+    "Password": "1000:42b2b2d8be520db424238b063aaa470d:b9636a0597eff98eccf096fbe0713c4b1da14fd22d24445132f13bafcc63fbdbeb07a13b4ac778468344acd95f9e47762ff45a4ccea8cba5d8d6b53858f4eb5d",
     "Name": "Jana",
     "Surname": "Janković",
     "Gender": "Ženski",
-    "DateOfBirth": "2022-05-30",
+    "DateOfBirth": "2022-06-08",
     "UserType": "Buyer"
   }
 ]
