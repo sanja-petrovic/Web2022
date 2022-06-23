@@ -4,6 +4,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.time.LocalDate;
 
+import beans.Buyer;
 import beans.User;
 import beans.UserType;
 import dao.Repository;
@@ -26,14 +27,31 @@ public class UserService {
 		return u;
 	}
 	
-	public static User registerUser(RegisterUserDTO registerUserDTO) throws NoSuchAlgorithmException, InvalidKeySpecException {
+	public static Buyer registerBuyer(RegisterUserDTO registerUserDTO) throws NoSuchAlgorithmException, InvalidKeySpecException {
 		User user = new User(registerUserDTO.getUsername(), PasswordService.generateStrongPasswordHash(registerUserDTO.getPassword()), registerUserDTO.getName(), registerUserDTO.getSurname(), GenderParser.parse(registerUserDTO.getGender()), LocalDate.parse(registerUserDTO.getDateOfBirth()), UserType.BUYER);
+		Buyer b = new Buyer(user);
+		b.setType(Repository.getInstance().getBuyerTypeDAO().getBuyerTypeByTier("Bronzani"));
 		Repository.getInstance().getUserDAO().addUser(user);
+		Repository.getInstance().getBuyerDAO().addBuyer(b);
 		
-		return user;
+		return b;
 	}
 	
 	public static void removeUser(User u) {
 		Repository.getInstance().getUserDAO().removeUser(u);
+	}
+	
+	public static User getCompleteData(String username) {
+		User retVal = null;
+		
+		UserType userType = Repository.getInstance().getUserDAO().getUserTypeByUsername(username);
+		
+		switch(userType) {
+		case BUYER:
+			User u = Repository.getInstance().getBuyerDAO().getBuyerByUsername(username);
+			retVal = (Buyer) u;
+		}
+		
+		return retVal;
 	}
 }

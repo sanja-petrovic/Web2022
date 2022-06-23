@@ -83,5 +83,29 @@ public class BuyerDAO {
 		this.buyers.add(b);
 		this.writeBuyers();
 	}
+	
+	public Buyer getBuyerById(String id) {
+		Buyer retVal = null;
+		for(Buyer b : this.buyers) {
+			if(b.getId().equals(id)) {
+				retVal = b;
+				break;
+			}
+		}
+		
+		return retVal;
+	}
+	
+	public Buyer getBuyerByUsername(String username) {
+		Buyer retVal = null;
+		for(Buyer b : this.buyers) {
+			if(b.getUsername().equals(username)) {
+				retVal = b;
+				break;
+			}
+		}
+		
+		return retVal;
+	}
 
 }

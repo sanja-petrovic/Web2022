@@ -81,16 +81,19 @@ public class UserDAO {
 	public void addUser(User u) {
 		this.users.add(u);
 		UserType type = u.getUserType();
-		switch(type) {
-			case BUYER: 
-				Repository.getInstance().getBuyerDAO().addBuyer(new Buyer(u));
-				break;
-			case MANAGER:
-				Repository.getInstance().getManagerDAO().addManager(new Manager(u));
-				break;
-		}
 		
 		this.writeUsers();
+	}
+	
+	public UserType getUserTypeByUsername(String username) {
+		UserType retVal = null;
+		for(User u : this.users) {
+			if(u.getUsername().equals(username)) {
+				retVal = u.getUserType();
+			}
+		}
+		
+		return retVal;
 	}
 	
 	public void removeUser(User u) {

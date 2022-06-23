@@ -7,6 +7,9 @@
   {
     "VisitedObjects": [],
     "Points": 0.0,
+    "BuyerType": {
+      "Tier": "Bronzani"
+    },
     "Username": "ivana"
   },
   {
@@ -18,5 +21,13 @@
     "VisitedObjects": [],
     "Points": 0.0,
     "Username": "jana"
+  },
+  {
+    "VisitedObjects": [],
+    "Points": 0.0,
+    "BuyerType": {
+      "Tier": "Bronzani"
+    },
+    "Username": "filip"
   }
 ]

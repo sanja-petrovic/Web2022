@@ -13,6 +13,7 @@ import services.PasswordService;
 import services.UserService;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
+import util.adapters.LocalTimeAdapter;
 import util.parsers.GenderParser;
 
 import static spark.Spark.get;
@@ -22,9 +23,10 @@ import static spark.Spark.put;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class UserController {
-	private static Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
+	private static Gson gson = new GsonBuilder().registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
 	private static String basePath = "/rest";
 	
 	public UserController() {
@@ -49,7 +51,7 @@ public class UserController {
 			String payload = req.body();
 			LoginUserDTO u = gson.fromJson(payload, LoginUserDTO.class);
 			
-			User user = Repository.getInstance().getUserDAO().getUserByUsername(u.getUsername().trim());
+			User user = UserService.getCompleteData(u.getUsername());
 			
 			if(user == null) {
 				res.status(401);
@@ -61,6 +63,7 @@ public class UserController {
 				return res.body();
 			}
 			System.out.println("logged in: " + user.getUsername());
+			
 			req.session().attribute("user", user);
 			return gson.toJson(user);
 		});
@@ -105,7 +108,7 @@ public class UserController {
 			String payload = req.body();
 			RegisterUserDTO u = gson.fromJson(payload, RegisterUserDTO.class);
 			
-			User user = UserService.registerUser(u);
+			User user = UserService.registerBuyer(u);
 			System.out.println(user);
 			req.session().attribute("user", user);
 			

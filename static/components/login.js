@@ -36,11 +36,6 @@ Vue.component('login-page', {
             })
                 .then(function response(resp) {
                     oopsie = false;
-                    window.localStorage.clear();
-                    window.localStorage.setItem("username", resp.data.Username);
-                    window.localStorage.setItem("name", resp.data.Name);
-                    window.localStorage.setItem("surname", resp.data.Surname);
-                    window.localStorage.setItem("type", resp.data.UserType);
                 })
                 .catch(function error(err) {
                     oopsie = true;

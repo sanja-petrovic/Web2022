@@ -527,7 +527,7 @@ let SportsObjectPage = Vue.component('sports-object-page', {
 let HomePage = Vue.component('home-page', {
 	data: function() {
 		return {
-			loggedIn: window.localStorage.getItem("username") !== null,
+			loggedIn: null,
 			sportsObjects: null,
 			typesOfObjects: [],
 			displayedObjects: null,
@@ -674,10 +674,16 @@ let HomePage = Vue.component('home-page', {
         </div>
     `,
 	mounted() {
+		this.loggedInCheck();
 		this.displaySportsObjects();
 	},
 	methods:
 	{
+		loggedInCheck: function () {
+			axios.get(`/rest/loggedInUser`)
+				.then(response => (this.loggedIn = response.data !== null))
+				.catch(error => console.log(error));
+		},
 		displaySportsObjects: function() {
 			axios.get('rest/sportsobjects')
 			.then(response => {

@@ -1,9 +1,8 @@
 Vue.component('navBarLoggedIn', {
     data: function () {
         return {
-            username: window.localStorage.getItem("username"),
-            name: window.localStorage.getItem("name"),
-            surname: window.localStorage.getItem("surname"),
+            name: "",
+            surname: ""
         }
     }, template: `
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
@@ -48,14 +47,20 @@ Vue.component('navBarLoggedIn', {
                 username: this.username, password: this.password
             })
                 .then(function response(resp) {
-                    window.localStorage.clear();
                     window.location.href = "/";
                 })
                 .catch(function error(err) {
-                    window.localStorage.clear();
                     window.location.href = "/";
                     console.log(err);
                 });
         }
+    },
+    mounted() {
+        axios.get(`/rest/loggedInUser`)
+            .then(response => {
+                this.name = response.data.Name;
+                this.surname = response.data.Surname;
+            })
+            .catch(error => console.log(error));
     }
 })

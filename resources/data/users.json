@@ -38,5 +38,15 @@
     "Gender": "Ženski",
     "DateOfBirth": "2022-06-08",
     "UserType": "Buyer"
+  },
+  {
+    "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+    "Username": "filip",
+    "Password": "1000:e03d09282b7a6648cc67b89e8322049f:5ad508fbc60df61322281ee913d8acaebfe4506995ace8f7e05b97bcd7ce49a7bfd54afe171e964de94ff8a5f190433c50cf0a91dd05fbaaa62bbe0e7049ea6c",
+    "Name": "Filip",
+    "Surname": "Filipović",
+    "Gender": "Muški",
+    "DateOfBirth": "2022-06-02",
+    "UserType": "Buyer"
   }
 ]
