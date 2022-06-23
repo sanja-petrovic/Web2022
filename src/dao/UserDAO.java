@@ -1,6 +1,5 @@
 package dao;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
@@ -9,8 +8,6 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import util.LocalDateAdapter;
-import util.LocalDateTimeAdapter;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,9 +15,11 @@ import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
 import beans.Buyer;
-import beans.Gender;
+import beans.Manager;
 import beans.User;
 import beans.UserType;
+import util.adapters.LocalDateAdapter;
+import util.adapters.LocalDateTimeAdapter;
 
 public class UserDAO {
 	
@@ -70,9 +69,9 @@ public class UserDAO {
 		this.users = users;
 	}
 
-	public User getUserById(String id) {
+	public User getUserByUsername(String username) {
 		for (User user : this.users) {
-			if (user.getUsername().equals(id)) {
+			if (user.getUsername().equals(username)) {
 				return user;
 			}
 		}
@@ -81,10 +80,26 @@ public class UserDAO {
 	
 	public void addUser(User u) {
 		this.users.add(u);
-		if(u.getUserType().equals(UserType.BUYER)) {
-			repository.getInstance().getBuyerDAO().addBuyer(new Buyer(u));
-		}
+		UserType type = u.getUserType();
+		
 		this.writeUsers();
+	}
+	
+	public UserType getUserTypeByUsername(String username) {
+		UserType retVal = null;
+		for(User u : this.users) {
+			if(u.getUsername().equals(username)) {
+				retVal = u.getUserType();
+			}
+		}
+		
+		return retVal;
+	}
+	
+	public void removeUser(User u) {
+		if(this.users.contains(u)) {
+			u.setDeletedAt(LocalDateTime.now());
+		}
 	}
 
 }

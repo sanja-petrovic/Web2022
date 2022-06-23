@@ -2,6 +2,7 @@ package controller;
 
 import static spark.Spark.get;
 import static spark.Spark.path;
+import static spark.Spark.post;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -10,10 +11,18 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import beans.Manager;
 import beans.SportsObject;
+import beans.SportsObjectStatus;
+import beans.User;
+import beans.UserType;
+import dao.Repository;
 import dao.SportsObjectDAO;
-import util.LocalDateTimeAdapter;
-import util.LocalTimeAdapter;
+import dto.RegisterUserDTO;
+import dto.SportsObjectDTO;
+import services.PasswordService;
+import util.adapters.LocalDateTimeAdapter;
+import util.adapters.LocalTimeAdapter;
 
 public class SportsObjectController {
 	
@@ -28,6 +37,27 @@ public class SportsObjectController {
 			getSportsObjectByName();
 			getSportsObjectByLocation();
 			getSportsObjectByRatingInterval();
+		});
+	}
+	
+	
+	public void createSportsObject() {
+		post("/createSportsObject", (req, res) -> {
+			res.type("application/json");
+			String payload = req.body();
+			SportsObjectDTO s = gson.fromJson(payload, SportsObjectDTO.class);
+			
+			Manager m = Repository.getInstance().getManagerDAO().getManagerById(s.getManager());
+			
+			SportsObject sportsObject = new SportsObject();
+			sportsObject.setName(s.getName());
+			sportsObject.setLogoIcon(s.getLogoIcon());
+			sportsObject.setType(s.getType());
+			sportsObject.setStatus(SportsObjectStatus.WORKING);
+			//location ??
+			m.setSportsObject(sportsObject);
+			
+			return gson.toJson(sportsObject);
 		});
 	}
 	

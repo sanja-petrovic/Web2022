@@ -13,8 +13,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import beans.SportsObject;
-import util.LocalDateTimeAdapter;
-import util.LocalTimeAdapter;
+import util.adapters.LocalDateTimeAdapter;
+import util.adapters.LocalTimeAdapter;
 
 public class SportsObjectDAO {
 
@@ -24,6 +24,7 @@ public class SportsObjectDAO {
 
 	public SportsObjectDAO() {
 		this.sportsObjects = new ArrayList<>();
+		this.load();
 	}
 
 
@@ -42,6 +43,18 @@ public class SportsObjectDAO {
 	public ArrayList<SportsObject> getSportsObjects() {
 		this.load();
 		return this.sportsObjects;
+	}
+	
+	public SportsObject getSportsObjectById(String name) {
+		SportsObject retVal = null;
+		for(SportsObject sportsObject : this.sportsObjects) {
+			if(sportsObject.getName().equals(name)) {
+				retVal = sportsObject;
+				break;
+			}
+		}
+		
+		return retVal;
 	}
 	
 	public List<SportsObject> getSportsObjectByType(String type) {
@@ -68,6 +81,9 @@ public class SportsObjectDAO {
 		List<SportsObject> searchedObjects = new ArrayList<SportsObject>();
 		for (SportsObject sportsObject : this.sportsObjects) {
 			if(sportsObject.getLocation().getAddress().getCity().toLowerCase().contains(location)) {
+				searchedObjects.add(sportsObject);
+			}
+			else if(sportsObject.getLocation().getAddress().getCountry().toLowerCase().contains(location)) {
 				searchedObjects.add(sportsObject);
 			}
 		}

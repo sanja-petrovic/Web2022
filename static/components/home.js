@@ -1,7 +1,7 @@
 Vue.component('home-page', {
     data: function () {
         return {
-            loggedIn: window.localStorage.getItem("username") !== null
+            loggedIn: false
         }
     },
     template: `
@@ -111,6 +111,10 @@ Vue.component('home-page', {
             </div>
         </div>
         </div>
-    `, methods: {}, mounted() {
+    `, methods: {},
+    mounted() {
+        axios.get(`/rest/loggedInUser}`)
+            .then(response => (this.loggedIn = response.data && response.data.length))
+            .catch(error => console.log(error));
     }
 });

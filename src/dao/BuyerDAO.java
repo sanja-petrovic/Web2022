@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -15,24 +14,15 @@ import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
 import beans.Buyer;
-import beans.BuyerType;
 import beans.User;
-import beans.UserType;
-import util.LocalDateAdapter;
-import util.LocalDateTimeAdapter;
+import util.adapters.LocalDateTimeAdapter;
 
 public class BuyerDAO {
 	private ArrayList<Buyer> buyers;
-	private UserDAO userDAO;
-	private BuyerTypeDAO buyerTypeDAO;
-	private MembershipDAO membershipDAO;
 	private Gson gson;
-	private static Repository repository;
 	
 	public BuyerDAO() {
 		this.buyers = new ArrayList<>();
-		this.buyerTypeDAO = new BuyerTypeDAO();
-		this.membershipDAO = new MembershipDAO();
 		this.load();
 	}
 	
@@ -56,7 +46,7 @@ public class BuyerDAO {
 	}
 	
 	public void fillData(Buyer b) {
-		User u = repository.getInstance().getUserDAO().getUserById(b.getUsername());
+		User u = Repository.getInstance().getUserDAO().getUserByUsername(b.getUsername());
 		if(u != null) {
 			b.setName(u.getName());
 			b.setSurname(u.getSurname());
@@ -65,10 +55,10 @@ public class BuyerDAO {
 			b.setPassword(u.getPassword());
 			b.setDeletedAt(u.getDeletedAt());
 			if(b.getType() != null) {
-				b.setType(this.buyerTypeDAO.getBuyerTypeByTier(b.getType().getTier()));
+				b.setType(Repository.getInstance().getBuyerTypeDAO().getBuyerTypeByTier(b.getType().getTier()));
 			}
 			if(b.getMembership() != null) {
-				b.setMembership(this.membershipDAO.getMembershipById(b.getMembership().getId()));
+				b.setMembership(Repository.getInstance().getMembershipDAO().getMembershipById(b.getMembership().getId()));
 			}
 		}
 	}
@@ -92,6 +82,30 @@ public class BuyerDAO {
 	public void addBuyer(Buyer b) {
 		this.buyers.add(b);
 		this.writeBuyers();
+	}
+	
+	public Buyer getBuyerById(String id) {
+		Buyer retVal = null;
+		for(Buyer b : this.buyers) {
+			if(b.getId().equals(id)) {
+				retVal = b;
+				break;
+			}
+		}
+		
+		return retVal;
+	}
+	
+	public Buyer getBuyerByUsername(String username) {
+		Buyer retVal = null;
+		for(Buyer b : this.buyers) {
+			if(b.getUsername().equals(username)) {
+				retVal = b;
+				break;
+			}
+		}
+		
+		return retVal;
 	}
 
 }

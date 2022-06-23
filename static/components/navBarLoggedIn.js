@@ -1,9 +1,8 @@
 Vue.component('navBarLoggedIn', {
     data: function () {
         return {
-            username: window.localStorage.getItem("username"),
-            name: window.localStorage.getItem("name"),
-            surname: window.localStorage.getItem("surname"),
+            name: "",
+            surname: ""
         }
     }, template: `
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
@@ -33,7 +32,7 @@ Vue.component('navBarLoggedIn', {
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#" v-on:click="this.logOut">Odjavi se</a></li>
+                            <li><a class="dropdown-item" href="#" v-on:click="logOut">Odjavi se</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -41,20 +40,27 @@ Vue.component('navBarLoggedIn', {
         </div>
         </nav>
     `, methods: {
-        logOut: function () {
-            window.localStorage.clear();
-            window.location.href = "/";
-            router.replace("/");
-            axios.post('/rest/logout', {
+        logOut: async function () {
+            this.$router.replace("/");
+            event.preventDefault();
+            await axios.post('/rest/logout', {
                 username: this.username, password: this.password
             })
                 .then(function response(resp) {
-                    window.localStorage.clear();
                     window.location.href = "/";
                 })
                 .catch(function error(err) {
+                    window.location.href = "/";
                     console.log(err);
                 });
         }
+    },
+    mounted() {
+        axios.get(`/rest/loggedInUser`)
+            .then(response => {
+                this.name = response.data.Name;
+                this.surname = response.data.Surname;
+            })
+            .catch(error => console.log(error));
     }
 })

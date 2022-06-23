@@ -16,18 +16,19 @@ body {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 0.9fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 0.25fr));
   gap: 2rem;
   margin: 2rem 2vw;
   padding: 0;
   list-style-type: none;
   max-width: 80vw;
+  margin-bottom: 10vh;
 }
 
 .card {
   position: relative;
   display: block;
-  height: 11vw;
+  height: 13vw;
   border-radius: calc(var(--curve) * 1px);
   overflow: hidden;
   text-decoration: none;

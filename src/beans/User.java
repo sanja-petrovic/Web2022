@@ -2,12 +2,16 @@ package beans;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class User {
 
+	@Expose
+	@SerializedName("Id")
+	private String id;
 	@Expose
 	@SerializedName("Username")
 	private String username;
@@ -28,6 +32,7 @@ public class User {
 
 	public User(String username, String password, String name, String surname, Gender gender, LocalDate dateOfBirth,
 			UserType userType) {
+		this.id = UUID.randomUUID().toString();
 		this.username = username;
 		this.password = password;
 		this.name = name;
@@ -114,6 +119,14 @@ public class User {
 
 	public void setUserType(UserType userType) {
 		this.userType = userType;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

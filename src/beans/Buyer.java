@@ -45,6 +45,7 @@ public class Buyer extends User {
 		super(u);
 		this.visitedObjects = new ArrayList<>();
 		this.points = 0;
+		
 	}
 
 	public Membership getMembership() {

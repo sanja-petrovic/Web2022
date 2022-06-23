@@ -112,8 +112,53 @@
 }
 
 .clear-button {
+  @extend %basic-tertiary-button;
+  padding-left: 0;
+}
+
+.clear-button:hover {
+  @extend %basic-tertiary-button-hover;
+}
+
+.filter-type-button {
+  @extend %basic-secondary-button;
+}
+
+.filter-type-button:hover {
+  @extend %basic-secondary-button-hover;
+}
+
+.filter-tag-unchecked {
+  @extend %basic-secondary-button;
+  pointer: hand;
+}
+
+.filter-tag-checked {
   @extend %basic-primary-button;
-  font-size: 10px;
-  max-height: 2em;
-  padding: 0.3em 0.7em;
+}
+
+.filter-list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+
+  li {
+    display: inline;
+    margin-right: 1.2em;
+  }
+  input[type=radio] {
+    margin-right: 0.4em;
+  }
+}
+
+.cancel-button {
+  @extend %basic-primary-button;
+  background-color: $invalid-color;
+  color: $primary-button-foreground;
+  box-shadow: 0 0 1em 0 rgba(255, 99, 128, 0.5);
+}
+
+.cancel-button:hover {
+  background-color: $invalid-color-hover;
 }

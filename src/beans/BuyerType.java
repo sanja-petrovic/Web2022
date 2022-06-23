@@ -9,13 +9,10 @@ public class BuyerType {
 	@Expose
 	@SerializedName("Tier")
 	public String tier;
-	@Expose
 	@SerializedName("Discount")
 	public double discount;
-	@Expose
 	@SerializedName("PointRequirement")
 	public int pointRequirement;
-	@Expose
 	@SerializedName("DeletedAt")
 	public LocalDateTime deletedAt;
 	

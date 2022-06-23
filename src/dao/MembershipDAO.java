@@ -13,8 +13,8 @@ import com.google.gson.reflect.TypeToken;
 
 import beans.BuyerType;
 import beans.Membership;
-import util.LocalDateAdapter;
-import util.LocalDateTimeAdapter;
+import util.adapters.LocalDateAdapter;
+import util.adapters.LocalDateTimeAdapter;
 
 public class MembershipDAO {
 	private ArrayList<Membership> memberships;
@@ -34,7 +34,6 @@ public class MembershipDAO {
 		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/memberships.json"));
 		    this.memberships = gson.fromJson(reader, new TypeToken<ArrayList<Membership>>() {}.getType());
 		    reader.close();
-
 		} catch (Exception ex) {
 		    ex.printStackTrace();
 		}

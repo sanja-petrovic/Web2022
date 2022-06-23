@@ -1,4 +1,4 @@
-package util;
+package util.adapters;
 
 import java.lang.reflect.Type;
 import java.time.LocalTime;

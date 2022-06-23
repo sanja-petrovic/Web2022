@@ -1,4 +1,4 @@
-package util;
+package util.adapters;
 
 import java.io.IOException;
 import java.lang.reflect.Type;

@@ -11166,7 +11166,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.clear-button, .sort-button, .filter-button, .submit-button, .search-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .submit-button, .search-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -11175,7 +11175,39 @@ select, .text-box {
   border-radius: 10px;
   box-shadow: 0 0 1em 0 rgba(99, 130, 255, 0.5);
   transition: 0.3s;
+  cursor: hand;
+}
+
+.filter-tag-unchecked, .filter-type-button {
+  font-size: 12px;
+  background-color: transparent;
+  border: #6382ff 2px solid;
+  background-color: white;
+  color: #6382ff;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: 0.3s;
   cursor: pointer;
+  padding: 7px;
+}
+
+.filter-type-button:hover {
+  border-color: #a9bdff;
+  color: #a9bdff;
+}
+
+.clear-button {
+  font-size: 12px;
+  background-color: transparent;
+  border: transparent 0px solid;
+  color: #6382ff;
+  font-weight: 500;
+  transition: 0.3s;
+  cursor: hand;
+}
+
+.clear-button:hover {
+  color: #a9bdff;
 }
 
 .filter-button:hover, .submit-button:hover, .search-button:hover {
@@ -22408,7 +22440,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.clear-button, .sort-button, .filter-button, .submit-button, .search-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .submit-button, .search-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -22417,7 +22449,39 @@ select, .text-box {
   border-radius: 10px;
   box-shadow: 0 0 1em 0 rgba(99, 130, 255, 0.5);
   transition: 0.3s;
+  cursor: hand;
+}
+
+.filter-tag-unchecked, .filter-type-button {
+  font-size: 12px;
+  background-color: transparent;
+  border: #6382ff 2px solid;
+  background-color: white;
+  color: #6382ff;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: 0.3s;
   cursor: pointer;
+  padding: 7px;
+}
+
+.filter-type-button:hover {
+  border-color: #a9bdff;
+  color: #a9bdff;
+}
+
+.clear-button {
+  font-size: 12px;
+  background-color: transparent;
+  border: transparent 0px solid;
+  color: #6382ff;
+  font-weight: 500;
+  transition: 0.3s;
+  cursor: hand;
+}
+
+.clear-button:hover {
+  color: #a9bdff;
 }
 
 .filter-button:hover, .submit-button:hover, .search-button:hover {
@@ -33731,7 +33795,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.clear-button, .sort-button, .filter-button, .search-button, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -33740,7 +33804,39 @@ select, .text-box {
   border-radius: 10px;
   box-shadow: 0 0 1em 0 rgba(99, 130, 255, 0.5);
   transition: 0.3s;
+  cursor: hand;
+}
+
+.filter-tag-unchecked, .filter-type-button {
+  font-size: 12px;
+  background-color: transparent;
+  border: #6382ff 2px solid;
+  background-color: white;
+  color: #6382ff;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: 0.3s;
   cursor: pointer;
+  padding: 7px;
+}
+
+.filter-type-button:hover {
+  border-color: #a9bdff;
+  color: #a9bdff;
+}
+
+.clear-button {
+  font-size: 12px;
+  background-color: transparent;
+  border: transparent 0px solid;
+  color: #6382ff;
+  font-weight: 500;
+  transition: 0.3s;
+  cursor: hand;
+}
+
+.clear-button:hover {
+  color: #a9bdff;
 }
 
 .filter-button:hover, .search-button:hover, .submit-button:hover {
@@ -45056,7 +45152,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.clear-button, .sort-button, .filter-button, .search-button, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -45065,7 +45161,39 @@ textarea.form-control-lg {
   border-radius: 10px;
   box-shadow: 0 0 1em 0 rgba(99, 130, 255, 0.5);
   transition: 0.3s;
+  cursor: hand;
+}
+
+.filter-tag-unchecked, .filter-type-button {
+  font-size: 12px;
+  background-color: transparent;
+  border: #6382ff 2px solid;
+  background-color: white;
+  color: #6382ff;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: 0.3s;
   cursor: pointer;
+  padding: 7px;
+}
+
+.filter-type-button:hover {
+  border-color: #a9bdff;
+  color: #a9bdff;
+}
+
+.clear-button {
+  font-size: 12px;
+  background-color: transparent;
+  border: transparent 0px solid;
+  color: #6382ff;
+  font-weight: 500;
+  transition: 0.3s;
+  cursor: hand;
+}
+
+.clear-button:hover {
+  color: #a9bdff;
 }
 
 .filter-button:hover, .search-button:hover, .submit-button:hover {
@@ -45150,18 +45278,19 @@ body {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 0.9fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 0.25fr));
   gap: 2rem;
   margin: 2rem 2vw;
   padding: 0;
   list-style-type: none;
   max-width: 80vw;
+  margin-bottom: 10vh;
 }
 
 .card {
   position: relative;
   display: block;
-  height: 11vw;
+  height: 13vw;
   border-radius: calc(var(--curve) * 1px);
   overflow: hidden;
   text-decoration: none;
@@ -56438,7 +56567,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.clear-button, .sort-button, .filter-button, .search-button, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -56447,7 +56576,39 @@ textarea.form-control-lg {
   border-radius: 10px;
   box-shadow: 0 0 1em 0 rgba(99, 130, 255, 0.5);
   transition: 0.3s;
+  cursor: hand;
+}
+
+.filter-tag-unchecked, .filter-type-button {
+  font-size: 12px;
+  background-color: transparent;
+  border: #6382ff 2px solid;
+  background-color: white;
+  color: #6382ff;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: 0.3s;
   cursor: pointer;
+  padding: 7px;
+}
+
+.filter-type-button:hover {
+  border-color: #a9bdff;
+  color: #a9bdff;
+}
+
+.clear-button {
+  font-size: 12px;
+  background-color: transparent;
+  border: transparent 0px solid;
+  color: #6382ff;
+  font-weight: 500;
+  transition: 0.3s;
+  cursor: hand;
+}
+
+.clear-button:hover {
+  color: #a9bdff;
 }
 
 .filter-button:hover, .search-button:hover, .submit-button:hover {
@@ -67794,7 +67955,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.clear-button, .sort-button, .filter-button, .search-button, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -67803,7 +67964,39 @@ textarea.form-control-lg {
   border-radius: 10px;
   box-shadow: 0 0 1em 0 rgba(99, 130, 255, 0.5);
   transition: 0.3s;
+  cursor: hand;
+}
+
+.filter-tag-unchecked, .filter-type-button {
+  font-size: 12px;
+  background-color: transparent;
+  border: #6382ff 2px solid;
+  background-color: white;
+  color: #6382ff;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: 0.3s;
   cursor: pointer;
+  padding: 7px;
+}
+
+.filter-type-button:hover {
+  border-color: #a9bdff;
+  color: #a9bdff;
+}
+
+.clear-button {
+  font-size: 12px;
+  background-color: transparent;
+  border: transparent 0px solid;
+  color: #6382ff;
+  font-weight: 500;
+  transition: 0.3s;
+  cursor: hand;
+}
+
+.clear-button:hover {
+  color: #a9bdff;
 }
 
 .filter-button:hover, .search-button:hover, .submit-button:hover {
@@ -67872,6 +68065,14 @@ h4, .h4 {
   font-weight: 500;
 }
 
+.about-wrapper {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .profile {
   width: 100%;
   height: 100%;
@@ -67881,6 +68082,7 @@ h4, .h4 {
 }
 .profile h4, .profile .h4 {
   width: 60vw;
+  margin-left: -0.45vw;
 }
 
 .about-section {
@@ -67888,6 +68090,7 @@ h4, .h4 {
   min-height: 60vh;
   padding: 2vw;
   flex-direction: row;
+  margin-bottom: 2vw;
 }
 
 .info, .membership {
@@ -68012,9 +68215,35 @@ h4, .h4 {
 }
 
 .clear-button {
-  font-size: 10px;
-  max-height: 2em;
-  padding: 0.3em 0.7em;
+  padding-left: 0;
+}
+
+.filter-tag-unchecked {
+  pointer: hand;
+}
+
+.filter-list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}
+.filter-list li {
+  display: inline;
+  margin-right: 1.2em;
+}
+.filter-list input[type=radio] {
+  margin-right: 0.4em;
+}
+
+.cancel-button {
+  background-color: #ff5b68;
+  color: white;
+  box-shadow: 0 0 1em 0 rgba(255, 99, 128, 0.5);
+}
+
+.cancel-button:hover {
+  background-color: #ff7e8b;
 }
 
 /*# sourceMappingURL=home.css.map */
