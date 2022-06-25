@@ -5,7 +5,7 @@ Vue.component('create-sports-object', {
             title: "",
             type: "",
             location: "",
-            logo: "",
+            logo: null,
             manager: "Menadžer",
             errorExists: false,
             errorMessage: "",
@@ -30,7 +30,7 @@ Vue.component('create-sports-object', {
                                     <input type="text" placeholder="Ulica" class="form-control text-box" required>
                                     <input type="text" placeholder="Broj" class="form-control text-box" required>
                                 </div>-->
-                                <input class="text-box create-input form-control custom-file-input" accept="image/*" ref="myFile" type="file" @change="addFile">
+                                <input class="text-box create-input form-control custom-file-input" id="fileUpload" accept="image/*" ref="myFile" type="file" @change="previewFile">
 
                                 <select v-model="manager" required>
                                     <option disabled selected hidden>Menadžer</option>
@@ -85,25 +85,65 @@ Vue.component('create-sports-object', {
     },
 
     methods: {
-        createSportsObject: async function () {
-            let oopsie = false;
-            event.preventDefault();
-            await axios.post('/rest/createSportsObject', {
-                name: this.title, manager: this.manager.Id, type: this.type, logoIcon: this.logoIcon
+        previewFile: function () {
+            //var preview = document.querySelector('#preview');
+            var file    = document.querySelector('input[type=file]').files[0];
+            var reader  = new FileReader();
+
+            /*reader.onloadend = function () {
+                preview.src = reader.result;
+            }*/
+
+            if (file) {
+                reader.readAsDataURL(file);
+                $('#preview').show();
+            } else {
+                preview.src = "";
+                $('#preview').hide();
+            }
+        },
+
+
+        createSportsObject: function () {
+            return new Promise((resolve, reject) => {
+                let oopsie = false;
+                event.preventDefault();
+                var picturePath  = new FileReader();
+                var file   = this.$refs.myFile.files[0];
+                var fileName = this.$refs.myFile.files[0].name;
+                picturePath.readAsDataURL(file);
+                let image = $('#fileUpload')[0];
+                picturePath.onloadend = () =>
+                {
+                    axios.post('/rest/createSportsObject', {
+                        name: this.title, manager: this.manager.Id, type: this.type, imgData: picturePath.result, fileName: fileName
+                    })
+                        .then(function response(resp){
+                            location.reload();
+                            oopsie = false;
+                        }).catch(function error(err) {
+                        alert(err.response.data);
+                        oopsie = true;
+                    });
+                }
+            })
+
+            /*axios.post('/rest/createSportsObject', {
+                name: this.title, manager: this.manager.Id, type: this.type, imgData: picturePath.result, fileName: fileName
             })
                 .then(function response(resp) {
                     oopsie = false;
                 })
                 .catch(function error(err) {
                     oopsie = true;
-                });
+                });*/
 
-            if(oopsie) {
+            /*if(oopsie) {
                 this.$router.replace("/dodaj-objekat");
             } else {
                 this.$router.replace("/");
             }
-            this.errorExists = oopsie;
+            this.errorExists = oopsie;*/
         },
 
         registerManager: function () {
@@ -112,10 +152,48 @@ Vue.component('create-sports-object', {
             }
         },
 
-        addFile: function () {
-            const formData = new FormData();
-            formData.append('file', this.Images);
+        addFile: async function () {
             this.logo = this.$refs.myFile.files[0];
+            event.preventDefault();
+            await axios.post('/rest/uploadPhoto', this.logo)
+                .then(function response(resp) {
+                    oopsie = false;
+                })
+                .catch(function error(err) {
+                    oopsie = true;
+                });
+        },
+
+        saveFile: async function (formData) {
+            let oopsie = false;
+
+        },
+
+        okaci: function() {
+            var picturePath  = new FileReader();
+                var file   = this.$refs.myFile.files[0];
+                var fileName = this.$refs.myFile.files[0].name;
+                picturePath.readAsDataURL(file);
+                let image = $('#fileUpload')[0];
+                pictureSend = true;
+
+
+            if(pictureSend){
+                picturePath.onloadend = function ()
+                {
+                    axios.
+                    post("/rest/uploadPhoto",
+                        JSON.stringify({
+                            'imgData' : picturePath.result,
+                            'fileName' : fileName
+                        }))
+                        .then(function response(resp){
+                            location.reload();
+                        }).catch(function error(err) {
+                        alert(err.response.data);
+                    });
+                }
+            }
         }
     }
 })

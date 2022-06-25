@@ -101,6 +101,7 @@ public class ManagerDAO {
 	
 	public Manager getManagerByUsername(String username) {
 		Manager retVal = null;
+		this.load();
 		for(Manager m : this.managers) {
 			if(m.getUsername().equals(username)) {
 				retVal = m;

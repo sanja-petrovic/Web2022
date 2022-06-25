@@ -157,6 +157,7 @@
     "name": "s",
     "type": "s",
     "status": "WORKING",
+    "logoIcon": ".\\resources\\images\\pool.png",
     "averageGrade": 0.0
   }
 ]

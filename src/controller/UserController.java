@@ -19,9 +19,17 @@ import static spark.Spark.path;
 import static spark.Spark.post;
 import static spark.Spark.put;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Base64;
+
+import javax.servlet.MultipartConfigElement;
 
 public class UserController {
 	private static Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
@@ -126,5 +134,6 @@ public class UserController {
 			return gson.toJson(user);
 		});
 	}
+	
 
 }

@@ -48,5 +48,15 @@
     "Gender": "Muški",
     "DateOfBirth": "2022-06-02",
     "UserType": "Buyer"
+  },
+  {
+    "Id": "3a912216-ecdd-4ee8-9b64-591481983b67",
+    "Username": "luka",
+    "Password": "1000:9212fa4af4b98ba515535d427abe3744:80ace39c13aeaa6ae3dc09db771411b768baa51c7478e3456780bb789ae949bbd235510c8eabf1c23dd51f831cbf43965e444641a7516e6d1c548841cb963e80",
+    "Name": "Luka",
+    "Surname": "Lukić",
+    "Gender": "Muški",
+    "DateOfBirth": "2022-06-13",
+    "UserType": "Manager"
   }
 ]

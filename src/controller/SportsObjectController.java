@@ -4,8 +4,12 @@ import static spark.Spark.get;
 import static spark.Spark.path;
 import static spark.Spark.post;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Base64;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -53,10 +57,25 @@ public class SportsObjectController {
 			
 			SportsObject sportsObject = new SportsObject();
 			sportsObject.setName(s.getName());
-			sportsObject.setLogoIcon(s.getLogoIcon());
 			sportsObject.setType(s.getType());
 			sportsObject.setStatus(SportsObjectStatus.WORKING);
 			m.setSportsObject(sportsObject);
+			
+			if(!s.getImgData().isEmpty()) {
+				byte[] data;
+				try {
+					data = Base64.getDecoder().decode(s.getImgData().split(",")[1]);						
+				} catch(Exception e) {
+					res.status(400);
+					return "Data is not valid!";
+				}
+				String picturePath = ".\\resources\\images\\"+s.getFileName();
+				s.setFileName(picturePath);
+				sportsObject.setLogoIcon(s.getFileName());
+				try (OutputStream stream = new FileOutputStream(new File(picturePath).getCanonicalFile())) {
+				    stream.write(data);
+				}
+			}
 			
 			Repository.getInstance().getSportsObjectDAO().addSportsObject(sportsObject);
 			Repository.getInstance().getManagerDAO().updateManager(m);

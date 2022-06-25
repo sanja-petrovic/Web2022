@@ -11,7 +11,8 @@ public class SportsObjectDTO {
 	private String name;
 	private String type;
 	private String location;
-	private String logoIcon;
+	private String fileName;
+	private String imgData;
 	private String manager;
 	
 	public String getName() {
@@ -32,17 +33,23 @@ public class SportsObjectDTO {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public String getLogoIcon() {
-		return logoIcon;
-	}
-	public void setLogoIcon(String logoIcon) {
-		this.logoIcon = logoIcon;
-	}
 	public String getManager() {
 		return manager;
 	}
 	public void setManager(String manager) {
 		this.manager = manager;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getImgData() {
+		return imgData;
+	}
+	public void setImgData(String imgData) {
+		this.imgData = imgData;
 	}
 	
 	
