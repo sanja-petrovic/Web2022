@@ -27,7 +27,7 @@
     "Surname": "Marković",
     "Gender": "Muški",
     "DateOfBirth": "2022-05-31",
-    "UserType": "Buyer"
+    "UserType": "Manager"
   },
   {
     "Id": "bb69a589-3908-4e64-a7dc-48ca9c1fa00d",
@@ -37,7 +37,7 @@
     "Surname": "Janković",
     "Gender": "Ženski",
     "DateOfBirth": "2022-06-08",
-    "UserType": "Buyer"
+    "UserType": "Admin"
   },
   {
     "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",

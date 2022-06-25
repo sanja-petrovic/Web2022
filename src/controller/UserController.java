@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import beans.User;
-import beans.UserType;
 import dao.Repository;
 import dto.LoginUserDTO;
 import dto.ProfileDTO;
@@ -14,7 +13,6 @@ import services.UserService;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalTimeAdapter;
-import util.parsers.GenderParser;
 
 import static spark.Spark.get;
 import static spark.Spark.path;
@@ -26,7 +24,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class UserController {
-	private static Gson gson = new GsonBuilder().registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
+	private static Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
 	private static String basePath = "/rest";
 	
 	public UserController() {

@@ -36,4 +36,9 @@ public class Manager extends User {
 		this.sportsObject = sportsObject;
 	}
 	
+	@Override
+	public String toString() {
+		return this.getName() + " " + this.getSurname();
+	}
+	
 }

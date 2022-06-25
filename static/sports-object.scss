@@ -133,3 +133,11 @@
   margin-left: 2vw;
   padding: 0em 1em 1em 1em;
 }
+
+.create-divs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 2vw;
+}

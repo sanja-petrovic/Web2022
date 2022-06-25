@@ -11154,6 +11154,36 @@ textarea.form-control-lg {
   margin: 20px;
 }
 
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input::before {
+  content: "Izaberi logo";
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.5);
+  border: 0px solid #a9bdff;
+  color: #6382ff;
+  border-radius: 10px;
+  padding: 5px 0px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  transition: 0.2s ease-in-out;
+}
+
+.custom-file-input:hover::before {
+  color: #708cff;
+}
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
 select, .text-box {
   border: 0;
   outline: 0;
@@ -11274,6 +11304,10 @@ h4, .h4 {
 .invalid-input {
   color: #ff5b68;
   font-weight: 500;
+}
+
+.create-input {
+  width: 20em;
 }
 
 /*!
@@ -22428,6 +22462,36 @@ textarea.form-control-lg {
   margin: 20px;
 }
 
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input::before {
+  content: "Izaberi logo";
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.5);
+  border: 0px solid #a9bdff;
+  color: #6382ff;
+  border-radius: 10px;
+  padding: 5px 0px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  transition: 0.2s ease-in-out;
+}
+
+.custom-file-input:hover::before {
+  color: #708cff;
+}
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
 select, .text-box {
   border: 0;
   outline: 0;
@@ -22548,6 +22612,10 @@ h4, .h4 {
 .invalid-input {
   color: #ff5b68;
   font-weight: 500;
+}
+
+.create-input {
+  width: 20em;
 }
 
 .login-body {
@@ -33783,6 +33851,36 @@ textarea.form-control-lg {
   margin: 20px;
 }
 
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input::before {
+  content: "Izaberi logo";
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.5);
+  border: 0px solid #a9bdff;
+  color: #6382ff;
+  border-radius: 10px;
+  padding: 5px 0px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  transition: 0.2s ease-in-out;
+}
+
+.custom-file-input:hover::before {
+  color: #708cff;
+}
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
 select, .text-box {
   border: 0;
   outline: 0;
@@ -33905,10 +34003,13 @@ h4, .h4 {
   font-weight: 500;
 }
 
+.create-input {
+  width: 20em;
+}
+
 .register-body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
-  background-image: url("images/lightskyblue.jpg");
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;
@@ -33935,11 +34036,12 @@ h4, .h4 {
 }
 
 .register-div {
-  width: 25em;
-  height: 45em;
+  max-width: 25em;
+  max-height: 45em;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 2vw;
 }
 
 .myForm {
@@ -45140,6 +45242,36 @@ textarea.form-control-lg {
   margin: 20px;
 }
 
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input::before {
+  content: "Izaberi logo";
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.5);
+  border: 0px solid #a9bdff;
+  color: #6382ff;
+  border-radius: 10px;
+  padding: 5px 0px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  transition: 0.2s ease-in-out;
+}
+
+.custom-file-input:hover::before {
+  color: #708cff;
+}
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
 .text-box, select {
   border: 0;
   outline: 0;
@@ -45260,6 +45392,10 @@ h4, .h4 {
 .invalid-input {
   color: #ff5b68;
   font-weight: 500;
+}
+
+.create-input {
+  width: 20em;
 }
 
 :root {
@@ -56555,6 +56691,36 @@ textarea.form-control-lg {
   margin: 20px;
 }
 
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input::before {
+  content: "Izaberi logo";
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.5);
+  border: 0px solid #a9bdff;
+  color: #6382ff;
+  border-radius: 10px;
+  padding: 5px 0px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  transition: 0.2s ease-in-out;
+}
+
+.custom-file-input:hover::before {
+  color: #708cff;
+}
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
 .text-box, select {
   border: 0;
   outline: 0;
@@ -56677,6 +56843,10 @@ h4, .h4 {
   font-weight: 500;
 }
 
+.create-input {
+  width: 20em;
+}
+
 .sports-object-container {
   display: flex;
   flex-direction: column;
@@ -56789,6 +56959,14 @@ h4, .h4 {
   color: #7ca2ad;
   margin-left: 2vw;
   padding: 0em 1em 1em 1em;
+}
+
+.create-divs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 2vw;
 }
 
 /*!
@@ -67943,6 +68121,36 @@ textarea.form-control-lg {
   margin: 20px;
 }
 
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input::before {
+  content: "Izaberi logo";
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.5);
+  border: 0px solid #a9bdff;
+  color: #6382ff;
+  border-radius: 10px;
+  padding: 5px 0px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  transition: 0.2s ease-in-out;
+}
+
+.custom-file-input:hover::before {
+  color: #708cff;
+}
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
 .text-box, select {
   border: 0;
   outline: 0;
@@ -68063,6 +68271,10 @@ h4, .h4 {
 .invalid-input {
   color: #ff5b68;
   font-weight: 500;
+}
+
+.create-input {
+  width: 20em;
 }
 
 .about-wrapper {

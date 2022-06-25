@@ -28,7 +28,7 @@ Vue.component('navBarLoggedIn', {
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><router-link to="/profil" class="dropdown-item">Profil</router-link></li>
                             <li><a class="dropdown-item" href="#">Članarina</a></li>
-                            <li><a class="dropdown-item" href="#">Istorija treninga</a></li>
+                            <li><router-link class="dropdown-item" to="/dodaj-objekat">Istorija treninga</router-link></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

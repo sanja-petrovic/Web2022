@@ -3,7 +3,6 @@
 .register-body {
   margin: 0;
   font-family: $main-font;
-  background-image: url('images/lightskyblue.jpg');
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;
@@ -31,11 +30,12 @@
 
 .register-div {
   @extend %basic-white-component;
-  width: 25em;
-  height: 45em;
+  max-width: 25em;
+  max-height: 45em;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 2vw;
 }
 
 .register-div:before {

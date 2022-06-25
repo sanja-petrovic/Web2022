@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -24,6 +25,7 @@ public class ManagerDAO {
 	
 	public ManagerDAO() {
 		this.managers = new ArrayList<>();
+		this.load();
 	}
 	
 	public void createGson() {
@@ -89,5 +91,22 @@ public class ManagerDAO {
 		}
 		
 		return retVal;
+	}
+	
+	public ArrayList<Manager> getManagers() {
+
+		return this.managers;
+		
+	}
+	
+	public ArrayList<Manager> getUnassignedManagers() {
+		ArrayList<Manager> managers = new ArrayList<>();
+		for(Manager manager : this.managers) {
+			if(manager.getSportsObject() == null) {
+				managers.add(manager);
+			}
+		}
+		
+		return managers;
 	}
 }
