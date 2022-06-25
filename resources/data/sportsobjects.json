@@ -154,10 +154,47 @@
     }
   },
   {
-    "name": "s",
-    "type": "s",
+    "name": "Classic Gym",
+    "type": "Teretana",
     "status": "WORKING",
-    "logoIcon": ".\\resources\\images\\pool.png",
-    "averageGrade": 0.0
+    "location": {
+      "latitude": 45.2475,
+      "longitude": 19.84556,
+      "address": {
+        "street": "Sutjeska",
+        "number": "2",
+        "city": "Novi Sad",
+        "postcode": "21000",
+        "country": "Srbija"
+      }
+    },
+    "logoIcon": "resources/gym1.png",
+    "averageGrade": 0.0,
+    "businessHours": {
+      "startTime": "06:00",
+      "endTime": "19:00"
+    }
+  },
+  {
+    "name": "asd",
+    "type": "asd",
+    "status": "WORKING",
+    "logoIcon": "resources/stadion.png",
+    "averageGrade": 0.0,
+    "businessHours": {
+      "startTime": "03:12",
+      "endTime": "05:12"
+    },
+    "location": {
+      "latitude": 45.2475,
+      "longitude": 19.84556,
+      "address": {
+        "street": "Sutjeska",
+        "number": "2",
+        "city": "Novi Sad",
+        "postcode": "21000",
+        "country": "Srbija"
+      }
+    }
   }
 ]

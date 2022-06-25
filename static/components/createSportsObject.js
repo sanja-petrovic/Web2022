@@ -6,6 +6,10 @@ Vue.component('create-sports-object', {
             type: "",
             location: "",
             logo: null,
+            businessHours: {
+                start: null,
+                end: null
+            },
             manager: "Menadžer",
             errorExists: false,
             errorMessage: "",
@@ -25,15 +29,14 @@ Vue.component('create-sports-object', {
                                        required>
                                 <input class="text-box create-input" v-model="type" type="text"
                                        placeholder="Tip" required>
-                                <!--<div class="input-group">
-                                    <span class="input-group-text">Ulica i broj</span>
-                                    <input type="text" placeholder="Ulica" class="form-control text-box" required>
-                                    <input type="text" placeholder="Broj" class="form-control text-box" required>
-                                </div>-->
+                                <div class="input-group">
+                                    <span class="input-group-text ">Radno vreme</span>
+                                    <input type="time" placeholder="Početak" v-model="businessHours.start" class="form-control text-box" required>
+                                    <input type="time" placeholder="Kraj" v-model="businessHours.end" class="form-control text-box" required>
+                                </div>
                                 <input class="text-box create-input form-control custom-file-input" id="fileUpload" accept="image/*" ref="myFile" type="file" @change="previewFile">
 
                                 <select v-model="manager" required>
-                                    <option disabled selected hidden>Menadžer</option>
                                     <option v-for="item in this.managerOptions" :value="item"> {{ item.Name + " " + item.Surname }}</option>
                                 </select>
                                 <label class="invalid-input" v-if="errorExists">{{ this.errorMessage }}</label>
@@ -86,20 +89,11 @@ Vue.component('create-sports-object', {
 
     methods: {
         previewFile: function () {
-            //var preview = document.querySelector('#preview');
-            var file    = document.querySelector('input[type=file]').files[0];
-            var reader  = new FileReader();
+            let file    = document.querySelector('input[type=file]').files[0];
+            let reader  = new FileReader();
 
-            /*reader.onloadend = function () {
-                preview.src = reader.result;
-            }*/
-
-            if (file) {
+            if(file) {
                 reader.readAsDataURL(file);
-                $('#preview').show();
-            } else {
-                preview.src = "";
-                $('#preview').hide();
             }
         },
 
@@ -116,7 +110,7 @@ Vue.component('create-sports-object', {
                 picturePath.onloadend = () =>
                 {
                     axios.post('/rest/createSportsObject', {
-                        name: this.title, manager: this.manager.Id, type: this.type, imgData: picturePath.result, fileName: fileName
+                        name: this.title, manager: this.manager.Id, type: this.type, imgData: picturePath.result, fileName: fileName, businessHoursStart: this.businessHours.start, businessHoursEnd: this.businessHours.end
                     })
                         .then(function response(resp){
                             location.reload();
@@ -126,24 +120,14 @@ Vue.component('create-sports-object', {
                         oopsie = true;
                     });
                 }
+                if(oopsie) {
+                    this.$router.replace("/dodaj-objekat");
+                } else {
+                    this.$router.replace("/");
+                }
+                this.errorExists = oopsie;
             })
 
-            /*axios.post('/rest/createSportsObject', {
-                name: this.title, manager: this.manager.Id, type: this.type, imgData: picturePath.result, fileName: fileName
-            })
-                .then(function response(resp) {
-                    oopsie = false;
-                })
-                .catch(function error(err) {
-                    oopsie = true;
-                });*/
-
-            /*if(oopsie) {
-                this.$router.replace("/dodaj-objekat");
-            } else {
-                this.$router.replace("/");
-            }
-            this.errorExists = oopsie;*/
         },
 
         registerManager: function () {

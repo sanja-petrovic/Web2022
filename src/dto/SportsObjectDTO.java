@@ -14,6 +14,8 @@ public class SportsObjectDTO {
 	private String fileName;
 	private String imgData;
 	private String manager;
+	private String businessHoursStart;
+	private String businessHoursEnd;
 	
 	public String getName() {
 		return name;
@@ -50,6 +52,18 @@ public class SportsObjectDTO {
 	}
 	public void setImgData(String imgData) {
 		this.imgData = imgData;
+	}
+	public String getBusinessHoursStart() {
+		return businessHoursStart;
+	}
+	public void setBusinessHoursStart(String businessHoursStart) {
+		this.businessHoursStart = businessHoursStart;
+	}
+	public String getBusinessHoursEnd() {
+		return businessHoursEnd;
+	}
+	public void setBusinessHoursEnd(String businessHoursEnd) {
+		this.businessHoursEnd = businessHoursEnd;
 	}
 	
 	

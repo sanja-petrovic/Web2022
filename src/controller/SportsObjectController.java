@@ -9,12 +9,14 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import beans.BusinessHours;
 import beans.Location;
 import beans.Manager;
 import beans.SportsObject;
@@ -54,11 +56,14 @@ public class SportsObjectController {
 			SportsObjectDTO s = gson.fromJson(payload, SportsObjectDTO.class);
 			
 			Manager m = Repository.getInstance().getManagerDAO().getManagerById(s.getManager());
+
 			
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
 			SportsObject sportsObject = new SportsObject();
 			sportsObject.setName(s.getName());
 			sportsObject.setType(s.getType());
 			sportsObject.setStatus(SportsObjectStatus.WORKING);
+			sportsObject.setBusinessHours(new BusinessHours(LocalTime.parse(s.getBusinessHoursStart(), dtf), LocalTime.parse(s.getBusinessHoursEnd(), dtf)));
 			m.setSportsObject(sportsObject);
 			
 			if(!s.getImgData().isEmpty()) {
@@ -69,12 +74,14 @@ public class SportsObjectController {
 					res.status(400);
 					return "Data is not valid!";
 				}
-				String picturePath = ".\\resources\\images\\"+s.getFileName();
+				String picturePath = "./static/resources/"+s.getFileName();
+				sportsObject.setLogoIcon("resources/" + s.getFileName());
 				s.setFileName(picturePath);
-				sportsObject.setLogoIcon(s.getFileName());
 				try (OutputStream stream = new FileOutputStream(new File(picturePath).getCanonicalFile())) {
 				    stream.write(data);
 				}
+
+				picturePath = "resources/" + s.getFileName();
 			}
 			
 			Repository.getInstance().getSportsObjectDAO().addSportsObject(sportsObject);

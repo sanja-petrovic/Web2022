@@ -1,12 +1,15 @@
 [
   {
     "SportsObject": {
-      "name": "s"
+      "name": "Classic Gym"
     },
     "Id": "a3bd0158-1f31-42dc-94ac-e21adbf100ad",
     "Username": "marko"
   },
   {
+    "SportsObject": {
+      "name": "asd"
+    },
     "Id": "3a912216-ecdd-4ee8-9b64-591481983b67",
     "Username": "luka"
   }
