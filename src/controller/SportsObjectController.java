@@ -11,6 +11,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import beans.Location;
 import beans.Manager;
 import beans.SportsObject;
 import beans.SportsObjectStatus;
@@ -32,6 +33,7 @@ public class SportsObjectController {
 	
 	public void init() {
 		path(basePath, () -> {
+			createSportsObject();
 			getSportsObjects();
 			getSportsObjectByType();
 			getSportsObjectByName();
@@ -54,8 +56,10 @@ public class SportsObjectController {
 			sportsObject.setLogoIcon(s.getLogoIcon());
 			sportsObject.setType(s.getType());
 			sportsObject.setStatus(SportsObjectStatus.WORKING);
-			//location ??
 			m.setSportsObject(sportsObject);
+			
+			Repository.getInstance().getSportsObjectDAO().addSportsObject(sportsObject);
+			Repository.getInstance().getManagerDAO().updateManager(m);
 			
 			return gson.toJson(sportsObject);
 		});

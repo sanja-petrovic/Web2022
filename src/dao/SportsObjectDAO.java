@@ -1,5 +1,7 @@
 package dao;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -10,6 +12,7 @@ import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
 import beans.SportsObject;
@@ -20,6 +23,7 @@ public class SportsObjectDAO {
 
 	private String filePath = "resources/data/sportsobjects.json";
 	private ArrayList<SportsObject> sportsObjects;
+	private Gson gson;
 
 
 	public SportsObjectDAO() {
@@ -27,6 +31,9 @@ public class SportsObjectDAO {
 		this.load();
 	}
 
+	public void createGson() {
+	    this.gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).create();
+	}
 
 	public void load() {
 		try {
@@ -55,6 +62,25 @@ public class SportsObjectDAO {
 		}
 		
 		return retVal;
+	}
+	
+	public void addSportsObject(SportsObject sportsObject) {
+		this.sportsObjects.add(sportsObject);
+		this.write();
+	}
+	
+	public void write() {
+		try {
+			this.createGson();
+			FileWriter writer = new FileWriter("resources/data/sportsobjects.json");
+			gson.toJson(this.sportsObjects, writer);
+			writer.flush();
+			writer.close();
+		} catch (JsonIOException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public List<SportsObject> getSportsObjectByType(String type) {

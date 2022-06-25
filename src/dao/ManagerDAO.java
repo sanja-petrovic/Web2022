@@ -62,10 +62,10 @@ public class ManagerDAO {
 	}
 	
 	
-	public void writeBuyers() {
+	public void writeManagers() {
 		try {
 			this.createGson();
-			FileWriter writer = new FileWriter("resources/data/buyers.json");
+			FileWriter writer = new FileWriter("resources/data/managers.json");
 			gson.toJson(this.managers, writer);
 			writer.flush();
 			writer.close();
@@ -76,15 +76,45 @@ public class ManagerDAO {
 		}
 	}
 	
-	public void addManager(Manager m) {
-		this.managers.add(m);
-		this.writeBuyers();
+	public void updateManager(Manager m) {
+		int index = this.findIndexOfManager(m);
+		this.managers.set(index, m);
+		this.writeManagers();
 	}
 	
-	public Manager getManagerById(String username) {
+	public int findIndexOfManager(Manager m) {
+		int retVal = -1;
+		for(int i = 0; i < this.managers.size(); i++) {
+			if(this.managers.get(i).getId().equals(m.getId())) {
+				retVal = i;
+				break;
+			}
+		}
+		
+		return retVal;
+	}
+	
+	public void addManager(Manager m) {
+		this.managers.add(m);
+		this.writeManagers();
+	}
+	
+	public Manager getManagerByUsername(String username) {
 		Manager retVal = null;
 		for(Manager m : this.managers) {
 			if(m.getUsername().equals(username)) {
+				retVal = m;
+				break;
+			}
+		}
+		
+		return retVal;
+	}
+	
+	public Manager getManagerById(String id) {
+		Manager retVal = null;
+		for(Manager m : this.managers) {
+			if(m.getId().equals(id)) {
 				retVal = m;
 				break;
 			}

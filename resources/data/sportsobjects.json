@@ -1,163 +1,162 @@
 [
-    {
-        "name": "Mega Gym",
-        "type": "Teretana",
-        "offers": null,
-        "status": "WORKING",
-        "location": {
-            "latitude": 45.1653,  
-            "longitude": 19.50276,
-            "address": {
-                "street": "Temerinska",
-                "number": "95",
-                "city": "Novi Sad",
-                "postcode": "21000",
-                "country": "Rumunija"
-            }
-        },
-        "logoIcon": "../images/gym2.png",
-        "averageGrade": 4.0,
-        "businessHours": {
-            "startTime": "08:00",
-            "endTime": "23:00"
-        }
+  {
+    "name": "Mega Gym",
+    "type": "Teretana",
+    "status": "WORKING",
+    "location": {
+      "latitude": 45.1653,
+      "longitude": 19.50276,
+      "address": {
+        "street": "Temerinska",
+        "number": "95",
+        "city": "Novi Sad",
+        "postcode": "21000",
+        "country": "Rumunija"
+      }
     },
-    {
-        "name": "Fit&Fun",
-        "type": "Fitnes centar",
-        "offers": null,
-        "status": "NOT_WORKING",
-        "location": {
-            "latitude": 45.390568,
-            "longitude": 19.883015,
-            "address": {
-                "street": "Petra Drapšina",
-                "number": "98",
-                "city": "Temerin",
-                "postcode": "21235",
-                "country": "Srbija"
-            }
-        },
-        "logoIcon": "../images/fitnes.png",
-        "averageGrade": 4.8,
-        "businessHours": {
-            "startTime": "10:00",
-            "endTime": "20:00"
-        }
-    },
-    {
-        "name": "Novak Tennis Center",
-        "type": "Teniski centar",
-        "offers": null,
-        "status": "WORKING",
-        "location": {
-            "latitude": 44.830158,
-            "longitude": 20.452509,
-            "address": {
-                "street": "Tadeuša Košćučka",
-                "number": "65",
-                "city": "Beograd",
-                "postcode": "11000",
-                "country": "Srbija"
-            }
-        },
-        "logoIcon": "../images/tennis.png",
-        "averageGrade": 5.0,
-        "businessHours": {
-            "startTime": "08:00",
-            "endTime": "20:00"
-        }
-    },
-      {
-        "name": "Plesni centar Allegro",
-        "type": "Plesni studio",
-        "offers": null,
-        "status": "WORKING",
-        "location": {
-            "latitude": 45.260277,
-            "longitude": 19.842306, 
-            "address": {
-                "street": "Kisačka",
-                "number": "3",
-                "city": "Novi Sad",
-                "postcode": "21000",
-                "country": "Srbija"
-            }
-        },
-        "logoIcon": "../images/dance.png",
-        "averageGrade": 4.7,
-        "businessHours": {
-            "startTime": "11:00",
-            "endTime": "21:00"
-        }
-    },
-    {
-        "name": "Šmek",
-        "type": "Teretana",
-        "offers": null,
-        "status": "WORKING",
-        "location": {
-            "latitude": 45.262012,
-            "longitude": 19.832575, 
-            "address": {
-                "street": "Bulevar Oslobođenja",
-                "number": "30b",
-                "city": "Novi Sad",
-                "postcode": "21000",
-                "country": "Srbija"
-            }
-        },
-        "logoIcon": "../images/gym1.png",
-        "averageGrade": 3.5,
-        "businessHours": {
-            "startTime": "06:00",
-            "endTime": "22:00"
-        }
-    },
-    {
-        "name": "Joga Studio",
-        "type": "Joga studio",
-        "offers": null,
-        "status": "WORKING",
-        "location": {
-            "latitude": 45.256420,
-            "longitude": 19.811140,
-            "address": {
-                "street": "Bulevar Evrope",
-                "number": "17A",
-                "city": "Novi Sad",
-                "postcode": "21000",
-                "country": "Srbija"
-            }
-        },
-        "logoIcon": "../images/yoga.png",
-        "averageGrade": 4.5,
-        "businessHours": {
-            "startTime": "09:00",
-            "endTime": "17:30"
-        }
-    },
-       {
-        "name": "Bazeni Spens",
-        "type": "Zatvoreni bazeni",
-        "offers": null,
-        "status": "WORKING",
-        "location": {
-            "latitude": 45.247500,
-            "longitude": 19.845560,
-            "address": {
-                "street": "Sutjeska",
-                "number": "2",
-                "city": "Novi Sad",
-                "postcode": "21000",
-                "country": "Srbija"
-            }
-        },
-        "logoIcon": "../images/pool.png",
-        "averageGrade": 0.0,
-        "businessHours": {
-            "startTime": "06:00",
-            "endTime": "19:00"
-        }
+    "logoIcon": "../images/gym2.png",
+    "averageGrade": 4.0,
+    "businessHours": {
+      "startTime": "08:00",
+      "endTime": "23:00"
     }
+  },
+  {
+    "name": "Fit\u0026Fun",
+    "type": "Fitnes centar",
+    "status": "NOT_WORKING",
+    "location": {
+      "latitude": 45.390568,
+      "longitude": 19.883015,
+      "address": {
+        "street": "Petra Drapšina",
+        "number": "98",
+        "city": "Temerin",
+        "postcode": "21235",
+        "country": "Srbija"
+      }
+    },
+    "logoIcon": "../images/fitnes.png",
+    "averageGrade": 4.8,
+    "businessHours": {
+      "startTime": "10:00",
+      "endTime": "20:00"
+    }
+  },
+  {
+    "name": "Novak Tennis Center",
+    "type": "Teniski centar",
+    "status": "WORKING",
+    "location": {
+      "latitude": 44.830158,
+      "longitude": 20.452509,
+      "address": {
+        "street": "Tadeuša Košćučka",
+        "number": "65",
+        "city": "Beograd",
+        "postcode": "11000",
+        "country": "Srbija"
+      }
+    },
+    "logoIcon": "../images/tennis.png",
+    "averageGrade": 5.0,
+    "businessHours": {
+      "startTime": "08:00",
+      "endTime": "20:00"
+    }
+  },
+  {
+    "name": "Plesni centar Allegro",
+    "type": "Plesni studio",
+    "status": "WORKING",
+    "location": {
+      "latitude": 45.260277,
+      "longitude": 19.842306,
+      "address": {
+        "street": "Kisačka",
+        "number": "3",
+        "city": "Novi Sad",
+        "postcode": "21000",
+        "country": "Srbija"
+      }
+    },
+    "logoIcon": "../images/dance.png",
+    "averageGrade": 4.7,
+    "businessHours": {
+      "startTime": "11:00",
+      "endTime": "21:00"
+    }
+  },
+  {
+    "name": "Šmek",
+    "type": "Teretana",
+    "status": "WORKING",
+    "location": {
+      "latitude": 45.262012,
+      "longitude": 19.832575,
+      "address": {
+        "street": "Bulevar Oslobođenja",
+        "number": "30b",
+        "city": "Novi Sad",
+        "postcode": "21000",
+        "country": "Srbija"
+      }
+    },
+    "logoIcon": "../images/gym1.png",
+    "averageGrade": 3.5,
+    "businessHours": {
+      "startTime": "06:00",
+      "endTime": "22:00"
+    }
+  },
+  {
+    "name": "Joga Studio",
+    "type": "Joga studio",
+    "status": "WORKING",
+    "location": {
+      "latitude": 45.25642,
+      "longitude": 19.81114,
+      "address": {
+        "street": "Bulevar Evrope",
+        "number": "17A",
+        "city": "Novi Sad",
+        "postcode": "21000",
+        "country": "Srbija"
+      }
+    },
+    "logoIcon": "../images/yoga.png",
+    "averageGrade": 4.5,
+    "businessHours": {
+      "startTime": "09:00",
+      "endTime": "17:30"
+    }
+  },
+  {
+    "name": "Bazeni Spens",
+    "type": "Zatvoreni bazeni",
+    "status": "WORKING",
+    "location": {
+      "latitude": 45.2475,
+      "longitude": 19.84556,
+      "address": {
+        "street": "Sutjeska",
+        "number": "2",
+        "city": "Novi Sad",
+        "postcode": "21000",
+        "country": "Srbija"
+      }
+    },
+    "logoIcon": "../images/pool.png",
+    "averageGrade": 0.0,
+    "businessHours": {
+      "startTime": "06:00",
+      "endTime": "19:00"
+    }
+  },
+  {
+    "name": "s",
+    "type": "s",
+    "status": "WORKING",
+    "averageGrade": 0.0
+  }
 ]
