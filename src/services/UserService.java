@@ -65,6 +65,12 @@ public class UserService {
 			u = Repository.getInstance().getManagerDAO().getManagerByUsername(username);
 			retVal = (Manager) u;
 			break;
+		case TRAINER:
+			u = Repository.getInstance().getTrainerDAO().getTrainerByUsername(username);
+			retVal = u;
+			break;
+		
+		
 		}
 		
 		

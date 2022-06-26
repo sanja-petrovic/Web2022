@@ -2,14 +2,36 @@ package beans;
 
 import java.time.LocalDateTime;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Training {
+	@Expose
+	@SerializedName("Title")
 	private String title;
+	@Expose
+	@SerializedName("Type")
 	private String type;
+	@Expose
+	@SerializedName("SportsObject")
 	private SportsObject sportsObject;
+	@Expose
+	@SerializedName("Duration")
 	private int durationMinutes;
+	@Expose
+	@SerializedName("Trainer")
 	private Trainer trainer;
+	@Expose
+	@SerializedName("Description")
 	private String description;
+	@Expose
+	@SerializedName("Picture")
 	private String picture;
+	@Expose
+	@SerializedName("Price")
+	private double price;
+	@Expose
+	@SerializedName("DeletedAt")
 	private LocalDateTime deletedAt;
 	
 	public Training(String title, String type, SportsObject sportsObject, int durationMinutes, Trainer trainer,
