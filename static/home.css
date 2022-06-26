@@ -11125,6 +11125,36 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.btn-primary {
+  color: white;
+  background-color: #6382ff;
+  border-color: #6382ff;
+}
+.btn-primary:hover {
+  color: #3f61e8;
+  background-color: #708cff;
+  border-color: #708cff;
+}
+.btn-check:focus + .btn-primary, .btn-primary:focus {
+  color: #3f61e8;
+  background-color: #708cff;
+  border-color: #708cff;
+  box-shadow: 0 0 0 0.25rem rgba(122, 149, 255, 0.5);
+}
+.btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #4f68cc;
+  border-color: #4a62bf;
+}
+.btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.25rem rgba(122, 149, 255, 0.5);
+}
+.btn-primary:disabled, .btn-primary.disabled {
+  color: #000;
+  background-color: #6382ff;
+  border-color: #6382ff;
+}
+
 .badge-open {
   color: #ffffff;
   background-color: #7cd58a;
@@ -11135,7 +11165,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-.membership-card, .about-section, .comment, .register-div, .login-div {
+.membership-card, .about-section, .bla, .comment, .register-div, .login-div {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -11154,6 +11184,36 @@ textarea.form-control-lg {
   margin: 20px;
 }
 
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input::before {
+  content: "Izaberi logo";
+  display: inline-block;
+  background: transparent;
+  border: 0px solid #a9bdff;
+  color: #6382ff;
+  border-radius: 10px;
+  padding: 5px 0px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  transition: 0.2s ease-in-out;
+}
+
+.custom-file-input:hover::before {
+  color: #708cff;
+}
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
 select, .text-box {
   border: 0;
   outline: 0;
@@ -11166,7 +11226,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .submit-button, .search-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .submit-button, .radio-button:after, .radio-button, .search-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -11210,7 +11270,7 @@ select, .text-box {
   color: #a9bdff;
 }
 
-.filter-button:hover, .submit-button:hover, .search-button:hover {
+.filter-button:hover, .submit-button:hover, .radio-button:hover, .search-button:hover {
   background-color: #708cff;
 }
 
@@ -11274,6 +11334,20 @@ h4, .h4 {
 .invalid-input {
   color: #ff5b68;
   font-weight: 500;
+}
+
+.create-input {
+  width: 25em;
+}
+
+.radio-button:checked:after {
+  background-color: #4a19d3;
+}
+
+.heading {
+  font-weight: 700;
+  color: #000b42;
+  text-align: left;
 }
 
 /*!
@@ -13944,11 +14018,11 @@ textarea.form-control-lg {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #555557;
   text-align: center;
   white-space: nowrap;
-  background-color: #e9ecef;
-  border: 1px solid #ced4da;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid white;
   border-radius: 0.25rem;
 }
 
@@ -22399,6 +22473,36 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.btn-primary {
+  color: white;
+  background-color: #6382ff;
+  border-color: #6382ff;
+}
+.btn-primary:hover {
+  color: #3f61e8;
+  background-color: #708cff;
+  border-color: #708cff;
+}
+.btn-check:focus + .btn-primary, .btn-primary:focus {
+  color: #3f61e8;
+  background-color: #708cff;
+  border-color: #708cff;
+  box-shadow: 0 0 0 0.25rem rgba(122, 149, 255, 0.5);
+}
+.btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #4f68cc;
+  border-color: #4a62bf;
+}
+.btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.25rem rgba(122, 149, 255, 0.5);
+}
+.btn-primary:disabled, .btn-primary.disabled {
+  color: #000;
+  background-color: #6382ff;
+  border-color: #6382ff;
+}
+
 .badge-open {
   color: #ffffff;
   background-color: #7cd58a;
@@ -22409,7 +22513,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-.membership-card, .about-section, .comment, .register-div, .login-div {
+.membership-card, .about-section, .bla, .comment, .register-div, .login-div {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -22428,6 +22532,36 @@ textarea.form-control-lg {
   margin: 20px;
 }
 
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input::before {
+  content: "Izaberi logo";
+  display: inline-block;
+  background: transparent;
+  border: 0px solid #a9bdff;
+  color: #6382ff;
+  border-radius: 10px;
+  padding: 5px 0px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  transition: 0.2s ease-in-out;
+}
+
+.custom-file-input:hover::before {
+  color: #708cff;
+}
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
 select, .text-box {
   border: 0;
   outline: 0;
@@ -22440,7 +22574,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .submit-button, .search-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .submit-button, .search-button, .radio-button, .radio-button:after {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -22484,7 +22618,7 @@ select, .text-box {
   color: #a9bdff;
 }
 
-.filter-button:hover, .submit-button:hover, .search-button:hover {
+.filter-button:hover, .submit-button:hover, .search-button:hover, .radio-button:hover {
   background-color: #708cff;
 }
 
@@ -22548,6 +22682,20 @@ h4, .h4 {
 .invalid-input {
   color: #ff5b68;
   font-weight: 500;
+}
+
+.create-input {
+  width: 25em;
+}
+
+.radio-button:checked:after {
+  background-color: #4a19d3;
+}
+
+.heading {
+  font-weight: 700;
+  color: #000b42;
+  text-align: left;
 }
 
 .login-body {
@@ -25299,11 +25447,11 @@ textarea.form-control-lg {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #555557;
   text-align: center;
   white-space: nowrap;
-  background-color: #e9ecef;
-  border: 1px solid #ced4da;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid white;
   border-radius: 0.25rem;
 }
 
@@ -33754,6 +33902,36 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.btn-primary {
+  color: white;
+  background-color: #6382ff;
+  border-color: #6382ff;
+}
+.btn-primary:hover {
+  color: #3f61e8;
+  background-color: #708cff;
+  border-color: #708cff;
+}
+.btn-check:focus + .btn-primary, .btn-primary:focus {
+  color: #3f61e8;
+  background-color: #708cff;
+  border-color: #708cff;
+  box-shadow: 0 0 0 0.25rem rgba(122, 149, 255, 0.5);
+}
+.btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #4f68cc;
+  border-color: #4a62bf;
+}
+.btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.25rem rgba(122, 149, 255, 0.5);
+}
+.btn-primary:disabled, .btn-primary.disabled {
+  color: #000;
+  background-color: #6382ff;
+  border-color: #6382ff;
+}
+
 .badge-open {
   color: #ffffff;
   background-color: #7cd58a;
@@ -33764,7 +33942,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-.membership-card, .about-section, .comment, .register-div, .login-div {
+.membership-card, .about-section, .bla, .comment, .register-div, .login-div {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -33783,6 +33961,36 @@ textarea.form-control-lg {
   margin: 20px;
 }
 
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input::before {
+  content: "Izaberi logo";
+  display: inline-block;
+  background: transparent;
+  border: 0px solid #a9bdff;
+  color: #6382ff;
+  border-radius: 10px;
+  padding: 5px 0px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  transition: 0.2s ease-in-out;
+}
+
+.custom-file-input:hover::before {
+  color: #708cff;
+}
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
 select, .text-box {
   border: 0;
   outline: 0;
@@ -33795,7 +34003,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .radio-button, .radio-button:after, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -33839,7 +34047,7 @@ select, .text-box {
   color: #a9bdff;
 }
 
-.filter-button:hover, .search-button:hover, .submit-button:hover {
+.filter-button:hover, .search-button:hover, .radio-button:hover, .submit-button:hover {
   background-color: #708cff;
 }
 
@@ -33905,10 +34113,23 @@ h4, .h4 {
   font-weight: 500;
 }
 
+.create-input {
+  width: 25em;
+}
+
+.radio-button:checked:after {
+  background-color: #4a19d3;
+}
+
+.heading {
+  font-weight: 700;
+  color: #000b42;
+  text-align: left;
+}
+
 .register-body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
-  background-image: url("images/lightskyblue.jpg");
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;
@@ -33935,11 +34156,12 @@ h4, .h4 {
 }
 
 .register-div {
-  width: 25em;
-  height: 45em;
+  max-width: 25em;
+  max-height: 45em;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 2vw;
 }
 
 .myForm {
@@ -36656,11 +36878,11 @@ textarea.form-control-lg {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #555557;
   text-align: center;
   white-space: nowrap;
-  background-color: #e9ecef;
-  border: 1px solid #ced4da;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid white;
   border-radius: 0.25rem;
 }
 
@@ -45111,6 +45333,36 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.btn-primary {
+  color: white;
+  background-color: #6382ff;
+  border-color: #6382ff;
+}
+.btn-primary:hover {
+  color: #3f61e8;
+  background-color: #708cff;
+  border-color: #708cff;
+}
+.btn-check:focus + .btn-primary, .btn-primary:focus {
+  color: #3f61e8;
+  background-color: #708cff;
+  border-color: #708cff;
+  box-shadow: 0 0 0 0.25rem rgba(122, 149, 255, 0.5);
+}
+.btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #4f68cc;
+  border-color: #4a62bf;
+}
+.btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.25rem rgba(122, 149, 255, 0.5);
+}
+.btn-primary:disabled, .btn-primary.disabled {
+  color: #000;
+  background-color: #6382ff;
+  border-color: #6382ff;
+}
+
 .badge-open {
   color: #ffffff;
   background-color: #7cd58a;
@@ -45121,7 +45373,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-.membership-card, .about-section, .comment, .login-div, .register-div {
+.membership-card, .about-section, .bla, .comment, .login-div, .register-div {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -45140,6 +45392,36 @@ textarea.form-control-lg {
   margin: 20px;
 }
 
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input::before {
+  content: "Izaberi logo";
+  display: inline-block;
+  background: transparent;
+  border: 0px solid #a9bdff;
+  color: #6382ff;
+  border-radius: 10px;
+  padding: 5px 0px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  transition: 0.2s ease-in-out;
+}
+
+.custom-file-input:hover::before {
+  color: #708cff;
+}
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
 .text-box, select {
   border: 0;
   outline: 0;
@@ -45152,7 +45434,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .radio-button, .radio-button:after, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -45196,7 +45478,7 @@ textarea.form-control-lg {
   color: #a9bdff;
 }
 
-.filter-button:hover, .search-button:hover, .submit-button:hover {
+.filter-button:hover, .search-button:hover, .radio-button:hover, .submit-button:hover {
   background-color: #708cff;
 }
 
@@ -45262,6 +45544,20 @@ h4, .h4 {
   font-weight: 500;
 }
 
+.create-input {
+  width: 25em;
+}
+
+.radio-button:checked:after {
+  background-color: #4a19d3;
+}
+
+.heading {
+  font-weight: 700;
+  color: #000b42;
+  text-align: left;
+}
+
 :root {
   --surface-color: #fff;
   --curve: 40;
@@ -45284,7 +45580,7 @@ body {
   padding: 0;
   list-style-type: none;
   max-width: 80vw;
-  margin-bottom: 10vh;
+  margin-bottom: 10vh !important;
 }
 
 .card {
@@ -48071,11 +48367,11 @@ textarea.form-control-lg {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #555557;
   text-align: center;
   white-space: nowrap;
-  background-color: #e9ecef;
-  border: 1px solid #ced4da;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid white;
   border-radius: 0.25rem;
 }
 
@@ -56526,6 +56822,36 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.btn-primary {
+  color: white;
+  background-color: #6382ff;
+  border-color: #6382ff;
+}
+.btn-primary:hover {
+  color: #3f61e8;
+  background-color: #708cff;
+  border-color: #708cff;
+}
+.btn-check:focus + .btn-primary, .btn-primary:focus {
+  color: #3f61e8;
+  background-color: #708cff;
+  border-color: #708cff;
+  box-shadow: 0 0 0 0.25rem rgba(122, 149, 255, 0.5);
+}
+.btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #4f68cc;
+  border-color: #4a62bf;
+}
+.btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.25rem rgba(122, 149, 255, 0.5);
+}
+.btn-primary:disabled, .btn-primary.disabled {
+  color: #000;
+  background-color: #6382ff;
+  border-color: #6382ff;
+}
+
 .badge-open {
   color: #ffffff;
   background-color: #7cd58a;
@@ -56536,7 +56862,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-.membership-card, .about-section, .comment, .login-div, .register-div {
+.membership-card, .about-section, .bla, .comment, .login-div, .register-div {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -56555,6 +56881,36 @@ textarea.form-control-lg {
   margin: 20px;
 }
 
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input::before {
+  content: "Izaberi logo";
+  display: inline-block;
+  background: transparent;
+  border: 0px solid #a9bdff;
+  color: #6382ff;
+  border-radius: 10px;
+  padding: 5px 0px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  transition: 0.2s ease-in-out;
+}
+
+.custom-file-input:hover::before {
+  color: #708cff;
+}
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
 .text-box, select {
   border: 0;
   outline: 0;
@@ -56567,7 +56923,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .radio-button, .radio-button:after, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -56611,7 +56967,7 @@ textarea.form-control-lg {
   color: #a9bdff;
 }
 
-.filter-button:hover, .search-button:hover, .submit-button:hover {
+.filter-button:hover, .search-button:hover, .radio-button:hover, .submit-button:hover {
   background-color: #708cff;
 }
 
@@ -56675,6 +57031,20 @@ h4, .h4 {
 .invalid-input {
   color: #ff5b68;
   font-weight: 500;
+}
+
+.create-input {
+  width: 25em;
+}
+
+.radio-button:checked:after {
+  background-color: #4a19d3;
+}
+
+.heading {
+  font-weight: 700;
+  color: #000b42;
+  text-align: left;
 }
 
 .sports-object-container {
@@ -56789,6 +57159,32 @@ h4, .h4 {
   color: #7ca2ad;
   margin-left: 2vw;
   padding: 0em 1em 1em 1em;
+}
+
+.create-divs {
+  display: flex;
+  gap: 2vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.bla {
+  display: flex;
+  gap: 2vw;
+  padding: 2vw;
+}
+
+.outer-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.outer-container .search-button {
+  max-width: 20em;
+  margin-top: 2em;
 }
 
 /*!
@@ -59459,11 +59855,11 @@ textarea.form-control-lg {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #555557;
   text-align: center;
   white-space: nowrap;
-  background-color: #e9ecef;
-  border: 1px solid #ced4da;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid white;
   border-radius: 0.25rem;
 }
 
@@ -67914,6 +68310,36 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.btn-primary {
+  color: white;
+  background-color: #6382ff;
+  border-color: #6382ff;
+}
+.btn-primary:hover {
+  color: #3f61e8;
+  background-color: #708cff;
+  border-color: #708cff;
+}
+.btn-check:focus + .btn-primary, .btn-primary:focus {
+  color: #3f61e8;
+  background-color: #708cff;
+  border-color: #708cff;
+  box-shadow: 0 0 0 0.25rem rgba(122, 149, 255, 0.5);
+}
+.btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #4f68cc;
+  border-color: #4a62bf;
+}
+.btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.25rem rgba(122, 149, 255, 0.5);
+}
+.btn-primary:disabled, .btn-primary.disabled {
+  color: #000;
+  background-color: #6382ff;
+  border-color: #6382ff;
+}
+
 .badge-open {
   color: #ffffff;
   background-color: #7cd58a;
@@ -67924,7 +68350,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-.membership-card, .about-section, .login-div, .register-div, .comment {
+.membership-card, .about-section, .login-div, .register-div, .comment, .bla {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -67943,6 +68369,36 @@ textarea.form-control-lg {
   margin: 20px;
 }
 
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input::before {
+  content: "Izaberi logo";
+  display: inline-block;
+  background: transparent;
+  border: 0px solid #a9bdff;
+  color: #6382ff;
+  border-radius: 10px;
+  padding: 5px 0px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  transition: 0.2s ease-in-out;
+}
+
+.custom-file-input:hover::before {
+  color: #708cff;
+}
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
 .text-box, select {
   border: 0;
   outline: 0;
@@ -67955,7 +68411,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .radio-button, .radio-button:after, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -67999,7 +68455,7 @@ textarea.form-control-lg {
   color: #a9bdff;
 }
 
-.filter-button:hover, .search-button:hover, .submit-button:hover {
+.filter-button:hover, .search-button:hover, .radio-button:hover, .submit-button:hover {
   background-color: #708cff;
 }
 
@@ -68065,6 +68521,20 @@ h4, .h4 {
   font-weight: 500;
 }
 
+.create-input {
+  width: 25em;
+}
+
+.radio-button:checked:after {
+  background-color: #4a19d3;
+}
+
+.heading {
+  font-weight: 700;
+  color: #000b42;
+  text-align: left;
+}
+
 .about-wrapper {
   width: 100vw;
   display: flex;
@@ -68123,7 +68593,8 @@ h4, .h4 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  max-height: 110vh;
 }
 
 .message-container {

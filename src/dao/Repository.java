@@ -16,12 +16,11 @@ public class Repository {
 		if(instance == null) {
 			instance = new Repository();
 			instance.setUserDAO(new UserDAO());
-			instance.setBuyerDAO(new BuyerDAO());
 			instance.setBuyerTypeDAO(new BuyerTypeDAO());
+			instance.setSportsObjectDAO(new SportsObjectDAO());
+			instance.setBuyerDAO(new BuyerDAO());
 			instance.setManagerDAO(new ManagerDAO());
 			instance.setMembershipDAO(new MembershipDAO());
-			instance.setSportsObjectDAO(new SportsObjectDAO());
-			
 		}
 		return instance;
 	}

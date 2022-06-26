@@ -43,6 +43,7 @@ public class User {
 	}
 	
 	public User(User u) {
+		this.id = UUID.randomUUID().toString();
 		this.username = u.getUsername();
 		this.password = u.getPassword();
 		this.name = u.getName();

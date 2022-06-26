@@ -3,6 +3,8 @@ const NavBarLoggedOut = { template: '<nav-bar-logged-out></nav-bar-logged-out>' 
 const LoginPage = { template: '<login-page></login-page>' }
 const RegisterPage = { template: '<register-page></register-page>' }
 const BuyerProfilePage = { template: '<buyer-profile-page></buyer-profile-page>' }
+const CreateSportsObject = { template: '<create-sports-object></create-sports-object>'}
+
 let SingleSportsObjectCard = Vue.component('single-sports-object-card', {
     /*data: function () {
         return {
@@ -635,7 +637,7 @@ let HomePage = Vue.component('home-page', {
                         </div>
                     </div>
                 </div>
-                <ul class="cards" style="width: 100vw;">
+                <ul class="cards" style="width: 100vw; margin-bottom: 20vh;">
                  	<li v-for="item in this.displayedObjects">
 					    <a class="card">
 					        <img v-bind:src="item.logoIcon" class="card__image" alt="" />
@@ -881,7 +883,8 @@ const router = new VueRouter({
         {path: '/prijava', component: LoginPage},
         {path: '/registracija', component: RegisterPage},
         {path: '/objekti/:title', name: 'sportsObject', component: SportsObjectPage},
-        {path: '/profil', name: 'buyerProfile', component: BuyerProfilePage }
+        {path: '/profil', name: 'buyerProfile', component: BuyerProfilePage },
+		{path: '/dodaj-objekat', component: CreateSportsObject}
     ]
 });
 

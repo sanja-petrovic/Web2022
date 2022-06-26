@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import beans.User;
-import beans.UserType;
 import dao.Repository;
 import dto.LoginUserDTO;
 import dto.ProfileDTO;
@@ -14,19 +13,26 @@ import services.UserService;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalTimeAdapter;
-import util.parsers.GenderParser;
 
 import static spark.Spark.get;
 import static spark.Spark.path;
 import static spark.Spark.post;
 import static spark.Spark.put;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Base64;
+
+import javax.servlet.MultipartConfigElement;
 
 public class UserController {
-	private static Gson gson = new GsonBuilder().registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
+	private static Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
 	private static String basePath = "/rest";
 	
 	public UserController() {
@@ -116,6 +122,7 @@ public class UserController {
 		});
 	}
 	
+	
 	public static void updateProfile() {
 		put("/updateProfile", (req, res) -> {
 			res.type("application/json");
@@ -128,5 +135,6 @@ public class UserController {
 			return gson.toJson(user);
 		});
 	}
+	
 
 }

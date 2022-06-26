@@ -1,3 +1,4 @@
+
 Vue.component('buyer-profile-page', {
     data: function () {
         return {
@@ -48,5 +49,7 @@ Vue.component('buyer-profile-page', {
         axios.get(`/rest/loggedInUser`)
             .then(response => (this.user = response.data))
             .catch(error => console.log(error));
+        this.showMap();
     }
+    
 });

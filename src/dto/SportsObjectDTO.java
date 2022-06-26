@@ -11,8 +11,11 @@ public class SportsObjectDTO {
 	private String name;
 	private String type;
 	private String location;
-	private String logoIcon;
+	private String fileName;
+	private String imgData;
 	private String manager;
+	private String businessHoursStart;
+	private String businessHoursEnd;
 	
 	public String getName() {
 		return name;
@@ -32,17 +35,35 @@ public class SportsObjectDTO {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public String getLogoIcon() {
-		return logoIcon;
-	}
-	public void setLogoIcon(String logoIcon) {
-		this.logoIcon = logoIcon;
-	}
 	public String getManager() {
 		return manager;
 	}
 	public void setManager(String manager) {
 		this.manager = manager;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getImgData() {
+		return imgData;
+	}
+	public void setImgData(String imgData) {
+		this.imgData = imgData;
+	}
+	public String getBusinessHoursStart() {
+		return businessHoursStart;
+	}
+	public void setBusinessHoursStart(String businessHoursStart) {
+		this.businessHoursStart = businessHoursStart;
+	}
+	public String getBusinessHoursEnd() {
+		return businessHoursEnd;
+	}
+	public void setBusinessHoursEnd(String businessHoursEnd) {
+		this.businessHoursEnd = businessHoursEnd;
 	}
 	
 	

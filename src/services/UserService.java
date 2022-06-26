@@ -5,6 +5,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.time.LocalDate;
 
 import beans.Buyer;
+import beans.Manager;
 import beans.User;
 import beans.UserType;
 import dao.Repository;
@@ -35,6 +36,15 @@ public class UserService {
 		Repository.getInstance().getBuyerDAO().addBuyer(b);
 		
 		return b;
+	}
+	
+	public static Manager registerManager(RegisterUserDTO registerUserDTO) throws NoSuchAlgorithmException, InvalidKeySpecException {
+		User user = new User(registerUserDTO.getUsername(), PasswordService.generateStrongPasswordHash(registerUserDTO.getPassword()), registerUserDTO.getName(), registerUserDTO.getSurname(), GenderParser.parse(registerUserDTO.getGender()), LocalDate.parse(registerUserDTO.getDateOfBirth()), UserType.MANAGER);
+		Manager m = new Manager(user);
+		Repository.getInstance().getUserDAO().addUser(user);
+		Repository.getInstance().getManagerDAO().addManager(m);
+		
+		return m;
 	}
 	
 	public static void removeUser(User u) {
