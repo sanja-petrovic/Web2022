@@ -1,7 +1,7 @@
 Vue.component('create-sports-object', {
     data: function () {
         return {
-            managerOptions: ["Registruj menadžera..."],
+            managerOptions: [],
             title: "",
             type: "",
             location: "",
@@ -10,6 +10,7 @@ Vue.component('create-sports-object', {
                 start: null,
                 end: null
             },
+            createManager: false,
             manager: "Menadžer",
             errorExists: false,
             errorMessage: "",
@@ -19,69 +20,73 @@ Vue.component('create-sports-object', {
     template: `
         <div>
             <nav-bar-logged-out></nav-bar-logged-out>
-            <div class="create-divs">
-                <div class="register-container">
-                    <div class="register-div">
-                        <div class="register-content">
-                            <h3 class="myHeading">Novi sportski objekat</h3>
-                            <form class="myForm" action="">
-                                <input class="text-box create-input" type="text" v-model="title" placeholder="Naziv"
-                                       required>
-                                <input class="text-box create-input" v-model="type" type="text"
-                                       placeholder="Tip" required>
-                                <div class="input-group">
-                                    <span class="input-group-text ">Radno vreme</span>
-                                    <input type="time" placeholder="Početak" v-model="businessHours.start" class="form-control text-box" required>
-                                    <input type="time" placeholder="Kraj" v-model="businessHours.end" class="form-control text-box" required>
-                                </div>
-                                <input class="text-box create-input form-control custom-file-input" id="fileUpload" accept="image/*" ref="myFile" type="file" @change="previewFile">
+                <div class="outer-container">
+                    <div class="create-divs">
+                        <div class="bla">
+                            <div class="register-container">
+                                <div class="register-content">
+                                    <h3 class="heading">Sportski objekat</h3>
+                                    <form class="myForm" action="">
+                                        <input class="text-box create-input" type="text" v-model="title" placeholder="Naziv"
+                                               required>
+                                        <input class="text-box create-input" v-model="type" type="text"
+                                               placeholder="Tip" required>
+                                        <div class="input-group">
+                                            <span class="input-group-text ">Radno vreme</span>
+                                            <input type="time" placeholder="Početak" v-model="businessHours.start" class="form-control text-box" required>
+                                            <input type="time" placeholder="Kraj" v-model="businessHours.end" class="form-control text-box" required>
+                                        </div>
+                                        <input class="text-box create-input form-control custom-file-input" id="fileUpload" accept="image/*" ref="myFile" type="file" @change="previewFile">
 
-                                <select v-model="manager" required>
-                                    <option v-for="item in this.managerOptions" :value="item"> {{ item.Name + " " + item.Surname }}</option>
-                                </select>
-                                <label class="invalid-input" v-if="errorExists">{{ this.errorMessage }}</label>
-                                <input class="submit-button create-input"  type="submit" :disabled="errorExists" v-on:click="createSportsObject"
-                                       value="Dodaj objekat">
-                            </form>
+                                        <select v-if="this.managerOptions.length > 0" v-model="manager" required>
+                                            <option v-for="item in this.managerOptions" :value="item"> {{ item.Name + " " + item.Surname }}</option>
+                                        </select>
+                                        <label class="invalid-input" v-if="errorExists">{{ this.errorMessage }}</label>
+                                        <input v-if="this.managerOptions.length > 0" class="submit-button create-input"  type="submit" :disabled="errorExists" v-on:click="createSportsObject"
+                                               value="Dodaj sportski objekat">
+                                    </form>
+                                </div>
+                            </div>
+                            <div v-if="this.managerOptions.length === 0" class="register-container">
+                                <div class="">
+                                    <div class="register-content">
+                                        <h3 class="heading" style="font-weight: 500">Menadžer</h3>
+                                        <form class="myForm" action="">
+                                            <input class="text-box create-input" type="text" id="name" name="name" placeholder="Ime"
+                                                   required>
+                                            <input class="text-box create-input" type="text" id="surname" name="surname"
+                                                   placeholder="Prezime" required>
+                                            <div class="input-group create-input">
+                                                <span class="input-group-text" style="width: 5em">Pol</span>
+                                                <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off">
+                                                <label class="btn btn-primary flex-grow-1" for="option1">Muški</label>
+                                                <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+                                                <label class="btn btn-primary flex-grow-1" for="option2">Ženski</label>
+                                            </div>
+                                            <input class="text-box create-input" type="date" id="dob" name="dob" 
+                                                   placeholder="Datum rođenja" required>
+                                            <input class="text-box create-input" type="text" id="username" name="username" 
+                                                    placeholder="Korisničko ime" required>
+                                            <input class="text-box create-input" type="password" id="password" 
+                                                   name="password" placeholder="Šifra" required>
+                                            <input class="text-box create-input" type="password" id="passwordcheck" 
+                                                   name="passwordcheck" placeholder="Potvrdi šifru" required>
+                                            <label class="invalid-input create-input" v-if="errorExists">{{ this.errorMessage }}</label>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <button v-if="this.managerOptions.length === 0" class="search-button">Dodaj sportski objekat</button>
                 </div>
-                <div class="register-container">
-                    <div class="register-div">
-                        <div class="register-content">
-                            <!--<h3 class="myHeading">Novi menadžer</h3>
-                            <form class="myForm" action="">
-                                <input class="text-box" type="text" id="name" name="name" v-model="name" placeholder="Ime"
-                                       required>
-                                <input class="text-box" type="text" id="surname" name="surname" v-model="surname"
-                                       placeholder="Prezime" required>
-                                <select name="gender" v-model="gender" id="gender" required>
-                                    <option value="" disabled selected>Pol</option>
-                                    <option value="Muški">Muški</option>
-                                    <option value="Ženski">Ženski</option>
-                                </select>
-                                <input class="text-box" type="date" id="dob" name="dob" v-model="dob"
-                                       placeholder="Datum rođenja" required>
-                                <input class="text-box" type="text" id="username" name="username" v-model="username"
-                                       v-on:blur="usernameUniqueCheck" placeholder="Korisničko ime" required>
-                                <input class="text-box" type="password" id="password" v-on:blur="passwordMatchCheck"
-                                       name="password" placeholder="Šifra" v-model="passwordFirst" required>
-                                <input class="text-box" type="password" id="passwordcheck" v-on:blur="passwordMatchCheck"
-                                       name="passwordcheck" v-model="passwordSecond" placeholder="Potvrdi šifru" required>
-                                <label class="invalid-input" v-if="errorExists">{{ this.errorMessage }}</label>
-                                <input class="submit-button" type="submit" :disabled="errorExists" v-on:click="register"
-                                       value="Registruj menadžera">
-                            </form>-->
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     `,
 
     mounted() {
         axios.get('rest/unassigned-managers')
             .then(response => {
+                this.createManager = response.data === null || response.data.length === 0;
                 this.managerOptions = response.data;
             })
             .catch(error => console.log(error));

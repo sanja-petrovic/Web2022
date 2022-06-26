@@ -136,8 +136,29 @@
 
 .create-divs {
   display: flex;
+  gap: 2vw;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  gap: 2vw;
 }
+
+.bla {
+  @extend %basic-white-component;
+  display: flex;
+  gap: 2vw;
+  padding: 2vw;
+}
+
+.outer-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  .search-button {
+    max-width: 20em;
+    margin-top: 2em;
+  }
+}
+
+
