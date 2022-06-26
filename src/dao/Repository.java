@@ -11,6 +11,7 @@ public class Repository {
 	private TrainingDAO trainingDAO;
 	private TrainerDAO trainerDAO;
 	private AdministratorDAO administratorDAO;
+	private CommentDAO commentDAO;
 	public static Repository instance;
 	
 	private Repository() { }
@@ -26,6 +27,7 @@ public class Repository {
 			instance.setMembershipDAO(new MembershipDAO());
 			instance.setTrainingDAO(new TrainingDAO());
 			instance.setTrainerDAO(new TrainerDAO());
+			instance.setCommentDAO(new CommentDAO());
 		}
 		return instance;
 	}
@@ -96,6 +98,22 @@ public class Repository {
 
 	public void setTrainerDAO(TrainerDAO trainerDAO) {
 		this.trainerDAO = trainerDAO;
+	}
+
+	public AdministratorDAO getAdministratorDAO() {
+		return administratorDAO;
+	}
+
+	public void setAdministratorDAO(AdministratorDAO administratorDAO) {
+		this.administratorDAO = administratorDAO;
+	}
+
+	public CommentDAO getCommentDAO() {
+		return commentDAO;
+	}
+
+	public void setCommentDAO(CommentDAO commentDAO) {
+		this.commentDAO = commentDAO;
 	}
 
 }

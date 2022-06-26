@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 import controller.BuyerController;
+import controller.CommentController;
 import controller.ManagerController;
 import controller.SportsObjectController;
 import controller.TrainerController;
@@ -28,11 +29,13 @@ public class Main {
 		BuyerController buyerController = new BuyerController();
 		TrainingController trainingController = new TrainingController();
 		TrainerController trainerController = new TrainerController();
+		CommentController commentController = new CommentController();
 		
 		userController.init();
 		sportsObjectController.init();
 		managerController.init();
 		buyerController.init();
+		commentController.init();
 		
 	}
 	
