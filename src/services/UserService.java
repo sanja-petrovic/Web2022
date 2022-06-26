@@ -60,7 +60,13 @@ public class UserService {
 		case BUYER:
 			User u = Repository.getInstance().getBuyerDAO().getBuyerByUsername(username);
 			retVal = (Buyer) u;
+			break;
+		case MANAGER:
+			u = Repository.getInstance().getManagerDAO().getManagerByUsername(username);
+			retVal = (Manager) u;
+			break;
 		}
+		
 		
 		return retVal;
 	}

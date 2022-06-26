@@ -25,11 +25,11 @@ Vue.component('buyer-profile-page', {
                         <input class="text-box" readonly type="date" id="dob" name="dob" v-model="user.DateOfBirth">
                     </div>
                     <div class="membership">
-                        <label for="points">Broj sakupljenih bodova</label>
+                        <!--<label for="points">Broj sakupljenih bodova</label>
                         <input class="text-box" readonly type="number" id="points" name="points" v-model="user.Points">
                         <label for="type">Tip kupca</label>
                         <input class="text-box" readonly type="text" v-model="user.BuyerType.Tier" id="type" name="type">
-                        <label>Trenutna članarina</label>
+                        <label>Trenutna članarina</label>-->
                         <div class="membership-card">
 
                         </div>
@@ -49,7 +49,6 @@ Vue.component('buyer-profile-page', {
         axios.get(`/rest/loggedInUser`)
             .then(response => (this.user = response.data))
             .catch(error => console.log(error));
-        this.showMap();
     }
     
 });
