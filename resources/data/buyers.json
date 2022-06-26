@@ -32,5 +32,14 @@
       "Tier": "Bronzani"
     },
     "Username": "luka"
+  },
+  {
+    "VisitedObjects": [],
+    "Points": 0.0,
+    "BuyerType": {
+      "Tier": "Bronzani"
+    },
+    "Id": "d6c2b815-295c-4571-8c46-56e714586e0d",
+    "Username": "a"
   }
 ]
