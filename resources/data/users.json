@@ -58,5 +58,25 @@
     "Gender": "Muški",
     "DateOfBirth": "2022-06-13",
     "UserType": "Manager"
+  },
+  {
+    "Id": "c338b4fd-6d7d-43ac-a458-a44579b15138",
+    "Username": "jelena",
+    "Password": "1000:6b3926136ca3179d97cfd894b7d359b5:6bb2132778f4cd9e7f19c7fc6e081b4eed224e28472256feefb2536eedf17e30c67998b60ab8f2e49187c3125b4dff480d240e03ec331e19f40b26a01905039a",
+    "Name": "Jelena",
+    "Surname": "Jelenković",
+    "Gender": "Ženski",
+    "DateOfBirth": "2022-06-06",
+    "UserType": "Manager"
+  },
+  {
+    "Id": "014a7bc3-0f46-41af-9992-dec523b6f65c",
+    "Username": "dimitrije",
+    "Password": "1000:84897bfc0f677057d308abc864150b84:f2f7d0efbd3372beb6f942d90ca9746706d427699d2ae436e2bf86e5a5ca205954418928a03f63d6cd6ea52b58b04c4032f1e623d9aae288f2f2b7351462248b",
+    "Name": "Dimitrije",
+    "Surname": "Mitrović",
+    "Gender": "Muški",
+    "DateOfBirth": "2022-06-14",
+    "UserType": "Manager"
   }
 ]

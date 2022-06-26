@@ -41,6 +41,7 @@ public class SportsObjectController {
 		path(basePath, () -> {
 			createSportsObject();
 			getSportsObjects();
+			getSportsObject();
 			getSportsObjectByType();
 			getSportsObjectByName();
 			getSportsObjectByLocation();
@@ -55,8 +56,7 @@ public class SportsObjectController {
 			String payload = req.body();
 			SportsObjectDTO s = gson.fromJson(payload, SportsObjectDTO.class);
 			
-			Manager m = Repository.getInstance().getManagerDAO().getManagerById(s.getManager());
-
+			Manager m = Repository.getInstance().getManagerDAO().getManagerByIdOrUsername(s.getManager());
 			
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
 			SportsObject sportsObject = new SportsObject();
@@ -96,6 +96,15 @@ public class SportsObjectController {
 			res.type("application/json");
 			res.status(200);
 			return gson.toJson(sportsObjectDAO.getSportsObjects());
+		});
+	}
+	
+	public static void getSportsObject() {
+		get("/sportsobjects/:id", (req, res) -> {
+			res.type("application/json");
+			String id = req.params(":id");
+			SportsObject so = Repository.getInstance().getSportsObjectDAO().getSportsObjectByIdCaseInsensitive(id);
+			return gson.toJson(so);
 		});
 	}
 	

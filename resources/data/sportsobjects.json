@@ -176,15 +176,9 @@
     }
   },
   {
-    "name": "asd",
-    "type": "asd",
+    "name": "Lotos Spa \u0026 Wellness",
+    "type": "Spa centar",
     "status": "WORKING",
-    "logoIcon": "resources/stadion.png",
-    "averageGrade": 0.0,
-    "businessHours": {
-      "startTime": "03:12",
-      "endTime": "05:12"
-    },
     "location": {
       "latitude": 45.2475,
       "longitude": 19.84556,
@@ -195,6 +189,56 @@
         "postcode": "21000",
         "country": "Srbija"
       }
+    },
+    "logoIcon": "resources/lotos.png",
+    "averageGrade": 0.0,
+    "businessHours": {
+      "startTime": "10:10",
+      "endTime": "22:10"
+    }
+  },
+  {
+    "name": "LuxSpa",
+    "type": "Spa centar",
+    "status": "WORKING",
+    "location": {
+      "latitude": 45.2475,
+      "longitude": 19.84556,
+      "address": {
+        "street": "Sutjeska",
+        "number": "2",
+        "city": "Novi Sad",
+        "postcode": "21000",
+        "country": "Srbija"
+      }
+    },
+    "logoIcon": "resources/1028839.png",
+    "averageGrade": 0.0,
+    "businessHours": {
+      "startTime": "09:00",
+      "endTime": "01:30"
+    }
+  },
+  {
+    "name": "Favorit",
+    "type": "Borilački klub",
+    "status": "WORKING",
+    "location": {
+      "latitude": 45.2475,
+      "longitude": 19.84556,
+      "address": {
+        "street": "Sutjeska",
+        "number": "2",
+        "city": "Novi Sad",
+        "postcode": "21000",
+        "country": "Srbija"
+      }
+    },
+    "logoIcon": "resources/3893211.png",
+    "averageGrade": 0.0,
+    "businessHours": {
+      "startTime": "10:00",
+      "endTime": "18:00"
     }
   }
 ]

@@ -7,7 +7,24 @@
     "Username": "marko"
   },
   {
+    "SportsObject": {
+      "name": "LuxSpa"
+    },
     "Id": "3a912216-ecdd-4ee8-9b64-591481983b67",
     "Username": "luka"
+  },
+  {
+    "SportsObject": {
+      "name": "Lotos Spa \u0026 Wellness"
+    },
+    "Id": "46d2dc1d-0526-4d42-a448-12e6d0bc1253",
+    "Username": "jelena"
+  },
+  {
+    "SportsObject": {
+      "name": "Favorit"
+    },
+    "Id": "61b4d29a-09bd-406c-9d99-7288ee8c279d",
+    "Username": "dimitrije"
   }
 ]

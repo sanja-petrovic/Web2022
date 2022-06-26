@@ -122,6 +122,7 @@ public class UserController {
 		});
 	}
 	
+	
 	public static void updateProfile() {
 		put("/updateProfile", (req, res) -> {
 			res.type("application/json");

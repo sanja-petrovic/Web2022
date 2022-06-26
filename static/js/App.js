@@ -637,7 +637,7 @@ let HomePage = Vue.component('home-page', {
                         </div>
                     </div>
                 </div>
-                <ul class="cards" style="width: 100vw;">
+                <ul class="cards" style="width: 100vw; margin-bottom: 20vh;">
                  	<li v-for="item in this.displayedObjects">
 					    <a class="card">
 					        <img v-bind:src="item.logoIcon" class="card__image" alt="" />

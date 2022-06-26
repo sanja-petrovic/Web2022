@@ -124,6 +124,19 @@ public class ManagerDAO {
 		return retVal;
 	}
 	
+	public Manager getManagerByIdOrUsername(String id) {
+		Manager retVal = null;
+		this.load();
+		for(Manager m : this.managers) {
+			if(m.getId().trim().equals(id.trim()) || m.getUsername().trim().equals(id.trim())) {
+				retVal = m;
+				break;
+			}
+		}
+		
+		return retVal;
+	}
+	
 	public ArrayList<Manager> getManagers() {
 
 		return this.managers;

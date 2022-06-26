@@ -64,6 +64,18 @@ public class SportsObjectDAO {
 		return retVal;
 	}
 	
+	public SportsObject getSportsObjectByIdCaseInsensitive(String name) {
+		SportsObject retVal = null;
+		for(SportsObject sportsObject : this.sportsObjects) {
+			if(sportsObject.getName().trim().toLowerCase().equals(name.trim().toLowerCase())) {
+				retVal = sportsObject;
+				break;
+			}
+		}
+		
+		return retVal;
+	}
+	
 	public void addSportsObject(SportsObject sportsObject) {
 		this.sportsObjects.add(sportsObject);
 		this.write();
