@@ -13,7 +13,7 @@ const router = new VueRouter({
         {path: '/', component: HomePage, name: 'home', alias: '/home'},
         {path: '/prijava', component: LoginPage},
         {path: '/registracija', component: RegisterPage},
-        {path: '/objekti/:title', name: 'sportsObject', component: SportsObjectPage},
+        {path: '/objekti/:name', name: 'sportsObject', component: SportsObjectPage},
         {path: '/profil', name: 'buyerProfile', component: BuyerProfilePage },
 		{path: '/dodaj-objekat', component: CreateSportsObject}
     ]

@@ -105,7 +105,7 @@ public class SportsObjectDAO {
 		return searchedObjects;
 	}
 	
-	public List<SportsObject> getSportsObjectByName(String name) {
+	public List<SportsObject> getAllSportsObjectByName(String name) {
 		List<SportsObject> searchedObjects = new ArrayList<SportsObject>();
 		for (SportsObject sportsObject : this.sportsObjects) {
 			if(sportsObject.getName().toLowerCase().contains(name)) {
@@ -113,6 +113,15 @@ public class SportsObjectDAO {
 			}
 		}
 		return searchedObjects;
+	}
+	
+	public SportsObject getSportsObjectByName(String name) {
+		for (SportsObject sportsObject : this.sportsObjects) {
+			if(sportsObject.getName().equals(name)) {
+				return sportsObject;
+			}
+		}
+		return null;
 	}
 	
 	public List<SportsObject> getSportsObjectByLocation(String location) {

@@ -1,7 +1,8 @@
 Vue.component('sports-object-page', {
     data: function () {
         return {
-            loggedIn: false
+            loggedIn: false,
+            sportsObject: null
         }
     },
     template: `
@@ -10,17 +11,17 @@ Vue.component('sports-object-page', {
         <nav-bar-logged-out v-else></nav-bar-logged-out>
         <div class="main-content">
             <div class="sports-object-header">
-                <img class="sports-object-logo" src="../images/dance.png">
+                <img class="sports-object-logo" :src="sportsObject.logoIcon">
                 <div class="sports-object-info">
-                    <h1>SDance</h1>
-                    <p class="sports-object-subtitle">Plesni studio</p>
+                    <h1>{{sportsObject.name}}</h1>
+                    <p class="sports-object-subtitle">{{sportsObject.type}}</p>
                     <p class="sports-object-description">
                         <span class="d-inline-block"><i class="fa fa-business-time"
                                                         style="margin-right: 0.4em; color: #91D0F7"></i><span
                             class="d-inline-block">08:00-12:00</span></span><br>
                         <span class="d-inline-block"><i class="fa fa-map-location-dot"
                                                         style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                            class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
+                            class="d-inline-block">{{sportsObject.location.address.street}} {{sportsObject.location.address.number}}, {{sportsObject.location.address.city}}, {{sportsObject.location.address.country}}</span></span><br>
                         <span class="d-inline-block"><i class="fa fa-star"
                                                         style="margin-right: 0.4em; color: #ADE9AA"></i><span
                             class="d-inline-block">9.4</span></span><br>
@@ -243,6 +244,22 @@ Vue.component('sports-object-page', {
         </div>
         </div>
     `,
+    mounted() {
+	
+		var path = window.location.href;
+		var sportsObjectName = path.split('/objekti/')[1];
+		var name = sportsObjectName.replaceAll('%20', ' ');
+		axios.get('rest/getSportsObjectByName', {
+			params: {
+				name: name
+			}
+		})
+			.then(response => {
+				this.sportsObject = response.data;
+				
+			});
+	
+	},
     methods: {
         loggedInCheck: function () {
             axios.get(`/rest/loggedInUser`)
