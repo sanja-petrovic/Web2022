@@ -18,13 +18,22 @@ Vue.component('sports-object-page', {
                     <p class="sports-object-description">
                         <span class="d-inline-block"><i class="fa fa-business-time"
                                                         style="margin-right: 0.4em; color: #91D0F7"></i><span
-                            class="d-inline-block">08:00-12:00</span></span><br>
+                            class="d-inline-block">Radno vreme: {{sportsObject.businessHours.startTime }}-{{ sportsObject.businessHours.endTime }}</span></span><br>
                         <span class="d-inline-block"><i class="fa fa-map-location-dot"
                                                         style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                            class="d-inline-block">{{sportsObject.location.address.street}} {{sportsObject.location.address.number}}, {{sportsObject.location.address.city}}, {{sportsObject.location.address.country}}</span></span><br>
+                            class="d-inline-block">Lokacija:</span></span><br>
+                        <span class="d-inline-block"><i style="margin-right: 1.5em; color: #9BE3C3"></i><span
+                            class="d-inline-block">{{sportsObject.location.address.street}} {{sportsObject.location.address.number}}</span></span><br>
+                        <span class="d-inline-block"><i
+                                                        style="margin-right: 1.5em; color: #9BE3C3"></i><span
+                            class="d-inline-block">{{sportsObject.location.address.city}}, {{sportsObject.location.address.postcode}}</span></span><br>
+                        <span class="d-inline-block"><i 
+                                                        style="margin-right: 1.5em; color: #9BE3C3"></i><span
+                            class="d-inline-block">{{sportsObject.location.latitude}}, {{sportsObject.location.longitude}}</span></span><br>
+                        
                         <span class="d-inline-block"><i class="fa fa-star"
                                                         style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                            class="d-inline-block">9.4</span></span><br>
+                            class="d-inline-block">Prosečna ocena: {{sportsObject.averageGrade}}</span></span><br>
                         <span class="d-inline-block"><i class="fa fa-arrow-circle-right"
                                                         style="margin-right: 0.4em; color: #9BA1FF"></i><span
                             class="d-inline-block">grupni treninzi, personalni treninzi</span></span>
@@ -245,7 +254,7 @@ Vue.component('sports-object-page', {
         </div>
     `,
     mounted() {
-	
+		this.loggedInCheck();
 		var path = window.location.href;
 		var sportsObjectName = path.split('/objekti/')[1];
 		var name = sportsObjectName.replaceAll('%20', ' ');
@@ -263,7 +272,10 @@ Vue.component('sports-object-page', {
     methods: {
         loggedInCheck: function () {
             axios.get(`/rest/loggedInUser`)
-                .then(response => (this.loggedIn = response.data !== null))
+                .then(response => {
+					if(response.data != null) 
+                	   this.loggedIn = true;
+                })
                 .catch(error => console.log(error));
         }
     }

@@ -159,7 +159,7 @@ Vue.component('home-page', {
                     .catch(error => console.log(error));
             },
             displaySportsObjectDetails: function(name) {
-				window.location.href = "#/objekti/"+ encodeURIComponent(name);
+				window.location.href = "#/objekti/"+ name;
 			},
             displaySportsObjects: function() {
                 axios.get('rest/sportsobjects')
