@@ -6,6 +6,7 @@ import static spark.Spark.staticFiles;
 import java.io.File;
 import java.io.IOException;
 
+import beans.Comment;
 import controller.ContentsController;
 import controller.BuyerController;
 import controller.CommentController;
@@ -14,6 +15,7 @@ import controller.SportsObjectController;
 import controller.TrainerController;
 import controller.TrainingController;
 import controller.UserController;
+import dao.CommentDAO;
 import dao.Repository;
 
 
@@ -21,7 +23,7 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException {
 		Repository.getInstance().loadData();
-		port(3032);
+		port(3034);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
 		UserController userController = new UserController();
 		SportsObjectController sportsObjectController = new SportsObjectController();
@@ -40,6 +42,7 @@ public class Main {
 		commentController.init();
 		trainerController.init();
 		//trainingController.init();
+		
 		
 	}
 	

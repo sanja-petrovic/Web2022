@@ -6,23 +6,29 @@ import java.util.HashMap;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import util.annotations.Exclude;
+
 
 
 public class Buyer extends User {
 
 	@Expose
+	@Exclude
 	@SerializedName("Membership")
 	private Membership membership;
 	
 	@Expose
+	@Exclude
 	@SerializedName("Visits")
 	private HashMap<Training, LocalDate> visits;
 	
 	@Expose
+	@Exclude
 	@SerializedName("Points")
 	private double points;
 	
 	@Expose
+	@Exclude
 	@SerializedName("BuyerType")
 	private BuyerType type;
 	

@@ -17,15 +17,20 @@ import beans.Buyer;
 import beans.Comment;
 import beans.SportsObject;
 import util.adapters.LocalDateTimeAdapter;
+import util.annotations.AnnotationExclusionStrategy;
 
 public class CommentDAO {
 
 	private ArrayList<Comment> comments;
 	private Gson gson;
 	
+	public CommentDAO() {
+		this.load();
+	}
 
 	public void createGson() {
-	    this.gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).excludeFieldsWithoutExposeAnnotation().create();
+	    this.gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).excludeFieldsWithoutExposeAnnotation().setExclusionStrategies(new AnnotationExclusionStrategy()).create();
+	    
 	}
 	
 	public void load() {
@@ -44,9 +49,12 @@ public class CommentDAO {
 	}
 	
 	public void fillData(Comment c) {
-		Buyer b = Repository.getInstance().getBuyerDAO().getBuyerByUsername(c.getBuyer().getId());
+		if(c.getBuyer() != null) {
+			Buyer b = Repository.getInstance().getBuyerDAO().getBuyerById(c.getBuyer().getId());
+			c.setBuyer(b);
+		}
 		SportsObject s = Repository.getInstance().getSportsObjectDAO().getSportsObjectByIdCaseInsensitive(c.getSportsObject().getName());
-		c.setBuyer(b);
+
 		c.setSportsObject(s);
 	}
 	
