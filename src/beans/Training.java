@@ -1,19 +1,22 @@
 package beans;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Training {
+	
+	private String id;
 	@Expose
 	@SerializedName("Title")
 	private String title;
 	@Expose
 	@SerializedName("Type")
-	private String type;
 	@Expose
 	@SerializedName("SportsObject")
+	private TrainingType type;
 	private SportsObject sportsObject;
 	@Expose
 	@SerializedName("Duration")
@@ -34,8 +37,9 @@ public class Training {
 	@SerializedName("DeletedAt")
 	private LocalDateTime deletedAt;
 	
-	public Training(String title, String type, SportsObject sportsObject, int durationMinutes, Trainer trainer,
+	public Training(String title, TrainingType type, SportsObject sportsObject, int durationMinutes, Trainer trainer,
 			String description, String picture) {
+		this.id = UUID.randomUUID().toString();
 		this.title = title;
 		this.type = type;
 		this.sportsObject = sportsObject;
@@ -53,11 +57,11 @@ public class Training {
 		this.title = title;
 	}
 
-	public String getType() {
+	public TrainingType getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(TrainingType type) {
 		this.type = type;
 	}
 
@@ -108,4 +112,13 @@ public class Training {
 	public void setDeletedAt(LocalDateTime deletedAt) {
 		this.deletedAt = deletedAt;
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 }

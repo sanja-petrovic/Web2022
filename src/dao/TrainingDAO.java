@@ -79,3 +79,18 @@ public class TrainingDAO {
 		return trainings;
 	}
 }
+
+	public Training getTrainerById(String id) {
+		Training retVal = null;
+		
+		for(Training t : this.trainings) {
+			if(t.getId().equals(id)) {
+				retVal = t;
+				break;
+			}
+		
+		}
+		return retVal;
+	}
+}
+	

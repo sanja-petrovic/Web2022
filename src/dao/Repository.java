@@ -8,11 +8,13 @@ public class Repository {
 	private BuyerTypeDAO buyerTypeDAO;;
 	private SportsObjectDAO sportsObjectDAO;;
 	private ManagerDAO managerDAO;
+	private TrainingHistoryDAO trainingHistoryDAO;
 	private TrainingDAO trainingDAO;
 	private TrainerDAO trainerDAO;
 	private AdministratorDAO administratorDAO;
 	private CommentDAO commentDAO;
 	public static Repository instance;
+	
 	
 	private Repository() { }
 	
@@ -28,6 +30,7 @@ public class Repository {
 			instance.setTrainingDAO(new TrainingDAO());
 			instance.setTrainerDAO(new TrainerDAO());
 			instance.setCommentDAO(new CommentDAO());
+			instance.setTrainingHistoryDAO(new TrainingHistoryDAO());
 		}
 		return instance;
 	}
@@ -84,14 +87,6 @@ public class Repository {
 		this.managerDAO = managerDAO;
 	}
 
-	public TrainingDAO getTrainingDAO() {
-		return trainingDAO;
-	}
-
-	public void setTrainingDAO(TrainingDAO trainingDAO) {
-		this.trainingDAO = trainingDAO;
-	}
-
 	public TrainerDAO getTrainerDAO() {
 		return trainerDAO;
 	}
@@ -100,13 +95,29 @@ public class Repository {
 		this.trainerDAO = trainerDAO;
 	}
 
-	public AdministratorDAO getAdministratorDAO() {
-		return administratorDAO;
+	public TrainingDAO getTrainingDAO() {
+		return trainingDAO;
+	}
+
+	public void setTrainingDAO(TrainingDAO trainingDAO) {
+		this.trainingDAO = trainingDAO;
+	}
+
+	public TrainingHistoryDAO getTrainingHistoryDAO() {
+		return trainingHistoryDAO;
+	}
+
+	public void setTrainingHistoryDAO(TrainingHistoryDAO trainingHistoryDAO) {
+		this.trainingHistoryDAO = trainingHistoryDAO;
 	}
 
 	public void setAdministratorDAO(AdministratorDAO administratorDAO) {
 		this.administratorDAO = administratorDAO;
 	}
+
+	}
+		return administratorDAO;
+	public AdministratorDAO getAdministratorDAO() {
 
 	public CommentDAO getCommentDAO() {
 		return commentDAO;
@@ -115,5 +126,4 @@ public class Repository {
 	public void setCommentDAO(CommentDAO commentDAO) {
 		this.commentDAO = commentDAO;
 	}
-
 }

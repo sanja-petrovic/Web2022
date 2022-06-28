@@ -14,8 +14,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
-import beans.Buyer;
-import beans.Manager;
 import beans.User;
 import beans.UserType;
 import util.adapters.LocalDateAdapter;
@@ -24,7 +22,6 @@ import util.adapters.LocalDateTimeAdapter;
 public class UserDAO {
 	
 	private ArrayList<User> users;
-	private static Repository repository;
 	
 	public UserDAO() {
 		this.users = new ArrayList<>();
@@ -46,7 +43,7 @@ public class UserDAO {
 		}
 	}
 	
-	public void writeUsers() {
+	public void write() {
 		Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
 		try {
 			FileWriter writer = new FileWriter("resources/data/users.json");
@@ -82,7 +79,7 @@ public class UserDAO {
 		this.users.add(u);
 		UserType type = u.getUserType();
 		
-		this.writeUsers();
+		this.write();
 	}
 	
 	public UserType getUserTypeByUsername(String username) {
@@ -101,5 +98,26 @@ public class UserDAO {
 			u.setDeletedAt(LocalDateTime.now());
 		}
 	}
+	
+    public void updateUser(User u) {
+        int index = this.findIndexOf(u);
+        if(index != -1) {
+            this.users.set(index, u);
+            this.write();
+        }
+    }
+
+    public int findIndexOf(User u) {
+        int index = -1;
+        for(int i = 0; i < this.users.size(); i++) {
+            if(this.users.get(i).getId().equals(u.getId())) {
+                index = i;
+                break;
+            }
+        }
+
+        return index;
+    } 
+
 
 }

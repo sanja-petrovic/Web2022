@@ -15,6 +15,7 @@ import com.google.gson.reflect.TypeToken;
 
 import beans.Buyer;
 import beans.Trainer;
+import beans.Training;
 import beans.User;
 import beans.UserType;
 import util.adapters.LocalDateTimeAdapter;
@@ -67,6 +68,19 @@ public class TrainerDAO {
 	public Trainer getTrainerByUsername(String username) {
 		this.load();
 		Trainer retVal = null;
+		for(Trainer t : this.trainers) {
+			if(t.getUsername().equals(username)) {
+				retVal = t;
+				break;
+			}
+		}
+		
+		return retVal;
+	}
+	
+	public Trainer getTrainerByUsername(String username) {
+		Trainer retVal = null;
+		
 		for(Trainer t : this.trainers) {
 			if(t.getUsername().equals(username)) {
 				retVal = t;
