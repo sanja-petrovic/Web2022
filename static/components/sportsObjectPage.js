@@ -2,7 +2,9 @@ Vue.component('sports-object-page', {
     data: function () {
         return {
             loggedIn: false,
-            sportsObject: null
+            sportsObject: null,
+            sportsObjectContents: null,
+            logo: null,
         }
     },
     template: `
@@ -14,7 +16,10 @@ Vue.component('sports-object-page', {
                 <img class="sports-object-logo" :src="sportsObject.logoIcon">
                 <div class="sports-object-info">
                     <h1>{{sportsObject.name}}</h1>
-                    <p class="sports-object-subtitle">{{sportsObject.type}}</p>
+                    <p class="sports-object-subtitle">{{sportsObject.type}}
+                    <span class="badge rounded-pill badge-open" v-if="openCheck(sportsObject.status)">Otvoreno</span>
+                    <span class="badge rounded-pill badge-closed" v-if="!openCheck(sportsObject.status)">Zatvoreno</span>
+                    </p>
                     <p class="sports-object-description">
                         <span class="d-inline-block"><i class="fa fa-business-time"
                                                         style="margin-right: 0.4em; color: #91D0F7"></i><span
@@ -44,175 +49,31 @@ Vue.component('sports-object-page', {
             </div>
             <div class="sports-object-trainings">
                 <h4>Treninzi u ponudi</h4>
-                <ul class="cards">
-                    <li>
+                <ul class="cards" style="width: 100vw; margin-bottom: 20vh;">
+                    <li v-for="item in this.sportsObjectContents">
                         <div class="card">
-                            <img src="../images/casplesa.png" class="card__image" alt=""/>
+                            <img :src="item.picture" class="card__image" alt="" />
                             <div class="card__overlay">
                                 <div class="card__header">
                                     <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
                                         <path/>
                                     </svg>
-                                    <img class="card__thumb" src="../images/dance.png" alt=""/>
+                                    <img class="card__thumb" :src="logo" alt=""/>
                                     <div class="card__header-text">
-                                        <h3 class="card__title">Čas modernog plesa
+                                        <h3 class="card__title">{{item.sportsObjectName}}
                                         </h3>
                                         <span class="card__status">Petar Petrović, 17:30-19:00</span><br>
                                     </div>
                                 </div>
-                                <p class="card__description">                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed accumsan risus. Aliquam erat volutpat. Sed ut est eros. Phasellus et orci sapien.
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed accumsan risus. Aliquam erat volutpat. Sed ut est eros. Phasellus et orci sapien.
+                                <p class="card__description"> 
+                                	{{item.description}}
                                 </p>
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <a href="" class="card">
-                            <img src="../images/casplesa2.png" class="card__image" alt=""/>
-                            <div class="card__overlay">
-                                <div class="card__header">
-                                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
-                                        <path/>
-                                    </svg>
-                                    <img class="card__thumb" src="../images/pool.png" alt=""/>
-                                    <div class="card__header-text">
-                                        <h3 class="card__title">SPool <span class="badge rounded-pill badge-closed">Zatvoreno</span>
-                                        </h3>
-                                        <span class="card__status">Zatvoreni bazeni</span><br>
-                                    </div>
-                                </div>
-                                <p class="card__description">
-                            <span class="d-inline-block"><i class="fa fa-business-time"
-                                                            style="margin-right: 0.4em; color: #91D0F7"></i><span
-                                class="d-inline-block">08:00-12:00</span></span><br>
-                                    <span class="d-inline-block"><i class="fa fa-map-location-dot"
-                                                                    style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                                        class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                                    <span class="d-inline-block"><i class="fa fa-star"
-                                                                    style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                                        class="d-inline-block">9.4</span></span>
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="card">
-                            <img src="../images/casplesa3.png" class="card__image" alt=""/>
-                            <div class="card__overlay">
-                                <div class="card__header">
-                                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
-                                        <path/>
-                                    </svg>
-                                    <img class="card__thumb" src="../images/gym2.png" alt=""/>
-                                    <div class="card__header-text">
-                                        <h3 class="card__title">SGym Two <span
-                                            class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
-                                        <span class="card__status">Teretana</span><br>
-                                    </div>
-                                </div>
-                                <p class="card__description">
-                            <span class="d-inline-block"><i class="fa fa-business-time"
-                                                            style="margin-right: 0.4em; color: #91D0F7"></i><span
-                                class="d-inline-block">08:00-12:00</span></span><br>
-                                    <span class="d-inline-block"><i class="fa fa-map-location-dot"
-                                                                    style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                                        class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                                    <span class="d-inline-block"><i class="fa fa-star"
-                                                                    style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                                        class="d-inline-block">9.4</span></span>
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="card">
-                            <img src="../images/gym3.png" class="card__image" alt=""/>
-                            <div class="card__overlay">
-                                <div class="card__header">
-                                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
-                                        <path/>
-                                    </svg>
-                                    <img class="card__thumb" src="../images/stadion.png" alt=""/>
-                                    <div class="card__header-text">
-                                        <h3 class="card__title">SSport One <span
-                                            class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
-                                        <span class="card__status">Sportski centar</span><br>
-                                    </div>
-                                </div>
-                                <p class="card__description">
-                            <span class="d-inline-block"><i class="fa fa-business-time"
-                                                            style="margin-right: 0.4em; color: #91D0F7"></i><span
-                                class="d-inline-block">08:00-12:00</span></span><br>
-                                    <span class="d-inline-block"><i class="fa fa-map-location-dot"
-                                                                    style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                                        class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                                    <span class="d-inline-block"><i class="fa fa-star"
-                                                                    style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                                        class="d-inline-block">9.4</span></span>
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="card">
-                            <img src="../images/gym3.png" class="card__image" alt=""/>
-                            <div class="card__overlay">
-                                <div class="card__header">
-                                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
-                                        <path/>
-                                    </svg>
-                                    <img class="card__thumb" src="../images/sport.png" alt=""/>
-                                    <div class="card__header-text">
-                                        <h3 class="card__title">SSport Two <span
-                                            class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
-                                        <span class="card__status">Sportski centar</span><br>
-                                    </div>
-                                </div>
-                                <p class="card__description">
-                            <span class="d-inline-block"><i class="fa fa-business-time"
-                                                            style="margin-right: 0.4em; color: #91D0F7"></i><span
-                                class="d-inline-block">08:00-12:00</span></span><br>
-                                    <span class="d-inline-block"><i class="fa fa-map-location-dot"
-                                                                    style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                                        class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                                    <span class="d-inline-block"><i class="fa fa-star"
-                                                                    style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                                        class="d-inline-block">9.4</span></span>
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="card">
-                            <img src="../images/gym3.png" class="card__image" alt=""/>
-                            <div class="card__overlay">
-                                <div class="card__header">
-                                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
-                                        <path/>
-                                    </svg>
-                                    <img class="card__thumb" src="../images/tennis.png" alt=""/>
-                                    <div class="card__header-text">
-                                        <h3 class="card__title">STennis <span
-                                            class="badge rounded-pill badge-closed">Zatvoreno</span></h3>
-                                        <span class="card__status">Teniski tereni</span><br>
-                                    </div>
-                                </div>
-                                <p class="card__description">
-                            <span class="d-inline-block"><i class="fa fa-business-time"
-                                                            style="margin-right: 0.4em; color: #91D0F7"></i><span
-                                class="d-inline-block">08:00-12:00</span></span><br>
-                                    <span class="d-inline-block"><i class="fa fa-map-location-dot"
-                                                                    style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                                        class="d-inline-block">Lasla Gala 15, Novi Sad</span></span><br>
-                                    <span class="d-inline-block"><i class="fa fa-star"
-                                                                    style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                                        class="d-inline-block">9.4</span></span>
-                                </p>
-                            </div>
-                        </a>
-                    </li>
                 </ul>
             </div>
+                
             <div class="sports-object-comments">
                 <h4>Komentari</h4>
                 <div class="comment-section">
@@ -263,11 +124,11 @@ Vue.component('sports-object-page', {
 				name: name
 			}
 		})
-			.then(response => {
-				this.sportsObject = response.data;
-				
-			});
-	
+		.then(response => {
+			this.sportsObject = response.data;
+			this.logo = this.sportsObject.logoIcon;
+		});
+		this.displayContents(name);		
 	},
     methods: {
         loggedInCheck: function () {
@@ -277,6 +138,25 @@ Vue.component('sports-object-page', {
                 	   this.loggedIn = true;
                 })
                 .catch(error => console.log(error));
-        }
+        },
+        openCheck: function(status) {
+                if (status == 'WORKING')
+                    return true;
+                else
+                    return false;
+       },
+       
+       displayContents: function(name) {
+			axios.get('rest/getContentsForSportsObject', {
+			params: {
+				name: name
+			}
+			}).then(response => {
+				console.log(response.data);
+				this.sportsObjectContents = response.data;
+			}).catch(error => console.log(error));
+		}
+     
     }
+    
 });
