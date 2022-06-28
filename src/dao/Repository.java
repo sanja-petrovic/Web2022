@@ -4,12 +4,16 @@ public class Repository {
 	
 	private UserDAO userDAO;
 	private BuyerDAO buyerDAO;
-	private MembershipDAO membershipDAO;;
-	private BuyerTypeDAO buyerTypeDAO;;
-	private SportsObjectDAO sportsObjectDAO;;
+	private MembershipDAO membershipDAO;
+	private BuyerTypeDAO buyerTypeDAO;
+	private SportsObjectDAO sportsObjectDAO;
 	private ManagerDAO managerDAO;
 	private ContentsDAO contentsDAO;
+	private TrainerDAO trainerDAO;
+	private TrainingDAO trainingDAO;
+	private TrainingHistoryDAO trainingHistoryDAO;
 	public static Repository instance;
+	
 	
 	private Repository() { }
 	
@@ -23,6 +27,9 @@ public class Repository {
 			instance.setManagerDAO(new ManagerDAO());
 			instance.setContentsDAO(new ContentsDAO());
 			instance.setMembershipDAO(new MembershipDAO());
+			instance.setTrainerDAO(new TrainerDAO());
+			instance.setTrainingDAO(new TrainingDAO());
+			instance.setTrainingHistoryDAO(new TrainingHistoryDAO());
 		}
 		return instance;
 	}
@@ -88,5 +95,28 @@ public class Repository {
 	}
 	
 	
+	public TrainerDAO getTrainerDAO() {
+		return trainerDAO;
+	}
+
+	public void setTrainerDAO(TrainerDAO trainerDAO) {
+		this.trainerDAO = trainerDAO;
+	}
+
+	public TrainingDAO getTrainingDAO() {
+		return trainingDAO;
+	}
+
+	public void setTrainingDAO(TrainingDAO trainingDAO) {
+		this.trainingDAO = trainingDAO;
+	}
+
+	public TrainingHistoryDAO getTrainingHistoryDAO() {
+		return trainingHistoryDAO;
+	}
+
+	public void setTrainingHistoryDAO(TrainingHistoryDAO trainingHistoryDAO) {
+		this.trainingHistoryDAO = trainingHistoryDAO;
+	}
 
 }
