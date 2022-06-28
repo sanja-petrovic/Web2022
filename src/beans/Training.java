@@ -1,8 +1,11 @@
 package beans;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class Training {
+	
+	private String id;
 	private String title;
 	private String type;
 	private SportsObject sportsObject;
@@ -14,6 +17,7 @@ public class Training {
 	
 	public Training(String title, String type, SportsObject sportsObject, int durationMinutes, Trainer trainer,
 			String description, String picture) {
+		this.id = UUID.randomUUID().toString();
 		this.title = title;
 		this.type = type;
 		this.sportsObject = sportsObject;
@@ -86,4 +90,13 @@ public class Training {
 	public void setDeletedAt(LocalDateTime deletedAt) {
 		this.deletedAt = deletedAt;
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 }

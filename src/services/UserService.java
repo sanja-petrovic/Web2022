@@ -20,13 +20,13 @@ public class UserService {
 	}
 
 	public static User updateUser(ProfileDTO updatedUser, User u) {
-		u.setUsername(updatedUser.getUsername());
-		u.setGender(GenderParser.parse(updatedUser.getGender()));
-		u.setName(updatedUser.getName());
-		u.setSurname(updatedUser.getSurname());
-		
-		return u;
-	}
+        u.setUsername(updatedUser.getUsername());
+        u.setGender(GenderParser.parse(updatedUser.getGender()));
+        u.setName(updatedUser.getName());
+        u.setSurname(updatedUser.getSurname());
+        Repository.getInstance().getUserDAO().updateUser(u);
+        return u;
+    }
 	
 	public static Buyer registerBuyer(RegisterUserDTO registerUserDTO) throws NoSuchAlgorithmException, InvalidKeySpecException {
 		User user = new User(registerUserDTO.getUsername(), PasswordService.generateStrongPasswordHash(registerUserDTO.getPassword()), registerUserDTO.getName(), registerUserDTO.getSurname(), GenderParser.parse(registerUserDTO.getGender()), LocalDate.parse(registerUserDTO.getDateOfBirth()), UserType.BUYER);

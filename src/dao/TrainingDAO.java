@@ -8,18 +8,19 @@ import com.google.gson.GsonBuilder;
 
 import beans.Trainer;
 import beans.Training;
-import beans.User;
-import beans.UserType;
 import util.adapters.LocalDateTimeAdapter;
 
-public class TrainerDAO {
+public class TrainingDAO {
+
+	private ArrayList<Training> trainings;
+	
 
 	private Gson gson;
 	private ArrayList<Trainer> trainers;
 	
 	
-	public TrainerDAO() {
-		this.trainers = new ArrayList<>();
+	public TrainingDAO() {
+		this.trainings = new ArrayList<>();
 	}
 	
 	public void createGson() {
@@ -27,18 +28,13 @@ public class TrainerDAO {
 	}
 	
 	public void load() {
-		for(User u : Repository.getInstance().getUserDAO().getUsers()) {
-			 if(u.getUserType().equals(UserType.TRAINER)) {
-				 this.trainers.add((Trainer) u);
-			 }
-		}
 	}
 	
-	public Trainer getTrainerByUsername(String username) {
-		Trainer retVal = null;
+	public Training getTrainerById(String id) {
+		Training retVal = null;
 		
-		for(Trainer t : this.trainers) {
-			if(t.getUsername().equals(username)) {
+		for(Training t : this.trainings) {
+			if(t.getId().equals(id)) {
 				retVal = t;
 				break;
 			}
@@ -46,4 +42,5 @@ public class TrainerDAO {
 		
 		return retVal;
 	}
+	
 }

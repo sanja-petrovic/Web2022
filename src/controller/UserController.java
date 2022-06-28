@@ -124,17 +124,17 @@ public class UserController {
 	
 	
 	public static void updateProfile() {
-		put("/updateProfile", (req, res) -> {
-			res.type("application/json");
-			String payload = req.body();
-			ProfileDTO profile = gson.fromJson(payload, ProfileDTO.class);
-			
-			User user = req.session().attribute("user");
-			user = UserService.updateUser(profile, user);
-			
-			return gson.toJson(user);
-		});
-	}
+        put("/updateProfile", (req, res) -> {
+            res.type("application/json");
+            String payload = req.body();
+            ProfileDTO profile = gson.fromJson(payload, ProfileDTO.class);
+
+            User user = req.session().attribute("user");
+            user = UserService.updateUser(profile, user);
+
+            return gson.toJson(user);
+        });
+}
 	
 
 }
