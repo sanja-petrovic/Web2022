@@ -1,25 +1,39 @@
 package beans;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class Content {
+	@Expose()
+	@SerializedName("name")
 	private String name;
+	@Expose
+	@SerializedName("type")
 	private String type;
-	private String sportsObjectName;
+	@Expose
+	@SerializedName("SportsObject")
+	private SportsObject sportsObject;
+	@Expose
+	@SerializedName("durationMinutes")
 	private int durationMinutes;
+	@Expose
+	@SerializedName("description")
 	private String description;
+	@Expose
+	@SerializedName("picture")
 	private String picture;
 
 	public Content() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.sportsObject = null;
 	}
 
-	public Content(String name, String type, String sportsObjectName, int durationMinutes, String description,
+	public Content(String name, String type, SportsObject sportsObject, int durationMinutes, String description,
 			String picture) {
 		super();
 		this.name = name;
 		this.type = type;
-		this.sportsObjectName = sportsObjectName;
+		this.sportsObject = sportsObject;
 		this.durationMinutes = durationMinutes;
 		this.description = description;
 		this.picture = picture;
@@ -41,12 +55,12 @@ public class Content {
 		this.type = type;
 	}
 
-	public String getSportsObjectName() {
-		return sportsObjectName;
+	public SportsObject getSportsObject() {
+		return sportsObject;
 	}
 
-	public void setSportsObjectName(String sportsObjectName) {
-		this.sportsObjectName = sportsObjectName;
+	public void setSportsObject(SportsObject sportsObject) {
+		this.sportsObject = sportsObject;
 	}
 
 	public int getDurationMinutes() {

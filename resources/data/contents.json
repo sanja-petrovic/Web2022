@@ -2,7 +2,9 @@
   {
     "name": "Body Balance",
     "type": "training",
-	"sportsObjectName": "No Limit Gym",
+	"SportsObject":{
+		"name": "No Limit Gym"
+	},
     "durationMinutes": 60,
     "description": "Body Balance trening za um i telo. Predstavlja kombinaciju joge, pilatesa i tai chi-a.",
     "picture": "../images/gym2.png"
@@ -10,7 +12,9 @@
   {
     "name": "Body Pump",
     "type": "training",
-   	"sportsObjectName": "Mega Gym",
+   	"SportsObject":{
+		"name": "Mega Gym"
+	},
     "durationMinutes": 45,
     "description": "Body Pump je spoj moćne muzike i jedinstvene energije. Veliki broj ponavljanja pomaže ti da imaš definisane mišiće tela. Na treningu možeš da biraš lakšu i težu opciju svake vežbe.",
     "picture": "../images/bodypump.jpg"

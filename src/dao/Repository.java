@@ -8,6 +8,7 @@ public class Repository {
 	private BuyerTypeDAO buyerTypeDAO;;
 	private SportsObjectDAO sportsObjectDAO;;
 	private ManagerDAO managerDAO;
+	private ContentsDAO contentsDAO;
 	public static Repository instance;
 	
 	private Repository() { }
@@ -20,6 +21,7 @@ public class Repository {
 			instance.setSportsObjectDAO(new SportsObjectDAO());
 			instance.setBuyerDAO(new BuyerDAO());
 			instance.setManagerDAO(new ManagerDAO());
+			instance.setContentsDAO(new ContentsDAO());
 			instance.setMembershipDAO(new MembershipDAO());
 		}
 		return instance;
@@ -76,5 +78,15 @@ public class Repository {
 	public void setManagerDAO(ManagerDAO managerDAO) {
 		this.managerDAO = managerDAO;
 	}
+
+	public ContentsDAO getContentsDAO() {
+		return contentsDAO;
+	}
+
+	public void setContentsDAO(ContentsDAO contentsDAO) {
+		this.contentsDAO = contentsDAO;
+	}
+	
+	
 
 }

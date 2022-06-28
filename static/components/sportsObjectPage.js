@@ -60,7 +60,7 @@ Vue.component('sports-object-page', {
                                     </svg>
                                     <img class="card__thumb" :src="logo" alt=""/>
                                     <div class="card__header-text">
-                                        <h3 class="card__title">{{item.sportsObjectName}}
+                                        <h3 class="card__title">{{item.name}}
                                         </h3>
                                         <span class="card__status">Petar Petrović, 17:30-19:00</span><br>
                                     </div>

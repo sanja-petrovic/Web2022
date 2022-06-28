@@ -11,14 +11,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import beans.Content;
-import dao.ContentsDAO;
+import dao.Repository;
 import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalTimeAdapter;
 
 public class ContentsController {
 
 	private static Gson gson = new GsonBuilder().registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
-	private static ContentsDAO contentsDAO = new ContentsDAO();
 	private static String basePath = "/rest";
 	
 	public void init() {
@@ -33,7 +32,7 @@ public class ContentsController {
 		get("/contents", (req, res) -> {
 			res.type("application/json");
 			res.status(200);
-			return gson.toJson(contentsDAO.getContents());
+			return gson.toJson(Repository.getInstance().getContentsDAO().getContents());
 		});
 	}
 	
@@ -42,7 +41,7 @@ public class ContentsController {
 			res.type("application/json");
 			String name = req.queryParams("name");
 			res.status(200);
-			List<Content> contents = contentsDAO.getContentsForSportsObject(name);
+			List<Content> contents = Repository.getInstance().getContentsDAO().getContentsForSportsObject(name);
 			return gson.toJson(contents);
 		});
 	}
