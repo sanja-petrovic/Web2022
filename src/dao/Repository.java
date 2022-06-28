@@ -114,10 +114,10 @@ public class Repository {
 	public void setAdministratorDAO(AdministratorDAO administratorDAO) {
 		this.administratorDAO = administratorDAO;
 	}
-
-	}
-		return administratorDAO;
+	
 	public AdministratorDAO getAdministratorDAO() {
+		return administratorDAO;
+	}
 
 	public CommentDAO getCommentDAO() {
 		return commentDAO;
@@ -126,4 +126,5 @@ public class Repository {
 	public void setCommentDAO(CommentDAO commentDAO) {
 		this.commentDAO = commentDAO;
 	}
+
 }

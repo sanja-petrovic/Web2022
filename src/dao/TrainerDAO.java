@@ -29,6 +29,7 @@ public class TrainerDAO {
 	public TrainerDAO() {
 		this.trainers = new ArrayList<>();
 		this.createGson();
+		this.load();
 	}
 	
 	public void createGson() {
@@ -63,19 +64,6 @@ public class TrainerDAO {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public Trainer getTrainerByUsername(String username) {
-		this.load();
-		Trainer retVal = null;
-		for(Trainer t : this.trainers) {
-			if(t.getUsername().equals(username)) {
-				retVal = t;
-				break;
-			}
-		}
-		
-		return retVal;
 	}
 	
 	public Trainer getTrainerByUsername(String username) {

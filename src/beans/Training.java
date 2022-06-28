@@ -14,9 +14,9 @@ public class Training {
 	private String title;
 	@Expose
 	@SerializedName("Type")
+	private TrainingType type;
 	@Expose
 	@SerializedName("SportsObject")
-	private TrainingType type;
 	private SportsObject sportsObject;
 	@Expose
 	@SerializedName("Duration")

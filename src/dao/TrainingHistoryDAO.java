@@ -56,7 +56,7 @@ public class TrainingHistoryDAO {
         if(th.getTrainer() != null) {
             t = Repository.getInstance().getTrainerDAO().getTrainerByUsername(th.getTrainer().getUsername());
         }
-        Training tr = Repository.getInstance().getTrainingDAO().getTrainerById(th.getTraining().getId());
+        Training tr = Repository.getInstance().getTrainingDAO().getTrainingById(th.getTraining().getId());
 	}
 	
 	

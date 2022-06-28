@@ -48,7 +48,7 @@ public class AdministratorDAO {
 	
 	public void write() {
 		try {
-			Repository.getInstance().getUserDAO().writeUsers();
+			Repository.getInstance().getUserDAO().write();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

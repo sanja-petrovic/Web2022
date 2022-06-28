@@ -78,9 +78,9 @@ public class TrainingDAO {
 		
 		return trainings;
 	}
-}
 
-	public Training getTrainerById(String id) {
+
+	public Training getTrainingById(String id) {
 		Training retVal = null;
 		
 		for(Training t : this.trainings) {
