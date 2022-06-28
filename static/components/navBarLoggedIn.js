@@ -18,6 +18,9 @@ Vue.component('navBarLoggedIn', {
                         <a class="nav-link" href="#">Treninzi</a>
                     </li>
                     <li class="nav-item">
+                        <router-link class="nav-link" to="/dodaj-trenera">Dodaj trenera</router-link>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Članarine</a>
                     </li>
                     <li class="nav-item dropdown">

@@ -36,6 +36,8 @@ public class Main {
 		managerController.init();
 		buyerController.init();
 		commentController.init();
+		trainerController.init();
+		//trainingController.init();
 		
 	}
 	

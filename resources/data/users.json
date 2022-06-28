@@ -78,5 +78,15 @@
     "Gender": "Muški",
     "DateOfBirth": "2022-06-14",
     "UserType": "Manager"
+  },
+  {
+    "Id": "37fdad08-dc19-4a54-a72f-d81fba2d68cc",
+    "Username": "jovana",
+    "Password": "1000:891a16d226502bd094b5111e55216052:77bdd77c54582e568841840817d4c7480238aa5ed2659504d4a4090b58cdb01bcc0a6bc11f50ad19b35995fd2b4c3a0af708a5dbc9b2393c50d26d173b4a0fcb",
+    "Name": "Jovana",
+    "Surname": "Jovanović",
+    "Gender": "Ženski",
+    "DateOfBirth": "2022-06-06",
+    "UserType": "Trainer"
   }
 ]

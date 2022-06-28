@@ -249,50 +249,6 @@ Vue.component('create-sports-object', {
                 this.errorExists = false;
             }
             event.preventDefault();
-        },
-
-        addFile: async function () {
-            this.logo = this.$refs.myFile.files[0];
-            event.preventDefault();
-            await axios.post('/rest/uploadPhoto', this.logo)
-                .then(function response(resp) {
-                    oopsie = false;
-                })
-                .catch(function error(err) {
-                    oopsie = true;
-                });
-        },
-
-        saveFile: async function (formData) {
-            let oopsie = false;
-
-        },
-
-        okaci: function() {
-            var picturePath  = new FileReader();
-                var file   = this.$refs.myFile.files[0];
-                var fileName = this.$refs.myFile.files[0].name;
-                picturePath.readAsDataURL(file);
-                let image = $('#fileUpload')[0];
-                pictureSend = true;
-
-
-            if(pictureSend){
-                picturePath.onloadend = function ()
-                {
-                    axios.
-                    post("/rest/uploadPhoto",
-                        JSON.stringify({
-                            'imgData' : picturePath.result,
-                            'fileName' : fileName
-                        }))
-                        .then(function response(resp){
-                            location.reload();
-                        }).catch(function error(err) {
-                        alert(err.response.data);
-                    });
-                }
-            }
         }
     }
 })
