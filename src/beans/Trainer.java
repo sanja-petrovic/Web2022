@@ -19,6 +19,11 @@ public class Trainer extends User {
 		this.trainingHistory = trainingHistory;
 	}
 	
+	public Trainer(User u) {
+		super(u);
+		this.trainingHistory = new ArrayList<>();
+	}
+	
 	public ArrayList<Training> getTrainingHistory() {
 		return trainingHistory;
 	}
