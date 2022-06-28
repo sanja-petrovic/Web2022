@@ -14,8 +14,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
-import beans.Buyer;
-import beans.Manager;
 import beans.User;
 import beans.UserType;
 import util.adapters.LocalDateAdapter;

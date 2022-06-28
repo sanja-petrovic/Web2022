@@ -7,7 +7,7 @@ public class Training {
 	
 	private String id;
 	private String title;
-	private String type;
+	private TrainingType type;
 	private SportsObject sportsObject;
 	private int durationMinutes;
 	private Trainer trainer;
@@ -15,7 +15,7 @@ public class Training {
 	private String picture;
 	private LocalDateTime deletedAt;
 	
-	public Training(String title, String type, SportsObject sportsObject, int durationMinutes, Trainer trainer,
+	public Training(String title, TrainingType type, SportsObject sportsObject, int durationMinutes, Trainer trainer,
 			String description, String picture) {
 		this.id = UUID.randomUUID().toString();
 		this.title = title;
@@ -35,11 +35,11 @@ public class Training {
 		this.title = title;
 	}
 
-	public String getType() {
+	public TrainingType getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(TrainingType type) {
 		this.type = type;
 	}
 
