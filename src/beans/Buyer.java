@@ -1,11 +1,12 @@
 package beans;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+
 
 public class Buyer extends User {
 
@@ -14,8 +15,8 @@ public class Buyer extends User {
 	private Membership membership;
 	
 	@Expose
-	@SerializedName("VisitedObjects")
-	private ArrayList<SportsObject> visitedObjects;
+	@SerializedName("Visits")
+	private HashMap<Training, LocalDate> visits;
 	
 	@Expose
 	@SerializedName("Points")
@@ -27,23 +28,23 @@ public class Buyer extends User {
 	
 	public Buyer(String username, String password, String name, String surname, Gender gender, LocalDate dateOfBirth, BuyerType buyerType) {
 		super(username, password, name, surname, gender, dateOfBirth, UserType.BUYER);
-		this.visitedObjects = new ArrayList<>();
+		this.visits = new HashMap<>();
 		this.type = buyerType;
 		this.points = 0;
 	}
 	
 	public Buyer(String username, String password, String name, String surname, Gender gender, LocalDate dateOfBirth,
-			Membership membership, ArrayList<SportsObject> visitedObjects, double points, BuyerType type) {
+			Membership membership, HashMap<Training, LocalDate> visits, double points, BuyerType type) {
 		super(username, password, name, surname, gender, dateOfBirth, UserType.BUYER);
 		this.membership = membership;
-		this.visitedObjects = visitedObjects;
+		this.visits = visits;
 		this.points = points;
 		this.type = type;
 	}
 	
 	public Buyer(User u) {
 		super(u);
-		this.visitedObjects = new ArrayList<>();
+		this.visits = new HashMap<>();
 		this.points = 0;
 		
 	}
@@ -54,11 +55,11 @@ public class Buyer extends User {
 	public void setMembership(Membership membership) {
 		this.membership = membership;
 	}
-	public ArrayList<SportsObject> getVisitedObjects() {
-		return visitedObjects;
+	public HashMap<Training, LocalDate> getVisits() {
+		return visits;
 	}
-	public void setVisitedObjects(ArrayList<SportsObject> visitedObjects) {
-		this.visitedObjects = visitedObjects;
+	public void setVisits(HashMap<Training, LocalDate> visits) {
+		this.visits = visits;
 	}
 	public double getPoints() {
 		return points;

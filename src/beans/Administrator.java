@@ -9,4 +9,7 @@ public class Administrator extends User {
 		super(username, password, name, surname, gender, dateOfBirth, UserType.ADMIN);
 	}
 
+	public Administrator(User u) {
+		super(u);
+	}
 }

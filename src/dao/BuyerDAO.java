@@ -107,5 +107,9 @@ public class BuyerDAO {
 		
 		return retVal;
 	}
+	
+	public ArrayList<Buyer> getBuyers() {
+		return this.buyers;
+	}
 
 }

@@ -1,152 +1,153 @@
 [
   {
-    "name": "Body Balance",
-    "type": "training",
+    "Id": "1",
+    "Name": "Body Balance",
+    "ContentType": "training",
 	"SportsObject":{
 		"name": "No Limit Gym"
 	},
-    "durationMinutes": 60,
-    "description": "Body Balance trening za um i telo. Predstavlja kombinaciju joge, pilatesa i tai chi-a.",
-    "picture": "../images/bodybalance.jpg"
+    "Duration": 60,
+    "Description": "Body Balance trening za um i telo. Predstavlja kombinaciju joge, pilatesa i tai chi-a.",
+    "Picture": "../images/bodybalance.jpg"
   },
    {
-    "name": "Cardio",
-    "type": "training",
+    "Name": "Cardio",
+    "ContentType": "training",
 	"SportsObject":{
 		"name": "No Limit Gym"
 	},
-    "durationMinutes": 30,
-    "description": "Kardio vežbanje učiniće te zgodnijim, zdravijim i punim snage ali učiniće i više od toga. Imaćeš bolju koncentraciju i pamćenje, regulisaćeš telesnu težinu i bićeš otporniji na stres.",
-    "picture": "../images/cardio.jpg"
+    "Duration": 30,
+    "Description": "Kardio vežbanje učiniće te zgodnijim, zdravijim i punim snage ali učiniće i više od toga. Imaćeš bolju koncentraciju i pamćenje, regulisaćeš telesnu težinu i bićeš otporniji na stres.",
+    "Picture": "../images/cardio.jpg"
   },
   {
-    "name": "Body Pump",
-    "type": "training",
+    "Name": "Body Pump",
+    "ContentType": "training",
    	"SportsObject":{
 		"name": "Mega Gym"
 	},
-    "durationMinutes": 45,
-    "description": "Body Pump je spoj moćne muzike i jedinstvene energije. Veliki broj ponavljanja pomaže ti da imaš definisane mišiće tela. Na treningu možeš da biraš lakšu i težu opciju svake vežbe.",
-    "picture": "../images/bodypump.jpg"
+    "Duration": 45,
+    "Description": "Body Pump je spoj moćne muzike i jedinstvene energije. Veliki broj ponavljanja pomaže ti da imaš definisane mišiće tela. Na treningu možeš da biraš lakšu i težu opciju svake vežbe.",
+    "Picture": "../images/bodypump.jpg"
   },
   {
-    "name": "Rekreativni treninzi",
-    "type": "training",
+    "Name": "Rekreativni treninzi",
+    "ContentType": "training",
    	"SportsObject":{
 		"name": "Novak Tennis Center"
 	},
-    "durationMinutes": 90,
-    "description": "Uz tenis možete da unapredite svoju kondiciju, ojačate tonus mišića i fleksibilnost tela. Jedna od glavnih prednosti tenisa je što veći deo godine može da se igra na otvorenom, samim tim uvek ste napolju i na svežem vazduhu. Treninzi se održavaju na grupnom nivou.",
-    "picture": "../images/tennis.jpg"
+    "Duration": 90,
+    "Description": "Uz tenis možete da unapredite svoju kondiciju, ojačate tonus mišića i fleksibilnost tela. Jedna od glavnih prednosti tenisa je što veći deo godine može da se igra na otvorenom, samim tim uvek ste napolju i na svežem vazduhu. Treninzi se održavaju na grupnom nivou.",
+    "Picture": "../images/tennis.jpg"
   },
   {
-    "name": "Salsa",
-    "type": "training",
+    "Name": "Salsa",
+    "ContentType": "training",
    	"SportsObject":{
 		"name": "Plesni centar Allegro"
 	},
-    "durationMinutes": 60,
-    "description": "U našoj školi podučavamo Kubansku Salsu, koja je predak svih današnjih stilova Salse. Sam ples je vrlo pikantan, veseo, vatren i poletan. Njegov ritam može biti spor ili jako brz.Časovi se održavaju dva puta nedeljno, od po sat vremena.",
-    "picture": "../images/salsa.jpg"
+    "Duration": 60,
+    "Description": "U našoj školi podučavamo Kubansku Salsu, koja je predak svih današnjih stilova Salse. Sam ples je vrlo pikantan, veseo, vatren i poletan. Njegov ritam može biti spor ili jako brz.Časovi se održavaju dva puta nedeljno, od po sat vremena.",
+    "Picture": "../images/salsa.jpg"
   },
   {
-    "name": "Argentinski tango",
-    "type": "training",
+    "Name": "Argentinski tango",
+    "ContentType": "training",
    	"SportsObject":{
 		"name": "Plesni centar Allegro"
 	},
-    "durationMinutes": 60,
-    "description": "Argentinski Tango omogućuje odličan trening za tajming i tehniku stopala, kao izgradnju osnova za svaki ples.Intiman je, kako ga plesači često plešu obraz do obraza, upliću svoje noge na vrlo komplikovan način što odaje izuzetno senzualan efekat. Čas se održava u grupama od 20 ljudi, dva puta nedeljno.",
-    "picture": "../images/tango.jpg"
+    "Duration": 60,
+    "Description": "Argentinski Tango omogućuje odličan trening za tajming i tehniku stopala, kao izgradnju osnova za svaki ples.Intiman je, kako ga plesači često plešu obraz do obraza, upliću svoje noge na vrlo komplikovan način što odaje izuzetno senzualan efekat. Čas se održava u grupama od 20 ljudi, dva puta nedeljno.",
+    "Picture": "../images/tango.jpg"
   },
    {
-    "name": "Joga za početnike",
-    "type": "training",
+    "Name": "Joga za početnike",
+    "ContentType": "training",
    	"SportsObject":{
 		"name": "Joga Studio"
 	},
-    "durationMinutes": 60,
-    "description": "Program Joge za početnike u Joga Studiju je tako koncipiran da novi vežbači usvoje pravilan način disanja, postepeno uče i bezbedno savladaju i razumeju osnovne Joga položaje. Takođe, na ovom nivou naučićete i kako i gde da držite pažnju dok vežbate i kako da se potpuno opustite na kraju časa.",
-    "picture": "../images/joga.jpg"
+    "Duration": 60,
+    "Description": "Program Joge za početnike u Joga Studiju je tako koncipiran da novi vežbači usvoje pravilan način disanja, postepeno uče i bezbedno savladaju i razumeju osnovne Joga položaje. Takođe, na ovom nivou naučićete i kako i gde da držite pažnju dok vežbate i kako da se potpuno opustite na kraju časa.",
+    "Picture": "../images/joga.jpg"
   },
   {
-    "name": "Joga za iskusnije",
-    "type": "training",
+    "Name": "Joga za iskusnije",
+    "ContentType": "training",
    	"SportsObject":{
 		"name": "Joga Studio"
 	},
-    "durationMinutes": 60,
-    "description": "Program Joga za iskusnije je tako koncipiran da odgovori na potrebe vežbača koji već duže vremena vežbaju Jogu i mogu i žele da napreduju brže. Razlika u odnosu na program Joga za početnike je u tome što se vežbaju zahtevniji položaji i tehnike disanja, a tempo časa je takav da zahteva dobru kondiciju.",
-    "picture": "../images/advjoga.jpg"
+    "Duration": 60,
+    "Description": "Program Joga za iskusnije je tako koncipiran da odgovori na potrebe vežbača koji već duže vremena vežbaju Jogu i mogu i žele da napreduju brže. Razlika u odnosu na program Joga za početnike je u tome što se vežbaju zahtevniji položaji i tehnike disanja, a tempo časa je takav da zahteva dobru kondiciju.",
+    "Picture": "../images/advjoga.jpg"
   },
    {
-    "name": "Plivanje",
-    "type": "training",
+    "Name": "Plivanje",
+    "ContentType": "training",
    	"SportsObject":{
 		"name": "Bazeni Spens"
 	},
-    "durationMinutes": 60,
-    "description": "Zatvoreni bazen je površine 2.964 m2, dimenzija: 50 x 25 m. Otvoren je svaki dan od 6:30 do 22:00 časova.",
-    "picture": "../images/pools.jpg"
+    "Duration": 60,
+    "Description": "Zatvoreni bazen je površine 2.964 m2, dimenzija: 50 x 25 m. Otvoren je svaki dan od 6:30 do 22:00 časova.",
+    "Picture": "../images/pools.jpg"
   },
   {
-    "name": "Deep masaža",
-    "type": "spa",
+    "Name": "Deep masaža",
+    "ContentType": "spa",
    	"SportsObject":{
 		"name": "Lotos Spa \u0026 Wellness"
 	},
-    "durationMinutes": 60,
-    "description": "Deep masaža je prijatna masaža tkiva i mišića. Ima dubinski efekat i odlična je za razbijanje takozvanih masnih jastučića. Poboljšava se pokretljivost čitavog tela i olakšava se oslobađanje toksina iz umornih i preopterećenih mišića. Umiruje hronične bolove i napetost unutar celog tela. Deep masaža traje 60 minuta.",
-    "picture": "../images/deep.jpg"
+    "Duration": 60,
+    "Description": "Deep masaža je prijatna masaža tkiva i mišića. Ima dubinski efekat i odlična je za razbijanje takozvanih masnih jastučića. Poboljšava se pokretljivost čitavog tela i olakšava se oslobađanje toksina iz umornih i preopterećenih mišića. Umiruje hronične bolove i napetost unutar celog tela. Deep masaža traje 60 minuta.",
+    "Picture": "../images/deep.jpg"
   },
   {
-    "name": "Relax masaža",
-    "type": "spa",
+    "Name": "Relax masaža",
+    "ContentType": "spa",
    	"SportsObject":{
 		"name": "Lotos Spa \u0026 Wellness"
 	},
-    "durationMinutes": 90,
-    "description": "Relax masaža je blaga, prijatna, manuelna masaža kojom se, sjedinjavanjem protoka energije, postiže opuštanje organizma. Njen cilj je maksimalno opuštanje tela i uma. Traje 90 minuta. Vrste relax masaže: Masaža svećom, Lady massage, Masaža trudnica.",
-    "picture": "../images/relax.jpg"
+    "Duration": 90,
+    "Description": "Relax masaža je blaga, prijatna, manuelna masaža kojom se, sjedinjavanjem protoka energije, postiže opuštanje organizma. Njen cilj je maksimalno opuštanje tela i uma. Traje 90 minuta. Vrste relax masaže: Masaža svećom, Lady massage, Masaža trudnica.",
+    "Picture": "../images/relax.jpg"
   },
    {
-    "name": "Glamour body tretman",
-    "type": "spa",
+    "Name": "Glamour body tretman",
+    "ContentType": "spa",
    	"SportsObject":{
 		"name": "LuxSpa"
 	},
-    "durationMinutes": 90,
-    "description": "Ekskluzivna nege tela inspirisana večitom težnjom da se očuva mladost i lepota kože ovaj tretman objedinio je sve vekovno poznate eliksire mladosti.U tretman je uključen piling tela obogaćen kavijarom koji se produžuje u raskošnu masažu jedinstvenim želeom koji savršeno klizi kožom.  Savršen je odabir pred važne prilike kada želite da postignete besprekoran izgled i kožu koja će zasijati punim sjajem.",
-    "picture": "../images/glamour.jpg"
+    "Duration": 90,
+    "Description": "Ekskluzivna nege tela inspirisana večitom težnjom da se očuva mladost i lepota kože ovaj tretman objedinio je sve vekovno poznate eliksire mladosti.U tretman je uključen piling tela obogaćen kavijarom koji se produžuje u raskošnu masažu jedinstvenim želeom koji savršeno klizi kožom.  Savršen je odabir pred važne prilike kada želite da postignete besprekoran izgled i kožu koja će zasijati punim sjajem.",
+    "Picture": "../images/glamour.jpg"
   },
   {
-    "name": "Masaža lica",
-    "type": "spa",
+    "Name": "Masaža lica",
+    "ContentType": "spa",
    	"SportsObject":{
 		"name": "LuxSpa"
 	},
-    "durationMinutes": 30,
-    "description": " Afrodita Wine Therapy sa ekstraktima grožđa i penušavog vina usporava proces starenja i istovremeno neguje kožu lica.Ultrazvučni tretman lica uz masažu i piling lica predstavlja nešto novo u našoj ponudi. Masaže lica traju 30 minuta.",
-    "picture": "../images/face.jpg"
+    "Duration": 30,
+    "Description": " Afrodita Wine Therapy sa ekstraktima grožđa i penušavog vina usporava proces starenja i istovremeno neguje kožu lica.Ultrazvučni tretman lica uz masažu i piling lica predstavlja nešto novo u našoj ponudi. Masaže lica traju 30 minuta.",
+    "Picture": "../images/face.jpg"
   },
   {
-    "name": "Personalni trening",
-    "type": "training",
+    "Name": "Personalni trening",
+    "ContentType": "training",
    	"SportsObject":{
 		"name": "Classic Gym"
 	},
-    "durationMinutes": 60,
-    "description": "Nudimo različite oblike rekreacije koje redovnim upražnjavanjem mogu poboljšati opšte psihofizičko stanje i pozitivno uticati na radne i životne sposobnosti. U zavisnosti od godina, pola, trenutnog stanja fizičke kondicije kao i želja, pomoći ćemo vam da napravite pravi izbor aktivnosti.",
-    "picture": "../images/personal.jpg"
+    "Duration": 60,
+    "Description": "Nudimo različite oblike rekreacije koje redovnim upražnjavanjem mogu poboljšati opšte psihofizičko stanje i pozitivno uticati na radne i životne sposobnosti. U zavisnosti od godina, pola, trenutnog stanja fizičke kondicije kao i želja, pomoći ćemo vam da napravite pravi izbor aktivnosti.",
+    "Picture": "../images/personal.jpg"
   },
     {
-    "name": "Kick Box",
-    "type": "training",
+    "Name": "Kick Box",
+    "ContentType": "training",
    	"SportsObject":{
 		"name": "Favorit"
 	},
-    "durationMinutes": 60,
-    "description": "Kikc Box trenizi održavaju se u grupama od 20 ljudi, dva puta nedeljno. Trening traje sat vremena.",
-    "picture": "../images/box.jpg"
+    "Duration": 60,
+    "Description": "Kick Box trenizi održavaju se u grupama od 20 ljudi, dva puta nedeljno. Trening traje sat vremena.",
+    "Picture": "../images/box.jpg"
   }
 ]

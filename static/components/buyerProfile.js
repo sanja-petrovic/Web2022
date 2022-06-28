@@ -24,16 +24,6 @@ Vue.component('buyer-profile-page', {
                         <label for="date">Datum rođenja</label>
                         <input class="text-box" readonly type="date" id="dob" name="dob" v-model="user.DateOfBirth">
                     </div>
-                    <div class="membership">
-                        <!--<label for="points">Broj sakupljenih bodova</label>
-                        <input class="text-box" readonly type="number" id="points" name="points" v-model="user.Points">
-                        <label for="type">Tip kupca</label>
-                        <input class="text-box" readonly type="text" v-model="user.BuyerType.Tier" id="type" name="type">
-                        <label>Trenutna članarina</label>-->
-                        <div class="membership-card">
-
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="trainings-wrapper">

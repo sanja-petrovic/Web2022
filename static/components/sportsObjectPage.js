@@ -52,7 +52,7 @@ Vue.component('sports-object-page', {
                 <ul class="cards" style="width: 100vw; margin-bottom: 20vh;">
                     <li v-for="item in this.sportsObjectContents">
                         <div class="card">
-                            <img :src="item.picture" class="card__image" alt="" />
+                            <img :src="item.Picture" class="card__image" alt="" />
                             <div class="card__overlay">
                                 <div class="card__header">
                                     <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
@@ -60,14 +60,14 @@ Vue.component('sports-object-page', {
                                     </svg>
                                     <img class="card__thumb" :src="logo" alt=""/>
                                     <div class="card__header-text">
-                                        <h3 class="card__title">{{item.name}}
+                                        <h3 class="card__title">{{item.Name}}
                                         </h3>
                                         <span class="card__status">Petar Petrović, 17:30-19:00</span><br>
-                                        <span class="card__status">Trajanje: {{item.durationMinutes}}min</span><br>
+                                        <span class="card__status">Trajanje: {{item.Duration}}min</span><br>
                                     </div>
                                 </div>
                                 <p class="card__description"> 
-                                	{{item.description}}
+                                	{{item.Description}}
                                 </p>
                             </div>
                         </div>

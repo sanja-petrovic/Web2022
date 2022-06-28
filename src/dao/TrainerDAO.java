@@ -1,11 +1,19 @@
 package dao;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
+import com.google.gson.reflect.TypeToken;
 
+import beans.Buyer;
 import beans.Trainer;
 import beans.Training;
 import beans.User;
@@ -20,6 +28,8 @@ public class TrainerDAO {
 	
 	public TrainerDAO() {
 		this.trainers = new ArrayList<>();
+		this.createGson();
+		this.load();
 	}
 	
 	public void createGson() {
@@ -27,10 +37,43 @@ public class TrainerDAO {
 	}
 	
 	public void load() {
-		for(User u : Repository.getInstance().getUserDAO().getUsers()) {
-			 if(u.getUserType().equals(UserType.TRAINER)) {
-				 this.trainers.add((Trainer) u);
-			 }
+		try {
+		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/trainers.json"));
+		    this.trainers = gson.fromJson(reader, new TypeToken<ArrayList<Trainer>>() {}.getType());
+		    for(Trainer t : this.trainers) {
+		    	this.fillData(t);
+		    }
+		    reader.close();
+
+		} catch (Exception ex) {
+		    ex.printStackTrace();
+		}
+	}
+	
+	public void fillData(Trainer t) {
+		User u = Repository.getInstance().getUserDAO().getUserByUsername(t.getUsername());
+		if(t != null) {
+			t.setName(u.getName());
+			t.setSurname(u.getSurname());
+			t.setDateOfBirth(u.getDateOfBirth());
+			t.setGender(u.getGender());
+			t.setPassword(u.getPassword());
+			t.setDeletedAt(u.getDeletedAt());
+			t.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(t.getId()));
+		}
+	}
+	
+	public void write() {
+		try {
+			FileWriter writer = new FileWriter("resources/data/trainers.json");
+			gson.toJson(this.trainers, writer);
+			writer.flush();
+			writer.close();
+			
+		} catch (JsonIOException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -45,5 +88,14 @@ public class TrainerDAO {
 		}
 		
 		return retVal;
+	}
+	
+	public void addTrainer(Trainer t) {
+		this.trainers.add(t);
+		this.write();
+	}
+	
+	public ArrayList<Trainer> getTrainers() {
+		return this.trainers;
 	}
 }

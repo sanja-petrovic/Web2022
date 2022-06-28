@@ -5,7 +5,7 @@ Vue.component('navBarLoggedIn', {
             surname: ""
         }
     }, template: `
-        <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
+        <nav class="navbar navbar-default sticky-top navbar-expand-lg navbar-dark" style="width: 100%">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="../images/s.png" alt="SFitness" height="25px"></a>
@@ -16,6 +16,9 @@ Vue.component('navBarLoggedIn', {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Treninzi</a>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/dodaj-trenera">Dodaj trenera</router-link>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Članarine</a>

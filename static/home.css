@@ -11155,6 +11155,10 @@ textarea.form-control-lg {
   border-color: #6382ff;
 }
 
+.navbar .navbar-default .sticky-top .navbar-expand-lg .navbar-dark {
+  box-shadow: none !important;
+}
+
 .badge-open {
   color: #ffffff;
   background-color: #7cd58a;
@@ -22501,6 +22505,10 @@ textarea.form-control-lg {
   color: #000;
   background-color: #6382ff;
   border-color: #6382ff;
+}
+
+.navbar .navbar-default .sticky-top .navbar-expand-lg .navbar-dark {
+  box-shadow: none !important;
 }
 
 .badge-open {
@@ -33930,6 +33938,10 @@ textarea.form-control-lg {
   color: #000;
   background-color: #6382ff;
   border-color: #6382ff;
+}
+
+.navbar .navbar-default .sticky-top .navbar-expand-lg .navbar-dark {
+  box-shadow: none !important;
 }
 
 .badge-open {
@@ -45363,6 +45375,10 @@ textarea.form-control-lg {
   border-color: #6382ff;
 }
 
+.navbar .navbar-default .sticky-top .navbar-expand-lg .navbar-dark {
+  box-shadow: none !important;
+}
+
 .badge-open {
   color: #ffffff;
   background-color: #7cd58a;
@@ -45621,7 +45637,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 2em;
+  gap: 5em;
   padding: 2em;
   border-radius: calc(var(--curve) * 1px) 0 0 0;
   background-color: var(--surface-color);
@@ -56850,6 +56866,10 @@ textarea.form-control-lg {
   color: #000;
   background-color: #6382ff;
   border-color: #6382ff;
+}
+
+.navbar .navbar-default .sticky-top .navbar-expand-lg .navbar-dark {
+  box-shadow: none !important;
 }
 
 .badge-open {
@@ -68338,6 +68358,10 @@ textarea.form-control-lg {
   color: #000;
   background-color: #6382ff;
   border-color: #6382ff;
+}
+
+.navbar .navbar-default .sticky-top .navbar-expand-lg .navbar-dark {
+  box-shadow: none !important;
 }
 
 .badge-open {

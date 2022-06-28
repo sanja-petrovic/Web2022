@@ -39,6 +39,9 @@ $primary-button-pressed: #3f61e8;
   @include button-variant($primary-button-color, $primary-button-color, white, $primary-button-hover, $primary-button-hover, $primary-button-pressed);
 }
 
+.navbar .navbar-default .sticky-top .navbar-expand-lg .navbar-dark {
+  box-shadow: none !important;
+}
 
 .badge-open {
   color: #ffffff;

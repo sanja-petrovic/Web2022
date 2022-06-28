@@ -7,11 +7,12 @@ import beans.Training;
 import beans.TrainingType;
 import beans.User;
 import beans.UserType;
+import dao.Repository;
 
 public class AuthorizationService {
 	
 	public static boolean isAdmin(User u) {
-		return u.getUserType().equals(UserType.ADMIN));
+		return u.getUserType().equals(UserType.ADMIN);
 	}
 	
 	public static boolean isManager(User u) {
@@ -32,6 +33,24 @@ public class AuthorizationService {
 	
 	public static boolean canCancelTraining(Trainer trainer, Training training) {
 		return training.getTrainer() != null && training.getTrainer().getId().equals(trainer.getId()) && training.getType().equals(TrainingType.PERSONAL);
+	}
+	
+	public static boolean canComment(User u, SportsObject sportsObject) {
+		return u.getUserType().equals(UserType.BUYER) && BuyerService.checkIfFirstVisit(u.getUsername(), sportsObject.getName());
+	}
+	
+	public static boolean canSeeUnapprovedCommentsForSportsObject(User u, SportsObject so) {
+		boolean retVal;
+		if(u.getUserType().equals(UserType.ADMIN)) {
+			retVal = true;
+		} else if(u.getUserType().equals(UserType.MANAGER)) {
+			Manager m = Repository.getInstance().getManagerDAO().getManagerById(u.getId());
+			retVal = m.getSportsObject().getName().equalsIgnoreCase(so.getName());
+		} else {
+			retVal = false;
+		}
+		
+		return retVal;
 	}
 
 }

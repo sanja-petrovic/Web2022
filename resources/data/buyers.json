@@ -1,45 +1,29 @@
 [
   {
-    "VisitedObjects": [],
+    "Visits": [],
     "Points": 0.0,
-    "Username": "petar"
+    "Username": "petar",
+    "BuyerType": {
+      "Tier": "Bronzani"
+    },
+    "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602"
   },
   {
-    "VisitedObjects": [],
+    "Visits": [],
     "Points": 0.0,
     "BuyerType": {
       "Tier": "Bronzani"
     },
-    "Username": "ivana"
+    "Username": "ivana",
+    "Id": "749a5c0e-8a19-4032-85e4-30717163b7da"
   },
   {
-    "VisitedObjects": [],
-    "Points": 0.0,
-    "Username": "marko"
-  },
-  {
-    "VisitedObjects": [],
+    "Visits": [],
     "Points": 0.0,
     "BuyerType": {
       "Tier": "Bronzani"
     },
-    "Username": "filip"
-  },
-  {
-    "VisitedObjects": [],
-    "Points": 0.0,
-    "BuyerType": {
-      "Tier": "Bronzani"
-    },
-    "Username": "luka"
-  },
-  {
-    "VisitedObjects": [],
-    "Points": 0.0,
-    "BuyerType": {
-      "Tier": "Bronzani"
-    },
-    "Id": "d6c2b815-295c-4571-8c46-56e714586e0d",
-    "Username": "a"
+    "Username": "filip",
+    "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5"
   }
 ]

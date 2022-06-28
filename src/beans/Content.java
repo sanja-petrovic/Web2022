@@ -1,27 +1,53 @@
 package beans;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import util.annotations.Exclude;
+
 public class Content {
-	@Expose()
-	@SerializedName("name")
-	private String name;
+	
 	@Expose
-	@SerializedName("type")
-	private String type;
+	@SerializedName("Id")
+	private String id;
+	
+	@Exclude
+	@Expose
+	@SerializedName("Name")
+	private String name;
+	
+	@Exclude
+	@Expose
+	@SerializedName("ContentType")
+	private String contentType;
+	
+	@Exclude
 	@Expose
 	@SerializedName("SportsObject")
 	private SportsObject sportsObject;
+	
+	@Exclude
 	@Expose
-	@SerializedName("durationMinutes")
+	@SerializedName("Duration")
 	private int durationMinutes;
+	
+	@Exclude
 	@Expose
-	@SerializedName("description")
+	@SerializedName("Description")
 	private String description;
+	
+	@Exclude
 	@Expose
-	@SerializedName("picture")
+	@SerializedName("Picture")
 	private String picture;
+	
+	@Exclude
+	@Expose
+	@SerializedName("DeletedAt")
+	private LocalDateTime deletedAt;
 
 	public Content() {
 		super();
@@ -30,9 +56,9 @@ public class Content {
 
 	public Content(String name, String type, SportsObject sportsObject, int durationMinutes, String description,
 			String picture) {
-		super();
+		this.id = UUID.randomUUID().toString();
 		this.name = name;
-		this.type = type;
+		this.contentType = type;
 		this.sportsObject = sportsObject;
 		this.durationMinutes = durationMinutes;
 		this.description = description;
@@ -48,11 +74,11 @@ public class Content {
 	}
 
 	public String getType() {
-		return type;
+		return this.contentType;
 	}
 
 	public void setType(String type) {
-		this.type = type;
+		this.contentType = type;
 	}
 
 	public SportsObject getSportsObject() {
@@ -85,6 +111,30 @@ public class Content {
 
 	public void setPicture(String picture) {
 		this.picture = picture;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
+	}
+
+	public LocalDateTime getDeletedAt() {
+		return deletedAt;
+	}
+
+	public void setDeletedAt(LocalDateTime deletedAt) {
+		this.deletedAt = deletedAt;
 	}
 
 }

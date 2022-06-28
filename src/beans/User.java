@@ -7,26 +7,34 @@ import java.util.UUID;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class User {
+import util.annotations.Exclude;
 
+public class User {
 	@Expose
 	@SerializedName("Id")
 	private String id;
 	@Expose
 	@SerializedName("Username")
 	private String username;
+	@Exclude
 	@SerializedName("Password")
 	private String password;
+	@Exclude
 	@SerializedName("Name")
 	private String name;
+	@Exclude
 	@SerializedName("Surname")
 	private String surname;
+	@Exclude
 	@SerializedName("Gender")
 	private Gender gender;
+	@Exclude
 	@SerializedName("DateOfBirth")
 	private LocalDate dateOfBirth;
+	@Exclude
 	@SerializedName("DeletedAt")
 	private LocalDateTime deletedAt;
+	@Exclude
 	@SerializedName("UserType")
 	private UserType userType;
 
