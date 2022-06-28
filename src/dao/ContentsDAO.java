@@ -48,7 +48,7 @@ public class ContentsDAO {
 	public void fillData(Content c) {
 		if(c.getSportsObject() != null)
 		{
-			SportsObject s = Repository.getInstance().getSportsObjectDAO().getSportsObjectById(c.getSportsObject().getName());
+			SportsObject s = Repository.getInstance().getSportsObjectDAO().getSportsObjectByName(c.getSportsObject().getName());
 			c.setSportsObject(s);	
 		}
 	}

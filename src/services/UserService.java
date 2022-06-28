@@ -77,7 +77,7 @@ public class UserService {
 			break;
 		case TRAINER:
 			u = Repository.getInstance().getTrainerDAO().getTrainerByUsername(username);
-			retVal = u;
+			retVal = (Trainer) u;
 			break;
 		
 		

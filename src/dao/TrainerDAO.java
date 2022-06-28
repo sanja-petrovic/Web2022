@@ -40,7 +40,9 @@ public class TrainerDAO {
 		try {
 		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/trainers.json"));
 		    this.trainers = gson.fromJson(reader, new TypeToken<ArrayList<Trainer>>() {}.getType());
-		    
+		    for(Trainer t : this.trainers) {
+		    	this.fillData(t);
+		    }
 		    reader.close();
 
 		} catch (Exception ex) {
@@ -49,7 +51,16 @@ public class TrainerDAO {
 	}
 	
 	public void fillData(Trainer t) {
-		t.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(t.getId()));
+		User u = Repository.getInstance().getUserDAO().getUserByUsername(t.getUsername());
+		if(t != null) {
+			t.setName(u.getName());
+			t.setSurname(u.getSurname());
+			t.setDateOfBirth(u.getDateOfBirth());
+			t.setGender(u.getGender());
+			t.setPassword(u.getPassword());
+			t.setDeletedAt(u.getDeletedAt());
+			t.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(t.getId()));
+		}
 	}
 	
 	public void write() {

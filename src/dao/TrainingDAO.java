@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
@@ -16,7 +18,10 @@ import com.google.gson.reflect.TypeToken;
 import beans.SportsObject;
 import beans.Trainer;
 import beans.Training;
+import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
+import util.adapters.LocalTimeAdapter;
+import util.annotations.AnnotationExclusionStrategy;
 
 public class TrainingDAO {
 
@@ -30,7 +35,7 @@ public class TrainingDAO {
 	}
 	
 	public void createGson() {
-	    this.gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).excludeFieldsWithoutExposeAnnotation().create();
+	    this.gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).setExclusionStrategies(new AnnotationExclusionStrategy()).create();
 	}
 	
 	public void load() {

@@ -1,10 +1,5 @@
 [{
-  "Title": "Cas plesa",
-  "Type": "Grupni",
-  "SportsObject": null,
-  "Duration": 90,
+  "Id": "1",
   "Trainer": null,
-  "Description": "1234",
-  "Picture": "1234",
-  "Price": 500
+  "Price": 400
 }]
