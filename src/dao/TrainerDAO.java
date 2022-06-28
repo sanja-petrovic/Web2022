@@ -78,4 +78,13 @@ public class TrainerDAO {
 		
 		return retVal;
 	}
+	
+	public void addTrainer(Trainer t) {
+		this.trainers.add(t);
+		this.write();
+	}
+	
+	public ArrayList<Trainer> getTrainers() {
+		return this.trainers;
+	}
 }
