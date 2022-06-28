@@ -1,5 +1,4 @@
 package beans;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -120,5 +119,4 @@ public class Training {
 	public void setId(String id) {
 		this.id = id;
 	}
-
 }

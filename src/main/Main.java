@@ -6,6 +6,7 @@ import static spark.Spark.staticFiles;
 import java.io.File;
 import java.io.IOException;
 
+import controller.ContentsController;
 import controller.BuyerController;
 import controller.CommentController;
 import controller.ManagerController;
@@ -14,7 +15,6 @@ import controller.TrainerController;
 import controller.TrainingController;
 import controller.UserController;
 import dao.Repository;
-import services.UserService;
 
 
 public class Main {
@@ -25,6 +25,7 @@ public class Main {
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
 		UserController userController = new UserController();
 		SportsObjectController sportsObjectController = new SportsObjectController();
+		ContentsController contentsController = new ContentsController();
 		ManagerController managerController = new ManagerController();
 		BuyerController buyerController = new BuyerController();
 		TrainingController trainingController = new TrainingController();
@@ -34,6 +35,7 @@ public class Main {
 		userController.init();
 		sportsObjectController.init();
 		managerController.init();
+		contentsController.init();
 		buyerController.init();
 		commentController.init();
 		trainerController.init();

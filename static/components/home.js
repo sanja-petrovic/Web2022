@@ -110,7 +110,7 @@ Vue.component('home-page', {
                         </div>
                     </div>
                     <ul class="cards" style="width: 100vw; margin-bottom: 20vh;">
-                        <li v-for="item in this.displayedObjects">
+                        <li v-for="item in this.displayedObjects" v-on:click="displaySportsObjectDetails(item.name)">
                             <a class="card">
                                 <img v-bind:src="item.logoIcon" class="card__image" alt="" />
                                 <div class="card__overlay">
@@ -158,6 +158,9 @@ Vue.component('home-page', {
                     .then(response => (this.loggedIn = response.data !== null))
                     .catch(error => console.log(error));
             },
+            displaySportsObjectDetails: function(name) {
+				window.location.href = "#/objekti/"+ name;
+			},
             displaySportsObjects: function() {
                 axios.get('rest/sportsobjects')
                     .then(response => {
@@ -188,7 +191,7 @@ Vue.component('home-page', {
                         .catch(error => console.log(error));
                 }
                 else if (this.searchParam.searchName !== '') {
-                    axios.get('rest/getSportsObjectByName', {
+                    axios.get('rest/getAllSportsObjectByName', {
                         params: {
                             name: this.searchParam.searchName.toLowerCase()
                         }
