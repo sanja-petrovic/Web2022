@@ -48,7 +48,7 @@ Vue.component('sports-object-page', {
                 </div>
             </div>
             <div class="sports-object-trainings">
-                <h4>Treninzi u ponudi</h4>
+                <h4>U ponudi:</h4>
                 <ul class="cards" style="width: 100vw; margin-bottom: 20vh;">
                     <li v-for="item in this.sportsObjectContents">
                         <div class="card">
@@ -63,6 +63,7 @@ Vue.component('sports-object-page', {
                                         <h3 class="card__title">{{item.name}}
                                         </h3>
                                         <span class="card__status">Petar Petrović, 17:30-19:00</span><br>
+                                        <span class="card__status">Trajanje: {{item.durationMinutes}}min</span><br>
                                     </div>
                                 </div>
                                 <p class="card__description"> 
