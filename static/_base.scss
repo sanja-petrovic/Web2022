@@ -71,11 +71,12 @@ $primary-button-pressed: #3f61e8;
   margin: 20px;
 }
 
-.custom-file-input::-webkit-file-upload-button {
+.custom-file-input::-webkit-file-upload-button  {
   visibility: hidden;
 }
+
 .custom-file-input::before {
-  content: 'Izaberi logo';
+  content: 'Izaberi sliku';
   display: inline-block;
   background: transparent;
   border: 0px solid $other-button-hover;
@@ -91,13 +92,14 @@ $primary-button-pressed: #3f61e8;
   font-size: 10pt;
   transition: .2s ease-in-out;
 }
+
 .custom-file-input:hover::before {
   color: $primary-button-hover;
 }
-.custom-file-input:active::before {
+
+.custom-file-input:active::before  {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
-
 
 %basic-text-box {
   border: 0;

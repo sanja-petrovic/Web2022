@@ -11,6 +11,7 @@ import java.time.LocalTime;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import beans.SportsObject;
 import beans.User;
 import dao.Repository;
 import dto.RegisterUserDTO;
@@ -29,6 +30,7 @@ public class ManagerController {
 			getManagers();
 			getUnassignedManagers();
 			createManager();
+			getSportsObjectByManagerId();
 		});
 	}
 	
@@ -54,5 +56,15 @@ public class ManagerController {
 			
 			return gson.toJson(user);
 		});
+	}
+	
+	public static void getSportsObjectByManagerId() {
+		get("/managers/:id", (req, res) -> {
+			res.type("application/json");
+			String id = req.params(":id");
+			SportsObject sportsObject = Repository.getInstance().getManagerDAO().getSportsObjectById(id);
+			return gson.toJson(sportsObject);
+		});
+		
 	}
 }

@@ -1,6 +1,9 @@
 package dao;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
@@ -9,6 +12,7 @@ import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
 import beans.Content;
@@ -79,5 +83,24 @@ public class ContentsDAO {
 		}
 		return searchedContents;
 	}
+	public void addContent(Content content) {
+		this.contents.add(content);
+		this.write();
+	}
+	
+	public void write() {
+		try {
+			this.createGson();
+			FileWriter writer = new FileWriter("resources/data/contents.json", StandardCharsets.UTF_8);
+			gson.toJson(this.contents, writer);
+			writer.flush();
+			writer.close();
+		} catch (JsonIOException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 }

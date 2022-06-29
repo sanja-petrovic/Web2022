@@ -3,6 +3,7 @@ package dao;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -61,7 +62,7 @@ public class TrainingDAO {
 	
 	public void write() {
 		try {
-			FileWriter writer = new FileWriter("resources/data/trainings.json");
+			FileWriter writer = new FileWriter("resources/data/trainings.json", StandardCharsets.UTF_8);
 			gson.toJson(this.trainings, writer);
 			writer.flush();
 			writer.close();
