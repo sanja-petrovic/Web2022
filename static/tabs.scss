@@ -37,6 +37,23 @@
 
 .users-table {
   padding: 2vw;
-  min-width: 50vw;
+  width: 50vw;
   height: 50vh;
+}
+
+.filter-and-sort {
+  display: flex;
+  gap: 0.7em;
+  flex-direction: row;
+  margin-bottom: 0.7em;
+  width: 50vw;
+  font-size: 14px;
+  button {
+    font-size: 14px;
+  }
+}
+
+.buttons-galore {
+  display: flex;
+  justify-content: space-between;
 }

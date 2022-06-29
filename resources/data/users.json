@@ -7,7 +7,7 @@
     "Surname": "Petrović",
     "Gender": "Muški",
     "DateOfBirth": "2022-06-02",
-    "UserType": "Buyer"
+    "UserType": "Kupac"
   },
   {
     "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
@@ -17,7 +17,7 @@
     "Surname": "Ivanović",
     "Gender": "Ženski",
     "DateOfBirth": "2022-06-10",
-    "UserType": "Buyer"
+    "UserType": "Kupac"
   },
   {
     "Id": "a3bd0158-1f31-42dc-94ac-e21adbf100ad",
@@ -27,7 +27,7 @@
     "Surname": "Marković",
     "Gender": "Muški",
     "DateOfBirth": "2022-05-31",
-    "UserType": "Manager"
+    "UserType": "Menadžer"
   },
   {
     "Id": "bb69a589-3908-4e64-a7dc-48ca9c1fa00d",
@@ -47,7 +47,7 @@
     "Surname": "Filipović",
     "Gender": "Muški",
     "DateOfBirth": "2022-06-02",
-    "UserType": "Buyer"
+    "UserType": "Kupac"
   },
   {
     "Id": "3a912216-ecdd-4ee8-9b64-591481983b67",
@@ -57,7 +57,7 @@
     "Surname": "Lukić",
     "Gender": "Muški",
     "DateOfBirth": "2022-06-13",
-    "UserType": "Manager"
+    "UserType": "Menadžer"
   },
   {
     "Id": "c338b4fd-6d7d-43ac-a458-a44579b15138",
@@ -67,7 +67,7 @@
     "Surname": "Jelenković",
     "Gender": "Ženski",
     "DateOfBirth": "2022-06-06",
-    "UserType": "Manager"
+    "UserType": "Menadžer"
   },
   {
     "Id": "014a7bc3-0f46-41af-9992-dec523b6f65c",
@@ -77,7 +77,7 @@
     "Surname": "Mitrović",
     "Gender": "Muški",
     "DateOfBirth": "2022-06-14",
-    "UserType": "Manager"
+    "UserType": "Menadžer"
   },
   {
     "Id": "37fdad08-dc19-4a54-a72f-d81fba2d68cc",
@@ -87,6 +87,6 @@
     "Surname": "Jovanović",
     "Gender": "Ženski",
     "DateOfBirth": "2022-06-06",
-    "UserType": "Trainer"
+    "UserType": "Trener"
   }
 ]

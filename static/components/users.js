@@ -15,7 +15,12 @@ Vue.component('users', {
                 searchName: "",
                 searchSurname: "",
                 searchUsername: ""
-            }
+            },
+            filterParam: {
+                userType: [],
+                buyerType: []
+            },
+            checkedTab: ""
         }
     },
 
@@ -23,6 +28,83 @@ Vue.component('users', {
         <div class="user-page">
         <nav-bar-logged-in></nav-bar-logged-in>
             <div class="tabs">
+
+                <div class="buttons-galore">
+                    <div class="filter-and-sort">
+                        <div class="dropdown">
+                            <button class="sort-button" type="button" id="sort-button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="d-inline-block"><i class="fa-solid fa-chevron-down" style="margin-right: 0.4em;"></i><span class="d-inline-block">Sortiraj po...</span></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="sort-button">
+                                <li><button class="dropdown-item" type="button" v-on:click="sortByNameAsc">Imenu (rastuće)</button></li>
+                                <li><button class="dropdown-item" type="button" v-on:click="sortByNameDesc">Imenu (opadajuće)</button></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><button class="dropdown-item" type="button" v-on:click="sortBySurnameAsc">Prezimenu (rastuće)</button></li>
+                                <li><button class="dropdown-item" type="button" v-on:click="sortBySurnameDesc">Prezimenu (opadajuće)</button></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><button class="dropdown-item" type="button"v-on:click="sortByUsernameAsc">Korisničkom imenu (rastuće)</button></li>
+                                <li><button class="dropdown-item" type="button" v-on:click="sortByUsernameDesc">Korisničkom imenu (opadajuće)</button></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <button type="button" class="dropdown-toggle filter-button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                Filteri
+                            </button>
+                            <div class="dropdown-menu p-4">
+                                <div class="mb-3">
+                                    <p style="font-weight: 600;">Tip kupca</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input filter-checks-buyer" type="checkbox" value="" v-on:change="filterBuyers" id="bronzani">
+                                        <label class="form-check-label" for="bronze">
+                                            Bronzani
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input filter-checks-buyer"  type="checkbox" v-on:change="filterBuyers" value="" id="srebrni">
+                                        <label class="form-check-label" for="silver">
+                                            Srebrni
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input filter-checks-buyer" type="checkbox" v-on:change="filterBuyers" value="" id="zlatni">
+                                        <label class="form-check-label" for="gold">
+                                            Zlatni
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <p style="font-weight: 600;">Uloga</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input filter-checks-roles" type="checkbox" value="" v-on:change="filterUsers" id="kupac">
+                                        <label class="form-check-label" for="kupac">
+                                            Kupac
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input filter-checks-roles"  type="checkbox" v-on:change="filterUsers" value="" id="menadžer">
+                                        <label class="form-check-label" for="menadžer">
+                                            Menadžer
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input filter-checks-roles" type="checkbox" v-on:change="filterUsers" value="" id="trener">
+                                        <label class="form-check-label" for="trener">
+                                            Trener
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input filter-checks-roles" type="checkbox" v-on:change="filterUsers" value="" id="admin">
+                                        <label class="form-check-label" for="admin">
+                                            Administrator
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="sort-button">Dodaj trenera</button>
+                </div>
+                
                 <div class="input-group mb-3" style="max-width: 50vw; margin-left: 175px;">
                     <input type="text" class="form-control" v-model="searchParam.searchName" placeholder="Ime">
                     <input type="text" class="form-control" v-model="searchParam.searchSurname" placeholder="Prezime">
@@ -31,22 +113,7 @@ Vue.component('users', {
                         <i class="fa fa-search"></i>
                     </div>
                 </div>
-
-                <div class="dropdown">
-                    <button class="sort-button" type="button" id="sort-button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-inline-block"><i class="fa-solid fa-chevron-down" style="margin-right: 0.4em;"></i><span class="d-inline-block">Sortiraj po...</span></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="sort-button">
-                        <li><button class="dropdown-item" type="button" v-on:click="sortByNameDesc">Imenu (opadajuće)</button></li>
-                        <li><button class="dropdown-item" type="button" v-on:click="sortByNameAsc">Imenu (rastuće)</button></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><button class="dropdown-item" type="button" v-on:click="sortBySurnameDesc">Prezimenu (opadajuće)</button></li>
-                        <li><button class="dropdown-item" type="button" v-on:click="sortBySurnameAsc">Prezimenu (rastuće)</button></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><button class="dropdown-item" type="button" v-on:click="sortByUsernameDesc">Korisničkom imenu (opadajuće)</button></li>
-                        <li><button class="dropdown-item" type="button"v-on:click="sortByUsernameAsc">Korisničkom imenu (rastuće)</button></li>
-                    </ul>
-                </div>
+                
                <div class="tab-panel">
                    <ul class="nav flex-column nav-pills me-3" id="pills-tab" role="tablist">
                        <li class="nav-item" role="presentation">
@@ -78,7 +145,7 @@ Vue.component('users', {
                    <div class="tab-content" id="pills-tabContent">
                        <div class="tab-pane fade show active" id="pills-users" role="tabpanel" aria-labelledby="pills-home-tab">
                            <div class="users-table">
-                               <table class="table table-responsive table-borderless">
+                               <table class="table table-borderless">
                                    <thead>
                                    <tr>
                                        <th scope="col" class="border-0 font-medium">Ime i prezime</th>
@@ -252,6 +319,8 @@ Vue.component('users', {
                        </div>
                    </div>
                </div>
+                
+                
             </div>
         </div>
     `,
@@ -260,6 +329,7 @@ Vue.component('users', {
             .then(response => {
                 this.users = response.data;
                 this.displayedUsers = response.data;
+                this.sortByRole();
             })
             .catch(error => console.log(error));
         axios.get('rest/buyers')
@@ -489,6 +559,70 @@ Vue.component('users', {
                     this.displayedAdmins.sort((a, b) => (a.Username > b.Username) ? 1 : ((b.Username > a.Username) ? -1 : 0));
                     break;
             }
+        },
+        sortByRole: function () {
+            this.displayedUsers.sort((a, b) => (a.UserType > b.UserType) ? 1 : ((b.UserType > a.UserType) ? -1 : 0));
+        },
+        filterBuyers: function() {
+            let filterResult = [];
+            let selected = document.getElementsByClassName('active')[0];
+            let filters = document.getElementsByClassName("filter-checks-buyer");
+            let checked = [];
+            for(let i = 0; i < filters.length; i++) {
+                if(filters[i].checked) {
+                    checked.push(filters[i]);
+                }
+            }
+            if(checked.length === 0) {
+                this.displayedBuyers = this.buyers;
+                return;
+            }
+            for(let i = 0; i < this.buyers.length; i++) {
+                for(let j = 0; j < checked.length; j++ ) {
+                    if(this.buyers[i].BuyerType.Tier.toLowerCase() === checked[j].id) {
+                        filterResult.push(this.buyers[i]);
+                        break;
+                    }
+                }
+            }
+            this.displayedBuyers = filterResult;
+            switch(selected.id) {
+                case "pills-user-tab":
+                    break;
+                case "pills-buyer-tab":
+
+                case "pills-manager-tab":
+                    break;
+                case "pills-trainer-tab":
+                    break;
+                case "pills-admin-tab":
+                    break;
+            }
+        },
+        filterUsers: function () {
+            let filterResult = [];
+            let filters = document.getElementsByClassName("filter-checks-roles");
+            let checked = [];
+            for(let i = 0; i < filters.length; i++) {
+                if(filters[i].checked) {
+                    checked.push(filters[i]);
+                }
+            }
+            if(checked.length === 0) {
+                this.displayedUsers = this.users;
+                return;
+            }
+            console.log(checked[0].id);
+            for(let i = 0; i < this.users.length; i++) {
+                for(let j = 0; j < checked.length; j++ ) {
+                    if(this.users[i].UserType.toLowerCase() === checked[j].id) {
+                        filterResult.push(this.users[i]);
+                        break;
+                    }
+                }
+            }
+            this.displayedUsers = filterResult;
         }
     }
+
 });
