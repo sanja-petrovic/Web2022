@@ -1,0 +1,42 @@
+@import 'base';
+
+
+#pills-tabContent {
+  @extend %basic-white-component;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .nav-link {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    width: 10em;
+    text-align: left;
+    margin-bottom: 0.4em;
+  }
+  .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.6) !important;
+  }
+  ul {
+    .active {
+      background-color: $primary-button-color !important;
+    }
+    .active:hover {
+      background-color: $primary-button-hover !important;
+    }
+  }
+}
+
+.tab-panel {
+  display: flex;
+}
+
+.users-table {
+  padding: 2vw;
+  min-width: 50vw;
+  height: 50vh;
+}

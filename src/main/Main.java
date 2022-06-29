@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import beans.Comment;
 import controller.ContentsController;
+import controller.AdminController;
 import controller.BuyerController;
 import controller.CommentController;
 import controller.ManagerController;
@@ -23,7 +24,7 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException {
 		Repository.getInstance().loadData();
-		port(3034);
+		port(3030);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
 		UserController userController = new UserController();
 		SportsObjectController sportsObjectController = new SportsObjectController();
@@ -33,6 +34,7 @@ public class Main {
 		TrainingController trainingController = new TrainingController();
 		TrainerController trainerController = new TrainerController();
 		CommentController commentController = new CommentController();
+		AdminController adminController = new AdminController();
 		
 		userController.init();
 		sportsObjectController.init();
@@ -41,6 +43,7 @@ public class Main {
 		buyerController.init();
 		commentController.init();
 		trainerController.init();
+		adminController.init();
 		//trainingController.init();
 		
 		

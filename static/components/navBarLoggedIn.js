@@ -7,8 +7,6 @@ Vue.component('navBarLoggedIn', {
     }, template: `
         <nav class="navbar navbar-default sticky-top navbar-expand-lg navbar-dark" style="width: 100%">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="../images/s.png" alt="SFitness" height="25px"></a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0" v-if="">
                     <li class="nav-item">

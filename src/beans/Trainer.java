@@ -3,11 +3,14 @@ package beans;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import com.google.gson.annotations.SerializedName;
+
 import util.annotations.Exclude;
 
 public class Trainer extends User {
 
 	@Exclude
+	@SerializedName("TrainingHistory")
 	private ArrayList<Training> trainingHistory;
 	
 	public Trainer(String username, String password, String name, String surname, Gender gender,

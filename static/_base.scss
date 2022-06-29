@@ -75,7 +75,7 @@ $primary-button-pressed: #3f61e8;
   visibility: hidden;
 }
 .custom-file-input::before {
-  content: 'Izaberi logo';
+  content: 'Izaberi sliku';
   display: inline-block;
   background: transparent;
   border: 0px solid $other-button-hover;
@@ -169,6 +169,17 @@ $primary-button-pressed: #3f61e8;
   @extend %basic-primary-button-hover;
 }
 
+.nav-link {
+  border-radius: 10px !important;
+}
+
+.link-dark {
+  transition: 0.2s;
+}
+.link-dark:hover {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
 * {
   font-family: $main-font;
 }
@@ -252,4 +263,13 @@ h4 {
   font-weight: 700;
   color: $bold-font-color;
   text-align: left;
+}
+
+.nav-pills {
+  .active {
+    background-color: $primary-button-color !important;
+  }
+  .active:hover {
+    background-color: $primary-button-hover !important;
+  }
 }
