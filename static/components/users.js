@@ -31,6 +31,22 @@ Vue.component('users', {
                         <i class="fa fa-search"></i>
                     </div>
                 </div>
+
+                <div class="dropdown">
+                    <button class="sort-button" type="button" id="sort-button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="d-inline-block"><i class="fa-solid fa-chevron-down" style="margin-right: 0.4em;"></i><span class="d-inline-block">Sortiraj po...</span></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="sort-button">
+                        <li><button class="dropdown-item" type="button" v-on:click="sortByNameDesc">Imenu (opadajuće)</button></li>
+                        <li><button class="dropdown-item" type="button" v-on:click="sortByNameAsc">Imenu (rastuće)</button></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><button class="dropdown-item" type="button" v-on:click="sortBySurnameDesc">Prezimenu (opadajuće)</button></li>
+                        <li><button class="dropdown-item" type="button" v-on:click="sortBySurnameAsc">Prezimenu (rastuće)</button></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><button class="dropdown-item" type="button" v-on:click="sortByUsernameDesc">Korisničkom imenu (opadajuće)</button></li>
+                        <li><button class="dropdown-item" type="button"v-on:click="sortByUsernameAsc">Korisničkom imenu (rastuće)</button></li>
+                    </ul>
+                </div>
                <div class="tab-panel">
                    <ul class="nav flex-column nav-pills me-3" id="pills-tab" role="tablist">
                        <li class="nav-item" role="presentation">
@@ -351,6 +367,126 @@ Vue.component('users', {
                         }
                     }
                     this.displayedAdmins = searchResult;
+                    break;
+            }
+        },
+        sortByNameDesc: function() {
+            let selected = document.getElementsByClassName('active')[0];
+            switch (selected.id) {
+                case "pills-user-tab":
+                    this.displayedUsers.sort((b, a) => (a.Name > b.Name) ? 1 : ((b.Name > a.Name) ? -1 : 0));
+                    break;
+                case "pills-buyer-tab":
+                    this.displayedBuyers.sort((b, a) => (a.Name > b.Name) ? 1 : ((b.Name > a.Name) ? -1 : 0));
+                    break;
+                case "pills-manager-tab":
+                    this.displayedManagers.sort((b, a) => (a.Name > b.Name) ? 1 : ((b.Name > a.Name) ? -1 : 0));
+                    break;
+                case "pills-trainer-tab":
+                    this.displayedTrainers.sort((b, a) => (a.Name > b.Name) ? 1 : ((b.Name > a.Name) ? -1 : 0));
+                    break;
+                case "pills-admin-tab":
+                    this.displayedAdmins.sort((b, a) => (a.Name > b.Name) ? 1 : ((b.Name > a.Name) ? -1 : 0));
+                    break;
+            }
+        },
+        sortByNameAsc: function() {
+            let selected = document.getElementsByClassName('active')[0];
+            switch (selected.id) {
+                case "pills-user-tab":
+                    this.displayedUsers.sort((a, b) => (a.Name > b.Name) ? 1 : ((b.Name > a.Name) ? -1 : 0));
+                    break;
+                case "pills-buyer-tab":
+                    this.displayedBuyers.sort((a, b) => (a.Name > b.Name) ? 1 : ((b.Name > a.Name) ? -1 : 0));
+                    break;
+                case "pills-manager-tab":
+                    this.displayedManagers.sort((a, b) => (a.Name > b.Name) ? 1 : ((b.Name > a.Name) ? -1 : 0));
+                    break;
+                case "pills-trainer-tab":
+                    this.displayedTrainers.sort((a, b) => (a.Name > b.Name) ? 1 : ((b.Name > a.Name) ? -1 : 0));
+                    break;
+                case "pills-admin-tab":
+                    this.displayedAdmins.sort((a, b) => (a.Name > b.Name) ? 1 : ((b.Name > a.Name) ? -1 : 0));
+                    break;
+            }
+        },
+        sortBySurnameDesc: function () {
+            let selected = document.getElementsByClassName('active')[0];
+            switch (selected.id) {
+                case "pills-user-tab":
+                    this.displayedUsers.sort((b, a) => (a.Surname > b.Surname) ? 1 : ((b.Surname > a.Surname) ? -1 : 0));
+                    break;
+                case "pills-buyer-tab":
+                    this.displayedBuyers.sort((b, a) => (a.Surname > b.Surname) ? 1 : ((b.Surname > a.Surname) ? -1 : 0));
+                    break;
+                case "pills-manager-tab":
+                    this.displayedManagers.sort((b, a) => (a.Surname > b.Surname) ? 1 : ((b.Surname > a.Surname) ? -1 : 0));
+                    break;
+                case "pills-trainer-tab":
+                    this.displayedTrainers.sort((b, a) => (a.Surname > b.Surname) ? 1 : ((b.Surname > a.Surname) ? -1 : 0));
+                    break;
+                case "pills-admin-tab":
+                    this.displayedAdmins.sort((b, a) => (a.Surname > b.Surname) ? 1 : ((b.Surname > a.Surname) ? -1 : 0));
+                    break;
+            }
+        },
+        sortBySurnameAsc: function () {
+            let selected = document.getElementsByClassName('active')[0];
+            switch (selected.id) {
+                case "pills-user-tab":
+                    this.displayedUsers.sort((a, b) => (a.Surname > b.Surname) ? 1 : ((b.Surname > a.Surname) ? -1 : 0));
+                    break;
+                case "pills-buyer-tab":
+                    this.displayedBuyers.sort((a, b) => (a.Surname > b.Surname) ? 1 : ((b.Surname > a.Surname) ? -1 : 0));
+                    break;
+                case "pills-manager-tab":
+                    this.displayedManagers.sort((a, b) => (a.Surname > b.Surname) ? 1 : ((b.Surname > a.Surname) ? -1 : 0));
+                    break;
+                case "pills-trainer-tab":
+                    this.displayedTrainers.sort((a, b) => (a.Surname > b.Surname) ? 1 : ((b.Surname > a.Surname) ? -1 : 0));
+                    break;
+                case "pills-admin-tab":
+                    this.displayedAdmins.sort((a, b) => (a.Surname > b.Surname) ? 1 : ((b.Surname > a.Surname) ? -1 : 0));
+                    break;
+            }
+        },
+        sortByUsernameDesc: function () {
+            let selected = document.getElementsByClassName('active')[0];
+            switch (selected.id) {
+                case "pills-user-tab":
+                    this.displayedUsers.sort((b, a) => (a.Username > b.Username) ? 1 : ((b.Username > a.Username) ? -1 : 0));
+                    break;
+                case "pills-buyer-tab":
+                    this.displayedBuyers.sort((b, a) => (a.Username > b.Username) ? 1 : ((b.Username > a.Username) ? -1 : 0));
+                    break;
+                case "pills-manager-tab":
+                    this.displayedManagers.sort((b, a) => (a.Username > b.Username) ? 1 : ((b.Username > a.Username) ? -1 : 0));
+                    break;
+                case "pills-trainer-tab":
+                    this.displayedTrainers.sort((b, a) => (a.Username > b.Username) ? 1 : ((b.Username > a.Username) ? -1 : 0));
+                    break;
+                case "pills-admin-tab":
+                    this.displayedAdmins.sort((b, a) => (a.Username > b.Username) ? 1 : ((b.Username > a.Username) ? -1 : 0));
+                    break;
+            }
+        },
+        sortByUsernameAsc: function () {
+            let selected = document.getElementsByClassName('active')[0];
+            switch (selected.id) {
+                case "pills-user-tab":
+                    this.displayedUsers.sort((a, b) => (a.Username > b.Username) ? 1 : ((b.Username > a.Username) ? -1 : 0));
+                    break;
+                case "pills-buyer-tab":
+                    this.displayedBuyers.sort((a, b) => (a.Username > b.Username) ? 1 : ((b.Username > a.Username) ? -1 : 0));
+                    break;
+                case "pills-manager-tab":
+                    this.displayedManagers.sort((a, b) => (a.Username > b.Username) ? 1 : ((b.Username > a.Username) ? -1 : 0));
+                    break;
+                case "pills-trainer-tab":
+                    this.displayedTrainers.sort((a, b) => (a.Username > b.Username) ? 1 : ((b.Username > a.Username) ? -1 : 0));
+                    break;
+                case "pills-admin-tab":
+                    this.displayedAdmins.sort((a, b) => (a.Username > b.Username) ? 1 : ((b.Username > a.Username) ? -1 : 0));
                     break;
             }
         }
