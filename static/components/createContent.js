@@ -58,22 +58,23 @@ Vue.component('create-content', {
                                 <div class="register-content">
                                         <h3 class="heading" style="font-weight: 500">Novi sadržaj</h3>
                                         <form class="myForm" action="">
-                                            <input class="text-box create-input" type="text" id="name" name="name" v-model="name" placeholder="Naziv"
+                                            <input class="text-box create-input" type="text" v-on:blur="nameUniqueCheck" name="name" v-model="name" placeholder="Naziv"
                                                    required>
-                                            <input class="text-box create-input" type="text" id="surname" v-model="contentType" name="contentType"
+                                            <input class="text-box create-input" type="text" v-model="contentType" name="contentType"
                                                    placeholder="Tip sadržaja" required>
                                             <input class="text-box create-input form-control custom-file-input" id="fileUpload" accept="image/*" ref="myFile" type="file" @change="previewFile" required>
-                                            <textarea class="text-box create-input" v-model="description" placeholder="Unesi opis"></textarea>
                                             
+                                            <textarea class="text-box create-input" v-model="description" placeholder="Unesi opis"></textarea> 
                                             <input class="text-box create-input" type="number" v-model="durationMinutes" id="dob" name="dob" 
                                                    placeholder="Trajanje u minutima" min=0>
+                                            <label class="invalid-input create-input" v-if="errorExists">{{ this.errorMessage }}</label>
                                         </form>
                                 </div>
                         </div>
                     </div>
                 </div>
             </div>
-                <button class="search-button" v-on:click="createContent">Dodaj sadržaj</button>
+                <button class="search-button" id="theButton" v-on:click="createContent">Dodaj sadržaj</button>
             </div>
         </div>
     `,
@@ -116,14 +117,52 @@ Vue.component('create-content', {
                 reader.readAsDataURL(file);
             }
         },
+        nameUniqueCheck: async function () {
+            let error = false;
+            await axios.get(`/rest/contents/${this.name}`)
+                .then(function response(resp) {
+                    if (resp.data) {
+                        error = true;
+                    }
+                }).catch(function error(err) {
+                    console.log(err);
+                });
+
+            if (error) {
+                this.errorExists = true;
+                this.nameIsUnique = false;
+                this.errorMessage = "Već postoji sadržaj sa tim imenom.";
+                document.getElementById("theButton").disabled = true;
+            } else {
+                this.nameIsUnique = true;
+                document.getElementById("theButton").disabled = false;
+                this.errorExists = false;
+            }
+            event.preventDefault();
+        },
         createContent: function() {
             return new Promise((resolve, reject) => {
                 let oopsie = false;
+                let message = "Uspešno ste dodali novi sadržaj u " + this.sportsObject.name + "!";
+                if (this.name == "") {
+					this.errorExists = true;
+					this.errorMessage = "Niste uneli naziv sadržaja.";
+				} else if(this.contentType == "") {
+					this.errorExists = true;
+					this.errorMessage = "Niste uneli tip sadržaja.";
+				}
+				else {
+					this.errorExists = false;
+				}
+				if(this.durationMinutes == ""){
+					this.durationMinutes = 0;
+				}
                 event.preventDefault();
                 var picturePath = new FileReader();
                 var file   = this.$refs.myFile.files[0];
                 var fileName = this.$refs.myFile.files[0].name;
                 picturePath.readAsDataURL(file); 
+                console.log(picturePath);
                 picturePath.onloadend = () =>
                 {
                     axios.post('/rest/createContent', {
@@ -133,19 +172,22 @@ Vue.component('create-content', {
                         .then(function response(resp){
                             oopsie = false;
                             console.log(resp.data); 
-                            alert("Uspešno ste dodali sadržaj!");
+                            alert(message);
                         }).catch(function error(err) {
                             alert("Greška na serveru!");
                             oopsie = true;
                         });
                 }
+            
                 if(oopsie) {
                     this.$router.replace("/dodaj-sadrzaj");
                 } else {
                     this.$router.replace("/");
                 }
                 this.errorExists = oopsie;
+                
             })
-    }
+            
+    	}
     }
 });

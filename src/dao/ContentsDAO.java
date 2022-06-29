@@ -83,6 +83,19 @@ public class ContentsDAO {
 		}
 		return searchedContents;
 	}
+	
+	public Content getContentByNameCaseInsensitive(String name) {
+		Content retVal = null;
+		for(Content content : this.contents) {
+			if(content.getName().trim().toLowerCase().equals(name.trim().toLowerCase())) {
+				retVal = content;
+				break;
+			}
+		}
+		
+		return retVal;
+	}
+	
 	public void addContent(Content content) {
 		this.contents.add(content);
 		this.write();

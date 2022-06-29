@@ -32,6 +32,7 @@ public class ContentsController {
 			getContents();
 			getContentsForSportsObject();
 			createContent();
+			getContentByName();
 	
 		});
 	}
@@ -51,6 +52,15 @@ public class ContentsController {
 			res.status(200);
 			List<Content> contents = Repository.getInstance().getContentsDAO().getContentsForSportsObject(name);
 			return gson.toJson(contents);
+		});
+	}
+	
+	public static void getContentByName() {
+		get("/contents/:id", (req, res) -> {
+			res.type("application/json");
+			String id = req.params(":id");
+			Content content = Repository.getInstance().getContentsDAO().getContentByNameCaseInsensitive(id);
+			return gson.toJson(content);
 		});
 	}
 	
