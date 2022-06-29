@@ -77,20 +77,16 @@ public class UserDAO {
 	
 	public void addUser(User u) {
 		this.users.add(u);
-		UserType type = u.getUserType();
-		
 		this.write();
 	}
 	
 	public UserType getUserTypeByUsername(String username) {
-		UserType retVal = null;
 		for(User u : this.users) {
 			if(u.getUsername().equals(username)) {
-				retVal = u.getUserType();
+				return u.getUserType();
 			}
 		}
-		
-		return retVal;
+		return null;
 	}
 	
 	public void removeUser(User u) {
