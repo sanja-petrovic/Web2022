@@ -85,9 +85,28 @@
     "Username": "danilo",
     "Password": "1000:2c4a637165cf5e3db82fd055fe81431b:f084879e74f71c90236f1c215e38a0e9d9bbe22f3470f76e3d6d243acffd4be0b8b9bc793300ef36a892aa932ef97adba7ecb560a685cdce15e46e66eb41c880",
     "Name": "Danilo",
-    "Surname": "Danilovic",
-    "Gender": "Muški",
+    "Surname": "Radulović",
     "DateOfBirth": "1981-01-29",
+    "UserType": "Trainer"
+  },
+  {
+    "Id": "36212123-61db-4b40-91ac-02669e964064",
+    "Username": "marta",
+    "Password": "1000:50684a02762c9b4de214c47c788c1fca:a1e0dc6da3240204b74fd2a1b061da381a0bde5722c7c312d236c86997c1452665998bb1db0cff9873a39cac0efce76325bcc37bee88df3706e1c4b1eb7e32c5",
+    "Name": "Marta",
+    "Surname": "Danilović",
+    "Gender": "Å½enski",
+    "DateOfBirth": "1996-05-30",
+    "UserType": "Trainer"
+  },
+  {
+    "Id": "1e11a5c5-ee43-49ef-8e32-8fb30a470ec9",
+    "Username": "milos",
+    "Password": "1000:d11fd9ed5f4d0e89b9b3d5b77cdaff8c:2f26667004652fa0fe057904d8ea331fb236c392aa5572d33c8948271ef196bee5526ed29769882c5867c6018b2ecc1a708d03ac10cc6c44124e5ae31ed90f4c",
+    "Name": "Miloš",
+    "Surname": "Nikolić",
+    "Gender": "MuÅ¡ki",
+    "DateOfBirth": "1991-07-02",
     "UserType": "Trainer"
   }
 ]

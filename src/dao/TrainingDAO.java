@@ -16,6 +16,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
+import beans.Content;
 import beans.SportsObject;
 import beans.Trainer;
 import beans.Training;
@@ -31,7 +32,6 @@ public class TrainingDAO {
 	
 	public TrainingDAO() {
 		this.trainings = new ArrayList<>();
-		this.createGson();
 		this.load();
 	}
 	
@@ -41,6 +41,7 @@ public class TrainingDAO {
 	
 	public void load() {
 		try {
+			this.createGson();
 		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/trainings.json"));
 		    this.trainings = gson.fromJson(reader, new TypeToken<ArrayList<Training>>() {}.getType());
 		    for(Training t : this.trainings) {
@@ -54,10 +55,16 @@ public class TrainingDAO {
 	}
 
 	public void fillData(Training t) {
-		SportsObject sportsObject = Repository.getInstance().getSportsObjectDAO().getSportsObjectById(t.getSportsObject().getName());
+		Content content = Repository.getInstance().getContentsDAO().getContentById(t.getId());
+		SportsObject sportsObject = Repository.getInstance().getSportsObjectDAO().getSportsObjectById(content.getSportsObject().getName());
 		Trainer trainer = Repository.getInstance().getTrainerDAO().getTrainerByUsername(t.getTrainer().getUsername());
 		t.setTrainer(trainer);
 		t.setSportsObject(sportsObject);
+	}
+	
+	public ArrayList<Training> getTrainings() {
+		
+		return this.trainings;
 	}
 	
 	public void write() {

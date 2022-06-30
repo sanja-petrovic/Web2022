@@ -64,7 +64,7 @@ public class Content {
 		this.description = description;
 		this.picture = picture;
 	}
-
+	
 	public String getName() {
 		return name;
 	}

@@ -1,5 +1,102 @@
-[{
-  "Id": "1",
-  "Trainer": null,
-  "Price": 400
-}]
+[
+  {
+    "Id": "3b17c4cc-8d4c-4f0c-aea1-5719a36561a6",
+    "TrainingType": "Grupni",
+  	"Trainer": {
+  		"Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
+    	"Username": "jovana"
+  	},
+  	"Price": 0
+  },
+  {
+    "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
+    "TrainingType": "Personalni",
+  	"Trainer": {
+  		"Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+    	"Username": "danilo"
+  	},
+  	"Price": 4000
+  },
+  {
+    "Id": "1e09a425-3567-49ee-acbc-0c601be8db86",
+    "TrainingType": "Grupni",
+  	"Trainer": {
+  		"Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+    	"Username": "danilo"
+  	},
+  	"Price": 0
+  },
+  {
+    "Id": "aa6d7904-4f48-4f2e-b64d-0d54aa5059ce",
+    "TrainingType": "Grupni",
+  	"Trainer": {
+  		"Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
+    	"Username": "jovana"
+  	},
+  	"Price": 0
+  },
+  {
+    "Id": "88a326ee-4637-465c-b0fa-533550e89b47",
+    "TrainingType": "Grupni",
+  	"Trainer": {
+  		"Id": "2a5eb950-0720-4018-9329-c3859a033144",
+    	"Username": "marta"
+  	},
+  	"Price": 0
+  },
+  {
+    "Id": "45f766oa-8756-564p-b8ja-123550e89h78",
+    "TrainingType": "Grupni",
+  	"Trainer": {
+  		"Id": "2a5eb950-0720-4018-9329-c3859a033144",
+    	"Username": "marta"
+  	},
+  	"Price": 0
+  },
+    {
+    "Id": "56766oa-0954-564k-k9ja-097650f43h02",
+    "TrainingType": "Grupni",
+  	"Trainer": {
+  		"Id": "2b87f67d-0a92-4a4a-a860-abff05055bea",
+    	"Username": "milos"
+  	},
+  	"Price": 0
+  },
+  {
+    "Id": "2defce60-2a10-410b-94f8-68309c8d2701",
+    "TrainingType": "Grupni",
+  	"Trainer": {
+  		"Id": "2b87f67d-0a92-4a4a-a860-abff05055bea",
+    	"Username": "milos"
+  	},
+  	"Price": 0
+  },
+  {
+    "Id": "b9623930-875e-4e05-8a99-890038de8cf8",
+    "TrainingType": "Grupni",
+  	"Trainer": {
+  		"Id": "2b87f67d-0a92-4a4a-a860-abff05055bea",
+    	"Username": "milos"
+  	},
+  	"Price": 0
+  },
+  {
+    "Id": "0a83a23b-1bea-41ae-99de-74e107de7b31",
+    "TrainingType": "Personalni",
+  	"Trainer": {
+  		"Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
+    	"Username": "jovana"
+  	},
+  	"Price": 1500
+  },
+  {
+    "Id": "1c537917-b5ae-470c-804d-b7bc78622341",
+    "TrainingType": "Grupni",
+  	"Trainer": {
+  		"Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+    	"Username": "danilo"
+  	},
+  	"Price": 0
+  }
+
+]

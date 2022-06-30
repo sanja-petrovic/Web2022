@@ -1,29 +1,29 @@
 [
   {
-    "Visits": [],
+    "Visits": {},
     "Points": 0.0,
-    "Username": "petar",
     "BuyerType": {
       "Tier": "Bronzani"
     },
-    "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602"
+    "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
+    "Username": "petar"
   },
   {
-    "Visits": [],
+    "Visits": {},
     "Points": 0.0,
     "BuyerType": {
       "Tier": "Bronzani"
     },
-    "Username": "ivana",
-    "Id": "749a5c0e-8a19-4032-85e4-30717163b7da"
+    "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+    "Username": "ivana"
   },
   {
-    "Visits": [],
+    "Visits": {},
     "Points": 0.0,
     "BuyerType": {
       "Tier": "Bronzani"
     },
-    "Username": "filip",
-    "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5"
+    "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+    "Username": "filip"
   }
 ]

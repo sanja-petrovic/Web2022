@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Base64;
 import java.util.List;
+import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -72,12 +73,13 @@ public class ContentsController {
 
 			SportsObject sportsObject = Repository.getInstance().getSportsObjectDAO().getSportsObjectByName(contentDTO.getSportsObjectName());
 			Content content = new Content();
+			content.setId(UUID.randomUUID().toString());
 			content.setName(contentDTO.getName());
 			content.setType(contentDTO.getContentType());
 			content.setDurationMinutes(Integer.parseInt(contentDTO.getDurationMinutes()));
 			content.setDescription(contentDTO.getDescription());
 			content.setSportsObject(sportsObject);
-			
+					
 			if(!contentDTO.getImgData().isEmpty()) {
 				byte[] data;
 				try {
@@ -95,7 +97,7 @@ public class ContentsController {
 
 				picturePath = "resources/" + contentDTO.getFileName();
 			}
-			
+				
 			Repository.getInstance().getContentsDAO().addContent(content);
 			return gson.toJson(content);
 		
