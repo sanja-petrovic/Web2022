@@ -64,4 +64,16 @@ public class AdministratorDAO {
 		return this.admins;
 	}
 	
+	public Administrator getAdminByUsername(String username) {
+		Administrator retVal = null;
+		for(Administrator a : this.admins) {
+			if(a.getUsername().equals(username)) {
+				retVal = a;
+				break;
+			}
+		}
+		
+		return retVal;
+	}
+	
 }

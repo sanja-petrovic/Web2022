@@ -17,6 +17,7 @@ import com.google.gson.reflect.TypeToken;
 import beans.Manager;
 import beans.SportsObject;
 import beans.User;
+import beans.UserType;
 import util.adapters.LocalDateTimeAdapter;
 
 public class ManagerDAO {
@@ -56,6 +57,7 @@ public class ManagerDAO {
 			m.setGender(u.getGender());
 			m.setPassword(u.getPassword());
 			m.setDeletedAt(u.getDeletedAt());
+			m.setUserType(UserType.MANAGER);
 			if(m.getSportsObject() != null) {
 				m.setSportsObject(Repository.getInstance().getSportsObjectDAO().getSportsObjectById(m.getSportsObject().getName()));
 			}

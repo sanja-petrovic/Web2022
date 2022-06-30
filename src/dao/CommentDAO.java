@@ -100,6 +100,7 @@ public class CommentDAO {
 		if(index != -1) {
 			this.comments.set(index, c);
 		}
+		this.write();
 	}
 	
 	public int getIndexOfComment(Comment comment) {

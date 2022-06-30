@@ -4,6 +4,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.time.LocalDate;
 
+import beans.Administrator;
 import beans.Buyer;
 import beans.Manager;
 import beans.Trainer;
@@ -78,6 +79,12 @@ public class UserService {
 		case TRAINER:
 			u = Repository.getInstance().getTrainerDAO().getTrainerByUsername(username);
 			retVal = (Trainer) u;
+			break;
+		case ADMIN:
+			u = Repository.getInstance().getAdministratorDAO().getAdminByUsername(username);
+			retVal = (Administrator) u;
+			break;
+		default:
 			break;
 		
 		

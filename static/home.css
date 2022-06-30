@@ -11232,7 +11232,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .submit-button, .radio-button:after, .radio-button, .search-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .comment-button, .submit-button, .radio-button:after, .radio-button, .search-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -22630,7 +22630,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .submit-button, .search-button, .radio-button, .radio-button:after {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .comment-button, .submit-button, .search-button, .radio-button, .radio-button:after {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -34109,7 +34109,7 @@ select, .text-box {
   transition: 0.3s;
 }
 
-.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .radio-button, .radio-button:after, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .comment-button, .search-button, .radio-button, .radio-button:after, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -45590,7 +45590,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .radio-button, .radio-button:after, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .comment-button, .search-button, .radio-button, .radio-button:after, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -57129,7 +57129,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .radio-button, .radio-button:after, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .comment-button, .search-button, .radio-button, .radio-button:after, .submit-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -57369,7 +57369,7 @@ h4, .h4 {
 }
 
 .comment-section {
-  margin: 2rem 2vw;
+  margin-top: 2rem;
 }
 
 .comment {
@@ -57389,12 +57389,12 @@ h4, .h4 {
 .comment-header {
   display: flex;
   padding: 2em 3em 1em 3em;
+  justify-content: space-between;
 }
 .comment-header h5, .comment-header .h5, .comment-header div {
   font-size: 14px;
   font-weight: 700;
   color: #000b42;
-  margin-left: 1em;
 }
 .comment-header .title div {
   color: #f5df6a;
@@ -57411,6 +57411,13 @@ h4, .h4 {
   color: #7ca2ad;
   margin-left: 2vw;
   padding: 0em 1em 1em 1em;
+}
+
+.comment-button {
+  height: 3em;
+  padding: -0.2em 2em;
+  font-size: 12px;
+  margin-left: 0.5em;
 }
 
 .create-divs {
@@ -68667,7 +68674,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .radio-button, .radio-button:after, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .radio-button, .radio-button:after, .submit-button, .comment-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -80118,7 +80125,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .radio-button, .radio-button:after, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .radio-button, .radio-button:after, .submit-button, .comment-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
@@ -91525,7 +91532,7 @@ textarea.form-control-lg {
   transition: 0.3s;
 }
 
-.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .radio-button, .radio-button:after, .submit-button {
+.cancel-button, .filter-tag-checked, .sort-button, .filter-button, .search-button, .radio-button, .radio-button:after, .submit-button, .comment-button {
   border: 0;
   padding: 10px;
   background-color: #6382ff;
