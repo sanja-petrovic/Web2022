@@ -1,10 +1,12 @@
 [
   {
     "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
-    "Username": "jovana"
+    "Username": "jovana",
+    "TrainingHistory": null
   },
   {
-    "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
-    "Username": "danilo"
+    "Id": "4c19a16e-d57e-4878-8836-37fce25ce2de",
+    "Username": "aleksandra",
+    "TrainingHistory": null
   }
 ]

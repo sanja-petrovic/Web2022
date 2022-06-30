@@ -5,6 +5,7 @@ Vue.component('sports-object-page', {
             sportsObject: null,
             sportsObjectContents: null,
             logo: null,
+			comments: null
         }
     },
     template: `
@@ -74,40 +75,23 @@ Vue.component('sports-object-page', {
                 
             <div class="sports-object-comments">
                 <h4>Komentari</h4>
-                <div class="comment-section">
-                    <div class="comment">
+                <ul class="comment-section" >
+                    <li class="comment" v-for="item in this.comments">
                         <div class="comment-header">
-                            <img src="../images/logo.jpg" style="border-radius: 50%" width="60px" height="60px">
+                            <img src="../images/user.png" style="border-radius: 50%" width="60px" height="60px">
                             <div class="title">
-                                <h5>Marko Marković</h5>
-                                <div><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> </div>
+                                <h5>{{ item.Buyer.Name + " " + item.Buyer.Surname }}</h5>
+								<div><i class="fa fa-star" v-for="i in item.Grade"></i><i class="fa-regular fa-star" v-for="i in (5 - item.Grade)"></i></div>
                             </div>
                         </div>
                         <div class="comment-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed accumsan risus. Aliquam erat volutpat. Sed ut est eros. Phasellus et orci sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed accumsan risus. Aliquam erat volutpat. Sed ut est eros. Phasellus et orci sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed accumsan risus. Aliquam erat volutpat. Sed ut est eros. Phasellus et orci sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed accumsan risus. Aliquam erat volutpat. Sed ut est eros. Phasellus et orci sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed accumsan risus. Aliquam erat volutpat. Sed ut est eros. Phasellus et orci sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed accumsan risus. Aliquam erat volutpat. Sed ut est eros. Phasellus et orci sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed accumsan risus. Aliquam erat volutpat. Sed ut est eros. Phasellus et orci sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed accumsan risus. Aliquam erat volutpat. Sed ut est eros. Phasellus et orci sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed accumsan risus. Aliquam erat volutpat. Sed ut est eros. Phasellus et orci sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed accumsan risus. Aliquam erat volutpat. Sed ut est eros. Phasellus et orci sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed accumsan risus. Aliquam erat volutpat. Sed ut est eros. Phasellus et orci sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed accumsan risus. Aliquam erat volutpat. Sed ut est eros. Phasellus et orci sapien.
-                            </p>
+                            <p>{{ item.Content }}</p>
                         </div>
                         <div class="comment-footer">
-                            <p>24.04.2022. 17:32</p>
+                            <p>{{ item.Status }}</p>
                         </div>
-                    </div>
-                    <div class="comment">
-                        <div class="comment-header">
-                            <img src="../images/logo.jpg" style="border-radius: 50%" width="60px" height="60px">
-                            <div class="title">
-                                <h5>Marko Marković</h5>
-                                <div><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> </div>
-                            </div>
-                        </div>
-                        <div class="comment-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            </p>
-                        </div>
-                        <div class="comment-footer">
-                            <p>24.04.2022. 17:32</p>
-                        </div>
-                    </div>
-                </div>
+                    </li>
+                </ul>
             </div>
         </div>
         </div>
@@ -126,7 +110,8 @@ Vue.component('sports-object-page', {
 			this.sportsObject = response.data;
 			this.logo = this.sportsObject.logoIcon;
 		});
-		this.displayContents(name);		
+		this.displayContents(name);
+		this.getComments(name);
 	},
     methods: {
         loggedInCheck: function () {
@@ -153,6 +138,14 @@ Vue.component('sports-object-page', {
 				console.log(response.data);
 				this.sportsObjectContents = response.data;
 			}).catch(error => console.log(error));
+		},
+
+		getComments: function (sportsObject) {
+			axios.get(`/rest/comments/${sportsObject}`, {
+				name: sportsObject
+			}).then(response => { this.comments = response.data;
+				})
+				.catch(error => console.log(error));
 		}
      
     }

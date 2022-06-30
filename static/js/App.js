@@ -7,6 +7,7 @@ const CreateSportsObject = { template: '<create-sports-object></create-sports-ob
 const SportsObjectPage = { template: '<sports-object-page></sports-object-page>' }
 const UserList = { template: '<users></users>' }
 const CreateTrainer = { template: '<create-trainer></create-trainer>' }
+const CreateManager = { template: '<create-manager></create-manager>' }
 const CreateContent = { template: '<create-content></create-content>'}
 const HomePage = { template: '<home-page></home-page>' }
 
@@ -21,6 +22,7 @@ const router = new VueRouter({
 		{ path: '/dodaj-objekat', component: CreateSportsObject },
         { path: '/dodaj-trenera', component: CreateTrainer },
         { path: '/dodaj-sadrzaj', component: CreateContent },
+        { path: '/dodaj-menadzera', component: CreateManager },
         { path: '/korisnici', name: 'users', component: UserList }
       
     ]
