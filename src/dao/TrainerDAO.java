@@ -33,7 +33,7 @@ public class TrainerDAO {
 	}
 	
 	public void createGson() {
-	    this.gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).excludeFieldsWithoutExposeAnnotation().create();
+	    this.gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).serializeNulls().excludeFieldsWithoutExposeAnnotation().create();
 	}
 	
 	public void load() {
@@ -96,6 +96,7 @@ public class TrainerDAO {
 	}
 	
 	public ArrayList<Trainer> getTrainers() {
+		this.load();
 		return this.trainers;
 	}
 }

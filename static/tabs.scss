@@ -39,6 +39,8 @@
   padding: 2vw;
   width: 50vw;
   height: 50vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .filter-and-sort {
@@ -46,7 +48,6 @@
   gap: 0.7em;
   flex-direction: row;
   margin-bottom: 0.7em;
-  width: 50vw;
   font-size: 14px;
   button {
     font-size: 14px;
@@ -54,6 +55,17 @@
 }
 
 .buttons-galore {
+  width: 50vw;
+  margin-left: 175px;
   display: flex;
   justify-content: space-between;
+  font-size: 14px;
+  button {
+    height: 3em;
+    padding: 0em 1em;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
 }

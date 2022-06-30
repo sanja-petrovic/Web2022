@@ -102,7 +102,12 @@ Vue.component('users', {
                             </div>
                         </div>
                     </div>
-                    <button class="sort-button">Dodaj trenera</button>
+                    <button v-if="checkedTab === 'trener'" class="sort-button" type="button">
+                        <router-link to="/dodaj-trenera">Dodaj trenera</router-link>
+                    </button>
+                    <button v-if="checkedTab === 'menadžer'" class="sort-button" type="button">
+                        <router-link to="/dodaj-menadzera">Dodaj menadžera</router-link>
+                    </button>
                 </div>
                 
                 <div class="input-group mb-3" style="max-width: 50vw; margin-left: 175px;">
@@ -117,27 +122,27 @@ Vue.component('users', {
                <div class="tab-panel">
                    <ul class="nav flex-column nav-pills me-3" id="pills-tab" role="tablist">
                        <li class="nav-item" role="presentation">
-                           <button class="nav-link active" id="pills-user-tab" data-bs-toggle="pill" data-bs-target="#pills-users"
+                           <button class="nav-link active" v-on:click="checkedTab = 'svi'" id="pills-user-tab" data-bs-toggle="pill" data-bs-target="#pills-users"
                                    type="button" role="tab" aria-controls="pills-home" aria-selected="true">Svi korisnici
                            </button>
                        </li>
                        <li class="nav-item" role="presentation">
-                           <button class="nav-link" id="pills-buyer-tab" data-bs-toggle="pill" data-bs-target="#pills-buyers"
+                           <button class="nav-link" id="pills-buyer-tab" v-on:click="checkedTab = 'kupac'" data-bs-toggle="pill" data-bs-target="#pills-buyers"
                                    type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Kupci
                            </button>
                        </li>
                        <li class="nav-item" role="presentation">
-                           <button class="nav-link" id="pills-manager-tab" data-bs-toggle="pill" data-bs-target="#pills-managers"
+                           <button class="nav-link" id="pills-manager-tab" v-on:click="checkedTab = 'menadžer'" data-bs-toggle="pill" data-bs-target="#pills-managers"
                                    type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Menadžeri
                            </button>
                        </li>
                        <li class="nav-item" role="presentation">
-                           <button class="nav-link" id="pills-trainer-tab" data-bs-toggle="pill" data-bs-target="#pills-trainers"
+                           <button class="nav-link" id="pills-trainer-tab" v-on:click="checkedTab = 'trener'" data-bs-toggle="pill" data-bs-target="#pills-trainers"
                                    type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Treneri
                            </button>
                        </li>
                        <li class="nav-item" role="presentation">
-                           <button class="nav-link" id="pills-admin-tab" data-bs-toggle="pill" data-bs-target="#pills-admins"
+                           <button class="nav-link" id="pills-admin-tab" v-on:click="checkedTab = 'admin'" data-bs-toggle="pill" data-bs-target="#pills-admins"
                                    type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Administratori
                            </button>
                        </li>
@@ -242,7 +247,7 @@ Vue.component('users', {
                                            <span class="text-muted">{{ user.DateOfBirth }}</span><br>
                                        </td>
                                        <td>
-                                           <span class="text-muted">{{ user.SportsObject.name }}</span><br>
+                                           <span class="text-muted">{{ (user.SportsObject !== null) ? user.SportsObject.name : "Nijedan" }}</span><br>
                                        </td>
                                    </tr>
                                    </tbody>
@@ -276,7 +281,7 @@ Vue.component('users', {
                                            <span class="text-muted">{{ user.DateOfBirth }}</span><br>
                                        </td>
                                        <td>
-                                           <span class="text-muted">{{ user.TrainingHistory }}</span><br>
+                                           <span class="text-muted">{{ user.TrainingHistory !== null ? user.TrainingHistory.length : 0 }}</span><br>
                                        </td>
                                    </tr>
                                    </tbody>

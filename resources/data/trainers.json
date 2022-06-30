@@ -2,6 +2,11 @@
   {
     "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
     "Username": "jovana",
-    "TrainingHistory": []
+    "TrainingHistory": null
+  },
+  {
+    "Id": "4c19a16e-d57e-4878-8836-37fce25ce2de",
+    "Username": "aleksandra",
+    "TrainingHistory": null
   }
 ]

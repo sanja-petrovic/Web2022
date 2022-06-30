@@ -88,5 +88,35 @@
     "Gender": "Ženski",
     "DateOfBirth": "2022-06-06",
     "UserType": "Trener"
+  },
+  {
+    "Id": "850fd0c9-3746-4c1d-8384-95e065ba6cb0",
+    "Username": "nikola",
+    "Password": "1000:d49d7c23cafb111c49e50e1c1b038dcc:3fd7ce8e7543f13d6013457b4ad194b2000eea8ab46d0f56d0ac9200fd92d210a11820d498ae411d1b4494fc4bd8ea028fc9d7733e1fdab996165b63d6ec16de",
+    "Name": "Nikola",
+    "Surname": "Nikolić",
+    "Gender": "Muški",
+    "DateOfBirth": "2022-06-08",
+    "UserType": "Menadžer"
+  },
+  {
+    "Id": "fc734974-2fbd-4766-8669-e4964ac47ab4",
+    "Username": "milica",
+    "Password": "1000:25703185d60962e08ff93a46abf2cb25:7250ca40a86688198bb5ab03c892d996f59ce399f3b355a0b402f4838d3907919141dab28e218f20341627e8d6f4abd74d4d19027f08dba5fa3fe6878dc09466",
+    "Name": "Milica",
+    "Surname": "Miličević",
+    "Gender": "Ženski",
+    "DateOfBirth": "2022-06-05",
+    "UserType": "Menadžer"
+  },
+  {
+    "Id": "47f4f119-8a5c-407f-8e09-2bef0b92dce1",
+    "Username": "aleksandra",
+    "Password": "1000:3f250db9bfef537065cd7c40d18088b1:43b7eb45add4a22670bbb2e87b947a62136eff74fb679ea3c42e41fa52c669e326b2327d129ca3cf2464bee8ba03dc68984a1040ac466b37013ee357c946cebb",
+    "Name": "Aleksandra",
+    "Surname": "Aleksić",
+    "Gender": "Ženski",
+    "DateOfBirth": "2022-06-08",
+    "UserType": "Trener"
   }
 ]

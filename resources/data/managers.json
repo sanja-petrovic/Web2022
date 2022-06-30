@@ -26,5 +26,15 @@
     },
     "Id": "61b4d29a-09bd-406c-9d99-7288ee8c279d",
     "Username": "dimitrije"
+  },
+  {
+    "Id": "66ba17b5-44f0-49d0-bd0b-b927cfe00c37",
+    "Username": "nikola",
+    "SportsObject": null
+  },
+  {
+    "Id": "8063254c-72ef-4497-b16b-c2e12b4e54a8",
+    "Username": "milica",
+    "SportsObject": null
   }
 ]
