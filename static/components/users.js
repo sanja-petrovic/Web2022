@@ -28,7 +28,6 @@ Vue.component('users', {
         <div class="user-page">
         <nav-bar-logged-in></nav-bar-logged-in>
             <div class="tabs">
-
                 <div class="buttons-galore">
                     <div class="filter-and-sort">
                         <div class="dropdown">

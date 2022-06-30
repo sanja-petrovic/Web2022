@@ -91700,7 +91700,7 @@ h4, .h4 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
 }
 .tabs .nav-link {
   background-color: rgba(255, 255, 255, 0.3) !important;
