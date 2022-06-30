@@ -23,6 +23,9 @@ public class AdministratorDAO {
 	
 	public AdministratorDAO() {
 		this.admins = new ArrayList<>();
+		this.createGson();
+		this.load();
+		
 	}
 	
 	public void createGson() {
@@ -31,15 +34,13 @@ public class AdministratorDAO {
 	
 	public void load() {
 		try {
-		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/users.json"));
-		    ArrayList<User> users = gson.fromJson(reader, new TypeToken<ArrayList<User>>() {}.getType());
-		    
+			this.admins.clear();
+		    ArrayList<User> users = Repository.getInstance().getUserDAO().getUsers();
 		    for(User u : users) {
 		    	if(u.getUserType().equals(UserType.ADMIN)) {
 		    		this.admins.add(new Administrator(u));
 		    	}
 		    }
-		    reader.close();
 
 		} catch (Exception ex) {
 		    ex.printStackTrace();
@@ -57,6 +58,10 @@ public class AdministratorDAO {
 	public void addAdmin(Administrator a) {
 		Repository.getInstance().getUserDAO().addUser(a);
 		this.admins.add(a);
+	}
+	
+	public ArrayList<Administrator> getAdmins() {
+		return this.admins;
 	}
 	
 }

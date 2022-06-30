@@ -9,19 +9,19 @@ public enum UserType {
             return "Administrator";
         }
 	},
-	@SerializedName("Manager")
+	@SerializedName("Menadžer")
 	MANAGER {
         public String toString() {
             return "Menadžer";
         }
 	},
-	@SerializedName("Trainer")
+	@SerializedName("Trener")
 	TRAINER {
         public String toString() {
             return "Trener";
         }
 	},
-	@SerializedName("Buyer")
+	@SerializedName("Kupac")
 	BUYER {
         public String toString() {
             return "Kupac";

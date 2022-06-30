@@ -171,6 +171,17 @@ $primary-button-pressed: #3f61e8;
   @extend %basic-primary-button-hover;
 }
 
+.nav-link {
+  border-radius: 10px !important;
+}
+
+.link-dark {
+  transition: 0.2s;
+}
+.link-dark:hover {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
 * {
   font-family: $main-font;
 }
@@ -184,6 +195,9 @@ h1 {
   color: $bold-font-color;
 }
 
+body {
+  margin: 0;
+}
 
 h4 {
   color: $bold-font-color;
@@ -203,6 +217,7 @@ h4 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: auto;
 }
 
 
@@ -254,4 +269,35 @@ h4 {
   font-weight: 700;
   color: $bold-font-color;
   text-align: left;
+}
+
+.nav-pills {
+  .active {
+    background-color: $primary-button-color !important;
+  }
+  .active:hover {
+    background-color: $primary-button-hover !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 0px rgba(255, 255, 255, .2) solid;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary-button-color;
+  box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: 0.4s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $primary-button-hover;
 }

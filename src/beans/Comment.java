@@ -3,13 +3,36 @@ package beans;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Comment {
+	@Expose
+	@SerializedName("Id")
 	private String id;
+
+	@Expose
+	@SerializedName("Buyer")
 	private Buyer buyer;
+
+	@Expose
+	@SerializedName("SportsObject")
 	private SportsObject sportsObject;
+
+	@Expose
+	@SerializedName("Content")
 	private String content;
+
+	@Expose
+	@SerializedName("Grade")
 	private int grade;
+
+	@Expose
+	@SerializedName("Status")
 	private CommentStatus status;
+
+	@Expose
+	@SerializedName("DeletedAt")
 	private LocalDateTime deletedAt;
 	
 	public Comment(Buyer buyer, SportsObject sportsObject, String content, int grade) {

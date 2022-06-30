@@ -24,12 +24,15 @@ import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalTimeAdapter;
 
 public class UserController {
-	private static Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
+	private static Gson gson = new GsonBuilder().setPrettyPrinting()
+			.registerTypeAdapter(LocalTime.class, new LocalTimeAdapter())
+			.registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+			.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
 	private static String basePath = "/rest";
-	
+
 	public UserController() {
 	}
-	
+
 	public void init() {
 		path(basePath, () -> {
 			login();
@@ -41,32 +44,32 @@ public class UserController {
 			updateProfile();
 		});
 	}
-	
+
 	public static void login() {
 
 		post("/login", (req, res) -> {
 			res.type("application/json");
 			String payload = req.body();
 			LoginUserDTO u = gson.fromJson(payload, LoginUserDTO.class);
-			
+
 			User user = UserService.getCompleteData(u.getUsername());
-			
-			if(user == null) {
+
+			if (user == null) {
 				res.status(401);
 				res.body("Incorrect username or password. Please try again");
 				return res.body();
-			} else if(!PasswordService.validatePassword(u.getPassword(), user.getPassword())) {
+			} else if (!PasswordService.validatePassword(u.getPassword(), user.getPassword())) {
 				res.status(401);
 				res.body("Incorrect username or password. Please try again");
 				return res.body();
 			}
 			System.out.println("logged in: " + user.getUsername());
-			
+
 			req.session().attribute("user", user);
 			return gson.toJson(user);
 		});
 	}
-	
+
 	public static void logout() {
 		post("/logout", (req, res) -> {
 			res.type("application/json");
@@ -76,21 +79,20 @@ public class UserController {
 			return res.body();
 		});
 	}
-	
+
 	public static void getUsers() {
 		get("/users", (req, res) -> {
 			return gson.toJson(Repository.getInstance().getUserDAO().getUsers());
 		});
 	}
-	
+
 	public static void getCurrentlyLoggedInUser() {
 		get("/loggedInUser", (req, res) -> {
 			User user = req.session().attribute("user");
 			return gson.toJson(user);
 		});
 	}
-	
-	
+
 	public static void getUser() {
 		get("/users/:id", (req, res) -> {
 			res.type("application/json");
@@ -99,34 +101,34 @@ public class UserController {
 			return gson.toJson(user);
 		});
 	}
-	
+
 	public static void register() {
 		post("/register", (req, res) -> {
 			res.type("application/json");
 			String payload = req.body();
 			RegisterUserDTO u = gson.fromJson(payload, RegisterUserDTO.class);
-			
+
 			User user = UserService.registerBuyer(u);
 			System.out.println(user);
 			req.session().attribute("user", user);
-			
+
+			return gson.toJson(user);
+		});
+	}
+
+	public static void updateProfile() {
+		put("/updateProfile", (req, res) -> {
+			res.type("application/json");
+			String payload = req.body();
+			ProfileDTO profile = gson.fromJson(payload, ProfileDTO.class);
+
+			User user = req.session().attribute("user");
+			user = UserService.updateUser(profile, user);
+
 			return gson.toJson(user);
 		});
 	}
 	
-	
-	public static void updateProfile() {
-        put("/updateProfile", (req, res) -> {
-            res.type("application/json");
-            String payload = req.body();
-            ProfileDTO profile = gson.fromJson(payload, ProfileDTO.class);
-
-            User user = req.session().attribute("user");
-            user = UserService.updateUser(profile, user);
-
-            return gson.toJson(user);
-        });
-}
 	
 
 }

@@ -33,6 +33,7 @@ public class Repository {
 			instance.setTrainerDAO(new TrainerDAO());
 			instance.setCommentDAO(new CommentDAO());
 			instance.setTrainingHistoryDAO(new TrainingHistoryDAO());
+			instance.setAdministratorDAO(new AdministratorDAO());
 		}
 		return instance;
 	}
