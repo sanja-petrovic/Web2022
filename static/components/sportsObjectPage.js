@@ -40,9 +40,6 @@ Vue.component('sports-object-page', {
                         <span class="d-inline-block"><i class="fa fa-star"
                                                         style="margin-right: 0.4em; color: #ADE9AA"></i><span
                             class="d-inline-block">Prosečna ocena: {{sportsObject.averageGrade}}</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-arrow-circle-right"
-                                                        style="margin-right: 0.4em; color: #9BA1FF"></i><span
-                            class="d-inline-block">grupni treninzi, personalni treninzi</span></span>
                     </p>
                 </div>
                 <div class="sports-object-map">

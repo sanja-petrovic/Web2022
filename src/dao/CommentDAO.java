@@ -3,6 +3,7 @@ package dao;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
@@ -61,7 +62,7 @@ public class CommentDAO {
 	public void write() {
 		try {
 			this.createGson();
-			FileWriter writer = new FileWriter("resources/data/comments.json");
+			FileWriter writer = new FileWriter("resources/data/comments.json", StandardCharsets.UTF_8);
 			gson.toJson(this.comments, writer);
 			writer.flush();
 			writer.close();

@@ -3,11 +3,11 @@ package dao;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -15,6 +15,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
 import beans.Manager;
+import beans.SportsObject;
 import beans.User;
 import util.adapters.LocalDateTimeAdapter;
 
@@ -65,7 +66,7 @@ public class ManagerDAO {
 	public void writeManagers() {
 		try {
 			this.createGson();
-			FileWriter writer = new FileWriter("resources/data/managers.json");
+			FileWriter writer = new FileWriter("resources/data/managers.json", StandardCharsets.UTF_8);
 			gson.toJson(this.managers, writer);
 			writer.flush();
 			writer.close();
@@ -110,6 +111,18 @@ public class ManagerDAO {
 		}
 		
 		return retVal;
+	}
+	
+	public SportsObject getSportsObjectById(String Id) {
+		SportsObject sportsObject = null;
+		for(Manager m : this.managers) {
+			if(m.getId().equals(Id)) {
+				sportsObject = m.getSportsObject();
+				break;
+			}
+		}
+		
+		return sportsObject;
 	}
 	
 	public Manager getManagerById(String id) {

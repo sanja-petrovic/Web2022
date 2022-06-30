@@ -2,7 +2,8 @@ Vue.component('navBarLoggedIn', {
     data: function () {
         return {
             name: "",
-            surname: ""
+            surname: "",
+            userType: "",
         }
     }, template: `
         <nav class="navbar navbar-default sticky-top navbar-expand-lg navbar-dark" style="width: 100%">
@@ -17,6 +18,9 @@ Vue.component('navBarLoggedIn', {
                     </li>
                     <li class="nav-item">
                         <router-link class="nav-link" to="/dodaj-trenera">Dodaj trenera</router-link>
+                    </li>
+                     <li class="nav-item">
+                        <router-link class="nav-link" to="/dodaj-sadrzaj" v-if="this.userType === 'Manager'">Dodaj sadržaj</router-link>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Članarine</a>
@@ -40,7 +44,27 @@ Vue.component('navBarLoggedIn', {
             </div>
         </div>
         </nav>
-    `, methods: {
+    `, 
+    mounted() {
+        axios.get(`/rest/loggedInUser`)
+            .then(response => {
+                this.name = response.data.Name;
+                this.surname = response.data.Surname;
+                let username = response.data.Username;
+               	this.getUserTypeByUserName(username);
+            })
+            .catch(error => console.log(error));
+    },
+    methods: {
+        getUserTypeByUserName: function(username) {
+			 axios.get(`/rest/users/${username}`, {
+						name: username
+				})
+                .then(resp => {
+					this.userType = resp.data.UserType;
+					console.log(this.userType);
+				});
+		},
         logOut: async function () {
             this.$router.replace("/");
             event.preventDefault();
@@ -55,13 +79,5 @@ Vue.component('navBarLoggedIn', {
                     console.log(err);
                 });
         }
-    },
-    mounted() {
-        axios.get(`/rest/loggedInUser`)
-            .then(response => {
-                this.name = response.data.Name;
-                this.surname = response.data.Surname;
-            })
-            .catch(error => console.log(error));
     }
-})
+});

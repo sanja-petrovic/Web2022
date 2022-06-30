@@ -3,6 +3,7 @@ package dao;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -46,7 +47,7 @@ public class UserDAO {
 	public void write() {
 		Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
 		try {
-			FileWriter writer = new FileWriter("resources/data/users.json");
+			FileWriter writer = new FileWriter("resources/data/users.json", StandardCharsets.UTF_8);
 			gson.toJson(this.users, writer);
 			writer.flush();
 			writer.close();
@@ -77,20 +78,16 @@ public class UserDAO {
 	
 	public void addUser(User u) {
 		this.users.add(u);
-		UserType type = u.getUserType();
-		
 		this.write();
 	}
 	
 	public UserType getUserTypeByUsername(String username) {
-		UserType retVal = null;
 		for(User u : this.users) {
 			if(u.getUsername().equals(username)) {
-				retVal = u.getUserType();
+				return u.getUserType();
 			}
 		}
-		
-		return retVal;
+		return null;
 	}
 	
 	public void removeUser(User u) {
