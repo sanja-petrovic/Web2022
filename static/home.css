@@ -11406,6 +11406,11 @@ textarea {
   background: #708cff;
 }
 
+.map {
+  height: 550px !important;
+  width: 550px !important;
+}
+
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -22806,6 +22811,11 @@ textarea {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #708cff;
+}
+
+.map {
+  height: 550px !important;
+  width: 550px !important;
 }
 
 .login-body {
@@ -34291,6 +34301,11 @@ textarea {
   background: #708cff;
 }
 
+.map {
+  height: 550px !important;
+  width: 550px !important;
+}
+
 .register-body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
@@ -45774,6 +45789,11 @@ textarea {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #708cff;
+}
+
+.map {
+  height: 550px !important;
+  width: 550px !important;
 }
 
 :root {
@@ -57317,6 +57337,11 @@ textarea {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #708cff;
+}
+
+.map {
+  height: 550px !important;
+  width: 550px !important;
 }
 
 .sports-object-container {
@@ -68919,6 +68944,11 @@ textarea {
   background: #708cff;
 }
 
+.map {
+  height: 550px !important;
+  width: 550px !important;
+}
+
 .about-wrapper {
   width: 100vw;
   display: flex;
@@ -80374,6 +80404,11 @@ textarea {
   background: #708cff;
 }
 
+.map {
+  height: 550px !important;
+  width: 550px !important;
+}
+
 .sidebar-container {
   padding: 2vw;
 }
@@ -91783,6 +91818,11 @@ textarea {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #708cff;
+}
+
+.map {
+  height: 550px !important;
+  width: 550px !important;
 }
 
 .tabs {

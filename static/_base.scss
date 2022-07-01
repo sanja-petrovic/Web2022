@@ -305,3 +305,8 @@ textarea {
 ::-webkit-scrollbar-thumb:hover {
   background: $primary-button-hover;
 }
+
+.map {
+  height: 550px !important;
+  width: 550px !important;
+}

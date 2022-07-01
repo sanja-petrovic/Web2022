@@ -1,3 +1,4 @@
+
 Vue.component('sports-object-page', {
     data: function () {
         return {
@@ -17,9 +18,11 @@ Vue.component('sports-object-page', {
         }
     },
     template: `
+		
         <div>
 		<nav-bar-logged-in v-if="this.loggedIn"></nav-bar-logged-in>
         <nav-bar-logged-out v-else></nav-bar-logged-out>
+		<div class="map" id="map" style="z-index: 5"></div>
         <div class="main-content">
             <div class="sports-object-header">
                 <img class="sports-object-logo" :src="sportsObject.logoIcon">
@@ -50,8 +53,7 @@ Vue.component('sports-object-page', {
                             class="d-inline-block" >Prosečna ocena: {{ sportsObject.averageGrade }}</span></span><br>
                     </p>
                 </div>
-                <div class="sports-object-map">
-                </div>
+                
             </div>
             <div class="sports-object-trainings">
                 <h4>U ponudi:</h4>
@@ -179,6 +181,7 @@ Vue.component('sports-object-page', {
         </div>
     `,
     mounted() {
+		this.initForMap();
 		var path = window.location.href;
 		var sportsObjectName = path.split('/objekti/')[1];
 		var name = sportsObjectName.replaceAll('%20', ' ');
@@ -290,6 +293,29 @@ Vue.component('sports-object-page', {
 				console.log(err);
 			})
 		},
+
+		initForMap: function () {
+
+			var map = new ol.Map({
+				layers: [
+					new ol.layer.Tile({
+						source: new ol.source.OSM()
+					})
+				],
+				view: new ol.View({
+					center: ol.proj.fromLonLat([37.41, 8.82]),
+					zoom: 4
+				})
+			});
+
+			setTimeout(() => {
+				if (map) {
+					map.setTarget("map");
+				}
+			}, 50);
+
+		}
     }
     
 });
+
