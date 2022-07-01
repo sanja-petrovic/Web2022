@@ -1,8 +1,4 @@
 package beans;
-import java.time.LocalDateTime;
-import java.util.UUID;
-
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Training extends Content {
@@ -14,13 +10,17 @@ public class Training extends Content {
 	@SerializedName("Price")
 	private double price;
 	
-
 	public Training(String name, String type, SportsObject sportsObject, int durationMinutes, String description,
 			String picture, TrainingType trainingType, Trainer trainer, Double price) {
 		super(name, type, sportsObject, durationMinutes, description, picture);
 		this.trainingType = trainingType;
 		this.trainer = trainer;
 		this.price = price;
+	}
+	
+	public Training(Content content) {
+		super(content);
+		
 	}
 	
 	public TrainingType getTrainingType() {

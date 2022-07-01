@@ -95,6 +95,17 @@ public class ContentsDAO {
 		
 		return retVal;
 	}
+	public Content getContentById(String id) {
+		Content retVal = null;
+		for(Content content : this.contents) {
+			if(content.getId().equals(id)) {
+				retVal = content;
+				break;
+			}
+		}
+		
+		return retVal;	
+	}
 	
 	public void addContent(Content content) {
 		this.contents.add(content);

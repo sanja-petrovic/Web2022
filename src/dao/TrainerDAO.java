@@ -14,11 +14,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
-import beans.Buyer;
 import beans.Trainer;
-import beans.Training;
 import beans.User;
-import beans.UserType;
 import util.adapters.LocalDateTimeAdapter;
 
 public class TrainerDAO {
@@ -60,6 +57,7 @@ public class TrainerDAO {
 			t.setGender(u.getGender());
 			t.setPassword(u.getPassword());
 			t.setDeletedAt(u.getDeletedAt());
+			t.setUserType(u.getUserType());
 			t.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(t.getId()));
 		}
 	}

@@ -6,6 +6,11 @@ Vue.component('create-content', {
             logo: null,
             name: "",
             contentType: "",
+            type: "",
+            trainingType: "",
+            trainers: null,
+            trainer: "",
+            price: "",
             picture: null,
             description: "",
             durationMinutes: "",
@@ -19,7 +24,7 @@ Vue.component('create-content', {
         <nav-bar-logged-in v-if="this.loggedIn"></nav-bar-logged-in>
         <nav-bar-logged-out v-else></nav-bar-logged-out>
          <div class="main-content">
-            <div class="sports-object-header">
+            <div class="sports-object-header justify-content-center">
                 <img class="sports-object-logo" :src="sportsObject.logoIcon">
                 <div class="sports-object-info">
                     <h1>{{sportsObject.name}}</h1>
@@ -49,9 +54,7 @@ Vue.component('create-content', {
                     </p>
                 </div>
             </div>
-        </div>
-        <div class="outer-container">
-            <div class="create-divs">
+            <div class="create-divs justify-content-center">
                 <div class="bla">
                     <div class="register-container">
                         <div class="">
@@ -60,12 +63,33 @@ Vue.component('create-content', {
                                         <form class="myForm" action="">
                                             <input class="text-box create-input" type="text" v-on:blur="nameUniqueCheck" name="name" v-model="name" placeholder="Naziv"
                                                    required>
-                                            <input class="text-box create-input" type="text" v-model="contentType" name="contentType"
-                                                   placeholder="Tip sadržaja" required>
+                                            <div class="input-group create-input">
+                                                <span class="input-group-text" style="width: 5em">Tip</span>
+                                                <input type="radio" class="btn-check" v-model="type" value="trening" name="type" id="trening" autocomplete="off">
+                                                <label class="btn btn-primary flex-grow-1" for="trening">Trening</label>
+                                                <input type="radio" class="btn-check" v-model="type" value="ostalo" name="type"  id="ostalo" autocomplete="off">
+                                                <label class="btn btn-primary flex-grow-1" for="ostalo">Drugi sadržaj</label>
+                                            </div>
+                                            <input class="text-box create-input" type="text" v-model="contentType" v-if="type === 'ostalo'" name="contentType"
+                                                   placeholder="Tip drugog sadržaja" required>
                                             <input class="text-box create-input form-control custom-file-input" id="fileUpload" accept="image/*" ref="myFile" type="file" @change="previewFile" required>
-                                            
+                                             <div class="input-group create-input" v-if="type === 'trening'">
+                                                <span class="input-group-text" style="width: 5em">Trening</span>
+                                                <input type="radio" class="btn-check" v-model="trainingType" value="grupni" name="trainingType" id="grupni" autocomplete="off">
+                                                <label class="btn btn-primary flex-grow-1" for="grupni">Grupni</label>
+                                                <input type="radio" class="btn-check" v-model="trainingType" value="personalni" name="trainingType"  id="personalni" autocomplete="off">
+                                                <label class="btn btn-primary flex-grow-1" for="personalni">Personalni</label>
+                                            </div>
+                                            <div class="input-group create-input" v-if="type === 'trening'">
+                                              <label class="input-group-text" style="width: 10em" for="trainers">Izaberi trenera</label>
+												  <select name="trainers" id="trainers" style="width: 15em" v-model="trainer">
+												    <option v-for="t in this.trainers" :value="t">{{t.Name}} {{t.Surname}}</option>
+												  </select>
+											</div>
+                                            <input class="text-box create-input" v-if="type === 'trening'" type="number" v-model="price" id="price" name="price" 
+                                                   placeholder="Cena treninga" min=0>
                                             <textarea class="text-box create-input" v-model="description" placeholder="Unesi opis"></textarea> 
-                                            <input class="text-box create-input" type="number" v-model="durationMinutes" id="dob" name="dob" 
+                                            <input class="text-box create-input" type="number" v-model="durationMinutes" id="dm" name="dm" 
                                                    placeholder="Trajanje u minutima" min=0>
                                             <label class="invalid-input create-input" v-if="errorExists">{{ this.errorMessage }}</label>
                                         </form>
@@ -73,13 +97,15 @@ Vue.component('create-content', {
                         </div>
                     </div>
                 </div>
-            </div>
-                <button class="search-button" id="theButton" v-on:click="createContent">Dodaj sadržaj</button>
-            </div>
+                </div>
+                <button class="search-button mb-5 mt-3" id="theButton" v-on:click="createContent">Dodaj sadržaj</button>
+          </div>
         </div>
     `,
     mounted() {
         this.loggedInCheck();
+        this.getTrainers();
+ 
     },
     methods: {
         loggedInCheck: function () {
@@ -140,14 +166,24 @@ Vue.component('create-content', {
             }
             event.preventDefault();
         },
+        getTrainers: function() {
+			  axios.get('/rest/trainers')
+                .then(response => {
+                    this.trainers = response.data;
+                    console.log(response.data);
+                }).catch(error => console.log(error)) 
+                    
+        },
+	
         createContent: function() {
+			
             return new Promise((resolve, reject) => {
                 let oopsie = false;
                 let message = "Uspešno ste dodali novi sadržaj u " + this.sportsObject.name + "!";
                 if (this.name == "") {
 					this.errorExists = true;
 					this.errorMessage = "Niste uneli naziv sadržaja.";
-				} else if(this.contentType == "") {
+				} else if(this.contentType == "" && this.type !== "trening") {
 					this.errorExists = true;
 					this.errorMessage = "Niste uneli tip sadržaja.";
 				}
@@ -161,23 +197,44 @@ Vue.component('create-content', {
                 var picturePath = new FileReader();
                 var file   = this.$refs.myFile.files[0];
                 var fileName = this.$refs.myFile.files[0].name;
-                picturePath.readAsDataURL(file); 
-                console.log(picturePath);
-                picturePath.onloadend = () =>
-                {
-                    axios.post('/rest/createContent', {
-                        name: this.name, sportsObjectName: this.sportsObject.name, contentType: this.contentType, imgData: picturePath.result, fileName: fileName, 
-                        description: this.description, durationMinutes: this.durationMinutes
-                    })
-                        .then(function response(resp){
-                            oopsie = false;
-                            console.log(resp.data); 
-                            alert(message);
-                        }).catch(function error(err) {
-                            alert("Greška na serveru!");
-                            oopsie = true;
-                        });
-                }
+                picturePath.readAsDataURL(file);
+                if(this.type !== 'trening')
+                { 
+	                picturePath.onloadend = () =>
+	                {	
+	                    axios.post('/rest/createContent', {
+	                        name: this.name, sportsObjectName: this.sportsObject.name, contentType: this.contentType, imgData: picturePath.result, fileName: fileName, 
+	                        description: this.description, durationMinutes: this.durationMinutes
+	                    })
+	                        .then(function response(resp){
+	                            oopsie = false;
+	                            console.log(resp.data); 
+	                            alert(message);
+	                        }).catch(function error(err) {
+	                            alert("Greška na serveru!");
+	                            oopsie = true;
+	                        });
+	                }
+                } else {
+					this.contentType = "trening";
+					picturePath.onloadend = () =>
+	                {	
+	                    axios.post('/rest/createTraining', {
+	                        name: this.name, sportsObjectName: this.sportsObject.name, contentType: this.contentType, imgData: picturePath.result, fileName: fileName, 
+	                        description: this.description, durationMinutes: this.durationMinutes, trainer: this.trainer, price: this.price, trainingType: this.trainingType
+	                    })
+	                        .then(function response(resp){
+	                            oopsie = false;
+	                            console.log(resp.data); 
+	                            alert(message);
+	                        }).catch(function error(err) {
+	                            alert("Greška na serveru!");
+	                            oopsie = true;
+	                        });
+	                }
+	
+				}
+               
             
                 if(oopsie) {
                     this.$router.replace("/dodaj-sadrzaj");

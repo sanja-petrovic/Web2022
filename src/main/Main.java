@@ -6,17 +6,15 @@ import static spark.Spark.staticFiles;
 import java.io.File;
 import java.io.IOException;
 
-import beans.Comment;
-import controller.ContentsController;
 import controller.AdminController;
 import controller.BuyerController;
 import controller.CommentController;
+import controller.ContentsController;
 import controller.ManagerController;
 import controller.SportsObjectController;
 import controller.TrainerController;
 import controller.TrainingController;
 import controller.UserController;
-import dao.CommentDAO;
 import dao.Repository;
 
 
@@ -44,9 +42,7 @@ public class Main {
 		commentController.init();
 		trainerController.init();
 		adminController.init();
-		//trainingController.init();
-		
-		
+		trainingController.init();
 	}
 	
 }
