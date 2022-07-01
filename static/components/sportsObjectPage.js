@@ -111,7 +111,6 @@ Vue.component('sports-object-page', {
 			<div class="sports-object-comments"  v-else-if="this.loggedInUserRole === 'Menadžer'">
 				<h4>Komentari</h4>
 				<ul class="comment-section">
-					<li class="comment"></li>
 					<li class="comment" v-for="item in this.comments">
 						<div class="comment-header">
 							<div class="left-side">
