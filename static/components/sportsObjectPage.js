@@ -250,8 +250,6 @@ Vue.component('sports-object-page', {
 			})
 				.then(response => {
 					oopsie = false;
-					this.approvedComments.push(response.data);
-					this.sportsObject = response.data.SportsObject;
 					this.$router.go();
 				})
 				.catch(function error(err) {

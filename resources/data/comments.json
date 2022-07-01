@@ -193,5 +193,44 @@
     "Content": "4332",
     "Grade": 3,
     "Status": "Odobren"
+  },
+  {
+    "Id": "f376e928-fac1-422a-8274-86531b4af110",
+    "Buyer": {
+      "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+      "Username": "filip"
+    },
+    "SportsObject": {
+      "name": "Classic Gym"
+    },
+    "Content": "232432",
+    "Grade": 4,
+    "Status": "Odobren"
+  },
+  {
+    "Id": "316e5f5c-c04c-4497-ac6c-98b2882a8e9e",
+    "Buyer": {
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "SportsObject": {
+      "name": "Mega Gym"
+    },
+    "Content": "fds",
+    "Grade": 1,
+    "Status": "Odobren"
+  },
+  {
+    "Id": "b964ea9c-6ee0-467a-b1c0-f0856033938a",
+    "Buyer": {
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "SportsObject": {
+      "name": "Novak Tennis Center"
+    },
+    "Content": "edsf",
+    "Grade": 5,
+    "Status": "Odobren"
   }
 ]

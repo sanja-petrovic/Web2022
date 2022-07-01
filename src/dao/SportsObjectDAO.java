@@ -118,6 +118,7 @@ public class SportsObjectDAO {
 	}
 	
 	public SportsObject getSportsObjectByName(String name) {
+		this.load();
 		for (SportsObject sportsObject : this.sportsObjects) {
 			if(sportsObject.getName().equals(name)) {
 				return sportsObject;
