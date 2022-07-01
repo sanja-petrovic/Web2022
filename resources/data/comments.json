@@ -10,7 +10,7 @@
     },
     "Content": "Hello this is a comment",
     "Grade": 4,
-    "Status": "Na čekanju"
+    "Status": "Odbijen"
   },
   {
     "Id": "96dca3b8-fd33-4501-b43f-6cfd874e51cd",
@@ -21,8 +21,21 @@
     "SportsObject": {
       "name": "Mega Gym"
     },
-    "Content": "Hello this is a comment",
+    "Content": "Hello this is an approved comment! Yay! This comment will be visible to everyone. Hello this is an approved comment! Yay! This comment will be visible to everyone. Hello this is an approved comment! Yay! This comment will be visible to everyone.",
     "Grade": 4,
-    "Status": "Na čekanju"
+    "Status": "Odobren"
+  },
+  {
+    "Id": "96dca3b8-fd33-4501-b43f-6cfd874e51cd",
+    "Buyer": {
+      "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+      "Username": "filip"
+    },
+    "SportsObject": {
+      "name": "Mega Gym"
+    },
+    "Content": "Ovaj komentar je odbijen. Ovaj komentar je odbijen. Ovaj komentar je odbijen. Ovaj komentar je odbijen. Ovaj komentar je odbijen. Ovaj komentar je odbijen.",
+    "Grade": 4,
+    "Status": "Odbijen"
   }
 ]

@@ -82,7 +82,7 @@
 }
 
 .comment-section {
-  margin: 2rem 2vw;
+  margin-top: 2rem;
 }
 
 .comment {
@@ -111,7 +111,6 @@
     font-size: 14px;
     font-weight: 700;
     color: $bold-font-color;
-    margin-left: 1em;
   }
 
   .title {
@@ -119,6 +118,7 @@
       color: #f5df6a;
     }
   }
+  justify-content: space-between;
 }
 
 .comment-content {
@@ -132,6 +132,14 @@
   color: $subtitle-color;
   margin-left: 2vw;
   padding: 0em 1em 1em 1em;
+}
+
+.comment-button {
+  @extend %basic-primary-button;
+  height: 3em;
+  padding: -0.2em 2em;
+  font-size: 12px;
+  margin-left: 0.5em;
 }
 
 .create-divs {

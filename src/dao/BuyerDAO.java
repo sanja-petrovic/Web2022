@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 
 import beans.Buyer;
 import beans.User;
+import beans.UserType;
 import util.adapters.LocalDateTimeAdapter;
 
 public class BuyerDAO {
@@ -55,6 +56,7 @@ public class BuyerDAO {
 			b.setGender(u.getGender());
 			b.setPassword(u.getPassword());
 			b.setDeletedAt(u.getDeletedAt());
+			b.setUserType(UserType.BUYER);
 			if(b.getType() != null) {
 				b.setType(Repository.getInstance().getBuyerTypeDAO().getBuyerTypeByTier(b.getType().getTier()));
 			}
