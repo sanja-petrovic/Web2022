@@ -37,7 +37,7 @@
       }
     },
     "logoIcon": "../images/fitnes.png",
-    "averageGrade": 4.8,
+    "averageGrade": 0.0,
     "businessHours": {
       "startTime": "10:00",
       "endTime": "20:00"
@@ -59,7 +59,7 @@
       }
     },
     "logoIcon": "../images/tennis.png",
-    "averageGrade": 5.0,
+    "averageGrade": 3.0,
     "businessHours": {
       "startTime": "08:00",
       "endTime": "20:00"
@@ -81,7 +81,7 @@
       }
     },
     "logoIcon": "../images/dance.png",
-    "averageGrade": 4.7,
+    "averageGrade": 4.666666666666667,
     "businessHours": {
       "startTime": "11:00",
       "endTime": "21:00"
@@ -103,7 +103,7 @@
       }
     },
     "logoIcon": "../images/gym1.png",
-    "averageGrade": 3.5,
+    "averageGrade": 5.0,
     "businessHours": {
       "startTime": "06:00",
       "endTime": "22:00"
@@ -125,7 +125,7 @@
       }
     },
     "logoIcon": "../images/yoga.png",
-    "averageGrade": 4.5,
+    "averageGrade": 5.0,
     "businessHours": {
       "startTime": "09:00",
       "endTime": "17:30"
@@ -147,7 +147,7 @@
       }
     },
     "logoIcon": "../images/pool.png",
-    "averageGrade": 0.0,
+    "averageGrade": 3.0,
     "businessHours": {
       "startTime": "06:00",
       "endTime": "19:00"
@@ -169,7 +169,7 @@
       }
     },
     "logoIcon": "resources/gym1.png",
-    "averageGrade": 0.0,
+    "averageGrade": 3.0,
     "businessHours": {
       "startTime": "06:00",
       "endTime": "19:00"
@@ -191,7 +191,7 @@
       }
     },
     "logoIcon": "resources/lotos.png",
-    "averageGrade": 0.0,
+    "averageGrade": 5.0,
     "businessHours": {
       "startTime": "10:10",
       "endTime": "22:10"
@@ -235,7 +235,7 @@
       }
     },
     "logoIcon": "resources/3893211.png",
-    "averageGrade": 0.0,
+    "averageGrade": 4.0,
     "businessHours": {
       "startTime": "10:00",
       "endTime": "18:00"

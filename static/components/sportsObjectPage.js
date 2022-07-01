@@ -4,15 +4,21 @@ Vue.component('sports-object-page', {
             loggedIn: false,
             sportsObject: null,
             sportsObjectContents: null,
+			sportsObjectRating: 0,
             logo: null,
 			comments: null,
 			loggedInUserRole: "",
-			approvedComments: []
+			approvedComments: [],
+			user: null,
+			comment: {
+				rating: 0,
+				content: ""
+			}
         }
     },
     template: `
         <div>
-        <nav-bar-logged-in v-if="this.loggedIn"></nav-bar-logged-in>
+		<nav-bar-logged-in v-if="this.loggedIn"></nav-bar-logged-in>
         <nav-bar-logged-out v-else></nav-bar-logged-out>
         <div class="main-content">
             <div class="sports-object-header">
@@ -41,7 +47,7 @@ Vue.component('sports-object-page', {
                         
                         <span class="d-inline-block"><i class="fa fa-star"
                                                         style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                            class="d-inline-block">Prosečna ocena: {{sportsObject.averageGrade}}</span></span><br>
+                            class="d-inline-block" >Prosečna ocena: {{ sportsObject.averageGrade }}</span></span><br>
                     </p>
                 </div>
                 <div class="sports-object-map">
@@ -74,12 +80,11 @@ Vue.component('sports-object-page', {
                     </li>
                 </ul>
             </div>
-                
             <div class="sports-object-comments"  v-if="this.loggedInUserRole === 'Admin'">
                 <h4>Komentari</h4>
                 <ul class="comment-section">
                     <li class="comment" v-for="item in this.comments">
-                        <div class="comment-header">
+                        <div class="comment-header" style="flex-direction: row;">
 							<div class="left-side">
 								<div class="title">
 									<h5>{{ item.Buyer.Name + " " + item.Buyer.Surname }}</h5>
@@ -106,6 +111,7 @@ Vue.component('sports-object-page', {
 			<div class="sports-object-comments"  v-else-if="this.loggedInUserRole === 'Menadžer'">
 				<h4>Komentari</h4>
 				<ul class="comment-section">
+					<li class="comment"></li>
 					<li class="comment" v-for="item in this.comments">
 						<div class="comment-header">
 							<div class="left-side">
@@ -131,6 +137,24 @@ Vue.component('sports-object-page', {
 			<div class="sports-object-comments"  v-else>
 				<h4>Komentari</h4>
 				<ul class="comment-section">
+					<div v-if="this.loggedInUserRole === 'Kupac'" class="comment">
+						<div class="comment-header">
+							<h4 style="margin-left: 0; font-size: 20px">Utisak posle prve posete</h4>
+							<div class="rating">
+								<input type="radio" name="rating" v-model="comment.rating" value="5" id="5"><label for="5">☆</label>
+								<input type="radio" name="rating" v-model="comment.rating" value="4" id="4"><label for="4">☆</label>
+								<input type="radio" name="rating" v-model="comment.rating" value="3" id="3"><label for="3">☆</label>
+								<input type="radio" name="rating" v-model="comment.rating" value="2" id="2"><label for="2">☆</label>
+								<input type="radio" name="rating" v-model="comment.rating" value="1" id="1"><label for="1">☆</label>
+							</div>
+						</div>
+						<div class="comment-content" style="padding: 0em 3.3em 1em 3.3em;">
+							<textarea v-model="comment.content" class="form-control" rows="3"></textarea>
+						</div>
+						<div class="comment-footer">
+							<button class="post-comment-button" v-on:click="postComment">Postavi</button>
+						</div>
+					</div>
 					<li class="comment" v-for="item in this.approvedComments">
 						<div class="comment-header">
 							<div class="left-side">
@@ -156,10 +180,10 @@ Vue.component('sports-object-page', {
         </div>
     `,
     mounted() {
-		this.loggedInCheck();
 		var path = window.location.href;
 		var sportsObjectName = path.split('/objekti/')[1];
 		var name = sportsObjectName.replaceAll('%20', ' ');
+		this.loggedInCheck();
 		axios.get('rest/getSportsObjectByName', {
 			params: {
 				name: name
@@ -167,6 +191,7 @@ Vue.component('sports-object-page', {
 		})
 		.then(response => {
 			this.sportsObject = response.data;
+			this.sportsObjectRating = response.data.averageGrade.toFixed(2);
 			this.logo = this.sportsObject.logoIcon;
 		});
 		this.displayContents(name);
@@ -179,6 +204,8 @@ Vue.component('sports-object-page', {
 					if(response.data != null) {
 						this.loggedIn = true;
 						this.loggedInUserRole = response.data.UserType;
+						this.user = response.data;
+						//this.canLeaveComment(response.data.Username, this.sportsObject.name)
 					}
 
                 })
@@ -225,6 +252,7 @@ Vue.component('sports-object-page', {
 				.then(response => {
 					oopsie = false;
 					this.approvedComments.push(response.data);
+					this.sportsObject = response.data.SportsObject;
 					this.$router.go();
 				})
 				.catch(function error(err) {
@@ -242,8 +270,29 @@ Vue.component('sports-object-page', {
 				.catch(function error(err) {
 					oopsie = true;
 				});
-		}
-
+		},
+		canLeaveComment: function (username, name) {
+			axios.get(`/rest/buyer-comments/:${username}/${name}`, {
+			}).then(response => {
+				return true;
+			}).catch(function error(err) {
+				console.log(err);
+				return false;
+			})
+		},
+		postComment: function () {
+			axios.post('/rest/post-comment', {
+				buyer: this.user.Id,
+				sportsObject: this.sportsObject.name,
+				content: this.comment.content,
+				grade: this.comment.rating,
+			}).then(response => {
+				alert("Comment posted!");
+				this.$router.go();
+			}).catch(function error(err) {
+				console.log(err);
+			})
+		},
     }
     
 });

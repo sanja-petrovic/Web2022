@@ -1,32 +1,97 @@
 [
   {
-    "Id": "459fa5a5-5bfb-4fd1-8f49-300d5a5ff152",
+    "Id": "d15f4d9c-5345-4d2c-8ae2-ad12d61410a0",
+    "Buyer": {
+      "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+      "Username": "filip"
+    },
+    "SportsObject": {
+      "name": "Bazeni Spens"
+    },
+    "Content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum scelerisque sapien, a congue risus varius ut. Pellentesque congue sapien at nulla dictum iaculis. Nam odio purus, tempor nec urna sit amet, rhoncus venenatis erat. Donec eget quam ac felis elementum cursus. Vestibulum lobortis consectetur justo id vehicula. Proin venenatis nibh in pulvinar finibus. Fusce iaculis ut nibh eu venenatis. Nunc cursus libero odio, vel placerat tortor malesuada at. Phasellus suscipit est hendrerit, pharetra arcu vitae, dignissim velit. Cras sit amet turpis congue, feugiat massa id, tempor arcu. Nulla euismod dictum dictum.",
+    "Grade": 4,
+    "Status": "Odobren"
+  },
+  {
+    "Id": "5179b3ad-bfad-49ce-b218-2b3ca2fbb97e",
     "Buyer": {
       "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
       "Username": "petar"
     },
     "SportsObject": {
-      "name": "Mega Gym"
+      "name": "No Limit Gym"
     },
-    "Content": "Hello this is a comment",
-    "Grade": 4,
-    "Status": "Odbijen"
+    "Content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum scelerisque sapien, a congue risus varius ut. Pellentesque congue sapien at nulla dictum iaculis.",
+    "Grade": 5,
+    "Status": "Odobren"
   },
   {
-    "Id": "96dca3b8-fd33-4501-b43f-6cfd874e51cd",
+    "Id": "19351d0c-0112-4be1-a2da-617801f60600",
     "Buyer": {
       "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
       "Username": "ivana"
     },
     "SportsObject": {
-      "name": "Mega Gym"
+      "name": "Plesni centar Allegro"
     },
-    "Content": "Hello this is an approved comment! Yay! This comment will be visible to everyone. Hello this is an approved comment! Yay! This comment will be visible to everyone. Hello this is an approved comment! Yay! This comment will be visible to everyone.",
+    "Content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum scelerisque sapien, a congue risus varius ut. Pellentesque congue sapien at nulla dictum iaculis. Nam odio purus, tempor nec urna sit amet, rhoncus venenatis erat. Donec eget quam ac felis elementum cursus.",
+    "Grade": 5,
+    "Status": "Odobren"
+  },
+  {
+    "Id": "2857b1b5-e4d4-4f9c-9a87-f92972adecb8",
+    "Buyer": {
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "SportsObject": {
+      "name": "Favorit"
+    },
+    "Content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+    "Grade": 3,
+    "Status": "Odobren"
+  },
+  {
+    "Id": "766ceea3-9d85-4504-9f74-5c22d20771e5",
+    "Buyer": {
+      "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
+      "Username": "petar"
+    },
+    "SportsObject": {
+      "name": "Favorit"
+    },
+    "Content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "Grade": 4,
     "Status": "Odobren"
   },
   {
-    "Id": "96dca3b8-fd33-4501-b43f-6cfd874e51cd",
+    "Id": "61b95a1b-4c45-4bdc-a4bf-3140bc8d5dbf",
+    "Buyer": {
+      "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
+      "Username": "petar"
+    },
+    "SportsObject": {
+      "name": "Plesni centar Allegro"
+    },
+    "Content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum scelerisque sapien, a congue risus varius ut. Pellentesque congue sapien at nulla dictum iaculis. Nam odio purus, tempor nec urna sit amet, rhoncus venenatis erat. Donec eget quam ac felis elementum cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum scelerisque sapien, a congue risus varius ut. Pellentesque congue sapien at nulla dictum iaculis. Nam odio purus, tempor nec urna sit amet, rhoncus venenatis erat. Donec eget quam ac felis elementum cursus.",
+    "Grade": 4,
+    "Status": "Odobren"
+  },
+  {
+    "Id": "2131c365-0c33-4011-8e96-e1f3f135a67b",
+    "Buyer": {
+      "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+      "Username": "filip"
+    },
+    "SportsObject": {
+      "name": "Plesni centar Allegro"
+    },
+    "Content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum scelerisque sapien, a congue risus varius ut.",
+    "Grade": 5,
+    "Status": "Odobren"
+  },
+  {
+    "Id": "04146a58-6e22-4768-bd4c-8be8bc8d55cd",
     "Buyer": {
       "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
       "Username": "filip"
@@ -34,8 +99,99 @@
     "SportsObject": {
       "name": "Mega Gym"
     },
-    "Content": "Ovaj komentar je odbijen. Ovaj komentar je odbijen. Ovaj komentar je odbijen. Ovaj komentar je odbijen. Ovaj komentar je odbijen. Ovaj komentar je odbijen.",
-    "Grade": 4,
-    "Status": "Odbijen"
+    "Content": "213",
+    "Grade": 3,
+    "Status": "Odobren"
+  },
+  {
+    "Id": "42e1051c-77ff-4bca-af3d-9e9e3adc9a40",
+    "Buyer": {
+      "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
+      "Username": "petar"
+    },
+    "SportsObject": {
+      "name": "Mega Gym"
+    },
+    "Content": "213",
+    "Grade": 5,
+    "Status": "Odobren"
+  },
+  {
+    "Id": "5241e27c-9605-4dd9-ba58-f78dcf81b00d",
+    "Buyer": {
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "SportsObject": {
+      "name": "Joga Studio"
+    },
+    "Content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc orci lectus, lobortis egestas maximus sit amet, faucibus eget turpis. Cras imperdiet ultricies volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec lacinia urna ac aliquam bibendum. ",
+    "Grade": 5,
+    "Status": "Odobren"
+  },
+  {
+    "Id": "00e556fb-2cc3-421b-908b-04db76e1b48a",
+    "Buyer": {
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "SportsObject": {
+      "name": "Novak Tennis Center"
+    },
+    "Content": "123",
+    "Grade": 3,
+    "Status": "Odobren"
+  },
+  {
+    "Id": "210d0ad4-518e-49db-935d-69e4f9fdb078",
+    "Buyer": {
+      "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
+      "Username": "petar"
+    },
+    "SportsObject": {
+      "name": "Bazeni Spens"
+    },
+    "Content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum scelerisque sapien, a congue risus varius ut. Pellentesque congue sapien at nulla dictum iaculis. Nam odio purus, tempor nec urna sit amet, rhoncus venenatis erat. ",
+    "Grade": 2,
+    "Status": "Odobren"
+  },
+  {
+    "Id": "0a7b6bd3-5759-4aa5-a164-889e5b797ecd",
+    "Buyer": {
+      "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+      "Username": "filip"
+    },
+    "SportsObject": {
+      "name": "Favorit"
+    },
+    "Content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum scelerisque sapien, a congue risus varius ut. Pellentesque congue sapien at nulla dictum iaculis. Nam odio purus, tempor nec urna sit amet, rhoncus venenatis erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum scelerisque sapien, a congue risus varius ut. Pellentesque congue sapien at nulla dictum iaculis. Nam odio purus, tempor nec urna sit amet, rhoncus venenatis erat. ",
+    "Grade": 5,
+    "Status": "Odobren"
+  },
+  {
+    "Id": "695f391a-8747-431a-817a-e5fd8d87905d",
+    "Buyer": {
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "SportsObject": {
+      "name": "Lotos Spa \u0026 Wellness"
+    },
+    "Content": "\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis rutrum auctor interdum. Vivamus pellentesque sapien placerat arcu tincidunt, quis efficitur arcu viverra. Integer metus nulla, tincidunt non justo a, facilisis dapibus orci. Nam id felis urna. In placerat nec mauris vel posuere. Maecenas iaculis elit at ante consectetur, at faucibus odio suscipit. Donec non augue pretium, facilisis tortor nec, tincidunt purus. Pellentesque id nisi felis. Vestibulum quis ornare tellus, a suscipit erat. Maecenas justo odio, tincidunt ac dapibus ut, malesuada et enim. Maecenas ut lorem pretium ante congue bibendum vel id dui. Cras accumsan nunc eleifend ex dictum, vel feugiat nibh mattis. Cras facilisis faucibus urna id scelerisque. Etiam vel condimentum lorem, id egestas urna. Aliquam erat volutpat. Donec placerat non dolor quis tincidunt.",
+    "Grade": 5,
+    "Status": "Odobren"
+  },
+  {
+    "Id": "0e42fd01-d594-4bc2-ac66-50c60cd6b0f4",
+    "Buyer": {
+      "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+      "Username": "filip"
+    },
+    "SportsObject": {
+      "name": "Classic Gym"
+    },
+    "Content": "4332",
+    "Grade": 3,
+    "Status": "Odobren"
   }
 ]

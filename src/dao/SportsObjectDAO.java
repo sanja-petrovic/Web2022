@@ -17,6 +17,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
 import beans.SportsObject;
+import beans.User;
 import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalTimeAdapter;
 
@@ -149,6 +150,24 @@ public class SportsObjectDAO {
 		return searchedObjects;
 	}
 	
+	public SportsObject updateRating(SportsObject sportsObject, double rating) {
+		int index = this.findIndexOf(sportsObject);
+		this.sportsObjects.get(index).setAverageGrade(rating);
+		this.write();
+		
+		return this.sportsObjects.get(index);
+	}
 	
+	public int findIndexOf(SportsObject sportsObject) {
+        int index = -1;
+        for(int i = 0; i < this.sportsObjects.size(); i++) {
+            if(this.sportsObjects.get(i).getName().equals(sportsObject.getName())) {
+                index = i;
+                break;
+            }
+        }
+
+        return index;
+    } 
 	
 }

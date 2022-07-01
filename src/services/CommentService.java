@@ -2,14 +2,16 @@ package services;
 
 import beans.Comment;
 import beans.CommentStatus;
+import beans.SportsObject;
 import dao.Repository;
 import dto.CommentDTO;
 
 public class CommentService {
 
 	public static Comment postComment(CommentDTO dto) {
-		Comment c = new Comment(Repository.getInstance().getBuyerDAO().getBuyerByUsername(dto.getBuyer()),
-				Repository.getInstance().getSportsObjectDAO().getSportsObjectByIdCaseInsensitive(dto.getSportsObject()),
+		SportsObject so = Repository.getInstance().getSportsObjectDAO().getSportsObjectByIdCaseInsensitive(dto.getSportsObject());
+		Comment c = new Comment(Repository.getInstance().getBuyerDAO().getBuyerById(dto.getBuyer()),
+				so,
 				dto.getContent(), dto.getGrade()
 				);
 		Repository.getInstance().getCommentDAO().addComment(c);
@@ -20,6 +22,10 @@ public class CommentService {
 	
 	public static Comment changeCommentStatus(String id, CommentStatus status) {
 		Comment c = Repository.getInstance().getCommentDAO().getCommentById(id);
+		if(status.equals(CommentStatus.APPROVED)) {
+			SportsObject s = Repository.getInstance().getSportsObjectDAO().updateRating(c.getSportsObject(), SportsObjectService.calculateRating(c.getSportsObject()));
+			c.setSportsObject(s);
+		}
 		c.setStatus(status);
 		Repository.getInstance().getCommentDAO().updateComment(c);
 		

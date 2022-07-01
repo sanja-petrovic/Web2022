@@ -35,9 +35,6 @@ public class AuthorizationService {
 		return training.getTrainer() != null && training.getTrainer().getId().equals(trainer.getId()) && training.getType().equals(TrainingType.PERSONAL);
 	}
 	
-	public static boolean canComment(User u, SportsObject sportsObject) {
-		return u.getUserType().equals(UserType.BUYER) && BuyerService.checkIfFirstVisit(u.getUsername(), sportsObject.getName());
-	}
 	
 	public static boolean canSeeUnapprovedCommentsForSportsObject(User u, SportsObject so) {
 		boolean retVal;
