@@ -65,6 +65,16 @@ public class Content {
 		this.picture = picture;
 	}
 	
+	public Content(Content content) {
+		this.id = content.getId();
+		this.name = content.getName();
+		this.contentType = content.getContentType();
+		this.sportsObject = content.getSportsObject();
+		this.durationMinutes = content.getDurationMinutes();
+		this.description = content.getDescription();
+		this.picture = content.getPicture();		
+	}
+	
 	public String getName() {
 		return name;
 	}

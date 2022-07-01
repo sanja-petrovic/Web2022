@@ -67,6 +67,12 @@ public class TrainingDAO {
 		return this.trainings;
 	}
 	
+	public void addTraining(Training training) {
+		this.trainings.add(training);
+		this.write();
+	}
+	
+	
 	public void write() {
 		try {
 			FileWriter writer = new FileWriter("resources/data/trainings.json", StandardCharsets.UTF_8);

@@ -174,5 +174,16 @@
     "Duration": 15,
     "Description": "Masaža tela u prijatnom ambijentu uz mirišljave sveće.",
     "Picture": "resources/deep.jpg"
+  },
+  {
+    "Id": "502e4c70-dbe6-4270-89f7-8a2e7880335a",
+    "Name": "Karate",
+    "ContentType": "trening",
+    "SportsObject": {
+      "name": "Favorit"
+    },
+    "Duration": 60,
+    "Description": "Karate grupni treninzi najbolji u gradu.",
+    "Picture": "../images/karate.jpg"
   }
 ]

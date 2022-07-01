@@ -1,27 +1,26 @@
 [
   {
     "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
-    "Username": "jovana",
-    "TrainingHistory": null
+    "Username": "jovana"
   },
   {
     "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
-    "Username": "danilo",
-    "TrainingHistory": null
+    "Username": "danilo"
   },
   {
     "Id": "2a5eb950-0720-4018-9329-c3859a033144",
-    "Username": "marta",
-    "TrainingHistory": null
+    "Username": "marta"
   },
   {
     "Id": "2b87f67d-0a92-4a4a-a860-abff05055bea",
-    "Username": "milos",
-    "TrainingHistory": null
+    "Username": "milos"
   },
   {
     "Id": "4c19a16e-d57e-4878-8836-37fce25ce2de",
-    "Username": "aleksandra",
-    "TrainingHistory": null
+    "Username": "aleksandra"
+  },
+  {
+    "Id": "48e7eafb-42cb-4c95-90b7-371fa56dcbb3",
+    "Username": "sara"
   }
 ]
