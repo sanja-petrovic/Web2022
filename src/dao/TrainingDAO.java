@@ -20,6 +20,7 @@ import beans.Content;
 import beans.SportsObject;
 import beans.Trainer;
 import beans.Training;
+import beans.User;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalTimeAdapter;
@@ -63,7 +64,6 @@ public class TrainingDAO {
 	}
 	
 	public ArrayList<Training> getTrainings() {
-		
 		return this.trainings;
 	}
 	
@@ -105,6 +105,20 @@ public class TrainingDAO {
 		for(Training t : this.trainings) {
 			if(t.getId().equals(id)) {
 				retVal = t;
+				break;
+			}
+		
+		}
+		return retVal;
+	}
+	
+	public Trainer getTrainerByTrainingId(String id) {
+		Trainer retVal = null;
+		
+		for(Training t : this.trainings) {
+			if(t.getId().equals(id)) {
+				User u = Repository.getInstance().getTrainerDAO().getTrainerByUsername(t.getTrainer().getUsername());
+				retVal = (Trainer) u;
 				break;
 			}
 		

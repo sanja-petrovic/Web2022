@@ -1,5 +1,6 @@
 package controller;
 
+import static spark.Spark.get;
 import static spark.Spark.path;
 import static spark.Spark.post;
 
@@ -10,7 +11,9 @@ import java.time.LocalTime;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import beans.Trainer;
 import beans.Training;
+import dao.Repository;
 import dto.CreateTrainingDTO;
 import services.TrainingService;
 import util.adapters.LocalDateAdapter;
@@ -25,6 +28,8 @@ public class TrainingController {
 	public void init() {
 		path(basePath, () -> {
 			createTraining();
+			getTrainings();
+			getTrainerByTrainingId();
 		});
 	}
 	
@@ -38,5 +43,24 @@ public class TrainingController {
 			return gson.toJson(training);
 		});
 	}
+	
+	public static void getTrainings() {
+		get("/trainings", (req, res) -> {
+			res.type("application/json");
+			return gson.toJson(Repository.getInstance().getTrainingDAO().getTrainings());
+		});
+	}
+	
+	public static void getTrainerByTrainingId() {
+		get("/trainings/:id", (req, res) -> {
+			res.type("application/json");
+			String id = req.params(":id");
+			Trainer trainer = Repository.getInstance().getTrainingDAO().getTrainerByTrainingId(id);
+			return gson.toJson(trainer);
+		});
+	}
+	
+
+	
 
 }

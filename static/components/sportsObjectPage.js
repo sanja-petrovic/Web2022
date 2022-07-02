@@ -4,8 +4,11 @@ Vue.component('sports-object-page', {
             loggedIn: false,
             sportsObject: null,
             sportsObjectContents: null,
+            list: [],
+           	contentTrainer: null,
 			sportsObjectRating: 0,
             logo: null,
+            contentId: "",
 			comments: null,
 			loggedInUserRole: "",
 			approvedComments: [],
@@ -56,9 +59,9 @@ Vue.component('sports-object-page', {
             <div class="sports-object-trainings">
                 <h4>U ponudi:</h4>
                 <ul class="cards" style="width: 100vw; margin-bottom: 20vh;">
-                    <li v-for="item in this.sportsObjectContents">
+                    <li v-for="item in this.list">
                         <div class="card">
-                            <img :src="item.Picture" class="card__image" alt="" />
+                            <img :src="item.content.Picture" class="card__image" alt="" />
                             <div class="card__overlay">
                                 <div class="card__header">
                                     <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
@@ -66,14 +69,14 @@ Vue.component('sports-object-page', {
                                     </svg>
                                     <img class="card__thumb" :src="logo" alt=""/>
                                     <div class="card__header-text">
-                                        <h3 class="card__title">{{item.Name}}
+                                        <h3 class="card__title">{{item.content.Name}}
                                         </h3>
-                                        <span class="card__status">Petar Petrović, 17:30-19:00</span><br>
-                                        <span class="card__status">Trajanje: {{item.Duration}}min</span><br>
+                                        <span v-if="item.content.ContentType==='trening'" class="card__status">Trener: {{item.trainer.Name}} {{item.trainer.Surname}}</span><br>
+                                        <span class="card__status">Trajanje: {{item.content.Duration}}min</span><br>
                                     </div>
                                 </div>
                                 <p class="card__description"> 
-                                	{{item.Description}}
+                                	{{item.content.Description}}
                                 </p>
                             </div>
                         </div>
@@ -225,16 +228,39 @@ Vue.component('sports-object-page', {
 			}).then(response => {
 				console.log(response.data);
 				this.sportsObjectContents = response.data;
+				for (let i = 0; i < this.sportsObjectContents.length; i++) {
+					let sportsObjectContent = this.sportsObjectContents[i];
+					if(sportsObjectContent.ContentType === "trening") {
+							this.getTrainer(sportsObjectContent);					
+					} else {
+						this.list.push({
+							content: sportsObjectContent,
+							trainer: null,
+						 })
+					}
+				}
 			}).catch(error => console.log(error));
 		},
-
+		getTrainer: function(sportsObjectContent) {
+			let id = sportsObjectContent.Id;
+			axios.get(`/rest/trainings/${id}`, {
+				name: id
+			}).then(response => { 
+				console.log(response.data);
+				this.contentTrainer = response.data; 
+				this.list.push({
+					content: sportsObjectContent,
+					trainer: this.contentTrainer,
+				})
+				}
+			).catch(error => console.log(error));
+		},
 		getComments: function (sportsObject) {
 			axios.get(`/rest/comments/${sportsObject}`, {
 				name: sportsObject
 			}).then(response => { this.comments = response.data; this.getApprovedComments();
 				})
 				.catch(error => console.log(error));
-
 		},
 		getApprovedComments: function () {
 			for(let i = 0; i < this.comments.length; i++) {
