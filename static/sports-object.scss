@@ -15,7 +15,6 @@
   //@extend %basic-white-component;
   display: flex;
   flex-direction: row;
-  padding: 5em 10em 3em 10em;
   align-self: flex-start;
   width: 100%;
   margin-bottom: 4vh;
@@ -31,7 +30,6 @@
   border-radius: 200px;
   max-width: 100px;
   max-height: 100px;
-  margin-left: 1vw;
 }
 
 .sports-object-info {
@@ -223,4 +221,35 @@
   opacity: 0.4
 }
 
+.sports-object-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 80vw;
+  margin-top: 2em;
+  overflow: hidden;
+}
+
+
+.map {
+  height: 40vh !important;
+  width: 40vw !important;
+  max-width: 60vw;
+  min-width: 40vw;
+  border-radius: 15px;
+  opacity: 0.6;
+  border: 1px solid transparent;
+  transition: 0.3s;
+  margin-left: 2vw;
+  filter: drop-shadow(16px 16px 20px rgba(255, 255, 255, 0.1));
+  @extend %basic-white-component;
+}
+
+.map:before {
+  @extend %basic-white-component-before;
+}
+
+.map:hover {
+  opacity: 1;
+}
 

@@ -70,7 +70,7 @@
     "Name": "Joga za početnike",
     "ContentType": "training",
     "SportsObject": {
-      "name": "Joga Studio"
+      "name": "Hipokrat"
     },
     "Duration": 60,
     "Description": "Program Joge za početnike u Joga Studiju je tako koncipiran da novi vežbači usvoje pravilan način disanja, postepeno uče i bezbedno savladaju i razumeju osnovne Joga položaje. Takođe, na ovom nivou naučićete i kako i gde da držite pažnju dok vežbate i kako da se potpuno opustite na kraju časa.",
@@ -81,7 +81,7 @@
     "Name": "Joga za iskusnije",
     "ContentType": "training",
     "SportsObject": {
-      "name": "Joga Studio"
+      "name": "Hipokrat"
     },
     "Duration": 60,
     "Description": "Program Joga za iskusnije je tako koncipiran da odgovori na potrebe vežbača koji već duže vremena vežbaju Jogu i mogu i žele da napreduju brže. Razlika u odnosu na program Joga za početnike je u tome što se vežbaju zahtevniji položaji i tehnike disanja, a tempo časa je takav da zahteva dobru kondiciju.",

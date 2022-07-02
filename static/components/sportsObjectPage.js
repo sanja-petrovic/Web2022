@@ -23,35 +23,37 @@ Vue.component('sports-object-page', {
 		<nav-bar-logged-in v-if="this.loggedIn"></nav-bar-logged-in>
         <nav-bar-logged-out v-else></nav-bar-logged-out>
         <div class="main-content">
-            <div class="sports-object-header">
-                <img class="sports-object-logo" :src="sportsObject.logoIcon">
-                <div class="sports-object-info">
-                    <h1>{{sportsObject.name}}</h1>
-                    <p class="sports-object-subtitle">{{sportsObject.type}}
-                    <span class="badge rounded-pill badge-open" v-if="openCheck(sportsObject.status)">Otvoreno</span>
-                    <span class="badge rounded-pill badge-closed" v-if="!openCheck(sportsObject.status)">Zatvoreno</span>
-                    </p>
-                    <p class="sports-object-description">
+            <div class="sports-object-header-container">
+                <div class="sports-object-header">
+					<img class="sports-object-logo" :src="sportsObject.logoIcon">
+					<div class="sports-object-info">
+						<h1>{{sportsObject.name}}</h1>
+						<p class="sports-object-subtitle">{{sportsObject.type}}
+							<span class="badge rounded-pill badge-open" v-if="openCheck(sportsObject.status)">Otvoreno</span>
+							<span class="badge rounded-pill badge-closed" v-if="!openCheck(sportsObject.status)">Zatvoreno</span>
+						</p>
+						<p class="sports-object-description">
                         <span class="d-inline-block"><i class="fa fa-business-time"
-                                                        style="margin-right: 0.4em; color: #91D0F7"></i><span
-                            class="d-inline-block">Radno vreme: {{sportsObject.businessHours.startTime }}-{{ sportsObject.businessHours.endTime }}</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-map-location-dot"
-                                                        style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                            class="d-inline-block">Lokacija:</span></span><br>
-                        <span class="d-inline-block"><i style="margin-right: 1.5em; color: #9BE3C3"></i><span
-                            class="d-inline-block">{{sportsObject.location.address.street}} {{sportsObject.location.address.number}}</span></span><br>
-                        <span class="d-inline-block"><i
-                                                        style="margin-right: 1.5em; color: #9BE3C3"></i><span
-                            class="d-inline-block">{{sportsObject.location.address.city}}, {{sportsObject.location.address.postcode}}</span></span><br>
-                        <span class="d-inline-block"><i 
-                                                        style="margin-right: 1.5em; color: #9BE3C3"></i><span
-                            class="d-inline-block">{{sportsObject.location.latitude}}, {{sportsObject.location.longitude}}</span></span><br>
-                        
-                        <span class="d-inline-block"><i class="fa fa-star"
-                                                        style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                            class="d-inline-block" >Prosečna ocena: {{ sportsObject.averageGrade }}</span></span><br>
-                    </p>
-                </div>
+														style="margin-right: 0.4em; color: #91D0F7"></i><span
+							class="d-inline-block">Radno vreme: {{sportsObject.businessHours.startTime }}-{{ sportsObject.businessHours.endTime }}</span></span><br>
+							<span class="d-inline-block"><i class="fa fa-map-location-dot"
+															style="margin-right: 0.4em; color: #9BE3C3"></i><span
+								class="d-inline-block">Lokacija:</span></span><br>
+							<span class="d-inline-block"><i style="margin-right: 1.5em; color: #9BE3C3"></i><span
+								class="d-inline-block">{{sportsObject.location.address.street}} {{sportsObject.location.address.number}}</span></span><br>
+							<span class="d-inline-block"><i
+								style="margin-right: 1.5em; color: #9BE3C3"></i><span
+								class="d-inline-block">{{sportsObject.location.address.city}}, {{sportsObject.location.address.postcode}}</span></span><br>
+							<span class="d-inline-block"><i
+								style="margin-right: 1.5em; color: #9BE3C3"></i><span
+								class="d-inline-block">{{sportsObject.location.latitude.toFixed(5)}}, {{sportsObject.location.longitude.toFixed(5)}}</span></span><br>
+
+							<span class="d-inline-block"><i class="fa fa-star"
+															style="margin-right: 0.4em; color: #ADE9AA"></i><span
+								class="d-inline-block" >Prosečna ocena: {{ sportsObject.averageGrade }}</span></span><br>
+						</p>
+					</div>
+				</div>
 				<div class="map" id="map" style="z-index: 5"></div>
                 
             </div>
