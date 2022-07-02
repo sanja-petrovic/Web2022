@@ -4,14 +4,14 @@
     "type": "Teretana",
     "status": "WORKING",
     "location": {
-      "latitude": 45.1653,
-      "longitude": 19.50276,
+      "latitude": 45.27165383967792,
+      "longitude": 19.841128069441826,
       "address": {
         "street": "Temerinska",
         "number": "95",
         "city": "Novi Sad",
         "postcode": "21000",
-        "country": "Rumunija"
+        "country": "Srbija"
       }
     },
     "logoIcon": "../images/gym2.png",
@@ -26,8 +26,8 @@
     "type": "Fitnes centar",
     "status": "NOT_WORKING",
     "location": {
-      "latitude": 45.390568,
-      "longitude": 19.883015,
+      "latitude": 45.390814245759486,
+      "longitude": 19.88288819828114,
       "address": {
         "street": "Petra Drapšina",
         "number": "98",
@@ -48,8 +48,8 @@
     "type": "Teniski centar",
     "status": "WORKING",
     "location": {
-      "latitude": 44.830158,
-      "longitude": 20.452509,
+      "latitude": 44.829465567383124,
+      "longitude": 20.45108152108515,
       "address": {
         "street": "Tadeuša Košćučka",
         "number": "65",
@@ -70,11 +70,11 @@
     "type": "Plesni studio",
     "status": "WORKING",
     "location": {
-      "latitude": 45.260277,
-      "longitude": 19.842306,
+      "latitude": 45.25996239916435,
+      "longitude": 19.843807883763244,
       "address": {
-        "street": "Kisačka",
-        "number": "3",
+        "street": "Trg Marije Trandafil 14",
+        "number": "14",
         "city": "Novi Sad",
         "postcode": "21000",
         "country": "Srbija"
@@ -92,11 +92,11 @@
     "type": "Teretana",
     "status": "WORKING",
     "location": {
-      "latitude": 45.262012,
-      "longitude": 19.832575,
+      "latitude": 45.25430603842872,
+      "longitude": 19.816605784784254,
       "address": {
-        "street": "Bulevar Oslobođenja",
-        "number": "30b",
+        "street": "Branka Bajića",
+        "number": "11",
         "city": "Novi Sad",
         "postcode": "21000",
         "country": "Srbija"
@@ -110,15 +110,15 @@
     }
   },
   {
-    "name": "Joga Studio",
+    "name": "Hipokrat",
     "type": "Joga studio",
     "status": "WORKING",
     "location": {
-      "latitude": 45.25642,
-      "longitude": 19.81114,
+      "latitude": 45.25294285824858,
+      "longitude": 19.829089414447346,
       "address": {
-        "street": "Bulevar Evrope",
-        "number": "17A",
+        "street": "Nikole Tesle",
+        "number": "42",
         "city": "Novi Sad",
         "postcode": "21000",
         "country": "Srbija"
@@ -158,11 +158,11 @@
     "type": "Teretana",
     "status": "WORKING",
     "location": {
-      "latitude": 45.2475,
-      "longitude": 19.84556,
+      "latitude": 45.25393610390817,
+      "longitude": 19.836357377917377,
       "address": {
-        "street": "Sutjeska",
-        "number": "2",
+        "street": "Bulevar oslobođenja",
+        "number": "83",
         "city": "Novi Sad",
         "postcode": "21000",
         "country": "Srbija"
@@ -180,11 +180,11 @@
     "type": "Spa centar",
     "status": "WORKING",
     "location": {
-      "latitude": 45.2475,
-      "longitude": 19.84556,
+      "latitude": 45.248633834113086,
+      "longitude": 19.836787056066363,
       "address": {
-        "street": "Sutjeska",
-        "number": "2",
+        "street": "Danila Kiša",
+        "number": "14a",
         "city": "Novi Sad",
         "postcode": "21000",
         "country": "Srbija"
@@ -202,11 +202,11 @@
     "type": "Spa centar",
     "status": "WORKING",
     "location": {
-      "latitude": 45.2475,
-      "longitude": 19.84556,
+      "latitude": 45.25010370399106,
+      "longitude": 19.83669535594844,
       "address": {
-        "street": "Sutjeska",
-        "number": "2",
+        "street": "Trg Komenskog",
+        "number": "6",
         "city": "Novi Sad",
         "postcode": "21000",
         "country": "Srbija"
@@ -224,11 +224,11 @@
     "type": "Borilački klub",
     "status": "WORKING",
     "location": {
-      "latitude": 45.2475,
-      "longitude": 19.84556,
+      "latitude": 45.24786557211239,
+      "longitude": 19.809144922743517,
       "address": {
-        "street": "Sutjeska",
-        "number": "2",
+        "street": "Futoški put",
+        "number": "51",
         "city": "Novi Sad",
         "postcode": "21000",
         "country": "Srbija"

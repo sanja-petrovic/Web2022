@@ -22,7 +22,6 @@ Vue.component('sports-object-page', {
         <div>
 		<nav-bar-logged-in v-if="this.loggedIn"></nav-bar-logged-in>
         <nav-bar-logged-out v-else></nav-bar-logged-out>
-		<div class="map" id="map" style="z-index: 5"></div>
         <div class="main-content">
             <div class="sports-object-header">
                 <img class="sports-object-logo" :src="sportsObject.logoIcon">
@@ -53,6 +52,7 @@ Vue.component('sports-object-page', {
                             class="d-inline-block" >Prosečna ocena: {{ sportsObject.averageGrade }}</span></span><br>
                     </p>
                 </div>
+				<div class="map" id="map" style="z-index: 5"></div>
                 
             </div>
             <div class="sports-object-trainings">
@@ -181,7 +181,6 @@ Vue.component('sports-object-page', {
         </div>
     `,
     mounted() {
-		this.initForMap();
 		var path = window.location.href;
 		var sportsObjectName = path.split('/objekti/')[1];
 		var name = sportsObjectName.replaceAll('%20', ' ');
@@ -195,6 +194,7 @@ Vue.component('sports-object-page', {
 			this.sportsObject = response.data;
 			this.sportsObjectRating = response.data.averageGrade.toFixed(2);
 			this.logo = this.sportsObject.logoIcon;
+			this.displayMap();
 		});
 		this.displayContents(name);
 		this.getComments(name);
@@ -294,26 +294,83 @@ Vue.component('sports-object-page', {
 			})
 		},
 
-		initForMap: function () {
+		displayMap: function () {
 
-			var map = new ol.Map({
+			let lon = this.sportsObject.location.longitude;
+			let lat = this.sportsObject.location.latitude;
+			const iconFeature = new ol.Feature({
+				geometry: new ol.geom.Point(ol.proj.fromLonLat([lon, lat])),
+				name: "hellooo",
+			});
+			let map = new ol.Map({
 				layers: [
 					new ol.layer.Tile({
 						source: new ol.source.OSM()
+					}),
+					new ol.layer.Vector({
+						source: new ol.source.Vector({
+							features: [iconFeature]
+						}),
+						style: new ol.style.Style({
+							image: new ol.style.Icon({
+								anchor: [lon, lat],
+								anchorXUnits: 'pixels',
+								anchorYUnits: 'pixels',
+								src: '../images/pin.png'
+							})
+						})
 					})
 				],
 				view: new ol.View({
-					center: ol.proj.fromLonLat([37.41, 8.82]),
-					zoom: 4
+					center: ol.proj.fromLonLat([lon, lat]),
+					zoom: 18
 				})
 			});
 
 			setTimeout(() => {
 				if (map) {
 					map.setTarget("map");
+					let c = document.getElementById("map").childNodes;
+					c[0].style.borderRadius  = '15px';
 				}
 			}, 50);
 
+
+		},
+		reverseGeocode: function (x, y) {
+			fetch('http://nominatim.openstreetmap.org/reverse?format=json&lon=' + x + '&lat=' + y)
+				.then(function (response) {
+					return response.json();
+				}).then(function (json) {
+				// LATITUDE & LONGITUDE
+				console.log(x, y);
+				document.getElementById("longitudeID").value = x;
+				document.getElementById("latitudeID").value = y;
+
+				// TOWN
+				console.log(json.address);
+				if (json.address.city) {
+					document.getElementById("townID").value = json.address.city;
+				} else if (json.address.city_district) {
+					document.getElementById("townID").value = json.address.city_district;
+				}
+
+				// STREET
+				if (json.address.road) {
+					document.getElementById("streetID").value = json.address.road;
+				}
+
+				// NUMBER OF HOUSE
+				if (json.address.house_number) {
+					document.getElementById("numberID").value = json.address.house_number;
+				}
+
+				// ZIP CODE
+				if(json.address.postcode){
+					document.getElementById("zipcodeID").value = json.address.postcode;
+				}
+
+			});
 		}
     }
     
