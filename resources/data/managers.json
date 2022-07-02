@@ -28,13 +28,13 @@
     "Username": "dimitrije"
   },
   {
+    "SportsObject": null,
     "Id": "66ba17b5-44f0-49d0-bd0b-b927cfe00c37",
-    "Username": "nikola",
-    "SportsObject": null
+    "Username": "nikola"
   },
   {
+    "SportsObject": null,
     "Id": "8063254c-72ef-4497-b16b-c2e12b4e54a8",
-    "Username": "milica",
-    "SportsObject": null
+    "Username": "milica"
   }
 ]

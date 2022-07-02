@@ -4,7 +4,18 @@ Vue.component('create-sports-object', {
             managerOptions: [],
             title: "",
             type: "",
-            location: "",
+            location: {
+                address: {
+                    street: "",
+                    number: "",
+                    city: "",
+                    postCode: "",
+                    country: ""
+                },
+                longitude: null,
+                latitude: null
+
+            },
             logo: null,
             businessHours: {
                 start: null,
@@ -48,6 +59,15 @@ Vue.component('create-sports-object', {
                                             <input type="time" placeholder="Početak" v-model="businessHours.start" class="form-control text-box" required>
                                             <input type="time" placeholder="Kraj" v-model="businessHours.end" class="form-control text-box" required>
                                         </div>
+                                        <div class="input-group">
+                                            <input type="text" placeholder="Ulica" v-model="location.address.street" class="form-control text-box" required>
+                                            <input type="text" style="max-width: 5em" placeholder="Broj" v-model="location.address.number" class="form-control text-box" required>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="text" placeholder="Grad" v-model="location.address.city" class="form-control text-box" required>
+                                            <input type="text" placeholder="Poštanski broj" style="max-width: 9em" v-model="location.address.postCode" class="form-control text-box" required>
+                                        </div>
+                                        <div class="map" id="map-create"></div>
                                         <input class="text-box create-input form-control custom-file-input" id="fileUpload" accept="image/*" ref="myFile" type="file" @change="previewFile">
 
                                         <select v-if="this.managerOptions.length > 0" v-model="manager" required>
@@ -101,8 +121,10 @@ Vue.component('create-sports-object', {
             .then(response => {
                 this.createManager = response.data === null || response.data.length === 0;
                 this.managerOptions = response.data;
+                this.displayMap();
             })
             .catch(error => console.log(error));
+
     },
 
     methods: {
@@ -163,7 +185,7 @@ Vue.component('create-sports-object', {
                     picturePath.onloadend = () =>
                     {
                         axios.post('/rest/createSportsObject', {
-                            name: this.title, manager: this.manager.Id, type: this.type, imgData: picturePath.result, fileName: fileName, businessHoursStart: this.businessHours.start, businessHoursEnd: this.businessHours.end
+                            name: this.title, manager: this.manager.Id, type: this.type, imgData: picturePath.result, fileName: fileName, businessHoursStart: this.businessHours.start, businessHoursEnd: this.businessHours.end, street: this.location.address.street, number: this.location.address.number, city: this.location.address.city, postCode: this.longitude.address.postCode, country: "Srbija", latitude: this.location.latitude, longitude: this.location.longitude
                         })
                             .then(function response(resp){
                                 location.reload();
@@ -249,6 +271,66 @@ Vue.component('create-sports-object', {
                 this.errorExists = false;
             }
             event.preventDefault();
+        },
+        displayMap: function () {
+
+            let lat = 45.2396;
+            let lon = 19.8227;
+            let map = new ol.Map({
+                layers: [
+                    new ol.layer.Tile({
+                        source: new ol.source.OSM()
+                    })
+                ],
+                view: new ol.View({
+                    center: ol.proj.fromLonLat([lon, lat]),
+                    zoom: 10
+                })
+            });
+
+            setTimeout(() => {
+                if (map) {
+                    map.setTarget("map-create");
+                    let c = document.getElementById("map-create").childNodes;
+                    c[0].style.borderRadius  = '15px';
+                }
+            }, 50);
+
+            map.on('click', evt => {
+                let coord = ol.proj.toLonLat(evt.coordinate);
+                alert(coord);
+                this.reverseGeocode(coord);
+
+            })
+        },
+        reverseGeocode: function (coords) {
+            fetch('http://nominatim.openstreetmap.org/reverse?format=json&lon=' + coords[0] + '&lat=' + coords[1])
+                .then(function (response) {
+                    return response.json();
+                }).then(json => {
+                    console.log(coords);
+                    this.location.longitude = coords[0];
+                    this.location.latitude = coords[1];
+                    console.log(json.address);
+                    if (json.address.city) {
+                        this.location.address.city = json.address.city;
+                    } else if (json.address.city_district) {
+                        this.location.address.city = json.address.city_district;
+                    }
+
+                    if (json.address.road) {
+                        this.location.address.street = json.address.road;
+                    }
+
+                    if (json.address.house_number) {
+                        this.location.address.number = json.address.house_number;
+                    }
+
+                    if(json.address.postcode){
+                        this.location.address.postCode = json.address.postcode;
+                    }
+
+                });
         }
     }
 })

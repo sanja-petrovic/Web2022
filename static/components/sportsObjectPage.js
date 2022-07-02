@@ -54,7 +54,7 @@ Vue.component('sports-object-page', {
 						</p>
 					</div>
 				</div>
-				<div class="map" id="map" style="z-index: 5"></div>
+				<div class="map" id="map-page" style="z-index: 5"></div>
                 
             </div>
             <div class="sports-object-trainings">
@@ -331,48 +331,13 @@ Vue.component('sports-object-page', {
 
 			setTimeout(() => {
 				if (map) {
-					map.setTarget("map");
-					let c = document.getElementById("map").childNodes;
+					map.setTarget("map-page");
+					let c = document.getElementById("map-page").childNodes;
 					c[0].style.borderRadius  = '15px';
 				}
 			}, 50);
 
 
-		},
-		reverseGeocode: function (x, y) {
-			fetch('http://nominatim.openstreetmap.org/reverse?format=json&lon=' + x + '&lat=' + y)
-				.then(function (response) {
-					return response.json();
-				}).then(function (json) {
-				// LATITUDE & LONGITUDE
-				console.log(x, y);
-				document.getElementById("longitudeID").value = x;
-				document.getElementById("latitudeID").value = y;
-
-				// TOWN
-				console.log(json.address);
-				if (json.address.city) {
-					document.getElementById("townID").value = json.address.city;
-				} else if (json.address.city_district) {
-					document.getElementById("townID").value = json.address.city_district;
-				}
-
-				// STREET
-				if (json.address.road) {
-					document.getElementById("streetID").value = json.address.road;
-				}
-
-				// NUMBER OF HOUSE
-				if (json.address.house_number) {
-					document.getElementById("numberID").value = json.address.house_number;
-				}
-
-				// ZIP CODE
-				if(json.address.postcode){
-					document.getElementById("zipcodeID").value = json.address.postcode;
-				}
-
-			});
 		}
     }
     
