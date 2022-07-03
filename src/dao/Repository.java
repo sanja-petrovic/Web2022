@@ -29,8 +29,8 @@ public class Repository {
 			instance.setManagerDAO(new ManagerDAO());
 			instance.setContentsDAO(new ContentsDAO());
 			instance.setMembershipDAO(new MembershipDAO());
-			instance.setTrainingDAO(new TrainingDAO());
 			instance.setTrainerDAO(new TrainerDAO());
+			instance.setTrainingDAO(new TrainingDAO());
 			instance.setCommentDAO(new CommentDAO());
 			instance.setTrainingHistoryDAO(new TrainingHistoryDAO());
 			instance.setAdministratorDAO(new AdministratorDAO());
@@ -39,7 +39,6 @@ public class Repository {
 	}
 	
 	public void loadData() {
-		this.userDAO.load();
 	}
 
 	public UserDAO getUserDAO() {

@@ -22,6 +22,7 @@ public class TrainerDAO {
 
 	private Gson gson;
 	private ArrayList<Trainer> trainers;
+	private static boolean trainingHistoryFilled = false;
 	
 	
 	public TrainerDAO() {
@@ -58,7 +59,15 @@ public class TrainerDAO {
 			t.setPassword(u.getPassword());
 			t.setDeletedAt(u.getDeletedAt());
 			t.setUserType(u.getUserType());
-			t.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(t.getId()));
+			//t.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(t.getId()));
+		}
+	}
+	
+	public void fillTrainingHistory() {
+		if(!this.trainingHistoryFilled) {
+			for(Trainer t : this.trainers) {
+				t.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(t.getId()));
+			}
 		}
 	}
 	
@@ -82,6 +91,7 @@ public class TrainerDAO {
 		for(Trainer t : this.trainers) {
 			if(t.getUsername().equals(username)) {
 				retVal = t;
+				t.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(t.getId()));
 				break;
 			}
 		}
@@ -95,7 +105,6 @@ public class TrainerDAO {
 	}
 	
 	public ArrayList<Trainer> getTrainers() {
-		this.load();
 		return this.trainers;
 	}
 }

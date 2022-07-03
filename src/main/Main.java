@@ -5,6 +5,7 @@ import static spark.Spark.staticFiles;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import beans.TrainingHistory;
@@ -25,8 +26,8 @@ import dao.TrainingHistoryDAO;
 public class Main {
 	
 	public static void main(String[] args) throws IOException {
-		Repository.getInstance().loadData();
-		port(3033);
+		Repository.getInstance();
+		port(3036);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
 		UserController userController = new UserController();
 		SportsObjectController sportsObjectController = new SportsObjectController();
@@ -49,8 +50,20 @@ public class Main {
 		adminController.init();
 		trainingController.init();
 		trainingHistoryController.init();
+		/*
+		TrainingHistoryDAO dao = new TrainingHistoryDAO();
+		dao.addTrainingHistory(new TrainingHistory(
+				Repository.getInstance().getBuyerDAO().getBuyers().get(0),
+				Repository.getInstance().getTrainingDAO().getTrainings().get(1),
+				LocalDateTime.of(2022, 5, 25, 0, 0, 0)
+				));
 		
-				
+
+		dao.addTrainingHistory(new TrainingHistory(
+				Repository.getInstance().getBuyerDAO().getBuyers().get(0),
+				Repository.getInstance().getTrainingDAO().getTrainings().get(2),
+				LocalDateTime.of(2022, 7, 12, 0, 0, 0)
+				));*/
 	}
 	
 }

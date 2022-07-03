@@ -105,5 +105,45 @@
       "Username": "ivana"
     },
     "CheckIn": "2022-07-03T18:14:51.7094583"
+  },
+  {
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
+      "Duration": 0
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 9.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
+      "Username": "petar"
+    },
+    "CheckIn": "2022-05-25T00:00:00"
+  },
+  {
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "1e09a425-3567-49ee-acbc-0c601be8db86",
+      "Duration": 0
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 9.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
+      "Username": "petar"
+    },
+    "CheckIn": "2022-07-12T00:00:00"
   }
 ]

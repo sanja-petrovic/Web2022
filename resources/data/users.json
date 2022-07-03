@@ -60,7 +60,7 @@
     "UserType": "Menadžer"
   },
   {
-    "Id": "c338b4fd-6d7d-43ac-a458-a44579b15138",
+    "Id": "46d2dc1d-0526-4d42-a448-12e6d0bc1253",
     "Username": "jelena",
     "Password": "1000:6b3926136ca3179d97cfd894b7d359b5:6bb2132778f4cd9e7f19c7fc6e081b4eed224e28472256feefb2536eedf17e30c67998b60ab8f2e49187c3125b4dff480d240e03ec331e19f40b26a01905039a",
     "Name": "Jelena",
@@ -70,7 +70,7 @@
     "UserType": "Menadžer"
   },
   {
-    "Id": "014a7bc3-0f46-41af-9992-dec523b6f65c",
+    "Id": "61b4d29a-09bd-406c-9d99-7288ee8c279d",
     "Username": "dimitrije",
     "Password": "1000:84897bfc0f677057d308abc864150b84:f2f7d0efbd3372beb6f942d90ca9746706d427699d2ae436e2bf86e5a5ca205954418928a03f63d6cd6ea52b58b04c4032f1e623d9aae288f2f2b7351462248b",
     "Name": "Dimitrije",
@@ -80,7 +80,7 @@
     "UserType": "Menadžer"
   },
   {
-    "Id": "37fdad08-dc19-4a54-a72f-d81fba2d68cc",
+    "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
     "Username": "jovana",
     "Password": "1000:891a16d226502bd094b5111e55216052:77bdd77c54582e568841840817d4c7480238aa5ed2659504d4a4090b58cdb01bcc0a6bc11f50ad19b35995fd2b4c3a0af708a5dbc9b2393c50d26d173b4a0fcb",
     "Name": "Jovana",
@@ -90,7 +90,7 @@
     "UserType": "Trener"
   },
   {
-    "Id": "e6a77ca5-9dcd-4c01-b3d6-b67f5d1c061a",
+    "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
     "Username": "danilo",
     "Password": "1000:2c4a637165cf5e3db82fd055fe81431b:f084879e74f71c90236f1c215e38a0e9d9bbe22f3470f76e3d6d243acffd4be0b8b9bc793300ef36a892aa932ef97adba7ecb560a685cdce15e46e66eb41c880",
     "Name": "Danilo",
@@ -100,7 +100,7 @@
     "UserType": "Trener"
   },
   {
-    "Id": "36212123-61db-4b40-91ac-02669e964064",
+    "Id": "2a5eb950-0720-4018-9329-c3859a033144",
     "Username": "marta",
     "Password": "1000:50684a02762c9b4de214c47c788c1fca:a1e0dc6da3240204b74fd2a1b061da381a0bde5722c7c312d236c86997c1452665998bb1db0cff9873a39cac0efce76325bcc37bee88df3706e1c4b1eb7e32c5",
     "Name": "Marta",
@@ -110,7 +110,7 @@
     "UserType": "Trener"
   },
   {
-    "Id": "1e11a5c5-ee43-49ef-8e32-8fb30a470ec9",
+    "Id": "2b87f67d-0a92-4a4a-a860-abff05055bea",
     "Username": "milos",
     "Password": "1000:d11fd9ed5f4d0e89b9b3d5b77cdaff8c:2f26667004652fa0fe057904d8ea331fb236c392aa5572d33c8948271ef196bee5526ed29769882c5867c6018b2ecc1a708d03ac10cc6c44124e5ae31ed90f4c",
     "Name": "Miloš",
@@ -120,7 +120,7 @@
     "UserType": "Trener"
   },
   {
-    "Id": "850fd0c9-3746-4c1d-8384-95e065ba6cb0",
+    "Id": "66ba17b5-44f0-49d0-bd0b-b927cfe00c37",
     "Username": "nikola",
     "Password": "1000:d49d7c23cafb111c49e50e1c1b038dcc:3fd7ce8e7543f13d6013457b4ad194b2000eea8ab46d0f56d0ac9200fd92d210a11820d498ae411d1b4494fc4bd8ea028fc9d7733e1fdab996165b63d6ec16de",
     "Name": "Nikola",
@@ -130,7 +130,7 @@
     "UserType": "Menadžer"
   },
   {
-    "Id": "fc734974-2fbd-4766-8669-e4964ac47ab4",
+    "Id": "8063254c-72ef-4497-b16b-c2e12b4e54a8",
     "Username": "milica",
     "Password": "1000:25703185d60962e08ff93a46abf2cb25:7250ca40a86688198bb5ab03c892d996f59ce399f3b355a0b402f4838d3907919141dab28e218f20341627e8d6f4abd74d4d19027f08dba5fa3fe6878dc09466",
     "Name": "Milica",
@@ -140,7 +140,7 @@
     "UserType": "Menadžer"
   },
   {
-    "Id": "47f4f119-8a5c-407f-8e09-2bef0b92dce1",
+    "Id": "4c19a16e-d57e-4878-8836-37fce25ce2de",
     "Username": "aleksandra",
     "Password": "1000:3f250db9bfef537065cd7c40d18088b1:43b7eb45add4a22670bbb2e87b947a62136eff74fb679ea3c42e41fa52c669e326b2327d129ca3cf2464bee8ba03dc68984a1040ac466b37013ee357c946cebb",
     "Name": "Aleksandra",
@@ -150,7 +150,7 @@
     "UserType": "Trener"
   },
   {
-    "Id": "ce5954d0-8837-40db-b779-49ad61b7f874",
+    "Id": "48e7eafb-42cb-4c95-90b7-371fa56dcbb3",
     "Username": "sara",
     "Password": "1000:f25f113a340ea53e2bc0d3d0db082b8b:b8aea09acff08b9c79c028288de2c15b52b3ec6eb11236cb0588d96ecdc78aeb8b4fc22b62ddd6ed341fb5bac8d2634fcba83e35a6fbb4ab600216553098e917",
     "Name": "Sara",

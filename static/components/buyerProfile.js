@@ -26,13 +26,13 @@ Vue.component('buyer-profile-page', {
             <div class="tab-panel about-wrapper">
                 <ul class="nav nav-pills me-3" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" v-on:click="checkedTab = 'profile'" id="pills-user-tab"
+                        <button class="nav-link active"  id="pills-user-tab"
                                 data-bs-toggle="pill" data-bs-target="#pills-profile"
                                 type="button" role="tab">Korisnički profil
                         </button>
                     </li>
                     <li v-if="this.user.UserType === 'Kupac'" class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-buyer-tab" v-on:click="checkedTab = 'trainings'"
+                        <button class="nav-link" id="pills-buyer-tab" 
                                 data-bs-toggle="pill" data-bs-target="#pills-trainings"
                                 type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Istorija
                             treninga
@@ -84,11 +84,11 @@ Vue.component('buyer-profile-page', {
                                             <li><button class="dropdown-item" type="button" v-on:click="sortByNameAsc">Nazivu sportskog objekta (rastuće)</button></li>
                                             <li><button class="dropdown-item" type="button" v-on:click="sortByNameDesc">Nazivu sportskog objekta (opadajuće)</button></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li><button class="dropdown-item" type="button" v-on:click="">Ceni (rastuće)</button></li>
-                                            <li><button class="dropdown-item" type="button" v-on:click="">Ceni (opadajuće)</button></li>
+                                            <li><button class="dropdown-item" type="button" v-on:click="sortByPriceAsc">Ceni (rastuće)</button></li>
+                                            <li><button class="dropdown-item" type="button" v-on:click="sortByPriceDesc">Ceni (opadajuće)</button></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li><button class="dropdown-item" type="button"v-on:click="">Datumu prijave (rastuće)</button></li>
-                                            <li><button class="dropdown-item" type="button" v-on:click="">Datumu prijave (opadajuće)</button></li>
+                                            <li><button class="dropdown-item" type="button"v-on:click="sortByDateAsc">Datumu prijave (rastuće)</button></li>
+                                            <li><button class="dropdown-item" type="button" v-on:click="sortByDateDesc">Datumu prijave (opadajuće)</button></li>
                                         </ul>
                                     </div>
                                     <div class="dropdown">
@@ -217,10 +217,22 @@ Vue.component('buyer-profile-page', {
 
         },
         sortByNameDesc: function() {
-            this.displayedTrainings.sort((b, a) => (a.SportsObject.name > b.SportsObject.name) ? 1 : ((b.SportsObject.name > a.SportsObject.name) ? -1 : 0));
+            //this.displayedTrainings.sort((b, a) => (a.Training.SportsObject.name > b.Training.SportsObject.name) ? 1 : ((b.Training.SportsObject.name > a.Training.SportsObject.name) ? -1 : 0));
         },
         sortByNameAsc: function() {
-            this.displayedTrainings.sort((a, b) => (a.SportsObject.name > b.SportsObject.name) ? 1 : ((b.SportsObject.name > a.SportsObject.name) ? -1 : 0));
+            //this.displayedTrainings.sort((a, b) => (a.Training.SportsObject.name > b.Training.SportsObject.name) ? 1 : ((b.Training.SportsObject.name > a.Training.SportsObject.name) ? -1 : 0));
+        },
+        sortByPriceDesc : function () {
+            //this.displayedTrainings.sort((a, b) => b.Training.Price - a.Training.Price);
+        },
+        sortByPriceAsc: function () {
+            //this.displayedTrainings.sort((a, b) => a.Training.Price - b.Training.Price);
+        },
+        sortByDateAsc : function () {
+            //this.displayedTrainings.sort((a, b) => Number(a.CheckIn) - Number(b.CheckIn));
+        },
+        sortByDateDesc : function () {
+            //this.displayedTrainings.sort((a, b) => Number(b.CheckIn) - Number(a.CheckIn));
         }
     }
 

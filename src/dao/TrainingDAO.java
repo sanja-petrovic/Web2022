@@ -129,6 +129,7 @@ public class TrainingDAO {
 			if(t.getId().equals(id)) {
 				User u = Repository.getInstance().getTrainerDAO().getTrainerByUsername(t.getTrainer().getUsername());
 				retVal = (Trainer) u;
+				retVal.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(u.getId()));
 				break;
 			}
 		
