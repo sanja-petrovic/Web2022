@@ -30,6 +30,7 @@ public class TrainingController {
 			createTraining();
 			getTrainings();
 			getTrainerByTrainingId();
+			getPriceByTrainingId();
 		});
 	}
 	
@@ -59,6 +60,16 @@ public class TrainingController {
 			return gson.toJson(trainer);
 		});
 	}
+	
+	public static void getPriceByTrainingId() {
+		get("/trainings/price/:id", (req, res) -> {
+			res.type("application/json");
+			String id = req.params(":id");
+			Double price = Repository.getInstance().getTrainingDAO().getPriceByTrainingId(id);
+			return gson.toJson(price);
+		});
+	}
+	
 	
 
 	

@@ -125,5 +125,18 @@ public class TrainingDAO {
 		}
 		return retVal;
 	}
+	
+	public Double getPriceByTrainingId(String id) {
+		Double retVal = 0.0;
+		
+		for(Training t : this.trainings) {
+			if(t.getId().equals(id)) {
+				retVal = t.getPrice();
+				break;
+			}
+		
+		}
+		return retVal;
+	}
 }
 	

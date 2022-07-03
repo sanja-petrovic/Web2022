@@ -77,6 +77,7 @@ Vue.component('sports-object-page', {
                                         </h3>
                                         <span v-if="item.content.ContentType==='trening'" class="card__status">Trener: {{item.trainer.Name}} {{item.trainer.Surname}}</span><br>
                                         <span class="card__status">Trajanje: {{item.content.Duration}}min</span><br>
+                                        <span class="card__status" v-if="item.content.ContentType==='trening'" >Doplata za trening: {{item.price}} din</span><br>
                                     </div>
                                 </div>
                                 <p class="card__description"> 
@@ -241,6 +242,7 @@ Vue.component('sports-object-page', {
 						this.list.push({
 							content: sportsObjectContent,
 							trainer: null,
+							price: 0.0
 						 })
 					}
 				}
@@ -253,9 +255,25 @@ Vue.component('sports-object-page', {
 			}).then(response => { 
 				console.log(response.data);
 				this.contentTrainer = response.data; 
+				this.getPrice(sportsObjectContent, this.contentTrainer)
+				//this.list.push({
+				///	content: sportsObjectContent,
+				//	trainer: this.contentTrainer,
+				//})
+				}
+			).catch(error => console.log(error));
+		},
+		getPrice: function(sportsObjectContent, contentTrainer) { 
+			let id = sportsObjectContent.Id;
+			axios.get(`/rest/trainings/price/${id}`, {
+				name: id
+			}).then(response => { 
+				console.log(response.data);
+				this.trainingPrice = response.data; 
 				this.list.push({
 					content: sportsObjectContent,
-					trainer: this.contentTrainer,
+					trainer: contentTrainer,
+					price: this.trainingPrice
 				})
 				}
 			).catch(error => console.log(error));
