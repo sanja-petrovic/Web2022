@@ -69002,6 +69002,16 @@ textarea {
   padding: 2vw;
 }
 
+.profile-button-div {
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+}
+.profile-button-div button {
+  font-size: 12px;
+  margin-top: -1em;
+}
+
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -91875,6 +91885,20 @@ textarea {
 .buttons-galore button a {
   text-decoration: none;
   color: white;
+}
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.center-container .buttons-galore, .center-container .filter-and-sort {
+  margin-left: 0;
+}
+.center-container .users-table {
+  padding: 2em;
+  width: 100%;
 }
 
 .main-container {

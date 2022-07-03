@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
@@ -19,6 +20,9 @@ import beans.User;
 import beans.UserType;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
+import util.adapters.LocalTimeAdapter;
+import util.annotations.AnnotationExclusionStrategy;
+import util.annotations.AnnotationExclusionUserStrategy;
 
 public class UserDAO {
 	
@@ -31,7 +35,7 @@ public class UserDAO {
 	
 	public void load() {
 		try {
-		    Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
+		    Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).setExclusionStrategies(new AnnotationExclusionUserStrategy()).create();
 		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/users.json"));
 		    this.users = gson.fromJson(reader, new TypeToken<ArrayList<User>>() {}.getType());
 		    for(User u : this.users) {
@@ -45,7 +49,7 @@ public class UserDAO {
 	}
 	
 	public void write() {
-		Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
+		Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).setExclusionStrategies(new AnnotationExclusionUserStrategy()).create();
 		try {
 			FileWriter writer = new FileWriter("resources/data/users.json", StandardCharsets.UTF_8);
 			gson.toJson(this.users, writer);
@@ -103,7 +107,7 @@ public class UserDAO {
     public void updateUser(User u) {
         int index = this.findIndexOf(u);
         if(index != -1) {
-            this.users.set(index, u);
+            this.users.set(index, (User) u);
             this.write();
         }
     }

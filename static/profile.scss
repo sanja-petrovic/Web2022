@@ -60,3 +60,13 @@
 .membership-card:before {
   @extend %basic-white-component-before;
 }
+
+.profile-button-div {
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+  button {
+    font-size: 12px;
+    margin-top: -1em;
+  }
+}

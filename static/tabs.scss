@@ -69,3 +69,19 @@
     }
   }
 }
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .buttons-galore, .filter-and-sort {
+    margin-left: 0;
+  }
+
+  .users-table {
+    padding: 2em;
+    width: 100%;
+  }
+}

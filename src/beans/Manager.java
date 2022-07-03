@@ -6,9 +6,13 @@ import java.util.ArrayList;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import util.annotations.Exclude;
+import util.annotations.ExcludeUser;
+
 public class Manager extends User {
 
 	@Expose
+	@ExcludeUser
 	@SerializedName("SportsObject")
 	private SportsObject sportsObject;
 	
