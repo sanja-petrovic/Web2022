@@ -51,12 +51,11 @@ public class TrainingHistoryDAO {
 	}
 	
 	public void fillData(TrainingHistory th) {
-		Buyer b = Repository.getInstance().getBuyerDAO().getBuyerByUsername(th.getBuyer().getUsername());
-        Trainer t = null;
+		th.setBuyer(Repository.getInstance().getBuyerDAO().getBuyerByUsername(th.getBuyer().getUsername()));
         if(th.getTrainer() != null) {
-            t = Repository.getInstance().getTrainerDAO().getTrainerByUsername(th.getTrainer().getUsername());
+            th.setTrainer(Repository.getInstance().getTrainerDAO().getTrainerByUsername(th.getTrainer().getUsername()));
         }
-        Training tr = Repository.getInstance().getTrainingDAO().getTrainingById(th.getTraining().getId());
+        th.setTraining(Repository.getInstance().getTrainingDAO().getTrainingById(th.getTraining().getId()));
 	}
 	
 	

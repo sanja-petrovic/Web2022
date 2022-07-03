@@ -21,9 +21,6 @@
 }
 
 .about-section {
-  @extend %basic-white-component;
-  width: 60vw;
-  min-height: 60vh;
   padding: 2vw;
   flex-direction: row;
   margin-bottom: 2vw;

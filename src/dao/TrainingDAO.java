@@ -57,6 +57,16 @@ public class TrainingDAO {
 
 	public void fillData(Training t) {
 		Content content = Repository.getInstance().getContentsDAO().getContentById(t.getId());
+		if(content != null) {
+			t.setContentType(content.getContentType());
+			t.setDeletedAt(content.getDeletedAt());
+			t.setDescription(content.getDescription());
+			t.setDurationMinutes(content.getDurationMinutes());
+			t.setName(content.getName());
+			t.setSportsObject(content.getSportsObject());
+			t.setPicture(content.getPicture());
+			
+		}
 		SportsObject sportsObject = Repository.getInstance().getSportsObjectDAO().getSportsObjectById(content.getSportsObject().getName());
 		Trainer trainer = Repository.getInstance().getTrainerDAO().getTrainerByUsername(t.getTrainer().getUsername());
 		t.setTrainer(trainer);

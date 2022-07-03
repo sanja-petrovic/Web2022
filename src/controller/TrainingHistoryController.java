@@ -13,11 +13,12 @@ import com.google.gson.GsonBuilder;
 import dao.Repository;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
+import util.adapters.LocalDateTimeAdapter2;
 import util.adapters.LocalTimeAdapter;
 
 public class TrainingHistoryController {
 	
-	private static Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
+	private static Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter2()).create();
 	private static String basePath = "/rest";
 	
 	public void init() {
