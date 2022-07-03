@@ -2,7 +2,7 @@
   {
     "Id": "3b17c4cc-8d4c-4f0c-aea1-5719a36561a6",
     "Name": "Body Balance",
-    "ContentType": "training",
+    "ContentType": "trening",
     "SportsObject": {
       "name": "No Limit Gym"
     },
@@ -13,7 +13,7 @@
   {
     "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
     "Name": "Cardio",
-    "ContentType": "training",
+    "ContentType": "trening",
     "SportsObject": {
       "name": "No Limit Gym"
     },
@@ -24,7 +24,7 @@
   {
     "Id": "1e09a425-3567-49ee-acbc-0c601be8db86",
     "Name": "Body Pump",
-    "ContentType": "training",
+    "ContentType": "trening",
     "SportsObject": {
       "name": "Mega Gym"
     },
@@ -35,7 +35,7 @@
   {
     "Id": "aa6d7904-4f48-4f2e-b64d-0d54aa5059ce",
     "Name": "Rekreativni treninzi",
-    "ContentType": "training",
+    "ContentType": "trening",
     "SportsObject": {
       "name": "Novak Tennis Center"
     },
@@ -46,7 +46,7 @@
   {
     "Id": "88a326ee-4637-465c-b0fa-533550e89b47",
     "Name": "Salsa",
-    "ContentType": "training",
+    "ContentType": "trening",
     "SportsObject": {
       "name": "Plesni centar Allegro"
     },
@@ -57,7 +57,7 @@
   {
     "Id": "45f766oa-8756-564p-b8ja-123550e89h78",
     "Name": "Argentinski tango",
-    "ContentType": "training",
+    "ContentType": "trening",
     "SportsObject": {
       "name": "Plesni centar Allegro"
     },
@@ -68,7 +68,7 @@
   {
     "Id": "56766oa-0954-564k-k9ja-097650f43h02",
     "Name": "Joga za početnike",
-    "ContentType": "training",
+    "ContentType": "trening",
     "SportsObject": {
       "name": "Hipokrat"
     },
@@ -79,7 +79,7 @@
   {
     "Id": "2defce60-2a10-410b-94f8-68309c8d2701",
     "Name": "Joga za iskusnije",
-    "ContentType": "training",
+    "ContentType": "trening",
     "SportsObject": {
       "name": "Hipokrat"
     },
@@ -90,7 +90,7 @@
   {
     "Id": "b9623930-875e-4e05-8a99-890038de8cf8",
     "Name": "Plivanje",
-    "ContentType": "training",
+    "ContentType": "trening",
     "SportsObject": {
       "name": "Bazeni Spens"
     },
@@ -145,7 +145,7 @@
   {
     "Id": "0a83a23b-1bea-41ae-99de-74e107de7b31",
     "Name": "Personalni trening",
-    "ContentType": "training",
+    "ContentType": "trening",
     "SportsObject": {
       "name": "Classic Gym"
     },
@@ -156,7 +156,7 @@
   {
     "Id": "1c537917-b5ae-470c-804d-b7bc78622341",
     "Name": "Kick Box",
-    "ContentType": "training",
+    "ContentType": "trening",
     "SportsObject": {
       "name": "Favorit"
     },

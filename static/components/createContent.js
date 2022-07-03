@@ -190,8 +190,11 @@ Vue.component('create-content', {
 				else {
 					this.errorExists = false;
 				}
-				if(this.durationMinutes == ""){
+				if(this.durationMinutes == "") {
 					this.durationMinutes = 0;
+				}
+				if(this.price == ""){
+					this.price = 0;
 				}
                 event.preventDefault();
                 var picturePath = new FileReader();
