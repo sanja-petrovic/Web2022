@@ -9,7 +9,6 @@ Vue.component('sports-object-page', {
            	contentTrainer: null,
 			sportsObjectRating: 0,
             logo: null,
-            contentId: "",
 			comments: null,
 			loggedInUserRole: "",
 			approvedComments: [],
@@ -62,7 +61,7 @@ Vue.component('sports-object-page', {
             </div>
             <div class="sports-object-trainings">
                 <h4>U ponudi:</h4>
-                <ul class="cards" style="width: 100vw; margin-bottom: 20vh;">
+                <ul class="cards" style="width: 200vw; margin-bottom: 20vh;">
                     <li v-for="item in this.list">
                         <div class="card">
                             <img :src="item.content.Picture" class="card__image" alt="" />
@@ -75,9 +74,11 @@ Vue.component('sports-object-page', {
                                     <div class="card__header-text">
                                         <h3 class="card__title">{{item.content.Name}}
                                         </h3>
-                                        <span v-if="item.content.ContentType==='trening'" class="card__status">Trener: {{item.trainer.Name}} {{item.trainer.Surname}}</span><br>
-                                        <span class="card__status">Trajanje: {{item.content.Duration}}min</span><br>
-                                        <span class="card__status" v-if="item.content.ContentType==='trening'" >Doplata za trening: {{item.price}} din</span><br>
+                                        <span class="card__status">Trajanje: {{item.content.Duration}}min</span>
+                                        <span v-if="item.content.ContentType==='trening'" class="card__status"><br>Trener: {{item.trainer.Name}} {{item.trainer.Surname}}</span><br>
+                                        <span class="card__status" v-if="item.content.ContentType==='trening'">Tip treninga: {{item.type}}</span><br>
+                                        <span class="card__status" v-if="item.content.ContentType==='trening' && item.price !== 0.0">Doplata za trening: {{item.price}} din</span>
+                                        <span class="card__status" v-if="item.content.ContentType==='trening' && item.price === 0.0">nema doplate za trening</span><br>
                                     </div>
                                 </div>
                                 <p class="card__description"> 
@@ -240,9 +241,7 @@ Vue.component('sports-object-page', {
 							this.getTrainer(sportsObjectContent);					
 					} else {
 						this.list.push({
-							content: sportsObjectContent,
-							trainer: null,
-							price: 0.0
+							content: sportsObjectContent
 						 })
 					}
 				}
@@ -256,10 +255,7 @@ Vue.component('sports-object-page', {
 				console.log(response.data);
 				this.contentTrainer = response.data; 
 				this.getPrice(sportsObjectContent, this.contentTrainer)
-				//this.list.push({
-				///	content: sportsObjectContent,
-				//	trainer: this.contentTrainer,
-				//})
+				
 				}
 			).catch(error => console.log(error));
 		},
@@ -270,10 +266,22 @@ Vue.component('sports-object-page', {
 			}).then(response => { 
 				console.log(response.data);
 				this.trainingPrice = response.data; 
+				this.getTrainingType(sportsObjectContent, contentTrainer, this.trainingPrice);
+				}
+			).catch(error => console.log(error));
+		},
+		getTrainingType: function(sportsObjectContent, contentTrainer, trainingPrice) {
+			let id = sportsObjectContent.Id;
+			axios.get(`/rest/trainings/type/${id}`, {
+				name: id
+			}).then(response => { 
+				console.log(response.data);
+				this.trainingType = response.data; 
 				this.list.push({
 					content: sportsObjectContent,
 					trainer: contentTrainer,
-					price: this.trainingPrice
+					price: trainingPrice,
+					type: this.trainingType,
 				})
 				}
 			).catch(error => console.log(error));

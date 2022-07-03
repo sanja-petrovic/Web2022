@@ -13,6 +13,7 @@ import com.google.gson.GsonBuilder;
 
 import beans.Trainer;
 import beans.Training;
+import beans.TrainingType;
 import dao.Repository;
 import dto.CreateTrainingDTO;
 import services.TrainingService;
@@ -31,6 +32,7 @@ public class TrainingController {
 			getTrainings();
 			getTrainerByTrainingId();
 			getPriceByTrainingId();
+			getTypeByTrainingId();
 		});
 	}
 	
@@ -67,6 +69,14 @@ public class TrainingController {
 			String id = req.params(":id");
 			Double price = Repository.getInstance().getTrainingDAO().getPriceByTrainingId(id);
 			return gson.toJson(price);
+		});
+	}
+	public static void getTypeByTrainingId() {
+		get("/trainings/type/:id", (req, res) -> {
+			res.type("application/json");
+			String id = req.params(":id");
+			TrainingType type = Repository.getInstance().getTrainingDAO().getTypeByTrainingId(id);
+			return gson.toJson(type);
 		});
 	}
 	

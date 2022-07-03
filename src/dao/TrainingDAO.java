@@ -20,6 +20,7 @@ import beans.Content;
 import beans.SportsObject;
 import beans.Trainer;
 import beans.Training;
+import beans.TrainingType;
 import beans.User;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
@@ -135,6 +136,17 @@ public class TrainingDAO {
 				break;
 			}
 		
+		}
+		return retVal;
+	}
+	
+	public TrainingType getTypeByTrainingId(String id) {
+		TrainingType retVal = null;	
+		for(Training t : this.trainings) {
+			if(t.getId().equals(id)) {
+				retVal = t.getTrainingType();
+				break;
+			}
 		}
 		return retVal;
 	}

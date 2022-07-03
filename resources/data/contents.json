@@ -185,5 +185,16 @@
     "Duration": 60,
     "Description": "Karate grupni treninzi najbolji u gradu.",
     "Picture": "../images/karate.jpg"
+  },
+  {
+    "Id": "bb666b8e-6e27-4ec4-a3fa-0768854484f1",
+    "Name": "RMP trening",
+    "ContentType": "trening",
+    "SportsObject": {
+      "name": "Classic Gym"
+    },
+    "Duration": 45,
+    "Description": "Profesionalni personalni trening sa najbržim rezultatima.",
+    "Picture": "../images/cardio.jpg"
   }
 ]

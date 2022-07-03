@@ -229,7 +229,7 @@ Vue.component('create-content', {
 	                        .then(function response(resp){
 	                            oopsie = false;
 	                            console.log(resp.data); 
-	                            alert(message);
+	                            
 	                        }).catch(function error(err) {
 	                            alert("Greška na serveru!");
 	                            oopsie = true;
@@ -237,12 +237,14 @@ Vue.component('create-content', {
 	                }
 	
 				}
-               
-            
+                         
                 if(oopsie) {
                     this.$router.replace("/dodaj-sadrzaj");
                 } else {
-                    this.$router.replace("/");
+					alert(message);
+                    this.$router.replace("/sadrzaji");  
+                    window.location.reload();
+                    
                 }
                 this.errorExists = oopsie;
                 

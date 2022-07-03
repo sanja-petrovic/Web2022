@@ -106,5 +106,23 @@
     },
     "Price": 0.0,
     "Id": "502e4c70-dbe6-4270-89f7-8a2e7880335a"
+  },
+  {
+    "TrainingType": "Personalni",
+    "Trainer": {
+      "Id": "48e7eafb-42cb-4c95-90b7-371fa56dcbb3",
+      "Username": "sara"
+    },
+    "Price": 1000.0,
+    "Id": "bb666b8e-6e27-4ec4-a3fa-0768854484f1"
+  },
+  {
+    "TrainingType": "Grupni",
+    "Trainer": {
+      "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
+      "Username": "jovana"
+    },
+    "Price": 1000.0,
+    "Id": "7d1d7507-1bf7-4ee0-87c5-f3b05d1b7309"
   }
 ]
