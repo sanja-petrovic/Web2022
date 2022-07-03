@@ -1,7 +1,7 @@
 [
   {
     "Visits": [],
-    "Points": 0.0,
+    "Points": 9,
     "Username": "petar",
     "BuyerType": {
       "Tier": "Bronzani"
@@ -10,7 +10,7 @@
   },
   {
     "Visits": [],
-    "Points": 0.0,
+    "Points": 2700,
     "BuyerType": {
       "Tier": "Srebrni"
     },
@@ -19,7 +19,7 @@
   },
   {
     "Visits": [],
-    "Points": 0.0,
+    "Points": 1200,
     "BuyerType": {
       "Tier": "Zlatni"
     },
