@@ -16,6 +16,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import beans.Address;
 import beans.BusinessHours;
 import beans.Location;
 import beans.Manager;
@@ -66,6 +67,7 @@ public class SportsObjectController {
 			sportsObject.setStatus(SportsObjectStatus.WORKING);
 			sportsObject.setBusinessHours(new BusinessHours(LocalTime.parse(s.getBusinessHoursStart(), dtf), LocalTime.parse(s.getBusinessHoursEnd(), dtf)));
 			m.setSportsObject(sportsObject);
+			sportsObject.setLocation(new Location(Double.parseDouble(s.getLatitude()), Double.parseDouble(s.getLongitude()) , new Address(s.getStreet(), s.getNumber(), s.getCity(), s.getPostCode(), s.getCountry())));
 			
 			if(!s.getImgData().isEmpty()) {
 				byte[] data;

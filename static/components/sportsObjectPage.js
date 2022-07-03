@@ -1,3 +1,4 @@
+
 Vue.component('sports-object-page', {
     data: function () {
         return {
@@ -20,41 +21,44 @@ Vue.component('sports-object-page', {
         }
     },
     template: `
+		
         <div>
 		<nav-bar-logged-in v-if="this.loggedIn"></nav-bar-logged-in>
         <nav-bar-logged-out v-else></nav-bar-logged-out>
         <div class="main-content">
-            <div class="sports-object-header">
-                <img class="sports-object-logo" :src="sportsObject.logoIcon">
-                <div class="sports-object-info">
-                    <h1>{{sportsObject.name}}</h1>
-                    <p class="sports-object-subtitle">{{sportsObject.type}}
-                    <span class="badge rounded-pill badge-open" v-if="openCheck(sportsObject.status)">Otvoreno</span>
-                    <span class="badge rounded-pill badge-closed" v-if="!openCheck(sportsObject.status)">Zatvoreno</span>
-                    </p>
-                    <p class="sports-object-description">
+            <div class="sports-object-header-container">
+                <div class="sports-object-header">
+					<img class="sports-object-logo" :src="sportsObject.logoIcon">
+					<div class="sports-object-info">
+						<h1>{{sportsObject.name}}</h1>
+						<p class="sports-object-subtitle">{{sportsObject.type}}
+							<span class="badge rounded-pill badge-open" v-if="openCheck(sportsObject.status)">Otvoreno</span>
+							<span class="badge rounded-pill badge-closed" v-if="!openCheck(sportsObject.status)">Zatvoreno</span>
+						</p>
+						<p class="sports-object-description">
                         <span class="d-inline-block"><i class="fa fa-business-time"
-                                                        style="margin-right: 0.4em; color: #91D0F7"></i><span
-                            class="d-inline-block">Radno vreme: {{sportsObject.businessHours.startTime }}-{{ sportsObject.businessHours.endTime }}</span></span><br>
-                        <span class="d-inline-block"><i class="fa fa-map-location-dot"
-                                                        style="margin-right: 0.4em; color: #9BE3C3"></i><span
-                            class="d-inline-block">Lokacija:</span></span><br>
-                        <span class="d-inline-block"><i style="margin-right: 1.5em; color: #9BE3C3"></i><span
-                            class="d-inline-block">{{sportsObject.location.address.street}} {{sportsObject.location.address.number}}</span></span><br>
-                        <span class="d-inline-block"><i
-                                                        style="margin-right: 1.5em; color: #9BE3C3"></i><span
-                            class="d-inline-block">{{sportsObject.location.address.city}}, {{sportsObject.location.address.postcode}}</span></span><br>
-                        <span class="d-inline-block"><i 
-                                                        style="margin-right: 1.5em; color: #9BE3C3"></i><span
-                            class="d-inline-block">{{sportsObject.location.latitude}}, {{sportsObject.location.longitude}}</span></span><br>
-                        
-                        <span class="d-inline-block"><i class="fa fa-star"
-                                                        style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                            class="d-inline-block" >Prosečna ocena: {{ sportsObject.averageGrade }}</span></span><br>
-                    </p>
-                </div>
-                <div class="sports-object-map">
-                </div>
+														style="margin-right: 0.4em; color: #91D0F7"></i><span
+							class="d-inline-block">Radno vreme: {{sportsObject.businessHours.startTime }}-{{ sportsObject.businessHours.endTime }}</span></span><br>
+							<span class="d-inline-block"><i class="fa fa-map-location-dot"
+															style="margin-right: 0.4em; color: #9BE3C3"></i><span
+								class="d-inline-block">Lokacija:</span></span><br>
+							<span class="d-inline-block"><i style="margin-right: 1.5em; color: #9BE3C3"></i><span
+								class="d-inline-block">{{sportsObject.location.address.street}} {{sportsObject.location.address.number}}</span></span><br>
+							<span class="d-inline-block"><i
+								style="margin-right: 1.5em; color: #9BE3C3"></i><span
+								class="d-inline-block">{{sportsObject.location.address.city}}, {{sportsObject.location.address.postcode}}</span></span><br>
+							<span class="d-inline-block"><i
+								style="margin-right: 1.5em; color: #9BE3C3"></i><span
+								class="d-inline-block">{{sportsObject.location.latitude.toFixed(5)}}, {{sportsObject.location.longitude.toFixed(5)}}</span></span><br>
+
+							<span class="d-inline-block"><i class="fa fa-star"
+															style="margin-right: 0.4em; color: #ADE9AA"></i><span
+								class="d-inline-block" >Prosečna ocena: {{ sportsObject.averageGrade }}</span></span><br>
+						</p>
+					</div>
+				</div>
+				<div class="map" id="map-page" style="z-index: 5"></div>
+                
             </div>
             <div class="sports-object-trainings">
                 <h4>U ponudi:</h4>
@@ -195,6 +199,7 @@ Vue.component('sports-object-page', {
 			this.sportsObject = response.data;
 			this.sportsObjectRating = response.data.averageGrade.toFixed(2);
 			this.logo = this.sportsObject.logoIcon;
+			this.displayMap();
 		});
 		this.displayContents(name);
 		this.getComments(name);
@@ -316,6 +321,51 @@ Vue.component('sports-object-page', {
 				console.log(err);
 			})
 		},
+
+		displayMap: function () {
+
+			let lon = this.sportsObject.location.longitude;
+			let lat = this.sportsObject.location.latitude;
+			const iconFeature = new ol.Feature({
+				geometry: new ol.geom.Point(ol.proj.fromLonLat([lon, lat])),
+				name: "hellooo",
+			});
+			let map = new ol.Map({
+				layers: [
+					new ol.layer.Tile({
+						source: new ol.source.OSM()
+					}),
+					new ol.layer.Vector({
+						source: new ol.source.Vector({
+							features: [iconFeature]
+						}),
+						style: new ol.style.Style({
+							image: new ol.style.Icon({
+								anchor: [lon, lat],
+								anchorXUnits: 'pixels',
+								anchorYUnits: 'pixels',
+								src: '../images/pin.png'
+							})
+						})
+					})
+				],
+				view: new ol.View({
+					center: ol.proj.fromLonLat([lon, lat]),
+					zoom: 18
+				})
+			});
+
+			setTimeout(() => {
+				if (map) {
+					map.setTarget("map-page");
+					let c = document.getElementById("map-page").childNodes;
+					c[0].style.borderRadius  = '15px';
+				}
+			}, 50);
+
+
+		}
     }
     
 });
+

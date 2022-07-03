@@ -11171,7 +11171,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-#pills-tabContent, .sidebar-container, .membership-card, .about-section, .bla, .comment, .register-div, .login-div {
+#pills-tabContent, .sidebar-container, .membership-card, .about-section, .map, .bla, .comment, .register-div, .login-div {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -11180,7 +11180,7 @@ textarea.form-control-lg {
   border: 1px rgba(255, 255, 255, 0.2) solid;
 }
 
-.sidebar-container:before, .membership-card:before, .about-section:before, .comment:before, .register-div:before, .login-div:before {
+.sidebar-container:before, .membership-card:before, .about-section:before, .map:before, .comment:before, .register-div:before, .login-div:before {
   content: "";
   position: absolute;
   background: inherit;
@@ -22573,7 +22573,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-#pills-tabContent, .sidebar-container, .membership-card, .about-section, .bla, .comment, .register-div, .login-div {
+#pills-tabContent, .sidebar-container, .membership-card, .about-section, .map, .bla, .comment, .register-div, .login-div {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -22582,7 +22582,7 @@ textarea.form-control-lg {
   border: 1px rgba(255, 255, 255, 0.2) solid;
 }
 
-.sidebar-container:before, .membership-card:before, .about-section:before, .comment:before, .register-div:before, .login-div:before {
+.sidebar-container:before, .membership-card:before, .about-section:before, .map:before, .comment:before, .register-div:before, .login-div:before {
   content: "";
   position: absolute;
   background: inherit;
@@ -34056,7 +34056,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-#pills-tabContent, .sidebar-container, .membership-card, .about-section, .bla, .comment, .register-div, .login-div {
+#pills-tabContent, .sidebar-container, .membership-card, .about-section, .map, .bla, .comment, .register-div, .login-div {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -34065,7 +34065,7 @@ textarea.form-control-lg {
   border: 1px rgba(255, 255, 255, 0.2) solid;
 }
 
-.sidebar-container:before, .membership-card:before, .about-section:before, .comment:before, .register-div:before, .login-div:before {
+.sidebar-container:before, .membership-card:before, .about-section:before, .map:before, .comment:before, .register-div:before, .login-div:before {
   content: "";
   position: absolute;
   background: inherit;
@@ -45541,7 +45541,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-#pills-tabContent, .sidebar-container, .membership-card, .about-section, .bla, .comment, .login-div, .register-div {
+#pills-tabContent, .sidebar-container, .membership-card, .about-section, .map, .bla, .comment, .login-div, .register-div {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -45550,7 +45550,7 @@ textarea.form-control-lg {
   border: 1px rgba(255, 255, 255, 0.2) solid;
 }
 
-.sidebar-container:before, .membership-card:before, .about-section:before, .comment:before, .login-div:before, .register-div:before {
+.sidebar-container:before, .membership-card:before, .about-section:before, .map:before, .comment:before, .login-div:before, .register-div:before {
   content: "";
   position: absolute;
   background: inherit;
@@ -57084,7 +57084,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-#pills-tabContent, .sidebar-container, .membership-card, .about-section, .bla, .comment, .login-div, .register-div {
+#pills-tabContent, .sidebar-container, .membership-card, .about-section, .map, .bla, .comment, .login-div, .register-div {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -57093,7 +57093,7 @@ textarea.form-control-lg {
   border: 1px rgba(255, 255, 255, 0.2) solid;
 }
 
-.sidebar-container:before, .membership-card:before, .about-section:before, .comment:before, .login-div:before, .register-div:before {
+.sidebar-container:before, .membership-card:before, .about-section:before, .map:before, .comment:before, .login-div:before, .register-div:before {
   content: "";
   position: absolute;
   background: inherit;
@@ -57332,11 +57332,11 @@ textarea {
 .sports-object-header {
   display: flex;
   flex-direction: row;
-  padding: 5em 10em 3em 10em;
   align-self: flex-start;
   width: 100%;
   margin-bottom: 4vh;
   overflow: hidden;
+  margin-right: 2em;
 }
 
 .sports-object-logo {
@@ -57344,7 +57344,6 @@ textarea {
   border-radius: 200px;
   max-width: 100px;
   max-height: 100px;
-  margin-left: 1vw;
 }
 
 .sports-object-info {
@@ -57515,6 +57514,39 @@ textarea {
 
 .rating:hover > input:checked ~ label:before {
   opacity: 0.4;
+}
+
+.sports-object-header-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 80vw;
+  gap: 2em;
+  margin-top: 2em;
+  overflow: hidden;
+}
+
+.map {
+  border-radius: 15px;
+  opacity: 0.6;
+  border: 1px solid transparent;
+  transition: 0.3s;
+  filter: drop-shadow(16px 16px 20px rgba(255, 255, 255, 0.1));
+}
+
+#map-page {
+  height: 30vh;
+  width: 50vw;
+  min-width: 50vw;
+}
+
+#map-create {
+  height: 10em;
+  width: 25em;
+}
+
+.map:hover {
+  opacity: 1;
 }
 
 /*!
@@ -68684,7 +68716,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-#pills-tabContent, .sidebar-container, .membership-card, .about-section, .login-div, .register-div, .comment, .bla {
+#pills-tabContent, .sidebar-container, .membership-card, .about-section, .login-div, .register-div, .comment, .bla, .map {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -68693,7 +68725,7 @@ textarea.form-control-lg {
   border: 1px rgba(255, 255, 255, 0.2) solid;
 }
 
-.sidebar-container:before, .membership-card:before, .about-section:before, .login-div:before, .register-div:before, .comment:before {
+.sidebar-container:before, .membership-card:before, .about-section:before, .login-div:before, .register-div:before, .comment:before, .map:before {
   content: "";
   position: absolute;
   background: inherit;
@@ -80139,7 +80171,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-#pills-tabContent, .sidebar-container, .login-div, .register-div, .comment, .bla, .about-section, .membership-card {
+#pills-tabContent, .sidebar-container, .login-div, .register-div, .comment, .bla, .map, .about-section, .membership-card {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -80148,7 +80180,7 @@ textarea.form-control-lg {
   border: 1px rgba(255, 255, 255, 0.2) solid;
 }
 
-.sidebar-container:before, .login-div:before, .register-div:before, .comment:before, .about-section:before, .membership-card:before {
+.sidebar-container:before, .login-div:before, .register-div:before, .comment:before, .map:before, .about-section:before, .membership-card:before {
   content: "";
   position: absolute;
   background: inherit;
@@ -91550,7 +91582,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-#pills-tabContent, .login-div, .register-div, .comment, .bla, .about-section, .membership-card, .sidebar-container {
+#pills-tabContent, .login-div, .register-div, .comment, .bla, .map, .about-section, .membership-card, .sidebar-container {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -91559,7 +91591,7 @@ textarea.form-control-lg {
   border: 1px rgba(255, 255, 255, 0.2) solid;
 }
 
-.login-div:before, .register-div:before, .comment:before, .about-section:before, .membership-card:before, .sidebar-container:before {
+.login-div:before, .register-div:before, .comment:before, .map:before, .about-section:before, .membership-card:before, .sidebar-container:before {
   content: "";
   position: absolute;
   background: inherit;
