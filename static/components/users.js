@@ -43,6 +43,9 @@ Vue.component('users', {
                                 <li><hr class="dropdown-divider"></li>
                                 <li><button class="dropdown-item" type="button"v-on:click="sortByUsernameAsc">Korisničkom imenu (rastuće)</button></li>
                                 <li><button class="dropdown-item" type="button" v-on:click="sortByUsernameDesc">Korisničkom imenu (opadajuće)</button></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><button class="dropdown-item" type="button"v-on:click="sortByPointsAsc">Broju poena (rastuće)</button></li>
+                                <li><button class="dropdown-item" type="button" v-on:click="sortByPointsDesc">Broju poena (opadajuće)</button></li>
                             </ul>
                         </div>
                         <div class="dropdown">
@@ -566,6 +569,12 @@ Vue.component('users', {
         },
         sortByRole: function () {
             this.displayedUsers.sort((a, b) => (a.UserType > b.UserType) ? 1 : ((b.UserType > a.UserType) ? -1 : 0));
+        },
+        sortByPointsAsc: function () {
+            this.displayedBuyers.sort((a, b) => a.Points - b.Points);
+        },
+        sortByPointsDesc: function () {
+            this.displayedBuyers.sort((a, b) => b.Points - a.Points);
         },
         filterBuyers: function() {
             let filterResult = [];
