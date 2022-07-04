@@ -3,6 +3,7 @@ package controller;
 import static spark.Spark.get;
 import static spark.Spark.path;
 import static spark.Spark.post;
+import static spark.Spark.put;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -20,6 +21,8 @@ import beans.Content;
 import beans.SportsObject;
 import dao.Repository;
 import dto.ContentDTO;
+import dto.EditContentDTO;
+import services.ContentService;
 import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalTimeAdapter;
 
@@ -34,6 +37,7 @@ public class ContentsController {
 			getContentsForSportsObject();
 			createContent();
 			getContentByName();
+			editContent();
 	
 		});
 	}
@@ -103,6 +107,21 @@ public class ContentsController {
 		
 		
 		});
+	}
+	
+	public static void editContent() {
+		put("/editContent", (req, res) -> {
+			res.type("application/json");
+			String payload = req.body();
+			EditContentDTO editContentDTO = gson.fromJson(payload, EditContentDTO.class);
+			
+			Content content = Repository.getInstance().getContentsDAO().getContentById(editContentDTO.getId());
+			content = ContentService.editContent(editContentDTO, content);
+			
+			return gson.toJson(content);
+				
+		});
+		
 	}
 	
 }

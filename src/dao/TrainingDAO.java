@@ -150,5 +150,23 @@ public class TrainingDAO {
 		}
 		return retVal;
 	}
+	
+	public void editTraining(Training training) {
+		int index = this.findIndexOf(training);
+		 if(index != -1) {
+	            this.trainings.set(index, (Training) training);
+	            this.write();
+	     }
+	}
+	public int findIndexOf(Training training) {
+        int index = -1;
+        for(int i = 0; i < this.trainings.size(); i++) {
+            if(this.trainings.get(i).getId().equals(training.getId())) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    } 
 }
 	

@@ -8,6 +8,7 @@ import beans.Training;
 import beans.TrainingType;
 import dao.Repository;
 import dto.CreateTrainingDTO;
+import dto.EditTrainingDTO;
 
 public class TrainingService {
 	
@@ -41,6 +42,28 @@ public class TrainingService {
 		training.setPrice(Double.parseDouble(createTrainingDTO.getPrice()));
 		Repository.getInstance().getContentsDAO().addContent(content);
 		Repository.getInstance().getTrainingDAO().addTraining(training);
+		return training;
+	}
+	
+	public static Training editTraining(EditTrainingDTO editTrainingDTO, Training training) {
+		//Content content = Repository.getInstance().getContentsDAO().getContentById(editTrainingDTO.getId());
+		
+		
+		training.setName(editTrainingDTO.getName());
+		training.setContentType(editTrainingDTO.getType());
+		training.setDurationMinutes(editTrainingDTO.getDuration());
+		training.setDescription(editTrainingDTO.getDescription());
+		training.setPicture(editTrainingDTO.getPicture());
+		training.setSportsObject(Repository.getInstance().getSportsObjectDAO().getSportsObjectById(editTrainingDTO.getSportsObjectName()));
+		training.setId(editTrainingDTO.getId());
+		Repository.getInstance().getContentsDAO().editContent(training);
+	
+		training.setTrainer(Repository.getInstance().getTrainerDAO().getTrainerById(editTrainingDTO.getTrainerId()));
+		if (editTrainingDTO.getTrainingType().equals("personalni"))
+			training.setTrainingType(TrainingType.PERSONAL);
+		else
+			training.setTrainingType(TrainingType.GROUP);
+		Repository.getInstance().getTrainingDAO().editTraining(training);
 		return training;
 	}
 	

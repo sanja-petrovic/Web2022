@@ -5,9 +5,15 @@ Vue.component('manager-contents', {
 			sportsObject: null,
 			logo: null,
 			sportsObjectContents: null,
+			contentTrainer: null,
             list: [],
             mode: "BROWSE",
             selectedContent: null,
+            nameIsUnique: true,
+            errorExists: false,
+            errorMessage: "",
+            trainingType: "",
+            trainingPrice: 0.0
         }
     },
     template: `
@@ -56,16 +62,17 @@ Vue.component('manager-contents', {
                                 <div class="register-content">
                                         <h3 class="heading" style="font-weight: 500">Izmeni sadržaj</h3>
                                         <form class="myForm" action="">
-                                            <input class="text-box create-input" type="text" v-on:blur="nameUniqueCheck" name="name" v-model="selectedContent.content.Name" placeholder="Naziv"
+                                            <input class="text-box create-input" type="text"  v-on:blur="nameUniqueCheck" name="contentName" v-model="selectedContent.content.Name" placeholder="Naziv"
                                                    required>
-                                            <input class="text-box create-input" type="text" v-model="selectedContent.content.ContentType" name="contentType"
-                                                   placeholder="Tip drugog sadržaja" required>
-                                            <input class="text-box create-input form-control custom-file-input" id="fileUpload" accept="image/*" ref="myFile" type="file" @change="previewFile" required>
+                                            <input class="text-box create-input" type="text" v-if="selectedContent.content.ContentType === 'trening'" v-model="selectedContent.content.ContentType" disabled>
+                                            <input class="text-box create-input" type="text" v-if="selectedContent.content.ContentType !== 'trening'" v-model="selectedContent.content.ContentType" name="contentType"
+                                                   placeholder="Tip sadržaja" required>
+                                            <input class="text-box create-input form-control custom-file-input" id="fileUpload" accept="image/*" ref="myFile" type="file"  required>
                                              <div class="input-group create-input" v-if="selectedContent.content.ContentType === 'trening'">
                                                 <span class="input-group-text" style="width: 5em">Trening</span>
-                                                <input type="radio" class="btn-check" v-model="selectedContent.type" value="Grupni" name="trainingType" id="grupni" autocomplete="off">
+                                                <input type="radio" class="btn-check" v-model="selectedContent.type" value="Grupni" name="type" id="Grupni" autocomplete="off">
                                                 <label class="btn btn-primary flex-grow-1" for="Grupni">Grupni</label>
-                                                <input type="radio" class="btn-check" v-model="selectedContent.type" value="Personalni" name="trainingType"  id="personalni" autocomplete="off">
+                                                <input type="radio" class="btn-check" v-model="selectedContent.type" value="Personalni" name="type"  id="Personalni" autocomplete="off">
                                                 <label class="btn btn-primary flex-grow-1" for="Personalni">Personalni</label>
                                             </div>
                                             <div class="input-group create-input" v-if="selectedContent.content.ContentType === 'trening'">
@@ -87,8 +94,8 @@ Vue.component('manager-contents', {
                 </div>
                 </div>
                 <div>
-                <button class="search-button mt-3 mb-5" id="theButton" v-on:click="editContent" v-if="mode=='EDIT'">Izmeni</button>
-                <button class="search-button mt-3" v-on:click="cancelEditContent" v-if="mode=='EDIT'">Odustani</button>
+                <button class="search-button mt-3 mb-5" id="theButton" v-on:click="editContent(selectedContent)" v-if="mode=='EDIT'">Izmeni</button>
+                <button class="search-button mt-3" v-on:click="cancelEditContent(selectedContent)" v-if="mode=='EDIT'">Odustani</button>
                 </div>
           </div>
     
@@ -191,15 +198,81 @@ Vue.component('manager-contents', {
 				})
 				}
 			).catch(error => console.log(error));
+			console.log(this.list);
 		},
 		selectContent: function(item) {
 			console.log(item);
 			this.mode = "EDIT";
 			this.selectedContent = item;
 		},
-		cancelEditContent: function() {
+		nameUniqueCheck: async function () {
+            let error = false;
+            await axios.get(`/rest/contents/${this.selectedContent.content.Name}`)
+                .then(function response(resp) {
+                    if (resp.data) {
+                        error = true;
+                    }
+                }).catch(function error(err) {
+					
+                    console.log(err);
+                });
+
+            if (error) {
+                this.errorExists = true;
+                this.nameIsUnique = false;
+                this.errorMessage = "Već postoji sadržaj sa tim imenom.";
+                document.getElementById("theButton").disabled = true;
+            } else {
+                this.nameIsUnique = true;
+                document.getElementById("theButton").disabled = false;
+                this.errorExists = false;
+            }
+            event.preventDefault();
+        },
+		cancelEditContent: function(item) {
+			window.location.reload();
 			this.mode = "BROWSE";
-		}
-		
+		},
+		editContent: async function(content) {	
+        	if(content.content.ContentType !== 'trening') { 
+				await axios.put(`/rest/editContent`, {
+		        	name: content.content.Name,
+		            type: content.content.ContentType,
+		            duration: content.content.Duration,
+		            description: content.content.Description,
+		            picture: content.content.Picture,
+		            id: content.content.Id
+		         })
+		         	.then(response => {
+						if(response.data != null) {
+							alert('Uspesno ste izmenili sadrzaj');
+							this.mode = "BROWSE";
+						}
+					})
+		            .catch(error => console.log(error));
+           }
+           else {
+		   		await axios.put(`/rest/editTraining`, {
+		        	name: content.content.Name,
+		            type: content.content.ContentType,
+		            duration: content.content.Duration,
+		            description: content.content.Description,
+		            picture: content.content.Picture,
+		            id: content.content.Id,
+		            sportsObjectName: this.sportsObject.name,
+		            price: content.price,
+		            trainerId: content.trainer.Id,
+		            trainingType: content.type,
+		            
+		         })
+		         	.then(response => {
+						if(response.data != null) {
+							alert('Uspesno ste izmenili sadrzaj');
+							this.mode = "BROWSE";
+						}
+					})
+		            .catch(error => console.log(error));
+		   }
+		}	
 	}
 	});

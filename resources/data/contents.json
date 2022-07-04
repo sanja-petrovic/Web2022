@@ -134,7 +134,7 @@
   {
     "Id": "380f002f-be4f-4c02-8883-c24c4916d192",
     "Name": "Masaža lica",
-    "ContentType": "spa",
+    "ContentType": "masaža",
     "SportsObject": {
       "name": "LuxSpa"
     },
@@ -144,12 +144,12 @@
   },
   {
     "Id": "0a83a23b-1bea-41ae-99de-74e107de7b31",
-    "Name": "Personalni trening",
+    "Name": "Personalni trening LUKA",
     "ContentType": "trening",
     "SportsObject": {
       "name": "Classic Gym"
     },
-    "Duration": 60,
+    "Duration": 158,
     "Description": "Nudimo različite oblike rekreacije koje redovnim upražnjavanjem mogu poboljšati opšte psihofizičko stanje i pozitivno uticati na radne i životne sposobnosti. U zavisnosti od godina, pola, trenutnog stanja fizičke kondicije kao i želja, pomoći ćemo vam da napravite pravi izbor aktivnosti.",
     "Picture": "../images/personal.jpg"
   },
@@ -167,12 +167,12 @@
   {
     "Id": "4095fb1c-60b5-4979-a4eb-d15a77765f67",
     "Name": "Masaža tela",
-    "ContentType": "spa",
+    "ContentType": "masaža",
     "SportsObject": {
       "name": "LuxSpa"
     },
-    "Duration": 15,
-    "Description": "Masaža tela u prijatnom ambijentu uz mirišljave sveće.",
+    "Duration": 50,
+    "Description": "Relaksirajuća i lagana masaža tela u prijatnoj i opuštajućoj atmosferi.",
     "Picture": "resources/deep.jpg"
   },
   {
@@ -185,16 +185,5 @@
     "Duration": 60,
     "Description": "Karate grupni treninzi najbolji u gradu.",
     "Picture": "../images/karate.jpg"
-  },
-  {
-    "Id": "bb666b8e-6e27-4ec4-a3fa-0768854484f1",
-    "Name": "RMP trening",
-    "ContentType": "trening",
-    "SportsObject": {
-      "name": "Classic Gym"
-    },
-    "Duration": 45,
-    "Description": "Profesionalni personalni trening sa najbržim rezultatima.",
-    "Picture": "../images/cardio.jpg"
   }
 ]
