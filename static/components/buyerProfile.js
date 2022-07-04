@@ -61,9 +61,9 @@ Vue.component('buyer-profile-page', {
                                        v-model="user.Gender">
                                 <div v-if="editable" class="input-group create-input" style="width: 100%;">
                                     <span class="input-group-text" style="height: 43px">Pol</span>
-                                    <input type="radio" class="btn-check" value="Muški" v-model="user.gender" name="gender" id="male" autocomplete="off">
+                                    <input type="radio" class="btn-check" value="Muški" v-model="user.Gender" name="gender" id="male" autocomplete="off">
                                     <label class="btn btn-primary flex-grow-1" style="color: white; padding: 10px;" for="male">Muški</label>
-                                    <input type="radio" class="btn-check" value="Ženski" name="gender" v-model="user.gender" id="female" autocomplete="off">
+                                    <input type="radio" class="btn-check" value="Ženski" name="gender" v-model="user.Gender" id="female" autocomplete="off">
                                     <label class="btn btn-primary flex-grow-1" style="color: white; padding: 10px" for="female">Ženski</label>
                                 </div>
                                 <label for="date">Datum rođenja</label>
@@ -75,7 +75,7 @@ Vue.component('buyer-profile-page', {
                     </div>
                     <div class="tab-pane fade" id="pills-trainings" v-if="this.user.UserType === 'Kupac'" role="tabpanel" aria-labelledby="pills-home-tab">
                         <div class="center-container">
-                            <div class="buttons-galore" style="margin-left: 0;">
+                            <div class="buttons-galore" style="max-width: 100%; padding: 2em; margin: 0" >
                                 <div class="filter-and-sort">
                                     <div class="dropdown">
                                         <button class="sort-button" type="button" id="sort-button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -126,7 +126,7 @@ Vue.component('buyer-profile-page', {
                                 </div>
                             </div>
 
-                            <div class="input-group mb-3">
+                            <div class="input-group mb-3" style="max-width: 100%; padding: 0 2em">
                                 <input type="text" class="form-control" v-model="searchParam.sportsObject" placeholder="Sportski objekat">
                                 <input type="number" class="form-control" v-model="searchParam.priceMin" placeholder="Cena (min)">
                                 <input type="number" class="form-control" v-model="searchParam.priceMax" placeholder="Cena (max)">
@@ -136,6 +136,7 @@ Vue.component('buyer-profile-page', {
                                     <i class="fa fa-search"></i>
                                 </div>
                             </div>
+                            <hr>
                             <div class="users-table">
                                 <table class="table table-borderless">
                                     <thead>

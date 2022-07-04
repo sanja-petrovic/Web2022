@@ -91895,10 +91895,21 @@ textarea {
 }
 .center-container .buttons-galore, .center-container .filter-and-sort {
   margin-left: 0;
+  width: 100%;
+  margin-bottom: -1em;
 }
 .center-container .users-table {
-  padding: 2em;
   width: 100%;
+  margin-top: -1em;
+}
+
+hr {
+  border: 0;
+  clear: both;
+  display: block;
+  width: 95%;
+  background-color: #6382ff;
+  height: 1px;
 }
 
 .main-container {
