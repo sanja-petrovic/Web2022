@@ -99,6 +99,19 @@ public class TrainerDAO {
 		return retVal;
 	}
 	
+	public Trainer getTrainerById(String id) {
+		Trainer retVal = null;
+		
+		for(Trainer t : this.trainers) {
+			if(t.getId().equals(id)) {
+				retVal = t;
+				break;
+			}
+		}
+		
+		return retVal;
+	}
+	
 	public void addTrainer(Trainer t) {
 		this.trainers.add(t);
 		this.write();

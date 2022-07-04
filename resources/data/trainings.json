@@ -83,17 +83,17 @@
   {
     "TrainingType": "Personalni",
     "Trainer": {
-      "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
-      "Username": "jovana"
+      "Id": "48e7eafb-42cb-4c95-90b7-371fa56dcbb3",
+      "Username": "sara"
     },
-    "Price": 1500.0,
+    "Price": 1200.0,
     "Id": "0a83a23b-1bea-41ae-99de-74e107de7b31"
   },
   {
     "TrainingType": "Grupni",
     "Trainer": {
-      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
-      "Username": "danilo"
+      "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
+      "Username": "jovana"
     },
     "Price": 0.0,
     "Id": "1c537917-b5ae-470c-804d-b7bc78622341"
@@ -106,5 +106,14 @@
     },
     "Price": 0.0,
     "Id": "502e4c70-dbe6-4270-89f7-8a2e7880335a"
+  },
+  {
+    "TrainingType": "Grupni",
+    "Trainer": {
+      "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
+      "Username": "jovana"
+    },
+    "Price": 1000.0,
+    "Id": "7d1d7507-1bf7-4ee0-87c5-f3b05d1b7309"
   }
 ]

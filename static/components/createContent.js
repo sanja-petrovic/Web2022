@@ -46,7 +46,7 @@ Vue.component('create-content', {
                             class="d-inline-block">{{sportsObject.location.address.city}}, {{sportsObject.location.address.postcode}}</span></span><br>
                         <span class="d-inline-block"><i 
                                                         style="margin-right: 1.5em; color: #9BE3C3"></i><span
-                            class="d-inline-block">{{sportsObject.location.latitude}}, {{sportsObject.location.longitude}}</span></span><br>
+                            class="d-inline-block">{{sportsObject.location.latitude.toFixed(5)}}, {{sportsObject.location.longitude.toFixed(5)}}</span></span><br>
                         
                         <span class="d-inline-block"><i class="fa fa-star"
                                                         style="margin-right: 0.4em; color: #ADE9AA"></i><span
@@ -229,7 +229,7 @@ Vue.component('create-content', {
 	                        .then(function response(resp){
 	                            oopsie = false;
 	                            console.log(resp.data); 
-	                            alert(message);
+	                            
 	                        }).catch(function error(err) {
 	                            alert("Greška na serveru!");
 	                            oopsie = true;
@@ -237,12 +237,14 @@ Vue.component('create-content', {
 	                }
 	
 				}
-               
-            
+                         
                 if(oopsie) {
                     this.$router.replace("/dodaj-sadrzaj");
                 } else {
-                    this.$router.replace("/");
+					alert(message);
+                    this.$router.replace("/sadrzaji");  
+                    window.location.reload();
+                    
                 }
                 this.errorExists = oopsie;
                 
