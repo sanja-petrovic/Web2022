@@ -7,10 +7,10 @@ Vue.component('buyer-profile-page', {
             editable: false,
             searchParam: {
                 sportsObject: "",
-                priceMin: 0,
-                priceMax: Number.POSITIVE_INFINITY,
-                checkInMin: new Date(1970, 1, 1),
-                checkInMax: Date.now()
+                priceMin: null,
+                priceMax: null,
+                checkInMin: null,
+                checkInMax: null
             },
             filterParam: {
                 sportsObjectType: [],
@@ -219,8 +219,66 @@ Vue.component('buyer-profile-page', {
                 .catch(error => console.log(error));
         },
         combinedSearch : function () {
+            /*sportsObject: "",
+                priceMin: null,
+                priceMax: Number.POSITIVE_INFINITY,
+                checkInMin: new Date(1970, 1, 1),
+                checkInMax: Date.now()*/
+            let searchResult = [];
+            let priceMin;
+            let priceMax;
+            let checkInMin;
+            let checkInMax;
+            if(this.searchParam.priceMin === null || this.searchParam.priceMin === "") {
+                priceMin = 0;
+            } else {
+                priceMin = this.searchParam.priceMin;
+            }
 
+            if(this.searchParam.priceMax == null || this.searchParam.priceMax === "") {
+                priceMax = Number.MAX_VALUE;
+            } else {
+                priceMax = this.searchParam.priceMax;
+            }
+
+            if(this.searchParam.checkInMin == null || this.searchParam.checkInMin === "") {
+                checkInMin = new Date(1970, 1, 1, 0, 0, 0);
+            } else {
+                checkInMin = this.searchParam.checkInMin;
+            }
+
+            if(this.searchParam.checkInMax == null || this.searchParam.checkInMax === "") {
+                checkInMax = new Date(2023, 1, 1);
+            } else {
+                checkInMax = this.searchParam.checkInMax;
+            }
+            for(let i = 0; i < this.trainingHistory.length; i++) {
+                let invalidCount = 0;
+                if(this.compareNames(this.trainingHistory[i].Training.SportsObject.name, this.searchParam.sportsObject) &&
+                this.comparePrices(this.trainingHistory[i].Training.Price, priceMin, priceMax) &&
+                this.compareDates(this.trainingHistory[i].CheckIn, checkInMin, checkInMax)) {
+                    searchResult.push(this.trainingHistory[i]);
+                } else {
+                    invalidCount += 1;
+                }
+            }
+            this.displayedTrainings = searchResult;
         },
+        compareNames: function (name, searchParameter) {
+            return name.toLowerCase().trim().includes(searchParameter);
+        },
+        comparePrices: function (price, min, max) {
+          return price >= min && price <= max;
+        },
+        compareDates: function (date, min, max) {
+            let actualDate = this.convertDate(date);
+            let minDate = new Date(min);
+            let maxDate = new Date(max);
+            let x = actualDate >= minDate;
+            let y = actualDate <= maxDate;
+            return actualDate >= minDate && actualDate <= maxDate;
+        },
+
         filterTrainings: function () {
 
         },
@@ -256,7 +314,7 @@ Vue.component('buyer-profile-page', {
             let time = dateAndTime[1];
             let dateSplitted = date.split('.');
             let timeSplitted = time.split(':');
-            let actualDate = new Date(dateSplitted[2], dateSplitted[1], dateSplitted[0], timeSplitted[0], timeSplitted[1]);
+            let actualDate = new Date(dateSplitted[2], dateSplitted[1] - 1, dateSplitted[0], timeSplitted[0], timeSplitted[1]);
             return actualDate;
         }
 

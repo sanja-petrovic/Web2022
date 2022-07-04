@@ -66,7 +66,7 @@ public class TrainerDAO {
 		}
 	}
 	
-	public void fillTrainers() {
+	public void fillTrainingHistory() {
 		for(Trainer t : this.trainers) {
 			t.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(t.getId()));
 		}
