@@ -5,6 +5,7 @@ Vue.component('buyer-profile-page', {
             trainingHistory: null,
             displayedTrainings: null,
             editable: false,
+            sportsObjectTypes: [],
             searchParam: {
                 sportsObject: "",
                 priceMin: null,
@@ -98,24 +99,24 @@ Vue.component('buyer-profile-page', {
                                         <div class="dropdown-menu p-4">
                                             <div class="mb-3">
                                                 <p style="font-weight: 600;">Tip sportskog objekta</p>
-                                                <div class="form-check">
-                                                    <input class="form-check-input filter-checks-buyer" type="checkbox" value="" v-on:change="filterTrainings" id="bronzani">
-                                                    <label class="form-check-label" for="bronze">
-                                                        Bronzani
+                                                <div class="form-check" v-for="item in sportsObjectTypes">
+                                                    <input class="form-check-input filter-checks-sports-object-type" type="checkbox" value="" v-on:change="filterTrainings" :id="item">
+                                                    <label class="form-check-label">
+                                                        {{ item }}
                                                     </label>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
                                                 <p style="font-weight: 600;">Tip treninga</p>
                                                 <div class="form-check">
-                                                    <input class="form-check-input filter-checks-roles" type="checkbox" value="" v-on:change="filterTrainings" id="kupac">
-                                                    <label class="form-check-label" for="kupac">
+                                                    <input class="form-check-input filter-checks-training-type" type="checkbox" value="" v-on:change="filterTrainings" id="personalni">
+                                                    <label class="form-check-label" for="personal">
                                                         Personalni
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input filter-checks-roles" type="checkbox" value="" v-on:change="filterTrainings" id="kupac">
-                                                    <label class="form-check-label" for="kupac">
+                                                    <input class="form-check-input filter-checks-training-type" type="checkbox" value="" v-on:change="filterTrainings" id="grupni">
+                                                    <label class="form-check-label" for="group">
                                                         Grupni
                                                     </label>
                                                 </div>
@@ -180,6 +181,7 @@ Vue.component('buyer-profile-page', {
             .then(response =>
                 {
                     this.user = response.data;
+
                     if(this.user.UserType === 'Kupac') {
                         this.getTrainingHistoryForBuyer();
                     }
@@ -193,11 +195,23 @@ Vue.component('buyer-profile-page', {
                 .then(response => {
                     this.trainingHistory = response.data;
                     this.displayedTrainings = response.data;
+                    this.getSportsObjectTypes();
                 })
                 .catch(error => console.log(error));
         },
         formatTrainingDate: function (date) {
             return date.toLocaleDateString();
+        },
+        getSportsObjectTypes : function () {
+            let types = [];
+            for(let i = 0; i < this.trainingHistory.length; i++) {
+                this.sportsObjectTypes.push(this.trainingHistory[i].Training.SportsObject.type);
+            }
+            this.sportsObjectTypes = this.sportsObjectTypes.filter( function( item, index, inputArray ) {
+                return inputArray.indexOf(item) == index;
+            });
+
+            return types;
         },
         allowEdit: function () {
             let inputs = document.getElementsByClassName('text-box');
@@ -219,11 +233,6 @@ Vue.component('buyer-profile-page', {
                 .catch(error => console.log(error));
         },
         combinedSearch : function () {
-            /*sportsObject: "",
-                priceMin: null,
-                priceMax: Number.POSITIVE_INFINITY,
-                checkInMin: new Date(1970, 1, 1),
-                checkInMax: Date.now()*/
             let searchResult = [];
             let priceMin;
             let priceMax;
@@ -278,10 +287,6 @@ Vue.component('buyer-profile-page', {
             let y = actualDate <= maxDate;
             return actualDate >= minDate && actualDate <= maxDate;
         },
-
-        filterTrainings: function () {
-
-        },
         sortByNameDesc: function() {
             this.displayedTrainings.sort((b, a) => (a.Training.SportsObject.name > b.Training.SportsObject.name) ? 1 : ((b.Training.SportsObject.name > a.Training.SportsObject.name) ? -1 : 0));
         },
@@ -316,6 +321,48 @@ Vue.component('buyer-profile-page', {
             let timeSplitted = time.split(':');
             let actualDate = new Date(dateSplitted[2], dateSplitted[1] - 1, dateSplitted[0], timeSplitted[0], timeSplitted[1]);
             return actualDate;
+        },
+        filterTrainings : function () {
+            let filterResult = [];
+            let filtersTrainingType = document.getElementsByClassName("filter-checks-training-type");
+            let filtersSportsObjectType = document.getElementsByClassName("filter-checks-sports-object-type");
+            let checkedTraining = [];
+            let checkedSportsObject = []
+            for(let i = 0; i < filtersTrainingType.length; i++) {
+                if(filtersTrainingType[i].checked) {
+                    checkedTraining.push(filtersTrainingType[i]);
+                }
+            }
+            for(let i = 0; i < filtersSportsObjectType.length; i++) {
+                if(filtersSportsObjectType[i].checked) {
+                    checkedSportsObject.push(filtersSportsObjectType[i]);
+                }
+            }
+            if(checkedTraining.length === 0 && checkedSportsObject.length === 0) {
+                this.displayedTrainings = this.trainingHistory;
+                return;
+            }
+
+            for(let i = 0; i < this.trainingHistory.length; i++) {
+                for(let j = 0; j < checkedTraining.length; j++ ) {
+                    if(this.trainingHistory[i].Training.TrainingType.toLowerCase() === checkedTraining[j].id.toLowerCase()) {
+                        filterResult.push(this.trainingHistory[i]);
+                        break;
+                    }
+                }
+                for(let j = 0; j < checkedSportsObject.length; j++) {
+                    if(this.trainingHistory[i].Training.SportsObject.type.toLowerCase() === checkedSportsObject[j].id.toLowerCase()) {
+                        filterResult.push(this.trainingHistory[i]);
+                        break;
+                    }
+                }
+            }
+
+            filterResult = filterResult.filter( function( item, index, inputArray ) {
+                return inputArray.indexOf(item) == index;
+            });
+
+            this.displayedTrainings = filterResult;
         }
 
     }
