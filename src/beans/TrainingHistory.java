@@ -2,10 +2,21 @@ package beans;
 
 import java.time.LocalDateTime;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class TrainingHistory {
+	@SerializedName("Trainer")
+	@Expose
 	private Trainer trainer;
+	@SerializedName("Training")
+	@Expose
 	private Training training;
+	@SerializedName("Buyer")
+	@Expose
 	private Buyer buyer;
+	@SerializedName("CheckIn")
+	@Expose
 	private LocalDateTime checkIn;
 	
 	public TrainingHistory(Buyer buyer, Training training, LocalDateTime checkIn) {

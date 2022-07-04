@@ -32,6 +32,7 @@ public class TrainingHistoryDAO {
 		this.load();
 	}
 	
+	
 	public void createGson() {
 	    this.gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).excludeFieldsWithoutExposeAnnotation().create();
 	}
@@ -41,22 +42,21 @@ public class TrainingHistoryDAO {
 			this.createGson();
 		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/traininghistories.json"));
 		    this.trainingHistories = gson.fromJson(reader, new TypeToken<ArrayList<TrainingHistory>>() {}.getType());
-		    for(TrainingHistory th : this.trainingHistories) {
-		    	this.fillData(th);
-		    }
 		    reader.close();
 		} catch (Exception ex) {
 		    ex.printStackTrace();
 		}
 	}
 	
-	public void fillData(TrainingHistory th) {
-		Buyer b = Repository.getInstance().getBuyerDAO().getBuyerByUsername(th.getBuyer().getUsername());
-        Trainer t = null;
-        if(th.getTrainer() != null) {
-            t = Repository.getInstance().getTrainerDAO().getTrainerByUsername(th.getTrainer().getUsername());
-        }
-        Training tr = Repository.getInstance().getTrainingDAO().getTrainingById(th.getTraining().getId());
+	public void fillData() {
+		for(TrainingHistory th : this.trainingHistories) {
+			th.setBuyer(Repository.getInstance().getBuyerDAO().getBuyerByUsername(th.getBuyer().getUsername()));
+	        /*if(th.getTrainer() != null) {
+	            th.setTrainer(Repository.getInstance().getTrainerDAO().getTrainerByUsername(th.getTrainer().getUsername()));
+	        }*/
+	        th.setTraining(Repository.getInstance().getTrainingDAO().getTrainingById(th.getTraining().getId()));
+	    }
+		
 	}
 	
 	

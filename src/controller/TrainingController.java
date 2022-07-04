@@ -21,11 +21,12 @@ import dto.EditTrainingDTO;
 import services.TrainingService;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
+import util.adapters.LocalDateTimeAdapter2;
 import util.adapters.LocalTimeAdapter;
 
 public class TrainingController {
 		
-	private static Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).serializeNulls().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
+	private static Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).serializeNulls().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter2()).create();
 	private static String basePath = "/rest";
 	
 	public void init() {

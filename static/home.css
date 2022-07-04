@@ -11171,7 +11171,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-#pills-tabContent, .sidebar-container, .membership-card, .about-section, .map, .bla, .comment, .register-div, .login-div {
+#pills-tabContent, .sidebar-container, .membership-card, .map, .bla, .comment, .register-div, .login-div {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -22573,7 +22573,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-#pills-tabContent, .sidebar-container, .membership-card, .about-section, .map, .bla, .comment, .register-div, .login-div {
+#pills-tabContent, .sidebar-container, .membership-card, .map, .bla, .comment, .register-div, .login-div {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -34056,7 +34056,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-#pills-tabContent, .sidebar-container, .membership-card, .about-section, .map, .bla, .comment, .register-div, .login-div {
+#pills-tabContent, .sidebar-container, .membership-card, .map, .bla, .comment, .register-div, .login-div {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -45541,7 +45541,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-#pills-tabContent, .sidebar-container, .membership-card, .about-section, .map, .bla, .comment, .login-div, .register-div {
+#pills-tabContent, .sidebar-container, .membership-card, .map, .bla, .comment, .login-div, .register-div {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -57084,7 +57084,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-#pills-tabContent, .sidebar-container, .membership-card, .about-section, .map, .bla, .comment, .login-div, .register-div {
+#pills-tabContent, .sidebar-container, .membership-card, .map, .bla, .comment, .login-div, .register-div {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -68716,7 +68716,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-#pills-tabContent, .sidebar-container, .membership-card, .about-section, .login-div, .register-div, .comment, .bla, .map {
+#pills-tabContent, .sidebar-container, .membership-card, .login-div, .register-div, .comment, .bla, .map {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -68972,8 +68972,6 @@ textarea {
 }
 
 .about-section {
-  width: 60vw;
-  min-height: 60vh;
   padding: 2vw;
   flex-direction: row;
   margin-bottom: 2vw;
@@ -69002,6 +69000,16 @@ textarea {
   display: flex;
   flex-direction: column;
   padding: 2vw;
+}
+
+.profile-button-div {
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+}
+.profile-button-div button {
+  font-size: 12px;
+  margin-top: -1em;
 }
 
 /*!
@@ -80171,7 +80179,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-#pills-tabContent, .sidebar-container, .login-div, .register-div, .comment, .bla, .map, .about-section, .membership-card {
+#pills-tabContent, .sidebar-container, .login-div, .register-div, .comment, .bla, .map, .membership-card {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -91582,7 +91590,7 @@ textarea.form-control-lg {
   background-color: #d57c91;
 }
 
-#pills-tabContent, .login-div, .register-div, .comment, .bla, .map, .about-section, .membership-card, .sidebar-container {
+#pills-tabContent, .login-div, .register-div, .comment, .bla, .map, .membership-card, .sidebar-container {
   display: flex;
   border-radius: 15px;
   box-shadow: 0 0 1em 0 rgba(255, 255, 255, 0.1);
@@ -91877,6 +91885,31 @@ textarea {
 .buttons-galore button a {
   text-decoration: none;
   color: white;
+}
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.center-container .buttons-galore, .center-container .filter-and-sort {
+  margin-left: 0;
+  width: 100%;
+  margin-bottom: -1em;
+}
+.center-container .users-table {
+  width: 100%;
+  margin-top: -1em;
+}
+
+hr {
+  border: 0;
+  clear: both;
+  display: block;
+  width: 95%;
+  background-color: #6382ff;
+  height: 1px;
 }
 
 .main-container {

@@ -34,6 +34,9 @@ public class TrainingDAO {
 	
 	public TrainingDAO() {
 		this.trainings = new ArrayList<>();
+	}
+	
+	public void init() {
 		this.load();
 	}
 	
@@ -58,10 +61,26 @@ public class TrainingDAO {
 
 	public void fillData(Training t) {
 		Content content = Repository.getInstance().getContentsDAO().getContentById(t.getId());
+		if(content != null) {
+			t.setContentType(content.getContentType());
+			t.setDeletedAt(content.getDeletedAt());
+			t.setDescription(content.getDescription());
+			t.setDurationMinutes(content.getDurationMinutes());
+			t.setName(content.getName());
+			t.setSportsObject(content.getSportsObject());
+			t.setPicture(content.getPicture());
+			
+		}
 		SportsObject sportsObject = Repository.getInstance().getSportsObjectDAO().getSportsObjectById(content.getSportsObject().getName());
-		Trainer trainer = Repository.getInstance().getTrainerDAO().getTrainerByUsername(t.getTrainer().getUsername());
-		t.setTrainer(trainer);
+		//Trainer trainer = Repository.getInstance().getTrainerDAO().getTrainerByUsername(t.getTrainer().getUsername());
+		//t.setTrainer(trainer);
 		t.setSportsObject(sportsObject);
+	}
+	
+	public void fillTrainers() {
+		for(Training t : this.trainings) {
+			t.setTrainer(Repository.getInstance().getTrainerDAO().getTrainerByUsername(t.getTrainer().getUsername()));
+		}
 	}
 	
 	public ArrayList<Training> getTrainings() {
@@ -120,6 +139,7 @@ public class TrainingDAO {
 			if(t.getId().equals(id)) {
 				User u = Repository.getInstance().getTrainerDAO().getTrainerByUsername(t.getTrainer().getUsername());
 				retVal = (Trainer) u;
+				retVal.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(u.getId()));
 				break;
 			}
 		

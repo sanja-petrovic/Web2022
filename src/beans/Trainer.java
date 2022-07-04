@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import com.google.gson.annotations.SerializedName;
 
 import util.annotations.Exclude;
+import util.annotations.ExcludeUser;
 
 public class Trainer extends User {
 
-	@Exclude
+	@ExcludeUser
 	@SerializedName("TrainingHistory")
 	private ArrayList<Training> trainingHistory;
 	

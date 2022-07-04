@@ -22,7 +22,6 @@ public class UserService {
 	}
 
 	public static User updateUser(ProfileDTO updatedUser, User u) {
-        u.setUsername(updatedUser.getUsername());
         u.setGender(GenderParser.parse(updatedUser.getGender()));
         u.setName(updatedUser.getName());
         u.setSurname(updatedUser.getSurname());

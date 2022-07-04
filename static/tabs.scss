@@ -69,3 +69,30 @@
     }
   }
 }
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .buttons-galore, .filter-and-sort {
+    margin-left: 0;
+    width: 100%;
+    margin-bottom: -1em;
+  }
+
+  .users-table {
+    width: 100%;
+    margin-top: -1em;
+  }
+}
+
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 95%;
+  background-color: $primary-button-color;
+  height: 1px;
+}

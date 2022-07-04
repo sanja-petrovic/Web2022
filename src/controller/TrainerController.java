@@ -11,6 +11,7 @@ import java.time.LocalTime;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import beans.Trainer;
 import beans.User;
 import dao.Repository;
 import dto.RegisterUserDTO;
@@ -28,6 +29,7 @@ public class TrainerController {
 		path(basePath, () -> {
 			getTrainers();
 			createTrainer();
+			getTrainer();
 		});
 	}
 	
@@ -37,6 +39,14 @@ public class TrainerController {
 		});
 	}
 	
+	public static void getTrainer() {
+		get("/trainers/:id", (req, res) -> {
+			res.type("application/json");
+			String id = req.params(":id");
+			Trainer trainer = Repository.getInstance().getTrainerDAO().getTrainerByUsername(id);
+			return gson.toJson(trainer);
+		});
+	}
 	
 	public static void createTrainer() {
 		post("/create-trainer", (req, res) -> {
