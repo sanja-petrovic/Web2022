@@ -12,15 +12,12 @@ import java.time.LocalTime;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import beans.Content;
 import beans.Trainer;
 import beans.Training;
 import beans.TrainingType;
 import dao.Repository;
 import dto.CreateTrainingDTO;
-import dto.EditContentDTO;
 import dto.EditTrainingDTO;
-import services.ContentService;
 import services.TrainingService;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
@@ -91,10 +88,7 @@ public class TrainingController {
 			res.type("application/json");
 			String payload = req.body();
 			EditTrainingDTO editTrainingDTO = gson.fromJson(payload, EditTrainingDTO.class);
-			
-			Training training = Repository.getInstance().getTrainingDAO().getTrainingById(editTrainingDTO.getId());
-			training = TrainingService.editTraining(editTrainingDTO, training);
-			
+			Training training = TrainingService.editTraining(editTrainingDTO);
 			return gson.toJson(training);
 				
 		});

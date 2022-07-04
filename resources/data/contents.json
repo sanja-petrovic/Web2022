@@ -144,12 +144,12 @@
   },
   {
     "Id": "0a83a23b-1bea-41ae-99de-74e107de7b31",
-    "Name": "Personalni trening LUKA",
+    "Name": "Personalni trening 1",
     "ContentType": "trening",
     "SportsObject": {
       "name": "Classic Gym"
     },
-    "Duration": 158,
+    "Duration": 128,
     "Description": "Nudimo različite oblike rekreacije koje redovnim upražnjavanjem mogu poboljšati opšte psihofizičko stanje i pozitivno uticati na radne i životne sposobnosti. U zavisnosti od godina, pola, trenutnog stanja fizičke kondicije kao i želja, pomoći ćemo vam da napravite pravi izbor aktivnosti.",
     "Picture": "../images/personal.jpg"
   },

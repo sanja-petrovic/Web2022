@@ -45,21 +45,11 @@ public class TrainingService {
 		return training;
 	}
 	
-	public static Training editTraining(EditTrainingDTO editTrainingDTO, Training training) {
-		//Content content = Repository.getInstance().getContentsDAO().getContentById(editTrainingDTO.getId());
-		
-		
-		training.setName(editTrainingDTO.getName());
-		training.setContentType(editTrainingDTO.getType());
-		training.setDurationMinutes(editTrainingDTO.getDuration());
-		training.setDescription(editTrainingDTO.getDescription());
-		training.setPicture(editTrainingDTO.getPicture());
-		training.setSportsObject(Repository.getInstance().getSportsObjectDAO().getSportsObjectById(editTrainingDTO.getSportsObjectName()));
-		training.setId(editTrainingDTO.getId());
-		Repository.getInstance().getContentsDAO().editContent(training);
-	
+	public static Training editTraining(EditTrainingDTO editTrainingDTO) {
+		Training training = Repository.getInstance().getTrainingDAO().getTrainingById(editTrainingDTO.getId());
+		training.setPrice(Double.parseDouble(editTrainingDTO.getPrice()));
 		training.setTrainer(Repository.getInstance().getTrainerDAO().getTrainerById(editTrainingDTO.getTrainerId()));
-		if (editTrainingDTO.getTrainingType().equals("personalni"))
+		if (editTrainingDTO.getTrainingType().toString().equals("Personalni"))
 			training.setTrainingType(TrainingType.PERSONAL);
 		else
 			training.setTrainingType(TrainingType.GROUP);

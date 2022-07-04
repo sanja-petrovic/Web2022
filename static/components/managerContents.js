@@ -252,27 +252,38 @@ Vue.component('manager-contents', {
 		            .catch(error => console.log(error));
            }
            else {
-		   		await axios.put(`/rest/editTraining`, {
+		   		await axios.put(`/rest/editContent`, {
 		        	name: content.content.Name,
 		            type: content.content.ContentType,
 		            duration: content.content.Duration,
 		            description: content.content.Description,
 		            picture: content.content.Picture,
-		            id: content.content.Id,
-		            sportsObjectName: this.sportsObject.name,
-		            price: content.price,
-		            trainerId: content.trainer.Id,
-		            trainingType: content.type,
-		            
+		            id: content.content.Id  
 		         })
-		         	.then(response => {
-						if(response.data != null) {
-							alert('Uspesno ste izmenili sadrzaj');
-							this.mode = "BROWSE";
-						}
-					})
-		            .catch(error => console.log(error));
+		         .then(response => {
+					if(response.data != null) 
+						this.editTraining(content);
+				})
+		        .catch(error => console.log(error));
 		   }
-		}	
+		},
+		editTraining: async function(content) {
+			await axios.put(`/rest/editTraining`, {
+					id: content.content.Id,
+					price: content.price,
+					trainerId: content.trainer.Id,
+		        	name: content.content.Name,
+		            trainingType: content.type,		             
+		         })
+		         .then(resp => {
+					if(resp.data != null) {
+						alert('Uspesno ste izmenili trening');
+						console.log(resp.data);
+						this.mode = "BROWSE";
+					}
+				})
+		        .catch(error => console.log(error));
+		    
+		},	
 	}
 	});
