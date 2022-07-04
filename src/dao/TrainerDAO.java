@@ -15,6 +15,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
 import beans.Trainer;
+import beans.Training;
 import beans.User;
 import util.adapters.LocalDateTimeAdapter;
 
@@ -22,12 +23,14 @@ public class TrainerDAO {
 
 	private Gson gson;
 	private ArrayList<Trainer> trainers;
-	private static boolean trainingHistoryFilled = false;
 	
 	
 	public TrainerDAO() {
 		this.trainers = new ArrayList<>();
 		this.createGson();
+	}
+	
+	public void init() {
 		this.load();
 	}
 	
@@ -63,11 +66,9 @@ public class TrainerDAO {
 		}
 	}
 	
-	public void fillTrainingHistory() {
-		if(!this.trainingHistoryFilled) {
-			for(Trainer t : this.trainers) {
-				t.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(t.getId()));
-			}
+	public void fillTrainers() {
+		for(Trainer t : this.trainers) {
+			t.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(t.getId()));
 		}
 	}
 	
@@ -91,7 +92,6 @@ public class TrainerDAO {
 		for(Trainer t : this.trainers) {
 			if(t.getUsername().equals(username)) {
 				retVal = t;
-				t.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(t.getId()));
 				break;
 			}
 		}

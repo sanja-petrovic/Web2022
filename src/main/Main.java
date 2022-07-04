@@ -26,8 +26,8 @@ import dao.TrainingHistoryDAO;
 public class Main {
 	
 	public static void main(String[] args) throws IOException {
-		Repository.getInstance();
-		port(3036);
+		Repository.getInstance().loadData();
+		port(3031);
 		staticFiles.externalLocation(new File("./static").getCanonicalPath());
 		UserController userController = new UserController();
 		SportsObjectController sportsObjectController = new SportsObjectController();

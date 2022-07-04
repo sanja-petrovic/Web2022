@@ -39,6 +39,9 @@ public class Repository {
 	}
 	
 	public void loadData() {
+		this.trainingDAO.init();
+		this.trainerDAO.init();
+		this.trainingHistoryDAO.fillData();
 	}
 
 	public UserDAO getUserDAO() {

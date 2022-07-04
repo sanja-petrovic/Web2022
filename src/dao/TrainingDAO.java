@@ -33,6 +33,9 @@ public class TrainingDAO {
 	
 	public TrainingDAO() {
 		this.trainings = new ArrayList<>();
+	}
+	
+	public void init() {
 		this.load();
 	}
 	
@@ -68,9 +71,15 @@ public class TrainingDAO {
 			
 		}
 		SportsObject sportsObject = Repository.getInstance().getSportsObjectDAO().getSportsObjectById(content.getSportsObject().getName());
-		Trainer trainer = Repository.getInstance().getTrainerDAO().getTrainerByUsername(t.getTrainer().getUsername());
-		t.setTrainer(trainer);
+		//Trainer trainer = Repository.getInstance().getTrainerDAO().getTrainerByUsername(t.getTrainer().getUsername());
+		//t.setTrainer(trainer);
 		t.setSportsObject(sportsObject);
+	}
+	
+	public void fillTrainers() {
+		for(Training t : this.trainings) {
+			t.setTrainer(Repository.getInstance().getTrainerDAO().getTrainerByUsername(t.getTrainer().getUsername()));
+		}
 	}
 	
 	public ArrayList<Training> getTrainings() {

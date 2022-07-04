@@ -140,7 +140,9 @@ Vue.component('buyer-profile-page', {
                                     <thead>
                                     <tr>
                                         <th scope="col" class="border-0 font-medium">Naziv treninga</th>
+                                        <th scope="col" class="border-0 font-medium">Tip treninga</th>
                                         <th scope="col" class="border-0 font-medium">Sportski objekat</th>
+                                        <th scope="col" class="border-0 font-medium">Cena</th>
                                         <th scope="col" class="border-0 font-medium">Datum treniranja</th>
                                     </tr>
                                     </thead>
@@ -150,7 +152,13 @@ Vue.component('buyer-profile-page', {
                                             <span class="text-muted">{{ training.Training.Name }}</span><br>
                                         </td>
                                         <td>
+                                            <span class="text-muted">{{ training.Training.TrainingType }}</span><br>
+                                        </td>
+                                        <td>
                                             <span class="text-muted">{{ training.Training.SportsObject.name }}</span><br>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted">{{ training.Training.Price }}</span><br>
                                         </td>
                                         <td>
                                             <span class="text-muted">{{ training.CheckIn }}</span><br>
@@ -217,23 +225,41 @@ Vue.component('buyer-profile-page', {
 
         },
         sortByNameDesc: function() {
-            //this.displayedTrainings.sort((b, a) => (a.Training.SportsObject.name > b.Training.SportsObject.name) ? 1 : ((b.Training.SportsObject.name > a.Training.SportsObject.name) ? -1 : 0));
+            this.displayedTrainings.sort((b, a) => (a.Training.SportsObject.name > b.Training.SportsObject.name) ? 1 : ((b.Training.SportsObject.name > a.Training.SportsObject.name) ? -1 : 0));
         },
         sortByNameAsc: function() {
-            //this.displayedTrainings.sort((a, b) => (a.Training.SportsObject.name > b.Training.SportsObject.name) ? 1 : ((b.Training.SportsObject.name > a.Training.SportsObject.name) ? -1 : 0));
+            this.displayedTrainings.sort((a, b) => (a.Training.SportsObject.name > b.Training.SportsObject.name) ? 1 : ((b.Training.SportsObject.name > a.Training.SportsObject.name) ? -1 : 0));
         },
         sortByPriceDesc : function () {
-            //this.displayedTrainings.sort((a, b) => b.Training.Price - a.Training.Price);
+            this.displayedTrainings.sort((a, b) => b.Training.Price - a.Training.Price);
         },
         sortByPriceAsc: function () {
-            //this.displayedTrainings.sort((a, b) => a.Training.Price - b.Training.Price);
+            this.displayedTrainings.sort((a, b) => a.Training.Price - b.Training.Price);
         },
         sortByDateAsc : function () {
-            //this.displayedTrainings.sort((a, b) => Number(a.CheckIn) - Number(b.CheckIn));
+            this.displayedTrainings.sort((a, b) => {
+                let newA = this.convertDate(a.CheckIn).getTime();
+                let newB = this.convertDate(b.CheckIn).getTime();
+                return newA - newB;
+            });
         },
         sortByDateDesc : function () {
-            //this.displayedTrainings.sort((a, b) => Number(b.CheckIn) - Number(a.CheckIn));
+            this.displayedTrainings.sort((a, b) => {
+                let newA = this.convertDate(a.CheckIn).getTime();
+                let newB = this.convertDate(b.CheckIn).getTime();
+                return newB - newA;
+            });
+        },
+        convertDate: function (formattedDate) {
+            let dateAndTime = formattedDate.split(' ');
+            let date = dateAndTime[0];
+            let time = dateAndTime[1];
+            let dateSplitted = date.split('.');
+            let timeSplitted = time.split(':');
+            let actualDate = new Date(dateSplitted[2], dateSplitted[1], dateSplitted[0], timeSplitted[0], timeSplitted[1]);
+            return actualDate;
         }
+
     }
 
 });
