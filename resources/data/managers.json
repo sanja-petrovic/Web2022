@@ -28,9 +28,7 @@
     "Username": "dimitrije"
   },
   {
-    "SportsObject": {
-    	"name": "Mega Gym"
-    },
+    "SportsObject": null,
     "Id": "66ba17b5-44f0-49d0-bd0b-b927cfe00c37",
     "Username": "nikola"
   },

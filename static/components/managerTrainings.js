@@ -31,11 +31,11 @@ Vue.component('manager-trainings', {
                                             <span class="d-inline-block"><i class="fa-solid fa-chevron-down" style="margin-right: 0.4em;"></i><span class="d-inline-block">Sortiraj po...</span></span>
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="sort-button">
-                                            <li><button class="dropdown-item" type="button">Ceni (rastuće)</button></li>
-                                            <li><button class="dropdown-item" type="button">Ceni (opadajuće)</button></li>
+                                            <li><button class="dropdown-item" type="button" v-on:click="sortByPriceAsc">Ceni (rastuće)</button></li>
+                                            <li><button class="dropdown-item" type="button" v-on:click="sortByPriceDesc">Ceni (opadajuće)</button></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li><button class="dropdown-item" type="button">Datumu prijave (rastuće)</button></li>
-                                            <li><button class="dropdown-item" type="button">Datumu prijave (opadajuće)</button></li>
+                                            <li><button class="dropdown-item" type="button" v-on:click="sortByDateAsc">Datumu prijave (rastuće)</button></li>
+                                            <li><button class="dropdown-item" type="button" v-on:click="sortByDateDesc">Datumu prijave (opadajuće)</button></li>
                                         </ul>
                                     </div>
                                     <div class="dropdown">
@@ -46,13 +46,13 @@ Vue.component('manager-trainings', {
                                             <div class="mb-3">
                                                 <p style="font-weight: 600;">Tip treninga</p>
                                                 <div class="form-check">
-                                                    <input class="form-check-input filter-checks-training-type" type="checkbox" value="" id="personalni">
+                                                    <input class="form-check-input filter-checks-training-type" type="checkbox" value="" v-on:change="filterTrainingsByType" id="personalni">
                                                     <label class="form-check-label" for="personal">
                                                         Personalni
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input filter-checks-training-type" type="checkbox" value="" id="grupni">
+                                                    <input class="form-check-input filter-checks-training-type" type="checkbox" value="" v-on:change="filterTrainingsByType" id="grupni">
                                                     <label class="form-check-label" for="group">
                                                         Grupni
                                                     </label>
@@ -199,9 +199,31 @@ Vue.component('manager-trainings', {
 		        let x = actualDate >= minDate;
 		        let y = actualDate <= maxDate;
 		        return actualDate >= minDate && actualDate <= maxDate;
-		     },
-		    convertDate: function (formattedDate) {
-	            let dateAndTime = formattedDate.split(' ');
+		    },
+		
+        	sortByPriceDesc : function () {
+           		this.displayedTrainings.sort((a, b) => b.Training.Price - a.Training.Price);
+        	},
+        	sortByPriceAsc: function () {
+            	this.displayedTrainings.sort((a, b) => a.Training.Price - b.Training.Price);
+        	},
+        	sortByDateAsc : function () {
+            	this.displayedTrainings.sort((a, b) => {
+                	let newA = this.convertDate(a.CheckIn).getTime();
+                	let newB = this.convertDate(b.CheckIn).getTime();
+               		return newA - newB;
+            	});
+        	},
+        	sortByDateDesc : function () {
+            	this.displayedTrainings.sort((a, b) => {
+                	let newA = this.convertDate(a.CheckIn).getTime();
+                	let newB = this.convertDate(b.CheckIn).getTime();
+                	return newB - newA;
+            	});
+        	},
+     
+        	convertDate: function (formattedDate) {
+	        	let dateAndTime = formattedDate.split(' ');
 	            let date = dateAndTime[0];
 	            let time = dateAndTime[1];
 	            let dateSplitted = date.split('.');
@@ -209,9 +231,36 @@ Vue.component('manager-trainings', {
 	            let actualDate = new Date(dateSplitted[2], dateSplitted[1] - 1, dateSplitted[0], timeSplitted[0], timeSplitted[1]);
 	            return actualDate;
         	},
-			
-			
+        	
+        	filterTrainingsByType: function() {
+				let filterResult = [];
+				let filtersTrainingType = document.getElementsByClassName("filter-checks-training-type");
+            	let checkedTraining = [];
+            	for(let i = 0; i < filtersTrainingType.length; i++) {
+                	if(filtersTrainingType[i].checked) {
+                    	checkedTraining.push(filtersTrainingType[i]);
+                	}	
+            	}
+            	if(checkedTraining.length === 0) {
+                	this.displayedTrainings = this.trainingHistory;
+                	return;
+            	}
+            	for(let i = 0; i < this.trainingHistory.length; i++) {
+                	for(let j = 0; j < checkedTraining.length; j++ ) {
+                    	if(this.trainingHistory[i].Training.TrainingType.toLowerCase() === checkedTraining[j].id.toLowerCase()) {
+                        	filterResult.push(this.trainingHistory[i]);
+                        	break;
+                    	}
+                	}
+                }
+                filterResult = filterResult.filter( function( item, index, inputArray ) {
+                	return inputArray.indexOf(item) == index;
+            	});
+
+            	this.displayedTrainings = filterResult;
 			}
+			
+			
+	}
 
-
-	});
+});
