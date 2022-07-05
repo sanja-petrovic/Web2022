@@ -17,6 +17,9 @@ Vue.component('navBarLoggedIn', {
                         <router-link class="nav-link" to="/treninzi-menadzer" v-if="this.userType === 'Menadžer'">Treninzi</router-link>
                     </li>
                     <li class="nav-item">
+                        <router-link class="nav-link" to="/treninzi-trener" v-if="this.userType === 'Trener'">Treninzi</router-link>
+                    </li>
+                    <li class="nav-item">
                         <router-link class="nav-link" to="/sadrzaji" v-if="this.userType === 'Menadžer'">Sadržaji</router-link>
                     </li>
                      <li class="nav-item">

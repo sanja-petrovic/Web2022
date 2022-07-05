@@ -25,6 +25,7 @@ public class TrainingHistoryController {
 		path(basePath, () -> {
 			getTrainingHistoryForUser();
 			getTrainingHistoryForSportsObject();
+			getTrainingHistoryForTrainer();
 		});
 	}
 	
@@ -37,6 +38,12 @@ public class TrainingHistoryController {
 	public static void getTrainingHistoryForSportsObject() {
 		get("/sportsobjects/:id/trainings", (req, res) -> {
 			return gson.toJson(Repository.getInstance().getTrainingHistoryDAO().getTrainingHistoryForSportsObject(req.params(":id")));
+		});
+	}
+	
+	public static void getTrainingHistoryForTrainer() {
+		get("/trainers/:id/trainings", (req, res) -> {
+			return gson.toJson(Repository.getInstance().getTrainingHistoryDAO().getTrainingHistoryForTrainer(req.params(":id")));
 		});
 	}
 }
