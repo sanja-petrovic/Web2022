@@ -14,7 +14,7 @@ Vue.component('navBarLoggedIn', {
                         <router-link to="/" class="nav-link" aria-current="page">Početna stranica</router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Treninzi</a>
+                        <router-link class="nav-link" to="/treninzi-menadzer" v-if="this.userType === 'Menadžer'">Treninzi</router-link>
                     </li>
                     <li class="nav-item">
                         <router-link class="nav-link" to="/sadrzaji" v-if="this.userType === 'Menadžer'">Sadržaji</router-link>
@@ -23,7 +23,7 @@ Vue.component('navBarLoggedIn', {
                         <router-link class="nav-link" to="/dodaj-sadrzaj" v-if="this.userType === 'Menadžer'">Dodaj sadržaj</router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Članarine</a>
+                        <a class="nav-link" href="#" v-if="this.userType === 'Kupac'">Članarine</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

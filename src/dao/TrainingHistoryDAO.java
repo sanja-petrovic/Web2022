@@ -90,5 +90,16 @@ public class TrainingHistoryDAO {
 
         return trainingHistories;
     }
+    
+    public ArrayList<TrainingHistory> getTrainingHistoryForSportsObject(String sportsObjectName) {
+        ArrayList<TrainingHistory> trainingHistories = new ArrayList<>();
+        for(TrainingHistory th : this.trainingHistories) {
+            if(th.getTraining().getSportsObject().getName().equals(sportsObjectName)) {
+                trainingHistories.add(th);
+            }
+        }
+
+        return trainingHistories;
+    }
 	
 }

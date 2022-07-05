@@ -10,6 +10,7 @@ const CreateTrainer = { template: '<create-trainer></create-trainer>' }
 const CreateManager = { template: '<create-manager></create-manager>' }
 const CreateContent = { template: '<create-content></create-content>'}
 const ManagerContents = { template: '<manager-contents></manager-contents>'}
+const ManagerTrainings = { template: '<manager-trainings></manager-trainings>'}
 const HomePage = { template: '<home-page></home-page>' }
 
 const router = new VueRouter({
@@ -24,6 +25,7 @@ const router = new VueRouter({
         { path: '/dodaj-trenera', component: CreateTrainer },
         { path: '/dodaj-sadrzaj', component: CreateContent },
         { path: '/sadrzaji', component: ManagerContents },
+        { path: '/treninzi-menadzer', component: ManagerTrainings },
         { path: '/dodaj-menadzera', component: CreateManager },
         { path: '/korisnici', name: 'users', component: UserList }
       

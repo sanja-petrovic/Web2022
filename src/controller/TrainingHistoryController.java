@@ -24,12 +24,19 @@ public class TrainingHistoryController {
 	public void init() {
 		path(basePath, () -> {
 			getTrainingHistoryForUser();
+			getTrainingHistoryForSportsObject();
 		});
 	}
 	
 	public static void getTrainingHistoryForUser() {
 		get("/users/:id/trainings", (req, res) -> {
 			return gson.toJson(Repository.getInstance().getTrainingHistoryDAO().getTrainingHistoryForBuyer(req.params(":id")));
+		});
+	}
+	
+	public static void getTrainingHistoryForSportsObject() {
+		get("/sportsobjects/:id/trainings", (req, res) -> {
+			return gson.toJson(Repository.getInstance().getTrainingHistoryDAO().getTrainingHistoryForSportsObject(req.params(":id")));
 		});
 	}
 }
