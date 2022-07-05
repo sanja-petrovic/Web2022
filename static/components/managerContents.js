@@ -55,7 +55,7 @@ Vue.component('manager-contents', {
                     </li>
                 </ul>
             </div>	
-               <div class="create-divs justify-content-center" v-if="mode=='EDIT'">
+               <div class="create-divs justify-content-center" v-if="mode==='EDIT'">
                 <div class="bla">
                     <div class="register-container">
                         <div class="">

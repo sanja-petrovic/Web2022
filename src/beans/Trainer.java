@@ -12,7 +12,7 @@ public class Trainer extends User {
 
 	@ExcludeUser
 	@SerializedName("TrainingHistory")
-	private ArrayList<Training> trainingHistory;
+	private transient ArrayList<Training> trainingHistory;
 	
 	public Trainer(String username, String password, String name, String surname, Gender gender,
 			LocalDate dateOfBirth) {
