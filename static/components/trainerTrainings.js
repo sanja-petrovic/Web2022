@@ -343,7 +343,8 @@ Vue.component('trainer-trainings', {
                                         </td>
                                         <td>
                                             <span class="search-button" type="button"
-                                                  v-if="training.Training.TrainingType === 'Personalni'">Otkaži</span><br>
+                                                  v-if="training.Training.TrainingType === 'Personalni' && ((convertDate(training.ScheduledFor) - Date.now()) / 86400000) > 2" v-on:click="cancelTraining(training)">Otkaži</span>
+                                            <span v-else>Nije moguće.</span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -384,7 +385,9 @@ Vue.component('trainer-trainings', {
         splitTrainings: function () {
             for(let i = 0; i < this.trainingHistory.length; i++) {
                 if (this.trainingHistory[i].ScheduledFor != null && this.convertDate(this.trainingHistory[i].ScheduledFor) >= Date.now()) {
-                    this.scheduledTrainings.push(this.trainingHistory[i]);
+                    if(this.trainingHistory[i].CanceledAt === undefined || this.trainingHistory[i].CanceledAt === null) {
+                        this.scheduledTrainings.push(this.trainingHistory[i]);
+                    }
                 } else {
                     this.pastTrainings.push(this.trainingHistory[i]);
                 }
@@ -407,6 +410,21 @@ Vue.component('trainer-trainings', {
             });
 
             return types;
+        },
+        cancelTraining: function (training) {
+            console.log(training.ScheduledFor);
+            console.log(this.convertDate(training.ScheduledFor));
+            console.log((this.convertDate(training.ScheduledFor) - Date.now()) / 86400000);
+
+            if(training.ScheduledFor) {
+                axios.post(`/rest/trainings/${training.Id}/cancel`)
+                    .then(resp => {
+                        alert("Trening otkazan.")
+                        this.$router.go();
+                    }).catch(err => {
+                    console.log(err.data());
+                })
+            }
         },
 
         combinedSearch: function () {
