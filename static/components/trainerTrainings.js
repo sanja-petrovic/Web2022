@@ -408,6 +408,7 @@ Vue.component('trainer-trainings', {
 
             return types;
         },
+
         combinedSearch: function () {
             let searchResult = [];
             let priceMin;
@@ -480,31 +481,60 @@ Vue.component('trainer-trainings', {
             let y = actualDate <= maxDate;
             return actualDate >= minDate && actualDate <= maxDate;
         },
-        sortByNameDesc: function () {
-            this.displayedPastTrainings.sort((b, a) => (a.Training.SportsObject.name > b.Training.SportsObject.name) ? 1 : ((b.Training.SportsObject.name > a.Training.SportsObject.name) ? -1 : 0));
+        sortByNameDesc: function() {
+            if(this.selectedTab === 'PAST')
+                this.displayedPastTrainings.sort((b, a) => (a.Training.SportsObject.name > b.Training.SportsObject.name) ? 1 : ((b.Training.SportsObject.name > a.Training.SportsObject.name) ? -1 : 0));
+            else
+                this.displayedScheduledTrainings.sort((b, a) => (a.Training.SportsObject.name > b.Training.SportsObject.name) ? 1 : ((b.Training.SportsObject.name > a.Training.SportsObject.name) ? -1 : 0));
         },
-        sortByNameAsc: function () {
-            this.displayedPastTrainings.sort((a, b) => (a.Training.SportsObject.name > b.Training.SportsObject.name) ? 1 : ((b.Training.SportsObject.name > a.Training.SportsObject.name) ? -1 : 0));
+        sortByNameAsc: function() {
+            if(this.selectedTab === 'PAST')
+                this.displayedPastTrainings.sort((a, b) => (a.Training.SportsObject.name > b.Training.SportsObject.name) ? 1 : ((b.Training.SportsObject.name > a.Training.SportsObject.name) ? -1 : 0));
+            else
+                this.displayedScheduledTrainings.sort((a, b) => (a.Training.SportsObject.name > b.Training.SportsObject.name) ? 1 : ((b.Training.SportsObject.name > a.Training.SportsObject.name) ? -1 : 0));
+
         },
-        sortByPriceDesc: function () {
-            this.displayedPastTrainings.sort((a, b) => b.Training.Price - a.Training.Price);
+        sortByPriceDesc : function () {
+            if(this.selectedTab === 'PAST')
+                this.displayedPastTrainings.sort((a, b) => b.Training.Price - a.Training.Price);
+            else
+                this.displayedScheduledTrainings.sort((a, b) => b.Training.Price - a.Training.Price);
         },
         sortByPriceAsc: function () {
-            this.displayedPastTrainings.sort((a, b) => a.Training.Price - b.Training.Price);
+            if(this.selectedTab === 'PAST')
+                this.displayedPastTrainings.sort((a, b) => a.Training.Price - b.Training.Price);
+            else
+                this.displayedScheduledTrainings.sort((a, b) => a.Training.Price - b.Training.Price);
         },
-        sortByDateAsc: function () {
-            this.displayedPastTrainings.sort((a, b) => {
-                let newA = this.convertDate(a.CheckIn).getTime();
-                let newB = this.convertDate(b.CheckIn).getTime();
-                return newA - newB;
-            });
+        sortByDateAsc : function () {
+            if(this.selectedTab === 'PAST') {
+                this.displayedPastTrainings.sort((a, b) => {
+                    let newA = this.convertDate(a.CheckIn).getTime();
+                    let newB = this.convertDate(b.CheckIn).getTime();
+                    return newA - newB;
+                });
+            } else {
+                this.displayedScheduledTrainings.sort((a, b) => {
+                    let newA = this.convertDate(a.CheckIn).getTime();
+                    let newB = this.convertDate(b.CheckIn).getTime();
+                    return newA - newB;
+                });
+            }
         },
-        sortByDateDesc: function () {
-            this.displayedPastTrainings.sort((a, b) => {
-                let newA = this.convertDate(a.CheckIn).getTime();
-                let newB = this.convertDate(b.CheckIn).getTime();
-                return newB - newA;
-            });
+        sortByDateDesc : function () {
+            if(this.selectedTab === 'PAST') {
+                this.displayedPastTrainings.sort((a, b) => {
+                    let newA = this.convertDate(a.CheckIn).getTime();
+                    let newB = this.convertDate(b.CheckIn).getTime();
+                    return newB - newA;
+                });
+            } else {
+                this.displayedScheduledTrainings.sort((a, b) => {
+                    let newA = this.convertDate(a.CheckIn).getTime();
+                    let newB = this.convertDate(b.CheckIn).getTime();
+                    return newB - newA;
+                });
+            }
         },
         convertDate: function (formattedDate) {
             let dateAndTime = formattedDate.split(' ');
@@ -538,16 +568,16 @@ Vue.component('trainer-trainings', {
                     return;
                 }
 
-                for (let i = 0; i < this.displayedPastTrainings.length; i++) {
+                for (let i = 0; i < this.searchResult.past.length; i++) {
                     for (let j = 0; j < checkedTraining.length; j++) {
-                        if (this.displayedPastTrainings[i].Training.TrainingType.toLowerCase() === checkedTraining[j].id.toLowerCase()) {
-                            filterResult.push(this.displayedPastTrainings[i]);
+                        if (this.searchResult.past[i].Training.TrainingType.toLowerCase() === checkedTraining[j].id.toLowerCase()) {
+                            filterResult.push(this.searchResult.past[i]);
                             break;
                         }
                     }
                     for (let j = 0; j < checkedSportsObject.length; j++) {
-                        if (this.displayedPastTrainings[i].Training.SportsObject.type.toLowerCase() === checkedSportsObject[j].id.toLowerCase()) {
-                            filterResult.push(this.displayedPastTrainings[i]);
+                        if (this.searchResult.past[i].Training.SportsObject.type.toLowerCase() === checkedSportsObject[j].id.toLowerCase()) {
+                            filterResult.push(this.searchResult.past[i]);
                             break;
                         }
                     }
@@ -563,16 +593,16 @@ Vue.component('trainer-trainings', {
                     this.displayedScheduledTrainings = this.searchResult.scheduled;
                     return;
                 }
-                for (let i = 0; i < this.displayedScheduledTrainings.length; i++) {
+                for (let i = 0; i < this.this.searchResult.scheduled.length; i++) {
                     for (let j = 0; j < checkedTraining.length; j++) {
-                        if (this.displayedScheduledTrainings[i].Training.TrainingType.toLowerCase() === checkedTraining[j].id.toLowerCase()) {
-                            filterResult.push(this.displayedScheduledTrainings[i]);
+                        if (this.searchResult.scheduled[i].Training.TrainingType.toLowerCase() === checkedTraining[j].id.toLowerCase()) {
+                            filterResult.push(this.searchResult.scheduled[i]);
                             break;
                         }
                     }
                     for (let j = 0; j < checkedSportsObject.length; j++) {
-                        if (this.displayedScheduledTrainings[i].Training.SportsObject.type.toLowerCase() === checkedSportsObject[j].id.toLowerCase()) {
-                            filterResult.push(this.displayedScheduledTrainings[i]);
+                        if (this.searchResult.scheduled[i].Training.SportsObject.type.toLowerCase() === checkedSportsObject[j].id.toLowerCase()) {
+                            filterResult.push(this.searchResult.scheduled[i]);
                             break;
                         }
                     }
@@ -585,7 +615,6 @@ Vue.component('trainer-trainings', {
                 this.displayedScheduledTrainings = filterResult;
             }
         }
-
     }
 
 })
