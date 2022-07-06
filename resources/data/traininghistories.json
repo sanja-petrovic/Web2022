@@ -1,19 +1,32 @@
 [
   {
     "Trainer": {
-      "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
-      "Username": "jovana"
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
     },
     "Training": {
-      "Id": "3b17c4cc-8d4c-4f0c-aea1-5719a36561a6",
-      "Name": "Body Balance",
-      "ContentType": "trening",
-      "SportsObject": {
-        "name": "No Limit Gym"
+      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
+      "Duration": 0
+    },
+   "Buyer": {
+      "Visits": {},
+      "Points": 1200.0,
+      "BuyerType": {
+        "Tier": "Zlatni"
       },
-      "Duration": 60,
-      "Description": "Body Balance trening za um i telo. Predstavlja kombinaciju joge, pilatesa i tai chi-a.",
-      "Picture": "../images/bodybalance.jpg"
+      "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+      "Username": "filip"
+    },
+    "CheckIn": "2022-05-25T00:00:00"
+  },
+  {
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
+      "Duration": 30
     },
     "Buyer": {
       "Visits": {},
@@ -24,7 +37,87 @@
       "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
       "Username": "petar"
     },
-    "CheckIn": "2022-07-05T17:26:42.274515"
+    "CheckIn": "2022-07-02T10:30:00.6057629"
+  },
+  {
+    "Trainer": {
+      "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
+      "Username": "jovana"
+    },
+    "Training": {
+      "Id": "3b17c4cc-8d4c-4f0c-aea1-5719a36561a6",  
+      "Duration": 60
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 9.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
+      "Username": "petar"
+    },
+    "CheckIn": "2022-07-03T17:26:42.274515"
+  },
+  {
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
+      "Duration": 0
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 200.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-03T17:28:41.512039"
+  },
+  {
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
+      "Duration": 0
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 200.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-03T17:36:56.4544396"
+  },
+  {
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
+      "Duration": 0
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 200.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-03T18:14:51.7094583"
   },
   {
     "Trainer": {
@@ -48,6 +141,66 @@
   },
   {
     "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "1e09a425-3567-49ee-acbc-0c601be8db86",
+      "Duration": 0
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 200.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-04T17:30:31.6057629"
+  },
+  {
+    "Trainer": {
+      "Id": "2a5eb950-0720-4018-9329-c3859a033144",
+      "Username": "marta"
+    },
+    "Training": {
+      "Id": "88a326ee-4637-465c-b0fa-533550e89b47",
+      "Duration": 60
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 9.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
+      "Username": "petar"
+    },
+    "CheckIn": "2022-07-05T19:00:05.6057629"
+  },
+  {
+    "Trainer": {
+      "Id": "2a5eb950-0720-4018-9329-c3859a033144",
+      "Username": "marta"
+    },
+    "Training": {
+      "Id": "45f766oa-8756-564p-b8ja-123550e89h78",
+      "Duration": 60
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 200.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-05T20:00:05.6057629"
+  },
+  {
+    "Trainer": {
       "Id": "48e7eafb-42cb-4c95-90b7-371fa56dcbb3",
       "Username": "sara"
     },
@@ -64,108 +217,7 @@
       "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
       "Username": "filip"
     },
-    "CheckIn": "2022-07-05T18:00:31.6057629"
-  },
-
-  {
-    "Trainer": {
-      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
-      "Username": "danilo"
-    },
-    "Training": {
-      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
-      "Duration": 0
-    },
-    "Buyer": {
-      "Visits": {},
-      "Points": 2700.0,
-      "BuyerType": {
-        "Tier": "Srebrni"
-      },
-      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
-      "Username": "ivana"
-    },
-    "CheckIn": "2022-07-03T17:28:41.512039"
-  },
-  {
-    "Trainer": {
-      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
-      "Username": "danilo"
-    },
-    "Training": {
-      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
-      "Duration": 0
-    },
-    "Buyer": {
-      "Visits": {},
-      "Points": 2700.0,
-      "BuyerType": {
-        "Tier": "Srebrni"
-      },
-      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
-      "Username": "ivana"
-    },
-    "CheckIn": "2022-07-03T17:36:56.4544396"
-  },
-  {
-    "Trainer": {
-      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
-      "Username": "danilo"
-    },
-    "Training": {
-      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
-      "Duration": 0
-    },
-    "Buyer": {
-      "Visits": {},
-      "Points": 2700.0,
-      "BuyerType": {
-        "Tier": "Srebrni"
-      },
-      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
-      "Username": "ivana"
-    },
-    "CheckIn": "2022-07-03T18:14:51.7094583"
-  },
-  {
-    "Trainer": {
-      "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
-      "Username": "jovana"
-    },
-    "Training": {
-      "Id": "1c537917-b5ae-470c-804d-b7bc78622341",
-      "Duration": 60
-    },
-    "Buyer": {
-      "Visits": {},
-      "Points": 2700.0,
-      "BuyerType": {
-        "Tier": "Srebrni"
-      },
-      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
-      "Username": "ivana"
-    },
-    "CheckIn": "2022-07-02T17:30:31.6057629"
-  },
-  {
-    "Trainer": {
-      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
-      "Username": "danilo"
-    },
-    "Training": {
-      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
-      "Duration": 0
-    },
-    "Buyer": {
-      "Visits": {},
-      "Points": 9.0,
-      "BuyerType": {
-        "Tier": "Bronzani"
-      },
-      "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
-      "Username": "petar"
-    },
-    "CheckIn": "2022-05-25T00:00:00"
+    "CheckIn": "2022-07-05T20:00:31.6057629"
   },
   {
     "Trainer": {
@@ -176,15 +228,55 @@
       "Id": "1e09a425-3567-49ee-acbc-0c601be8db86",
       "Duration": 0
     },
+     "Buyer": {
+      "Visits": {},
+      "Points": 1200.0,
+      "BuyerType": {
+        "Tier": "Zlatni"
+      },
+      "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+      "Username": "filip"
+    },
+    "CheckIn": "2022-07-06T00:00:00"
+  },
+  {
+    "Trainer": {
+      "Id": "48e7eafb-42cb-4c95-90b7-371fa56dcbb3",
+      "Username": "sara"
+    },
+    "Training": {
+      "Id": "0a83a23b-1bea-41ae-99de-74e107de7b31",
+      "Duration": 128
+    },
     "Buyer": {
       "Visits": {},
-      "Points": 9.0,
+      "Points": 1200.0,
       "BuyerType": {
-        "Tier": "Bronzani"
+        "Tier": "Zlatni"
       },
-      "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
-      "Username": "petar"
+      "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+      "Username": "filip"
     },
-    "CheckIn": "2022-07-12T00:00:00"
+    "CheckIn": "2022-07-06T08:10:11.6057629"
+  },
+  {
+    "Trainer": {
+      "Id": "2b87f67d-0a92-4a4a-a860-abff05055bea",
+      "Username": "milos"
+    },
+    "Training": {
+      "Id": "2defce60-2a10-410b-94f8-68309c8d2701",
+      "Duration": 60
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 200.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-06T18:10:11.6057629"
   }
 ]

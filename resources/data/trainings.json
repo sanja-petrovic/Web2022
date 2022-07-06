@@ -106,14 +106,5 @@
     },
     "Price": 0.0,
     "Id": "502e4c70-dbe6-4270-89f7-8a2e7880335a"
-  },
-  {
-    "TrainingType": "Grupni",
-    "Trainer": {
-      "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
-      "Username": "jovana"
-    },
-    "Price": 1000.0,
-    "Id": "7d1d7507-1bf7-4ee0-87c5-f3b05d1b7309"
   }
 ]
