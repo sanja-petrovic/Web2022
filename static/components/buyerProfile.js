@@ -300,7 +300,6 @@ Vue.component('buyer-profile-page', {
                                         <th scope="col" class="border-0 font-medium">Naziv treninga</th>
                                         <th scope="col" class="border-0 font-medium">Tip treninga</th>
                                         <th scope="col" class="border-0 font-medium">Sportski objekat</th>
-                                        <th scope="col" class="border-0 font-medium">Kupac</th>
                                         <th scope="col" class="border-0 font-medium">Cena</th>
                                         <th scope="col" class="border-0 font-medium">Zakazani termin</th>
                                         <th scope="col" class="border-0 font-medium">Status</th>
@@ -317,9 +316,6 @@ Vue.component('buyer-profile-page', {
                                         <td>
                                             <span
                                                 class="text-muted">{{ training.Training.SportsObject.name }}</span><br>
-                                        </td>
-                                        <td>
-                                            <span class="text-muted">{{ training.Buyer.Name + " " + training.Buyer.Surname }}</span><br>
                                         </td>
                                         <td>
                                             <span class="text-muted">{{ training.Training.Price }}</span><br>
