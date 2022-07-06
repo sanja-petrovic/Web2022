@@ -278,5 +278,26 @@
       "Username": "ivana"
     },
     "CheckIn": "2022-07-06T18:10:11.6057629"
+  },
+  {
+    "Trainer": {
+      "Id": "48e7eafb-42cb-4c95-90b7-371fa56dcbb3",
+      "Username": "sara"
+    },
+    "Training": {
+      "Id": "0a83a23b-1bea-41ae-99de-74e107de7b31",
+      "Duration": 128
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 200.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": null,
+    "ScheduledFor": "2022-07-09T18:00:11.6057629"
   }
 ]

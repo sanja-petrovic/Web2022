@@ -18,6 +18,12 @@ public class TrainingHistory {
 	@SerializedName("CheckIn")
 	@Expose
 	private LocalDateTime checkIn;
+	@SerializedName("ScheduledFor")
+	@Expose
+	private LocalDateTime scheduledFor;
+	@SerializedName("CanceledAt")
+	@Expose
+	private LocalDateTime canceledAt;
 	
 	public TrainingHistory(Buyer buyer, Training training, LocalDateTime checkIn) {
 		this.buyer = buyer;
