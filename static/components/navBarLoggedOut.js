@@ -10,12 +10,6 @@ Vue.component('navBarLoggedOut', {
                         <router-link to="/" class="nav-link" aria-current="page">Početna stranica</router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Treninzi</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Članarine</a>
-                    </li>
-                    <li class="nav-item">
                         <router-link to="/prijava" class="nav-link" href="#">Prijava</router-link>
                     </li>
                     <li class="nav-item">
