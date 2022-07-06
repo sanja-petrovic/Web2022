@@ -26,6 +26,12 @@ Vue.component('navBarLoggedIn', {
                         <router-link class="nav-link" to="/dodaj-sadrzaj" v-if="this.userType === 'Menadžer'">Dodaj sadržaj</router-link>
                     </li>
                     <li class="nav-item">
+                        <router-link class="nav-link" to="/korisnici" v-if="this.userType === 'Admin'">Korisnici</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/dodaj-objekat" v-if="this.userType === 'Admin'">Dodaj sportski objekat</router-link>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#" v-if="this.userType === 'Kupac'">Članarine</a>
                     </li>
                     <li class="nav-item dropdown">
