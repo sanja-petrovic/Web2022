@@ -20,6 +20,11 @@ Vue.component('trainer-trainings', {
                 sportsObjectType: [],
                 trainingType: []
             },
+            selectedTab: 'PAST',
+            searchResult: {
+                past: [],
+                scheduled: []
+            }
         }
 
 
@@ -31,16 +36,16 @@ Vue.component('trainer-trainings', {
         <div class="profile">
             <div class="tab-panel about-wrapper">
                 <ul class="nav nav-pills me-3" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
+                    <li v-on:click="selectedTab = 'PAST'"  class="nav-item" role="presentation">
                         <button class="nav-link active" id="pills-user-tab"
                                 data-bs-toggle="pill" data-bs-target="#pills-trainings"
-                                type="button" role="tab">Istorija treninga
+                                type="button"role="tab">Istorija treninga
                         </button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li v-on:click="selectedTab = 'SCHEDULED'" class="nav-item" role="presentation">
                         <button class="nav-link" id="pills-buyer-tab"
                                 data-bs-toggle="pill" data-bs-target="#pills-scheduled-trainings"
-                                type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Zakazani
+                                type="button" role="tab"  aria-controls="pills-contact" aria-selected="false">Zakazani
                             treninzi
                         </button>
                     </li>
@@ -385,7 +390,9 @@ Vue.component('trainer-trainings', {
                 }
             }
             this.displayedPastTrainings = this.pastTrainings;
+            this.searchResult.past = this.displayedPastTrainings;
             this.displayedScheduledTrainings = this.scheduledTrainings;
+            this.searchResult.scheduled = this.displayedScheduledTrainings;
         },
         formatTrainingDate: function (date) {
             return date.toLocaleDateString();
@@ -413,7 +420,7 @@ Vue.component('trainer-trainings', {
                 priceMin = this.searchParam.priceMin;
             }
 
-            if (this.searchParam.priceMax == null || this.searchParam.priceMax === "") {
+            if (this.searchParam.priceMax == null || this.searchParam.priceMax.length === 0) {
                 priceMax = Number.MAX_VALUE;
             } else {
                 priceMax = this.searchParam.priceMax;
@@ -430,17 +437,34 @@ Vue.component('trainer-trainings', {
             } else {
                 checkInMax = this.searchParam.checkInMax;
             }
-            for (let i = 0; i < this.trainingHistory.length; i++) {
-                let invalidCount = 0;
-                if (this.compareNames(this.trainingHistory[i].Training.SportsObject.name, this.searchParam.sportsObject) &&
-                    this.comparePrices(this.trainingHistory[i].Training.Price, priceMin, priceMax) &&
-                    this.compareDates(this.trainingHistory[i].CheckIn, checkInMin, checkInMax)) {
-                    searchResult.push(this.trainingHistory[i]);
-                } else {
-                    invalidCount += 1;
+
+            if(this.selectedTab === 'PAST') {
+                for (let i = 0; i < this.pastTrainings.length; i++) {
+                    let invalidCount = 0;
+                    if (this.compareNames(this.pastTrainings[i].Training.SportsObject.name, this.searchParam.sportsObject) &&
+                        this.comparePrices(this.pastTrainings[i].Training.Price, priceMin, priceMax) &&
+                        this.compareDates(this.pastTrainings[i].CheckIn, checkInMin, checkInMax)) {
+                        searchResult.push(this.pastTrainings[i]);
+                    } else {
+                        invalidCount += 1;
+                    }
                 }
+                this.displayedPastTrainings = searchResult;
+                this.searchResult.past = searchResult;
+            } else {
+                for (let i = 0; i < this.scheduledTrainings.length; i++) {
+                    let invalidCount = 0;
+                    if (this.compareNames(this.scheduledTrainings[i].Training.SportsObject.name, this.searchParam.sportsObject) &&
+                        this.comparePrices(this.scheduledTrainings[i].Training.Price, priceMin, priceMax) &&
+                        this.compareDates(this.scheduledTrainings[i].ScheduledFor, checkInMin, checkInMax)) {
+                        searchResult.push(this.scheduledTrainings[i]);
+                    } else {
+                        invalidCount += 1;
+                    }
+                }
+                this.displayedScheduledTrainings = searchResult;
+                this.searchResult.scheduled = searchResult;
             }
-            this.displayedPastTrainings = searchResult;
         },
         compareNames: function (name, searchParameter) {
             return name.toLowerCase().trim().includes(searchParameter);
@@ -507,31 +531,59 @@ Vue.component('trainer-trainings', {
                     checkedSportsObject.push(filtersSportsObjectType[i]);
                 }
             }
-            if (checkedTraining.length === 0 && checkedSportsObject.length === 0) {
-                this.displayedPastTrainings = this.trainingHistory;
-                return;
-            }
 
-            for (let i = 0; i < this.trainingHistory.length; i++) {
-                for (let j = 0; j < checkedTraining.length; j++) {
-                    if (this.trainingHistory[i].Training.TrainingType.toLowerCase() === checkedTraining[j].id.toLowerCase()) {
-                        filterResult.push(this.trainingHistory[i]);
-                        break;
+            if(this.selectedTab === 'PAST') {
+                if ((checkedTraining.length === 0 || checkedTraining.length === 2) && (checkedSportsObject.length === 0 || checkedSportsObject.length === this.sportsObjectTypes.length)) {
+                    this.displayedPastTrainings = this.searchResult.past;
+                    return;
+                }
+
+                for (let i = 0; i < this.displayedPastTrainings.length; i++) {
+                    for (let j = 0; j < checkedTraining.length; j++) {
+                        if (this.displayedPastTrainings[i].Training.TrainingType.toLowerCase() === checkedTraining[j].id.toLowerCase()) {
+                            filterResult.push(this.displayedPastTrainings[i]);
+                            break;
+                        }
+                    }
+                    for (let j = 0; j < checkedSportsObject.length; j++) {
+                        if (this.displayedPastTrainings[i].Training.SportsObject.type.toLowerCase() === checkedSportsObject[j].id.toLowerCase()) {
+                            filterResult.push(this.displayedPastTrainings[i]);
+                            break;
+                        }
                     }
                 }
-                for (let j = 0; j < checkedSportsObject.length; j++) {
-                    if (this.trainingHistory[i].Training.SportsObject.type.toLowerCase() === checkedSportsObject[j].id.toLowerCase()) {
-                        filterResult.push(this.trainingHistory[i]);
-                        break;
+
+                filterResult = filterResult.filter(function (item, index, inputArray) {
+                    return inputArray.indexOf(item) == index;
+                });
+
+                this.displayedPastTrainings = filterResult;
+            } else {
+                if ((checkedTraining.length === 0 || checkedTraining.length === 2) && (checkedSportsObject.length === 0 || checkedSportsObject.length === this.sportsObjectTypes.length)) {
+                    this.displayedScheduledTrainings = this.searchResult.scheduled;
+                    return;
+                }
+                for (let i = 0; i < this.displayedScheduledTrainings.length; i++) {
+                    for (let j = 0; j < checkedTraining.length; j++) {
+                        if (this.displayedScheduledTrainings[i].Training.TrainingType.toLowerCase() === checkedTraining[j].id.toLowerCase()) {
+                            filterResult.push(this.displayedScheduledTrainings[i]);
+                            break;
+                        }
+                    }
+                    for (let j = 0; j < checkedSportsObject.length; j++) {
+                        if (this.displayedScheduledTrainings[i].Training.SportsObject.type.toLowerCase() === checkedSportsObject[j].id.toLowerCase()) {
+                            filterResult.push(this.displayedScheduledTrainings[i]);
+                            break;
+                        }
                     }
                 }
+
+                filterResult = filterResult.filter(function (item, index, inputArray) {
+                    return inputArray.indexOf(item) == index;
+                });
+
+                this.displayedScheduledTrainings = filterResult;
             }
-
-            filterResult = filterResult.filter(function (item, index, inputArray) {
-                return inputArray.indexOf(item) == index;
-            });
-
-            this.displayedPastTrainings = filterResult;
         }
 
     }
