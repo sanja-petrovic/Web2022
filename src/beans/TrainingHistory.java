@@ -1,11 +1,15 @@
 package beans;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class TrainingHistory {
+	@SerializedName("Id")
+	@Expose
+	private String id;
 	@SerializedName("Trainer")
 	@Expose
 	private Trainer trainer;
@@ -26,6 +30,7 @@ public class TrainingHistory {
 	private LocalDateTime canceledAt;
 	
 	public TrainingHistory(Buyer buyer, Training training, LocalDateTime checkIn) {
+		this.id = UUID.randomUUID().toString();
 		this.buyer = buyer;
         this.trainer = training.getTrainer();
         this.training = training;
@@ -62,6 +67,30 @@ public class TrainingHistory {
 
 	public void setCheckIn(LocalDateTime checkIn) {
 		this.checkIn = checkIn;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public LocalDateTime getScheduledFor() {
+		return scheduledFor;
+	}
+
+	public void setScheduledFor(LocalDateTime scheduledFor) {
+		this.scheduledFor = scheduledFor;
+	}
+
+	public LocalDateTime getCanceledAt() {
+		return canceledAt;
+	}
+
+	public void setCanceledAt(LocalDateTime canceledAt) {
+		this.canceledAt = canceledAt;
 	}
 
     
