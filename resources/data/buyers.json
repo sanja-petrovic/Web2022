@@ -21,15 +21,15 @@
   },
   {
     "Membership": {
-      "Id": "aa23l78945",
-      "Name": "Članarina u Allegru",
+      "Id": "1234567891",
+      "Name": "MG basic paket",
       "SportsObject": {
-        "name": "Plesni centar Allegro"
+        "name": "Mega Gym"
       },
       "MembershipType": "Mesečna",
-      "Price": 3000.0,
-      "NumberOfTerms": 20,
-      "DailyLimit": 2
+      "Price": 5000.0,
+      "NumberOfTerms": 40,
+      "DailyLimit": 3
     },
     "Visits": {},
     "Points": 200.0,

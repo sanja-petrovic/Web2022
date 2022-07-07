@@ -26,10 +26,10 @@ public class Repository {
 			instance.setUserDAO(new UserDAO());
 			instance.setBuyerTypeDAO(new BuyerTypeDAO());
 			instance.setSportsObjectDAO(new SportsObjectDAO());
-			instance.setBuyerDAO(new BuyerDAO());
 			instance.setManagerDAO(new ManagerDAO());
 			instance.setContentsDAO(new ContentsDAO());
 			instance.setMembershipDAO(new MembershipDAO());
+			instance.setBuyerDAO(new BuyerDAO());
 			instance.setBuyersMembershipDAO(new BuyersMembershipDAO());
 			instance.setTrainerDAO(new TrainerDAO());
 			instance.setTrainingDAO(new TrainingDAO());
