@@ -10,7 +10,11 @@ import java.time.LocalTime;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import beans.Training;
+import beans.TrainingHistory;
 import dao.Repository;
+import services.TrainingHistoryService;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalDateTimeAdapter2;
@@ -26,6 +30,7 @@ public class TrainingHistoryController {
 			getTrainingHistoryForUser();
 			getTrainingHistoryForSportsObject();
 			getTrainingHistoryForTrainer();
+			cancelTraining();
 		});
 	}
 	
@@ -44,6 +49,18 @@ public class TrainingHistoryController {
 	public static void getTrainingHistoryForTrainer() {
 		get("/trainers/:id/trainings", (req, res) -> {
 			return gson.toJson(Repository.getInstance().getTrainingHistoryDAO().getTrainingHistoryForTrainer(req.params(":id")));
+		});
+	}
+	
+
+	
+	public static void cancelTraining() {
+		post("/trainings/:id/cancel", (req, res) -> {
+			res.type("application/json");
+			String payload = req.body();
+			String id = req.params(":id");
+			
+			return gson.toJson(TrainingHistoryService.cancelTraining(id));
 		});
 	}
 }

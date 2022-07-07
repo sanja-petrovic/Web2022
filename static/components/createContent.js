@@ -196,55 +196,45 @@ Vue.component('create-content', {
 				if(this.price == ""){
 					this.price = 0;
 				}
-                event.preventDefault();
                 var picturePath = new FileReader();
                 var file   = this.$refs.myFile.files[0];
                 var fileName = this.$refs.myFile.files[0].name;
                 picturePath.readAsDataURL(file);
-                if(this.type !== 'trening')
-                { 
-	                picturePath.onloadend = () =>
-	                {	
-	                    axios.post('/rest/createContent', {
-	                        name: this.name, sportsObjectName: this.sportsObject.name, contentType: this.contentType, imgData: picturePath.result, fileName: fileName, 
-	                        description: this.description, durationMinutes: this.durationMinutes
-	                    })
-	                        .then(function response(resp){
-	                            oopsie = false;
-	                            console.log(resp.data); 
-	                            alert(message);
-	                        }).catch(function error(err) {
-	                            alert("Greška na serveru!");
-	                            oopsie = true;
-	                        });
-	                }
-                } else {
-					this.contentType = "trening";
-					picturePath.onloadend = () =>
-	                {	
-	                    axios.post('/rest/createTraining', {
-	                        name: this.name, sportsObjectName: this.sportsObject.name, contentType: this.contentType, imgData: picturePath.result, fileName: fileName, 
-	                        description: this.description, durationMinutes: this.durationMinutes, trainer: this.trainer, price: this.price, trainingType: this.trainingType
-	                    })
-	                        .then(function response(resp){
-	                            oopsie = false;
-	                            console.log(resp.data); 
-	                            
-	                        }).catch(function error(err) {
-	                            alert("Greška na serveru!");
-	                            oopsie = true;
-	                        });
-	                }
-	
-				}
-                         
-                if(oopsie) {
-                    this.$router.replace("/dodaj-sadrzaj");
-                } else {
-					alert(message);
-                    this.$router.replace("/sadrzaji");  
-                    window.location.reload();
-                    
+
+                picturePath.onloadend = () =>
+                {
+                    if(this.type !== 'trening') {
+                        axios.post('/rest/createContent', {
+                            name: this.name, sportsObjectName: this.sportsObject.name, contentType: this.contentType, imgData: picturePath.result, fileName: fileName,
+                            description: this.description, durationMinutes: this.durationMinutes
+                        })
+                            .then(resp => {
+                                oopsie = false;
+                                console.log(resp.data);
+                                alert(message);
+                                this.$router.replace("/sadrzaji");
+                            }).catch(err => {
+                            alert("Greška na serveru!");
+                            this.$router.replace("/dodaj-sadrzaj");
+                            oopsie = true;
+                        });
+                    } else {
+                        axios.post('/rest/createTraining', {
+                            name: this.name, sportsObjectName: this.sportsObject.name, contentType: "trening", imgData: picturePath.result, fileName: fileName,
+                            description: this.description, durationMinutes: this.durationMinutes, trainer: this.trainer, price: this.price, trainingType: this.trainingType
+                        })
+                            .then(resp => {
+                                oopsie = false;
+                                console.log(resp.data);
+                                this.$router.replace("/sadrzaji");
+
+                            }).catch(err => {
+                            alert("Greška na serveru!");
+
+                            this.$router.replace("/dodaj-sadrzaj");
+                            oopsie = true;
+                        });
+                    }
                 }
                 this.errorExists = oopsie;
                 

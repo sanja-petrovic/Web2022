@@ -112,5 +112,35 @@ public class TrainingHistoryDAO {
 
         return trainingHistories;
     }
+    
+    public TrainingHistory getTrainingHistoryById(String id) {
+    	TrainingHistory retVal = null;
+    	for(TrainingHistory th: this.trainingHistories) {
+    		if(th.getId().equals(id)) {
+    			retVal = th;
+    			break;
+    		}
+    	}
+    	return retVal;
+    }
+    
+    public void updateTrainingHistory(TrainingHistory trainingHistory) {
+    	int index = this.findIndexOf(trainingHistory);
+    	this.trainingHistories.set(index, trainingHistory);
+    	this.write();
+    }
+    
+    public int findIndexOf(TrainingHistory trainingHistory) {
+    	int index = -1; 
+    	
+    	for(int i = 0; i < this.trainingHistories.size(); i++) {
+    		if(this.trainingHistories.get(i).getId().equals(trainingHistory.getId())) {
+    			index = i;
+    			break;
+    		}
+    	}
+    	
+    	return index;
+    }
 	
 }
