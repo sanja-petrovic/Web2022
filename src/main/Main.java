@@ -13,6 +13,7 @@ import controller.CommentController;
 import controller.ContentsController;
 import controller.ManagerController;
 import controller.MembershipController;
+import controller.PromoCodeContoller;
 import controller.SportsObjectController;
 import controller.TrainerController;
 import controller.TrainingController;
@@ -39,6 +40,7 @@ public class Main {
 		TrainingHistoryController trainingHistoryController = new TrainingHistoryController();
 		MembershipController membershipController = new MembershipController();
 		BuyersMembershipController buyersMembershipController = new BuyersMembershipController();
+		PromoCodeContoller promoCodeContoller = new PromoCodeContoller();
 		
 		userController.init();
 		sportsObjectController.init();
@@ -52,6 +54,7 @@ public class Main {
 		trainingHistoryController.init();
 		membershipController.init();
 		buyersMembershipController.init();
+		promoCodeContoller.init();
 		/*
 		TrainingHistoryDAO dao = new TrainingHistoryDAO();
 		dao.addTrainingHistory(new TrainingHistory(

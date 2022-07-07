@@ -106,14 +106,5 @@
     },
     "Price": 0.0,
     "Id": "502e4c70-dbe6-4270-89f7-8a2e7880335a"
-  },
-  {
-    "TrainingType": "Personalni",
-    "Trainer": {
-      "Id": "2b87f67d-0a92-4a4a-a860-abff05055bea",
-      "Username": "milos"
-    },
-    "Price": 1200.0,
-    "Id": "aa74e080-0f29-43fe-921a-9dca7f94c779"
   }
 ]

@@ -15,6 +15,7 @@ public class Repository {
 	private TrainerDAO trainerDAO;
 	private AdministratorDAO administratorDAO;
 	private CommentDAO commentDAO;
+	private PromoCodeDAO promoCodeDAO;
 	public static Repository instance;
 	
 	
@@ -36,6 +37,7 @@ public class Repository {
 			instance.setCommentDAO(new CommentDAO());
 			instance.setTrainingHistoryDAO(new TrainingHistoryDAO());
 			instance.setAdministratorDAO(new AdministratorDAO());
+			instance.setPromoCodeDAO(new PromoCodeDAO());
 		}
 		return instance;
 	}
@@ -150,5 +152,15 @@ public class Repository {
 	public void setCommentDAO(CommentDAO commentDAO) {
 		this.commentDAO = commentDAO;
 	}
+
+	public PromoCodeDAO getPromoCodeDAO() {
+		return promoCodeDAO;
+	}
+
+	public void setPromoCodeDAO(PromoCodeDAO promoCodeDAO) {
+		this.promoCodeDAO = promoCodeDAO;
+	}
+	
+	
 
 }
