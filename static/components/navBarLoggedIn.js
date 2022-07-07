@@ -26,7 +26,7 @@ Vue.component('navBarLoggedIn', {
                         <router-link class="nav-link" to="/dodaj-sadrzaj" v-if="this.userType === 'Menadžer'">Dodaj sadržaj</router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" v-if="this.userType === 'Kupac'">Članarine</a>
+                        <router-link class="nav-link" to="/clanarine" v-if="this.userType === 'Kupac'">Članarine</router-link>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

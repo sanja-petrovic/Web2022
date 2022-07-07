@@ -1,0 +1,58 @@
+[
+	{
+		"Id": "1234567891",
+		"Name": "MG basic paket",
+		"SportsObject": {
+      		"name": "Mega Gym"
+    	},
+		"MembershipType": "Mesečna",
+		"Price": 5000.0,
+		"NumberOfTerms": 40,
+		"DailyLimit": 3
+	},
+	{
+		"Id": "7894561230",
+		"Name": "Student paket No Limit",
+		"SportsObject": {
+      		"name": "No Limit Gym"
+    	},
+		"MembershipType": "Mesečna",
+		"Price": 2500.0,
+		"NumberOfTerms": 25,
+		"DailyLimit": 2
+	},
+	{
+		"Id": "aa23l78945",
+		"Name": "Članarina u Allegru",
+		"SportsObject": {
+      		"name": "Plesni centar Allegro"
+    	},
+		"MembershipType": "Mesečna",
+		"Price": 3000.0,
+		"NumberOfTerms": 20,
+		"DailyLimit": 2
+	},
+	{
+		"Id": "8553934453",
+		"Name": "Six Pack paket",
+		"SportsObject": {
+      		"name": "No Limit Gym"
+    	},
+		"MembershipType": "Mesečna",
+		"Price": 6000.0,
+		"NumberOfTerms": 50,
+		"DailyLimit": 5
+	},
+	{
+		"Id": "1233214554",
+		"Name": "Fight Club paket",
+		"SportsObject": {
+      		"name": "Favorit"
+    	},
+		"MembershipType": "Mesečna",
+		"Price": 5000.0,
+		"NumberOfTerms": 30,
+		"DailyLimit": 3
+	}
+
+]

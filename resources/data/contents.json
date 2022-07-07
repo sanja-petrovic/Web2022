@@ -185,5 +185,27 @@
     "Duration": 60,
     "Description": "Karate grupni treninzi najbolji u gradu.",
     "Picture": "../images/karate.jpg"
+  },
+  {
+    "Id": "71099951-c1fc-45e8-abe8-0c81bd84517c",
+    "Name": "Novi proizvod",
+    "ContentType": "nesto drugacije",
+    "SportsObject": {
+      "name": "No Limit Gym"
+    },
+    "Duration": 120,
+    "Description": "neki opis",
+    "Picture": "resources/cardio.jpg"
+  },
+  {
+    "Id": "aa74e080-0f29-43fe-921a-9dca7f94c779",
+    "Name": "FightClub trening",
+    "ContentType": "trening",
+    "SportsObject": {
+      "name": "Favorit"
+    },
+    "Duration": 60,
+    "Description": "najbolji trening ikada!",
+    "Picture": "resources/karate.jpg"
   }
 ]

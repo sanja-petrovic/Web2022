@@ -21,7 +21,6 @@ import beans.UserType;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalTimeAdapter;
-import util.annotations.AnnotationExclusionStrategy;
 import util.annotations.AnnotationExclusionUserStrategy;
 
 public class UserDAO {

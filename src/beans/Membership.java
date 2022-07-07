@@ -1,11 +1,11 @@
 package beans;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import util.annotations.Exclude;
 
 public class Membership {
 
@@ -13,76 +13,125 @@ public class Membership {
 	@SerializedName("Id")
 	private String id;
 	
-	@SerializedName("Type")
-	private String type;
+	@Expose
+	@SerializedName("Name")
+	private String name;
 	
-	@SerializedName("PaymentDate")
-	private LocalDate paymentDate;
+	@Exclude
+	@Expose
+	@SerializedName("SportsObject")
+	private SportsObject sportsObject;
 	
-	@SerializedName("DateTimeOfExpiration")
-	private LocalDateTime dateTimeOfExpiration;
+	@Exclude
+	@Expose
+	@SerializedName("MembershipType")
+	private MembershipType membershipType;
 	
+	@Exclude
+	@Expose
 	@SerializedName("Price")
 	private double price;
 	
-	@SerializedName("Buyer")
-	private Buyer buyer;
+	@Exclude
+	@Expose
+	@SerializedName("NumberOfTerms")
+	private int numberOfTerms;
 	
-	@SerializedName("Status")
-	private MembershipStatus status;
-	
+	@Exclude
+	@Expose
 	@SerializedName("DailyLimit")
 	private int dailyLimit;
 	
+	@Exclude
+	@Expose
 	@SerializedName("DeletedAt")
 	private LocalDateTime deletedAt;
 	
+	public Membership(String id, String name, SportsObject sportsObject, MembershipType membershipType, double price,
+			int numberOfTerms, int dailyLimit) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.sportsObject = sportsObject;
+		this.membershipType = membershipType;
+		this.price = price;
+		this.numberOfTerms = numberOfTerms;
+		this.dailyLimit = dailyLimit;
+	}
+	
+	public Membership(Membership membership) {
+		this.id = membership.getId();
+		this.name = membership.getName();
+		this.sportsObject = membership.getSportsObject();
+		this.membershipType = membership.getMembershipType();
+		this.price = membership.getPrice();
+		this.numberOfTerms = membership.getNumberOfTerms();
+		this.dailyLimit = membership.getDailyLimit();
+	}
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getType() {
-		return type;
+
+	public String getName() {
+		return name;
 	}
-	public void setType(String type) {
-		this.type = type;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public LocalDate getPaymentDate() {
-		return paymentDate;
+
+	public SportsObject getSportsObject() {
+		return sportsObject;
 	}
-	public void setPaymentDate(LocalDate paymentDate) {
-		this.paymentDate = paymentDate;
+
+	public void setSportsObject(SportsObject sportsObject) {
+		this.sportsObject = sportsObject;
 	}
-	public LocalDateTime getDateTimeOfExpiration() {
-		return dateTimeOfExpiration;
+
+	public MembershipType getMembershipType() {
+		return membershipType;
 	}
-	public void setDateTimeOfExpiration(LocalDateTime dateTimeOfExpiration) {
-		this.dateTimeOfExpiration = dateTimeOfExpiration;
+
+	public void setMembershipType(MembershipType membershipType) {
+		this.membershipType = membershipType;
 	}
+
 	public double getPrice() {
 		return price;
 	}
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public Buyer getBuyer() {
-		return buyer;
+
+	public int getNumberOfTerms() {
+		return numberOfTerms;
 	}
-	public void setBuyer(Buyer buyer) {
-		this.buyer = buyer;
+
+	public void setNumberOfTerms(int numberOfTerms) {
+		this.numberOfTerms = numberOfTerms;
 	}
-	public MembershipStatus getStatus() {
-		return status;
-	}
-	public void setStatus(MembershipStatus status) {
-		this.status = status;
-	}
+
 	public int getDailyLimit() {
 		return dailyLimit;
 	}
+
 	public void setDailyLimit(int dailyLimit) {
 		this.dailyLimit = dailyLimit;
 	}
+
+	public LocalDateTime getDeletedAt() {
+		return deletedAt;
+	}
+
+	public void setDeletedAt(LocalDateTime deletedAt) {
+		this.deletedAt = deletedAt;
+	}
+	
+	
 }

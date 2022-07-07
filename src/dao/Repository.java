@@ -4,6 +4,7 @@ public class Repository {
 	
 	private UserDAO userDAO;
 	private BuyerDAO buyerDAO;
+	private BuyersMembershipDAO buyersMembershipDAO;
 	private MembershipDAO membershipDAO;
 	private BuyerTypeDAO buyerTypeDAO;
 	private SportsObjectDAO sportsObjectDAO;
@@ -29,6 +30,7 @@ public class Repository {
 			instance.setManagerDAO(new ManagerDAO());
 			instance.setContentsDAO(new ContentsDAO());
 			instance.setMembershipDAO(new MembershipDAO());
+			instance.setBuyersMembershipDAO(new BuyersMembershipDAO());
 			instance.setTrainerDAO(new TrainerDAO());
 			instance.setTrainingDAO(new TrainingDAO());
 			instance.setCommentDAO(new CommentDAO());
@@ -66,6 +68,14 @@ public class Repository {
 
 	public void setMembershipDAO(MembershipDAO membershipDAO) {
 		this.membershipDAO = membershipDAO;
+	}
+
+	public BuyersMembershipDAO getBuyersMembershipDAO() {
+		return buyersMembershipDAO;
+	}
+
+	public void setBuyersMembershipDAO(BuyersMembershipDAO buyersMembershipDAO) {
+		this.buyersMembershipDAO = buyersMembershipDAO;
 	}
 
 	public BuyerTypeDAO getBuyerTypeDAO() {
