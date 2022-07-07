@@ -4,7 +4,11 @@ Vue.component('memberships', {
 			loggedIn: false,
 			username: "",
 			memberships: null,
-			membership: null
+			membership: null,
+			tier: null,
+			discount: null,
+			price: null,
+			viewClicked: false
 		}
 		
 		
@@ -40,7 +44,12 @@ Vue.component('memberships', {
 											<label for="limit">Dnevni broj termina</label>
 											<input class="text-box" type="text" id="limit" v-model="this.membership.DailyLimit" disabled>
 											<label for="price">Cena</label>
-											<input class="text-box" type="text" id="price" v-model="this.membership.Price" disabled>			
+											<input class="text-box" type="text" id="price"  v-model="this.membership.Price" disabled>
+											<button class="search-button" style="width: 320px" id="button" v-on:click="viewMembership(membership.Price)">Pregled članarine</button><br>			
+											<div class="info center-container" v-if="this.viewClicked === true">
+											<label for="price">Cena za kupca {{this.tier}}</label>
+											<input class="text-box" type="text" id="price"  v-model="this.price" disabled><br>
+											</div>
 											</div>
                                         </form>
                                 </div>         
@@ -64,7 +73,10 @@ Vue.component('memberships', {
                 .then(response => {
                     if (response.data != null) {
                         this.loggedIn = true;    
-                        this.username = response.data.Username;            
+                        this.username = response.data.Username;  
+                        this.tier = response.data.BuyerType.Tier;
+                        this.discount = response.data.BuyerType.Discount;
+                        console.log(this.discount);          
                     }
                 })
                 .catch(error => console.log(error));
@@ -80,13 +92,19 @@ Vue.component('memberships', {
                 })
                 .catch(error => console.log(error));
 		},
+		viewMembership: function(membershipPrice) {
+			this.viewClicked = true;
+			this.price = membershipPrice - membershipPrice * this.discount/100;
+			
+		},
 		createBuyersMembership: async function() {
 			event.preventDefault();
 			console.log(this.username);
 			console.log(this.membership);
 			await axios.post('/rest/createBuyersMembership', {
 				buyerUsername: this.username, 
-				membershipId: this.membership.Id
+				membershipId: this.membership.Id,
+				price: this.price
 			})
 				.then(function response(resp){
 	            	console.log(resp.data); 

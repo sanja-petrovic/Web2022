@@ -20,6 +20,7 @@ public class BuyersMembershipService {
 		Buyer buyer = Repository.getInstance().getBuyerDAO().getBuyerByUsername(buyersmembershipDTO.getBuyerUsername());
 		String membershipId = buyersmembershipDTO.getMembershipId();
 		Membership membership = Repository.getInstance().getMembershipDAO().getMembershipById(membershipId);
+		membership.setPrice(buyersmembershipDTO.getPrice());
 		BuyersMembership newBuyersMembership = new BuyersMembership(membership);
 		newBuyersMembership.setBuyer(buyer);
 		newBuyersMembership.setPaymentDate(LocalDateTime.now());

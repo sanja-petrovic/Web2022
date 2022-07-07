@@ -21,15 +21,15 @@
   },
   {
     "Membership": {
-      "Id": "1234567891",
-      "Name": "MG basic paket",
+      "Id": "7894561230",
+      "Name": "Student paket No Limit",
       "SportsObject": {
-        "name": "Mega Gym"
+        "name": "No Limit Gym"
       },
       "MembershipType": "Mesečna",
-      "Price": 5000.0,
-      "NumberOfTerms": 40,
-      "DailyLimit": 3
+      "Price": 2250.0,
+      "NumberOfTerms": 25,
+      "DailyLimit": 2
     },
     "Visits": {},
     "Points": 200.0,

@@ -4,6 +4,7 @@ public class BuyersMembershipDTO {
 
 	private String buyerUsername;
 	private String membershipId;
+	private Double price;
 	
 	public String getBuyerUsername() {
 		return buyerUsername;
@@ -17,6 +18,11 @@ public class BuyersMembershipDTO {
 	public void setMembership(String membershipId) {
 		this.membershipId = membershipId;
 	}
-	
+	public Double getPrice() {
+		return price;
+	}
+	public void setPrice(Double price) {
+		this.price = price;
+	}	
 	
 }
