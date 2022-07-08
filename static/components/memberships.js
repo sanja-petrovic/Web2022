@@ -5,10 +5,17 @@ Vue.component('memberships', {
 			username: "",
 			memberships: null,
 			membership: null,
+			sportsObjectName: "",
 			tier: null,
 			discount: null,
 			price: null,
-			viewClicked: false
+			newPrice: null,
+			id: "",
+			promoCodeId: "",
+			viewClicked: false,
+			validCode: false,
+			errorMessage: "",
+			errorExists: false
 		}
 		
 		
@@ -45,12 +52,16 @@ Vue.component('memberships', {
 											<input class="text-box" type="text" id="limit" v-model="this.membership.DailyLimit" disabled>
 											<label for="price">Cena</label>
 											<input class="text-box" type="text" id="price"  v-model="this.membership.Price" disabled>
-											<button class="search-button" style="width: 320px" id="button" v-on:click="viewMembership(membership.Price)">Pregled članarine</button><br>			
-											<div class="info center-container" v-if="this.viewClicked === true">
+											<button class="search-button" style="width: 320px" id="button" v-on:click="viewMembership">Pregled članarine</button><br>			
+											<div class="info center-container" v-if="viewClicked === true">
 											<label for="price">Cena za kupca {{this.tier}}</label>
-											<input class="text-box" type="text" id="price"  v-model="this.price" disabled><br>
+											<input class="text-box" type="text" id="price" v-model="this.price" disabled><br>
+											<input class="text-box create-input" type="text" v-on:blur="validatePromoCode" name="id" id="id" v-model="id" placeholder="Unesite promo kod:">
+											<label for="newPrice" v-if="validCode === true">Kod je prihvaćen! Nova cena:</label>
+											<input class="text-box" v-if="validCode === true" type="text" id="newPrice" v-model="this.newPrice" disabled><br>
 											</div>
 											</div>
+											<label class="invalid-input create-input" v-if="errorExists">{{ this.errorMessage }}</label>
                                         </form>
                                 </div>         
                     </div>
@@ -92,23 +103,76 @@ Vue.component('memberships', {
                 })
                 .catch(error => console.log(error));
 		},
-		viewMembership: function(membershipPrice) {
+		viewMembership: function() {
 			this.viewClicked = true;
-			this.price = membershipPrice - membershipPrice * this.discount/100;
+			this.price = this.membership.Price - this.membership.Price * this.discount/100;
 			
 		},
+		validatePromoCode: async function() {
+			console.log(this.id);
+			let promoCodeExists = false;
+			let promoCode;
+			var today = new Date();
+			var todayDate = today.toISOString().split('T')[0];
+			console.log(todayDate);
+            	await axios.get(`/rest/promocodes/${this.id}`)
+                .then(function response(resp) {
+					console.log(resp.data)
+                    if (resp.data) {
+						promoCode = resp.data;
+                        promoCodeExists = true;
+                    }
+                }).catch(function error(err) {
+                    console.log(err);
+                });
+
+            if (promoCodeExists) {
+				if(promoCode.ExpirationDateTime >= todayDate){
+					this.validCode = true;
+					this.errorExists = false;	
+				}
+				else {
+					this.errorMessage ="Istekao je rok važenja promo koda!";
+                	this.errorExists = true;
+                	this.validCode = false;
+				}
+				if(promoCode.MaximumUses > 0) {
+                	this.errorExists = false;
+                	this.validCode = true;
+                	this.promoCodeId = promoCode.Id;
+                	this.calculateNewPrice(this.price, promoCode.Discount);       	
+                } else {
+					this.errorMessage ="Promo kod je iskorišćen maksimalan broj puta!";
+                	this.errorExists = true;
+                	this.validCode = false;
+				}
+		
+            } else {
+				this.errorMessage ="Uneli ste nepostojeći id!";
+                this.errorExists = true;
+            }
+            event.preventDefault();
+		},
+		calculateNewPrice: function(oldPrice, discount) {
+			console.log(discount);
+			console.log(oldPrice);
+			this.newPrice = oldPrice - oldPrice * discount/100;
+		},
 		createBuyersMembership: async function() {
+			if(this.newPrice == null) {
+				this.newPrice = this.price;
+			}
 			event.preventDefault();
 			console.log(this.username);
 			console.log(this.membership);
 			await axios.post('/rest/createBuyersMembership', {
 				buyerUsername: this.username, 
 				membershipId: this.membership.Id,
-				price: this.price
+				price: this.newPrice,
+				promocodeId: this.promoCodeId
 			})
 				.then(function response(resp){
-	            	console.log(resp.data); 
-	            	alert("Uspešno!");            
+	            	alert("Uspešno ste dodali novu članarinu!");            
 	            })
 	            .catch(function error(err) {
 	               alert("Greška na serveru!");

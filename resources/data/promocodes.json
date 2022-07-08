@@ -7,14 +7,20 @@
   },
   {
     "Id": "mdakm342",
-    "ExpirationDateTime": "2022-07-15",
+    "ExpirationDateTime": "2022-07-08",
     "MaximumUses": 7,
     "Discount": 20.0
   },
   {
     "Id": "4564jfhd",
     "ExpirationDateTime": "2022-07-16",
-    "MaximumUses": 3,
+    "MaximumUses": 0,
     "Discount": 10.0
+  },
+  {
+    "Id": "sara21",
+    "ExpirationDateTime": "2022-07-21",
+    "MaximumUses": 5,
+    "Discount": 15.0
   }
 ]

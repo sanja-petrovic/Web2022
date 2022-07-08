@@ -5,6 +5,7 @@ public class BuyersMembershipDTO {
 	private String buyerUsername;
 	private String membershipId;
 	private Double price;
+	private String promocodeId;
 	
 	public String getBuyerUsername() {
 		return buyerUsername;
@@ -15,7 +16,7 @@ public class BuyersMembershipDTO {
 	public String getMembershipId() {
 		return membershipId;
 	}
-	public void setMembership(String membershipId) {
+	public void setMembershipId(String membershipId) {
 		this.membershipId = membershipId;
 	}
 	public Double getPrice() {
@@ -23,6 +24,13 @@ public class BuyersMembershipDTO {
 	}
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+	public String getPromocodeId() {
+		return promocodeId;
+	}
+	public void setPromocodeId(String promocodeId) {
+		this.promocodeId = promocodeId;
 	}	
+	
 	
 }

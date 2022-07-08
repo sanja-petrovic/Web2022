@@ -7,6 +7,7 @@ import beans.BuyersMembership;
 import beans.Membership;
 import beans.MembershipStatus;
 import beans.MembershipType;
+import beans.PromoCode;
 import dao.Repository;
 import dto.BuyersMembershipDTO;
 
@@ -41,6 +42,14 @@ public class BuyersMembershipService {
 		else {
 			Repository.getInstance().getBuyersMembershipDAO().addBuyersMembership(newBuyersMembership);
 		}
+		
+		String promoCodeId = buyersmembershipDTO.getPromocodeId();
+		PromoCode promoCode = Repository.getInstance().getPromoCodeDAO().getPromoCodeById(promoCodeId);
+		if(promoCode != null) {
+			promoCode.setMaximumUses(promoCode.getMaximumUses() - 1);
+			Repository.getInstance().getPromoCodeDAO().updatePromoCode(promoCode);
+		}
+		
 		return newBuyersMembership;
 	}
 

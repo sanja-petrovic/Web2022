@@ -6,10 +6,9 @@ Vue.component('promocode', {
 			discount: "",
 			maximumUses: "",
 			expirationDateTime: new Date(),
-			errorMessage: null,
+			errorMessage: "",
 			errorExists: false
-			
-			
+					
 		}
 		
 		
@@ -27,7 +26,7 @@ Vue.component('promocode', {
                                 <div class="register-content">
                                         <h3 class="heading" style="font-weight: 500">Novi promokod</h3>
                                         <form class="myForm" action="">
-                                            <input class="text-box create-input" type="text" name="id" v-model="id" placeholder="Id"
+                                            <input class="text-box create-input" type="text" v-on:blur="idUniqueCheck" name="id" id="id" v-model="id" placeholder="Id"
                                                    required>
                                 			<input class="text-box create-input" type="number" min=0 name="discount" v-model="discount" placeholder="Procenat popusta"
                                                    required>
@@ -39,10 +38,11 @@ Vue.component('promocode', {
                                         </form>
                                 </div>               
                          </div>
-                         <button class="search-button mb-5 mt-3" id="theButton" v-on:click="definePromocode">Dodaj promo kod</button>
+                         
                     </div>
                 </div>
-        	</div>	
+        	</div>
+        	<button class="search-button mb-5 mt-3" id="theButton" v-on:click="definePromocode">Dodaj promo kod</button>	
 		</div>
 	</div>
 	
@@ -63,6 +63,27 @@ Vue.component('promocode', {
                 })
                 .catch(error => console.log(error));
         },
+        idUniqueCheck: async function() {
+			let error = false;
+            	await axios.get(`/rest/promocodes/${this.id}`)
+                .then(function response(resp) {
+                    if (resp.data) {
+                        error = true;
+                    }
+                }).catch(function error(err) {
+                    console.log(err);
+                });
+
+            if (error) {
+                this.errorExists = true;
+                this.errorMessage ="Uneli ste id koji već postoji!";
+                document.getElementById("theButton").disabled = true;
+            } else {
+                document.getElementById("theButton").disabled = false;
+                this.errorExists = false;
+            }
+            event.preventDefault();
+		},
         definePromocode: async function() {
 			 await axios.post('/rest/createPromocode', {
                 id: this.id,

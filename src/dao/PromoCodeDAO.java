@@ -16,6 +16,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
+import beans.BuyersMembership;
+import beans.Content;
 import beans.PromoCode;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
@@ -50,6 +52,18 @@ public class PromoCodeDAO {
 		return this.promocodes;
 	}
 	
+	public PromoCode getPromoCodeById(String id) {
+		PromoCode retVal = null;
+		for(PromoCode promoCode : this.promocodes) {
+			if(promoCode.getId().equals(id)) {
+				retVal = promoCode;
+				break;
+			}
+		}
+		
+		return retVal;	
+	}
+	
 	public void addPromoCode(PromoCode promoCode) {
 		this.promocodes.add(promoCode);
 		this.write();
@@ -68,5 +82,21 @@ public class PromoCodeDAO {
 			e.printStackTrace();
 		}
 	}
+	public void updatePromoCode(PromoCode promoCode) {
+		int index = this.findIndexOf(promoCode);
+		this.promocodes.set(index, promoCode);
+		this.write();
+	}
+	
+	public int findIndexOf(PromoCode promoCode) {
+		int index = -1; 
+    	for(int i = 0; i < this.promocodes.size(); i++) {
+    		if(this.promocodes.get(i).getId().equals(promoCode.getId())) {
+    			index = i;
+    			break;
+    		}
+    	}
+    	return index;
+    }
 	
 }

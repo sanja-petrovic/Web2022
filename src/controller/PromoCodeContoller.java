@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import beans.PromoCode;
+import beans.SportsObject;
 import dao.Repository;
 import dto.CreatePromoCodeDTO;
 import services.PromoCodeService;
@@ -35,6 +36,7 @@ public class PromoCodeContoller {
 		path(basePath, () -> {
 			createPromoCode();
 			getPromoCodes();
+			getPromoCodeById();
 		});
 	}
 	
@@ -43,6 +45,15 @@ public class PromoCodeContoller {
 			res.type("application/json");
 			res.status(200);
 			return gson.toJson(Repository.getInstance().getPromoCodeDAO().getPromoCodes());
+		});
+	}
+	
+	public static void getPromoCodeById() {
+		get("/promocodes/:id", (req, res) -> {
+			res.type("application/json");
+			String id = req.params(":id");
+			PromoCode promoCode = Repository.getInstance().getPromoCodeDAO().getPromoCodeById(id);
+			return gson.toJson(promoCode);
 		});
 	}
 	public static void createPromoCode() {
