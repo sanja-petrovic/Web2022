@@ -4,24 +4,24 @@
       "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
       "Username": "ivana"
     },
-    "PaymentDate": "2022-07-08T19:45:14.081362",
-    "DateTimeOfExpiration": "2022-08-08T19:45:14.0873517",
+    "PaymentDate": "2022-07-08T20:23:06.7672748",
+    "DateTimeOfExpiration": "2022-08-08T20:23:06.7712617",
     "UsedTerms": 0,
     "Status": "Aktivna",
-    "Id": "7894561230",
-    "Name": "Student paket No Limit"
+    "Id": "8553934453",
+    "Name": "Six Pack paket"
   },
   {
     "Buyer": {
       "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
       "Username": "petar"
     },
-    "PaymentDate": "2022-07-08T19:41:06.9223792",
-    "DateTimeOfExpiration": "2022-08-08T19:41:06.9223792",
+    "PaymentDate": "2022-07-08T20:20:05.9112659",
+    "DateTimeOfExpiration": "2022-08-08T20:20:05.9137594",
     "UsedTerms": 0,
     "Status": "Aktivna",
-    "Id": "7894561230",
-    "Name": "Student paket No Limit"
+    "Id": "aa23l78945",
+    "Name": "Članarina u Allegru"
   },
   {
     "Buyer": {

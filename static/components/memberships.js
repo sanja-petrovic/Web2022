@@ -17,9 +17,6 @@ Vue.component('memberships', {
 			errorMessage: "",
 			errorExists: false
 		}
-		
-		
-		
 	},
 	
 	template: `
@@ -106,6 +103,7 @@ Vue.component('memberships', {
 		viewMembership: function() {
 			this.viewClicked = true;
 			this.price = this.membership.Price - this.membership.Price * this.discount/100;
+			event.preventDefault();
 			
 		},
 		validatePromoCode: async function() {
@@ -171,11 +169,14 @@ Vue.component('memberships', {
 				price: this.newPrice,
 				promocodeId: this.promoCodeId
 			})
-				.then(function response(resp){
+				.then(response => {
+					console.log(response.data);
+					this.$router.replace("/");
 	            	alert("Uspešno ste dodali novu članarinu!");            
 	            })
-	            .catch(function error(err) {
-	               alert("Greška na serveru!");
+	            .catch(err => {
+                	alert(err.response.data);
+                    this.$router.replace("/clanarine");          
 				});
 			
 		}
