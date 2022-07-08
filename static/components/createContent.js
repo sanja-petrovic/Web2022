@@ -23,7 +23,7 @@ Vue.component('create-content', {
         <div>
         <nav-bar-logged-in v-if="this.loggedIn"></nav-bar-logged-in>
         <nav-bar-logged-out v-else></nav-bar-logged-out>
-         <div class="main-content">
+        <div class="main-content">
             <div class="sports-object-header justify-content-center">
                 <img class="sports-object-logo" :src="sportsObject.logoIcon">
                 <div class="sports-object-info">

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1k235lds",
+    "ExpirationDateTime": "2022-07-13",
+    "MaximumUses": 5,
+    "Discount": 25.0
+  },
+  {
+    "Id": "mdakm342",
+    "ExpirationDateTime": "2022-07-08",
+    "MaximumUses": 7,
+    "Discount": 20.0
+  },
+  {
+    "Id": "4564jfhd",
+    "ExpirationDateTime": "2022-07-16",
+    "MaximumUses": 0,
+    "Discount": 10.0
+  },
+  {
+    "Id": "sara21",
+    "ExpirationDateTime": "2022-07-21",
+    "MaximumUses": 5,
+    "Discount": 15.0
+  }
+]

@@ -5,22 +5,21 @@ import static spark.Spark.staticFiles;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-import beans.TrainingHistory;
 import controller.AdminController;
 import controller.BuyerController;
+import controller.BuyersMembershipController;
 import controller.CommentController;
 import controller.ContentsController;
 import controller.ManagerController;
+import controller.MembershipController;
+import controller.PromoCodeContoller;
 import controller.SportsObjectController;
 import controller.TrainerController;
 import controller.TrainingController;
 import controller.TrainingHistoryController;
 import controller.UserController;
 import dao.Repository;
-import dao.TrainingHistoryDAO;
 
 
 public class Main {
@@ -39,6 +38,9 @@ public class Main {
 		CommentController commentController = new CommentController();
 		AdminController adminController = new AdminController();
 		TrainingHistoryController trainingHistoryController = new TrainingHistoryController();
+		MembershipController membershipController = new MembershipController();
+		BuyersMembershipController buyersMembershipController = new BuyersMembershipController();
+		PromoCodeContoller promoCodeContoller = new PromoCodeContoller();
 		
 		userController.init();
 		sportsObjectController.init();
@@ -50,6 +52,9 @@ public class Main {
 		adminController.init();
 		trainingController.init();
 		trainingHistoryController.init();
+		membershipController.init();
+		buyersMembershipController.init();
+		promoCodeContoller.init();
 		/*
 		TrainingHistoryDAO dao = new TrainingHistoryDAO();
 		dao.addTrainingHistory(new TrainingHistory(
