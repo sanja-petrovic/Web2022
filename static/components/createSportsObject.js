@@ -43,7 +43,7 @@ Vue.component('create-sports-object', {
 
     template: `
         <div>
-        <nav-bar-logged-out></nav-bar-logged-out>
+        <nav-bar-logged-in></nav-bar-logged-in>
         <div class="outer-container">
             <div class="create-divs">
                 <div class="bla">

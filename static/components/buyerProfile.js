@@ -324,11 +324,10 @@ Vue.component('buyer-profile-page', {
                                             <span class="text-muted">{{ training.ScheduledFor }}</span><br>
                                         </td>
                                         <td>
-                                            <p
-                                                  v-if="training.CanceledAt !== undefined">Otkazan</p>
-                                            <p 
-                                                  v-else>Odobren</p>
-                                            <br>
+                                            <span
+                                                  v-if="training.CanceledAt !== undefined">Otkazan</span>
+                                            <span
+                                                  v-else>Odobren</span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -401,6 +400,7 @@ Vue.component('buyer-profile-page', {
             this.editable = true;
         },
         edit: async function () {
+            let x = this.user.DateOfBirth;
             await axios.put(`/rest/updateProfile`, {
                 name: this.user.Name,
                 surname: this.user.Surname,
