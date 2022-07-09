@@ -3,6 +3,7 @@ package services;
 import java.util.ArrayList;
 
 import beans.Comment;
+import beans.CommentStatus;
 import beans.SportsObject;
 import dao.Repository;
 
@@ -15,8 +16,10 @@ public class SportsObjectService {
 		ArrayList<Comment> comments = Repository.getInstance().getCommentDAO().getCommentsBySportsObject(sportsObject.getName());
 		
 		for(Comment c : comments) {
-			sum += c.getGrade();
-			count++;
+			if(c.getStatus().equals(CommentStatus.APPROVED)) {
+				sum += c.getGrade();
+				count++;
+			}
 		}
 		
 		return sum/count;

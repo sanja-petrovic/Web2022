@@ -44,11 +44,6 @@ Vue.component('navBarLoggedIn', {
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><router-link to="/profil" class="dropdown-item">Profil</router-link></li>
-                            <li><a class="dropdown-item" href="#">Članarina</a></li>
-                            <li><router-link class="dropdown-item" to="/dodaj-objekat">Istorija treninga</router-link></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
                             <li><a class="dropdown-item" href="#" v-on:click="logOut">Odjavi se</a></li>
                         </ul>
                     </li>

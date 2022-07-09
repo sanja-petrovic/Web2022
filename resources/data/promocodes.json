@@ -8,7 +8,7 @@
   {
     "Id": "mdakm342",
     "ExpirationDateTime": "2022-07-08",
-    "MaximumUses": 5,
+    "MaximumUses": 4,
     "Discount": 20.0
   },
   {
@@ -22,5 +22,11 @@
     "ExpirationDateTime": "2022-07-21",
     "MaximumUses": 5,
     "Discount": 15.0
+  },
+  {
+    "Id": "A3FJSG4",
+    "ExpirationDateTime": "2022-07-20",
+    "MaximumUses": 3,
+    "Discount": 10.0
   }
 ]
