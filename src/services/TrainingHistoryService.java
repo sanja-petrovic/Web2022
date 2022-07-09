@@ -1,10 +1,12 @@
 package services;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.UUID;
 
 import beans.Buyer;
 import beans.BuyersMembership;
+import beans.SportsObject;
 import beans.Training;
 import beans.TrainingHistory;
 import dao.Repository;
@@ -23,7 +25,13 @@ public class TrainingHistoryService {
 	public static TrainingHistory addTrainingToHistory(TrainingHistoryDTO trainingHistoryDTO) {		
 		Buyer buyer = Repository.getInstance().getBuyerDAO().getBuyerByUsername(trainingHistoryDTO.getBuyerUsername());
 		Training training = Repository.getInstance().getTrainingDAO().getTrainingById(trainingHistoryDTO.getContentId());
-		
+		SportsObject sportsObject = training.getSportsObject();
+		ArrayList<SportsObject> list = buyer.getVisitedObjects();
+		if(buyer.getVisitedObjects().contains(sportsObject))
+			list.add(sportsObject);
+	
+		buyer.setVisitedObjects(list);
+		Repository.getInstance().getBuyerDAO().updateBuyer(buyer);
 		TrainingHistory trainingHistory = new TrainingHistory();
 		trainingHistory.setId(UUID.randomUUID().toString());
 		trainingHistory.setTraining(training);

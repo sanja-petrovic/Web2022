@@ -2,7 +2,6 @@ package beans;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -67,13 +66,11 @@ public class Buyer extends User {
 	public void setMembership(Membership membership) {
 		this.membership = membership;
 	}
-	
-	public ArrayList<SportsObject> getVisitedObjects() {
-		return visitedObjects;
-	}
 
 	public void setVisitedObjects(ArrayList<SportsObject> visitedObjects) {
-		this.visitedObjects = visitedObjects;
+		for(int i = 0; i < visitedObjects.size(); i++) {
+			visitedObjects.set(i, visitedObjects.get(i));
+		}
 	}
 
 	public double getPoints() {
@@ -87,6 +84,10 @@ public class Buyer extends User {
 	}
 	public void setType(BuyerType type) {
 		this.type = type;
+	}
+
+	public ArrayList<SportsObject> getVisitedObjects() {
+		return visitedObjects;
 	}
 	
 }

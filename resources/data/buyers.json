@@ -11,7 +11,9 @@
       "NumberOfTerms": 20,
       "DailyLimit": 2
     },
-    "VisitedObjects": {},
+    "VisitedObjects": [
+      {}
+    ],
     "Points": 9.0,
     "BuyerType": {
       "Tier": "Bronzani"
@@ -21,17 +23,24 @@
   },
   {
     "Membership": {
-      "Id": "8553934453",
-      "Name": "Six Pack paket",
+      "Id": "1234567891",
+      "Name": "MG basic paket",
       "SportsObject": {
-        "name": "No Limit Gym"
+        "name": "Mega Gym"
       },
       "MembershipType": "Mesečna",
-      "Price": 4320.0,
-      "NumberOfTerms": 50,
-      "DailyLimit": 5
+      "Price": 5000.0,
+      "NumberOfTerms": 40,
+      "DailyLimit": 3
     },
-    "VisitedObjects": {},
+    "VisitedObjects": [
+      {
+        "name": "Mega Gym"
+      },
+      {
+        "name": "No Limit Gym"
+      }
+    ],
     "Points": 200.0,
     "BuyerType": {
       "Tier": "Srebrni"
@@ -51,7 +60,9 @@
       "NumberOfTerms": 30,
       "DailyLimit": 3
     },
-    "VisitedObjects": {},
+    "VisitedObjects": [
+      {}
+    ],
     "Points": 1200.0,
     "BuyerType": {
       "Tier": "Zlatni"
