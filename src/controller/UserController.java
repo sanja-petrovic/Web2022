@@ -55,7 +55,7 @@ public class UserController {
 
 			User user = UserService.getCompleteData(u.getUsername());
 
-			if (user == null) {
+			if (user == null || user.getDeletedAt() != null) {
 				res.status(401);
 				res.body("Incorrect username or password. Please try again");
 				return res.body();

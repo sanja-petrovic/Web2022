@@ -28,6 +28,10 @@ public class TrainingHistory {
 	@SerializedName("CanceledAt")
 	@Expose
 	private LocalDateTime canceledAt;
+	@SerializedName("DeletedAt")
+	@Expose
+	private LocalDateTime deletedAt;
+	
 	
 	public TrainingHistory(Buyer buyer, Training training, LocalDateTime checkIn) {
 		this.id = UUID.randomUUID().toString();
@@ -91,6 +95,14 @@ public class TrainingHistory {
 
 	public void setCanceledAt(LocalDateTime canceledAt) {
 		this.canceledAt = canceledAt;
+	}
+
+	public LocalDateTime getDeletedAt() {
+		return deletedAt;
+	}
+
+	public void setDeletedAt(LocalDateTime deletedAt) {
+		this.deletedAt = deletedAt;
 	}
 
     

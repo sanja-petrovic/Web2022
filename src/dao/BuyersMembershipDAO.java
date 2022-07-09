@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,6 +20,7 @@ import com.google.gson.reflect.TypeToken;
 import beans.BuyersMembership;
 import beans.Membership;
 import beans.SportsObject;
+import beans.User;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalTimeAdapter;
@@ -67,7 +69,9 @@ public class BuyersMembershipDAO {
 	}
 	
 	public ArrayList<BuyersMembership> getBuyersMemberships() {
-		return this.buyersMemberships;
+		return new ArrayList<BuyersMembership>(this.buyersMemberships.stream()
+				  .filter(bm -> bm.getDeletedAt() == null)
+				  .collect(Collectors.toList()));
 	}	
 	
 	public void write() {
@@ -93,7 +97,7 @@ public class BuyersMembershipDAO {
 	public BuyersMembership getMembershipById(String id) {
 		BuyersMembership retVal = null;
 		for(BuyersMembership bm : this.buyersMemberships) {
-			if(bm.getId().equals(id)) {
+			if(bm.getId().equals(id) && bm.getDeletedAt() == null) {
 				retVal = bm;
 				break;
 			}
@@ -105,7 +109,7 @@ public class BuyersMembershipDAO {
 	public BuyersMembership getMembershipByBuyerId(String id) {
 		BuyersMembership retVal = null;
 		for(BuyersMembership bm : this.buyersMemberships) {
-			if(bm.getBuyer().getId().equals(id)) {
+			if(bm.getBuyer().getId().equals(id) && bm.getDeletedAt() == null) {
 				retVal = bm;
 				break;
 			}
@@ -122,13 +126,23 @@ public class BuyersMembershipDAO {
 	public int findIndexOf(BuyersMembership buyersMembership) {
 		int index = -1; 
     	for(int i = 0; i < this.buyersMemberships.size(); i++) {
-    		if(this.buyersMemberships.get(i).getBuyer().getId().equals(buyersMembership.getBuyer().getId())) {
+    		if(this.buyersMemberships.get(i).getBuyer().getId().equals(buyersMembership.getBuyer().getId()) && this.buyersMemberships.get(i).getDeletedAt() == null) {
     			index = i;
     			break;
     		}
     	}
     	return index;
     }
+	
+	public void removeBuyersMembership(String id) {
+		for(BuyersMembership bm : this.buyersMemberships) {
+			if(bm.getBuyer().getId().equals(id) && bm.getDeletedAt() == null) {
+				bm.setDeletedAt(LocalDateTime.now());
+				this.write();
+				break;
+			}
+		}
+	}
 	
 	
 }

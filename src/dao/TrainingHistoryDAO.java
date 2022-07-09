@@ -142,5 +142,14 @@ public class TrainingHistoryDAO {
     	
     	return index;
     }
+    
+    public void removeByBuyer(String id) {
+    	for(TrainingHistory th : this.trainingHistories) {
+    		if(th.getBuyer().getId().equals(id)) {
+    			th.setDeletedAt(LocalDateTime.now());
+    		}
+    	}
+		this.write();
+    }
 	
 }

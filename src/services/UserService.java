@@ -71,6 +71,8 @@ public class UserService {
 		switch(userType) {
 		case BUYER:
 			User u = Repository.getInstance().getBuyerDAO().getBuyerByUsername(username);
+			BuyersMembershipService.removeByBuyer(u.getId());
+			CommentService.removeByBuyer(u.getId());
 			retVal = (Buyer) u;
 			break;
 		case MANAGER:

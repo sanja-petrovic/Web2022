@@ -75,7 +75,7 @@ public class UserDAO {
 
 	public User getUserByUsername(String username) {
 		for (User user : this.users) {
-			if (user.getUsername().equals(username)) {
+			if (user.getUsername().equals(username) && user.getDeletedAt() == null) {
 				return user;
 			}
 		}
@@ -84,7 +84,6 @@ public class UserDAO {
 	
 	public void addUser(User u) {
 		this.users.add(u);
-		UserType type = u.getUserType();
 		
 		this.write();
 	}
@@ -92,7 +91,7 @@ public class UserDAO {
 	public UserType getUserTypeByUsername(String username) {
 		UserType retVal = null;
 		for(User u : this.users) {
-			if(u.getUsername().equals(username)) {
+			if(u.getUsername().equals(username) && u.getDeletedAt() == null) {
 				retVal = u.getUserType();
 			}
 		}
@@ -102,7 +101,7 @@ public class UserDAO {
 	
 	public void removeUser(String id) {
 		for(User u : this.users) {
-			if(u.getId().equals(id)) {
+			if(u.getId().equals(id) && u.getDeletedAt() == null) {
 				u.setDeletedAt(LocalDateTime.now());
 				this.write();
 				break;
@@ -121,7 +120,7 @@ public class UserDAO {
     public int findIndexOf(User u) {
         int index = -1;
         for(int i = 0; i < this.users.size(); i++) {
-            if(this.users.get(i).getId().equals(u.getId())) {
+            if(this.users.get(i).getId().equals(u.getId()) && u.getDeletedAt() == null) {
                 index = i;
                 break;
             }
