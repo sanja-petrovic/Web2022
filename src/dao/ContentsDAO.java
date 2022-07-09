@@ -158,4 +158,23 @@ public class ContentsDAO {
         return index;
     } 
 	
+	public void removeContent(String id) {
+		for(Content c : this.getContents()) {
+			if(c.getId().equals(id)) {
+				c.setDeletedAt(LocalDateTime.now());
+				this.write();
+				break;
+			}
+		}
+	}
+	
+	public void removeContentBySportsObject(String id) {
+		for(Content c : this.getContents()) {
+			if(c.getSportsObject().getName().equals(id)) {
+				c.setDeletedAt(LocalDateTime.now());
+			}
+		}
+		this.write();
+	}
+	
 }

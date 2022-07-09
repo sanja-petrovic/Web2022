@@ -176,4 +176,14 @@ public class SportsObjectDAO {
         return index;
     } 
 	
+	public void removeSportsObject(String id) {
+		for(SportsObject so : this.sportsObjects) {
+			if(so.getName().toLowerCase().trim().equals(id.toLowerCase().trim())) {
+				so.setDeletedAt(LocalDateTime.now());
+				this.write();
+				break;
+			}
+		}
+	}
+	
 }

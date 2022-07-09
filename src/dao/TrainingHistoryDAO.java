@@ -158,7 +158,6 @@ public class TrainingHistoryDAO {
     }
     
     public void removeByTrainer(String id) {
-
     	for(TrainingHistory th : this.trainingHistories) {
     		if(th.getDeletedAt() == null && th.getTrainer().getId().equals(id)) {
     			th.setDeletedAt(LocalDateTime.now());
@@ -166,5 +165,23 @@ public class TrainingHistoryDAO {
     	}
 		this.write();
     }
+    
+    public void removeByTraining(String id) {
+    	for(TrainingHistory th : this.trainingHistories) {
+    		if(th.getDeletedAt() == null && th.getTraining().getId().equals(id)) {
+    			th.setDeletedAt(LocalDateTime.now());
+    		}
+    	}
+		this.write();
+    }
 	
+    public void removeBySportsObject(String id) {
+    	for(TrainingHistory th : this.trainingHistories) {
+    		if(th.getDeletedAt() == null && th.getTraining().getSportsObject().getName().equals(id)) {
+    			th.setDeletedAt(LocalDateTime.now());
+    		}
+    	}
+		this.write();
+    	
+    }
 }

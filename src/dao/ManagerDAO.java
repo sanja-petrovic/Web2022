@@ -174,4 +174,16 @@ public class ManagerDAO {
 		
 		return managers;
 	}
+	
+	public void unassignManagerFromSportsObject(String sportsObjectName) {
+		for(Manager m : this.managers) {
+			if(m.getDeletedAt() == null && m.getSportsObject() != null) {
+				if(m.getSportsObject().getName().equals(sportsObjectName)) {
+					m.setSportsObject(null);
+					this.writeManagers();
+					break;
+				}
+			}
+		}
+	}
 }

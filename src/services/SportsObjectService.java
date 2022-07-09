@@ -24,4 +24,16 @@ public class SportsObjectService {
 		
 		return sum/count;
 	}
+	
+	public static void removeSportsObject(String id) {
+		Repository.getInstance().getSportsObjectDAO().removeSportsObject(id);
+		Repository.getInstance().getManagerDAO().unassignManagerFromSportsObject(id);
+		Repository.getInstance().getCommentDAO().removeCommentsBySportsObject(id);
+		Repository.getInstance().getContentsDAO().removeContentBySportsObject(id);
+		Repository.getInstance().getTrainingHistoryDAO().removeBySportsObject(id);
+		ArrayList<String> membershipIdsToRemove = Repository.getInstance().getMembershipDAO().removeMembershipBySportsObject(id);
+		for(String membershipId : membershipIdsToRemove) {
+			MembershipService.removeMembership(membershipId);
+		}
+	}
 }

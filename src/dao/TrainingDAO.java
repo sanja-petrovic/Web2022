@@ -193,6 +193,16 @@ public class TrainingDAO {
         }
         return index;
     } 
+	public int findIndexOf(String id) {
+        int index = -1;
+        for(int i = 0; i < this.trainings.size(); i++) {
+            if(this.trainings.get(i).getDeletedAt() == null && this.trainings.get(i).getId().equals(id)) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    } 
 	
 	public void removeByTrainer(String id) {
 		for(Training t : this.trainings) {
@@ -201,6 +211,14 @@ public class TrainingDAO {
 			}
 		}
 		this.write();
+	}
+	
+	public void removeTraining(String id) {
+		int index = this.findIndexOf(id);
+		if(index != -1) {
+			this.trainings.get(index).setDeletedAt(LocalDateTime.now());
+			this.write();
+		}
 	}
 }
 	

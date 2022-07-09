@@ -105,4 +105,11 @@ public class PromoCodeDAO {
     	return index;
     }
 	
+	public void removePromoCode(String id) {
+		for(PromoCode pc : this.getPromoCodes()) {
+			if(pc.getId().equals(id)) {
+				pc.setDeletedAt(LocalDateTime.now());
+			}
+		}
+	}
 }

@@ -28,7 +28,9 @@ import dao.Repository;
 import dao.SportsObjectDAO;
 import dto.RegisterUserDTO;
 import dto.SportsObjectDTO;
+import services.ContentService;
 import services.PasswordService;
+import services.SportsObjectService;
 import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalTimeAdapter;
 
@@ -48,6 +50,7 @@ public class SportsObjectController {
 			getSportsObjectByName();
 			getSportsObjectByLocation();
 			getSportsObjectByRatingInterval();
+			removeSportsObject();
 		});
 	}
 	
@@ -160,6 +163,18 @@ public class SportsObjectController {
 			res.status(200);
 			List<SportsObject> searchedObjects = sportsObjectDAO.getSportsObjectByRatingInterval(minRating, maxRating);
 			return gson.toJson(searchedObjects);
+		});
+	}
+	
+	public static void removeSportsObject() {
+		post("/sportsobjects/:id/delete", (req, res) -> {
+			res.type("application/json");
+			String payload = req.body();
+			String id = req.params(":id");
+			SportsObjectService.removeSportsObject(id);
+			res.status(200);
+
+			return true;
 		});
 	}
 	

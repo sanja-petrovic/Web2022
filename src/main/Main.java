@@ -13,7 +13,7 @@ import controller.CommentController;
 import controller.ContentsController;
 import controller.ManagerController;
 import controller.MembershipController;
-import controller.PromoCodeContoller;
+import controller.PromoCodeController;
 import controller.SportsObjectController;
 import controller.TrainerController;
 import controller.TrainingController;
@@ -40,7 +40,7 @@ public class Main {
 		TrainingHistoryController trainingHistoryController = new TrainingHistoryController();
 		MembershipController membershipController = new MembershipController();
 		BuyersMembershipController buyersMembershipController = new BuyersMembershipController();
-		PromoCodeContoller promoCodeContoller = new PromoCodeContoller();
+		PromoCodeController promoCodeController = new PromoCodeController();
 		
 		userController.init();
 		sportsObjectController.init();
@@ -54,21 +54,7 @@ public class Main {
 		trainingHistoryController.init();
 		membershipController.init();
 		buyersMembershipController.init();
-		promoCodeContoller.init();
-		/*
-		TrainingHistoryDAO dao = new TrainingHistoryDAO();
-		dao.addTrainingHistory(new TrainingHistory(
-				Repository.getInstance().getBuyerDAO().getBuyers().get(0),
-				Repository.getInstance().getTrainingDAO().getTrainings().get(1),
-				LocalDateTime.of(2022, 5, 25, 0, 0, 0)
-				));
-		
-
-		dao.addTrainingHistory(new TrainingHistory(
-				Repository.getInstance().getBuyerDAO().getBuyers().get(0),
-				Repository.getInstance().getTrainingDAO().getTrainings().get(2),
-				LocalDateTime.of(2022, 7, 12, 0, 0, 0)
-				));*/
+		promoCodeController.init();
 	}
 	
 }

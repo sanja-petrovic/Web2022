@@ -20,7 +20,7 @@ import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalTimeAdapter;
 
-public class PromoCodeContoller {
+public class PromoCodeController {
 	
 	private static Gson gson = new GsonBuilder().setPrettyPrinting()
 			.registerTypeAdapter(LocalTime.class, new LocalTimeAdapter())
@@ -28,7 +28,7 @@ public class PromoCodeContoller {
 			.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
 	private static String basePath = "/rest";
 	
-	public PromoCodeContoller() {
+	public PromoCodeController() {
 		
 	}
 	

@@ -23,6 +23,7 @@ import dao.Repository;
 import dto.ContentDTO;
 import dto.EditContentDTO;
 import services.ContentService;
+import services.TrainingService;
 import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalTimeAdapter;
 
@@ -38,6 +39,7 @@ public class ContentsController {
 			createContent();
 			getContentByName();
 			editContent();
+			removeContent();
 	
 		});
 	}
@@ -122,6 +124,18 @@ public class ContentsController {
 				
 		});
 		
+	}
+	
+	public static void removeContent() {
+		post("/contents/:id/delete", (req, res) -> {
+			res.type("application/json");
+			String payload = req.body();
+			String id = req.params(":id");
+			ContentService.removeContent(id);
+			res.status(200);
+
+			return true;
+		});
 	}
 	
 }

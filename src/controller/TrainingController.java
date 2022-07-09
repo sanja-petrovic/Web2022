@@ -19,6 +19,7 @@ import dao.Repository;
 import dto.CreateTrainingDTO;
 import dto.EditTrainingDTO;
 import services.TrainingService;
+import services.UserService;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalDateTimeAdapter2;
@@ -37,6 +38,7 @@ public class TrainingController {
 			getPriceByTrainingId();
 			getTypeByTrainingId();
 			editTraining();
+			removeTraining();
 		});
 	}
 	
@@ -94,6 +96,18 @@ public class TrainingController {
 				
 		});
 		
+	}
+	
+	public static void removeTraining() {
+		post("/trainings/:id/delete", (req, res) -> {
+			res.type("application/json");
+			String payload = req.body();
+			String id = req.params(":id");
+			TrainingService.removeTraining(id);
+			res.status(200);
+
+			return true;
+		});
 	}
 	
 

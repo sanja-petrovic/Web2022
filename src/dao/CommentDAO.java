@@ -143,5 +143,14 @@ public class CommentDAO {
 		this.write();
 	}
 	
-	
+	public void removeCommentsBySportsObject(String id) {
+		for(Comment c : this.comments) {
+			if(c.getDeletedAt() == null && c.getSportsObject().getName().equals(id)) {
+				c.setDeletedAt(LocalDateTime.now());
+				
+			}
+		}
+		
+		this.write();
+	}
 }

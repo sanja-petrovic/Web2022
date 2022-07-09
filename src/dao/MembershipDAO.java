@@ -100,4 +100,14 @@ public class MembershipDAO {
 			}
 		}
 	}
+	
+	public ArrayList<String> removeMembershipBySportsObject(String id) {
+		ArrayList<String> membershipIds = new ArrayList<>();
+		for(Membership m : this.getMemberships()) {
+			if(m.getSportsObject().getName().equals(id)) {
+				membershipIds.add(m.getId());
+			}
+		}
+		return membershipIds;
+	}
 }
