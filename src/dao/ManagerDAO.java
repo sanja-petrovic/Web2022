@@ -41,9 +41,7 @@ public class ManagerDAO {
 		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/managers.json"));
 		    this.managers = gson.fromJson(reader, new TypeToken<ArrayList<Manager>>() {}.getType());
 		    for(Manager m : this.managers) {
-		    	if(m.getDeletedAt() == null) {
-		    		this.fillData(m);
-		    	}
+		    	this.fillData(m);
 		    }
 		    reader.close();
 		} catch (Exception ex) {
@@ -52,7 +50,7 @@ public class ManagerDAO {
 	}
 	
 	public void fillData(Manager m) {
-		User u = Repository.getInstance().getUserDAO().getUserByUsername(m.getUsername());
+		User u = Repository.getInstance().getUserDAO().getUserByUsernameUnprotected(m.getUsername());
 		if(u != null) {
 			m.setName(u.getName());
 			m.setSurname(u.getSurname());
@@ -158,6 +156,7 @@ public class ManagerDAO {
 	}
 	
 	public ArrayList<Manager> getManagers() {
+		this.load();
 		return new ArrayList<Manager>(this.managers.stream()
 			  .filter(u -> u.getDeletedAt() == null)
 			  .collect(Collectors.toList()));

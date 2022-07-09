@@ -82,6 +82,15 @@ public class UserDAO {
 		return null;
 	}
 	
+	public User getUserByUsernameUnprotected(String username) {
+		for (User user : this.users) {
+			if (user.getUsername().equals(username)) {
+				return user;
+			}
+		}
+		return null;
+	}
+	
 	public void addUser(User u) {
 		this.users.add(u);
 		
@@ -91,7 +100,18 @@ public class UserDAO {
 	public UserType getUserTypeByUsername(String username) {
 		UserType retVal = null;
 		for(User u : this.users) {
-			if(u.getUsername().equals(username) || u.getId().equals(username) && u.getDeletedAt() == null) {
+			if(u.getUsername().equals(username) && u.getDeletedAt() == null) {
+				retVal = u.getUserType();
+			}
+		}
+		
+		return retVal;
+	}
+	
+	public UserType getUserTypeById(String id) {
+		UserType retVal = null;
+		for(User u : this.users) {
+			if(u.getId().equals(id)) {
 				retVal = u.getUserType();
 			}
 		}

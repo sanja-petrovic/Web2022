@@ -61,7 +61,7 @@ public class UserService {
 	
 	public static void removeUser(String id) {
 		Repository.getInstance().getUserDAO().removeUser(id);
-		UserType userType = Repository.getInstance().getUserDAO().getUserTypeByUsername(id);
+		UserType userType = Repository.getInstance().getUserDAO().getUserTypeById(id);
 		switch(userType) {
 			case BUYER:
 				buyerCascadeDelete(id);
@@ -92,28 +92,30 @@ public class UserService {
 		User retVal = null;
 		
 		UserType userType = Repository.getInstance().getUserDAO().getUserTypeByUsername(username);
-		
-		switch(userType) {
-		case BUYER:
-			User u = Repository.getInstance().getBuyerDAO().getBuyerByUsername(username);
-			retVal = (Buyer) u;
-			break;
-		case MANAGER:
-			u = Repository.getInstance().getManagerDAO().getManagerByUsername(username);
-			retVal = (Manager) u;
-			break;
-		case TRAINER:
-			u = Repository.getInstance().getTrainerDAO().getTrainerByUsername(username);
-			retVal = (Trainer) u;
-			break;
-		case ADMIN:
-			u = Repository.getInstance().getAdministratorDAO().getAdminByUsername(username);
-			retVal = (Administrator) u;
-			break;
-		default:
-			break;
-		
-		
+		if(userType != null) {
+
+			switch(userType) {
+			case BUYER:
+				User u = Repository.getInstance().getBuyerDAO().getBuyerByUsername(username);
+				retVal = (Buyer) u;
+				break;
+			case MANAGER:
+				u = Repository.getInstance().getManagerDAO().getManagerByUsername(username);
+				retVal = (Manager) u;
+				break;
+			case TRAINER:
+				u = Repository.getInstance().getTrainerDAO().getTrainerByUsername(username);
+				retVal = (Trainer) u;
+				break;
+			case ADMIN:
+				u = Repository.getInstance().getAdministratorDAO().getAdminByUsername(username);
+				retVal = (Administrator) u;
+				break;
+			default:
+				break;
+			
+			
+			}
 		}
 		
 		

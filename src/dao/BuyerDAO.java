@@ -41,7 +41,7 @@ public class BuyerDAO {
 		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/buyers.json"));
 		    this.buyers = gson.fromJson(reader, new TypeToken<ArrayList<Buyer>>() {}.getType());
 		    for(Buyer b : this.buyers) {
-		    	this.fillData(b);
+			    this.fillData(b);
 		    }
 		    reader.close();
 
@@ -51,7 +51,7 @@ public class BuyerDAO {
 	}
 	
 	public void fillData(Buyer b) {
-		User u = Repository.getInstance().getUserDAO().getUserByUsername(b.getUsername());
+		User u = Repository.getInstance().getUserDAO().getUserByUsernameUnprotected(b.getUsername());
 		if(u != null) {
 			b.setName(u.getName());
 			b.setSurname(u.getSurname());
@@ -137,6 +137,7 @@ public class BuyerDAO {
 	}
 	
 	public ArrayList<Buyer> getBuyers() {
+		this.load();
 		return new ArrayList<Buyer>(this.buyers.stream()
 				  .filter(u -> u.getDeletedAt() == null)
 				  .collect(Collectors.toList()));

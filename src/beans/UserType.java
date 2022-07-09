@@ -9,10 +9,10 @@ public enum UserType {
             return "Administrator";
         }
 	},
-	@SerializedName("Menadûer")
+	@SerializedName("Menad≈æer")
 	MANAGER {
         public String toString() {
-            return "Menadûer";
+            return "Menad≈æer";
         }
 	},
 	@SerializedName("Trener")

@@ -44,9 +44,7 @@ public class TrainerDAO {
 		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/trainers.json"));
 		    this.trainers = gson.fromJson(reader, new TypeToken<ArrayList<Trainer>>() {}.getType());
 		    for(Trainer t : this.trainers) {
-		    	if(t.getDeletedAt() == null) {
-			    	this.fillData(t);
-		    	}
+			    this.fillData(t);
 		    }
 		    reader.close();
 
@@ -56,8 +54,8 @@ public class TrainerDAO {
 	}
 	
 	public void fillData(Trainer t) {
-		User u = Repository.getInstance().getUserDAO().getUserByUsername(t.getUsername());
-		if(t != null) {
+		User u = Repository.getInstance().getUserDAO().getUserByUsernameUnprotected(t.getUsername());
+		if(t != null && u != null) {
 			t.setName(u.getName());
 			t.setSurname(u.getSurname());
 			t.setDateOfBirth(u.getDateOfBirth());
@@ -123,6 +121,7 @@ public class TrainerDAO {
 	}
 	
 	public ArrayList<Trainer> getTrainers() {
+		this.load();
 		return new ArrayList<Trainer>(this.trainers.stream()
 				  .filter(u -> u.getDeletedAt() == null)
 				  .collect(Collectors.toList()));
