@@ -4,12 +4,12 @@
       "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
       "Username": "ivana"
     },
-    "PaymentDate": "2022-07-08T20:23:06.7672748",
-    "DateTimeOfExpiration": "2022-08-08T20:23:06.7712617",
-    "UsedTerms": 0,
+    "PaymentDate": "2022-07-09T13:34:35.4538367",
+    "DateTimeOfExpiration": "2022-08-09T13:34:35.4538367",
+    "UsedTerms": 2,
     "Status": "Aktivna",
-    "Id": "8553934453",
-    "Name": "Six Pack paket"
+    "Id": "1234567891",
+    "Name": "MG basic paket"
   },
   {
     "Buyer": {

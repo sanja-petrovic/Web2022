@@ -17,6 +17,7 @@ import com.google.gson.reflect.TypeToken;
 
 import beans.Buyer;
 import beans.Membership;
+import beans.SportsObject;
 import beans.User;
 import beans.UserType;
 import util.adapters.LocalDateTimeAdapter;

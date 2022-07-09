@@ -30,8 +30,8 @@ public class Repository {
 			instance.setManagerDAO(new ManagerDAO());
 			instance.setContentsDAO(new ContentsDAO());
 			instance.setMembershipDAO(new MembershipDAO());
-			instance.setBuyerDAO(new BuyerDAO());
 			instance.setBuyersMembershipDAO(new BuyersMembershipDAO());
+			instance.setBuyerDAO(new BuyerDAO());
 			instance.setTrainerDAO(new TrainerDAO());
 			instance.setTrainingDAO(new TrainingDAO());
 			instance.setCommentDAO(new CommentDAO());
