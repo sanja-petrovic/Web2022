@@ -16,8 +16,11 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
+import beans.Buyer;
+import beans.BuyerType;
 import beans.BuyersMembership;
 import beans.Membership;
+import beans.MembershipStatus;
 import beans.SportsObject;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
@@ -111,6 +114,55 @@ public class BuyersMembershipDAO {
 			}
 		}
 		return retVal;
+	}
+	
+	public BuyersMembership checkIfMembershipExpired(BuyersMembership buyersMembership) {
+		if(buyersMembership.getStatus().equals(MembershipStatus.INACTIVE)) 
+			return buyersMembership;
+		else {
+			int val = buyersMembership.getDateTimeOfExpiration().compareTo(LocalDateTime.now());
+			if(val < 0) {
+				buyersMembership.setStatus(MembershipStatus.INACTIVE);
+				updateBuyersMembership(buyersMembership);
+				recalculatePoints(buyersMembership);
+			}
+			return buyersMembership;
+		}
+	}
+	public void recalculatePoints(BuyersMembership buyersMembership) {
+		Buyer buyer = Repository.getInstance().getBuyerDAO().getBuyerByUsername(buyersMembership.getBuyer().getUsername());
+		double points = buyer.getPoints();
+		double lostPoints;
+		double addPoints;
+		double usedTerms = buyersMembership.getUsedTerms();
+		int totalTerms = buyersMembership.getNumberOfTerms();
+		double membershipPrice = buyersMembership.getPrice();
+		if(usedTerms < (double) totalTerms/3) {
+			lostPoints = membershipPrice/1000 * 133 * 4;
+			points -= lostPoints;
+			buyer.setPoints(points);
+		}
+		else {
+			addPoints = membershipPrice/1000 * usedTerms;
+			points += addPoints;
+			buyer.setPoints(points);
+		}
+		BuyerType buyerType = buyer.getType();
+	
+		if(points >= 1000 && points < 2000) {
+			buyerType.setTier("Bronzani");
+		}
+		else if(points >= 2000 && points < 3000) {
+			buyerType.setTier("Srebrni");
+		}
+		else if(points >= 3000) {
+			buyerType.setTier("Zlatni");
+		}
+		else {
+			buyerType.setTier("Bronzani");
+		}
+		buyer.setType(buyerType);
+		Repository.getInstance().getBuyerDAO().updateBuyer(buyer);
 	}
 	
 	public void updateBuyersMembership(BuyersMembership buyersMembership) {

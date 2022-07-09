@@ -59,15 +59,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "aa23l78945",
-        "Name": "Članarina u Allegru",
+        "Id": "1233214554",
+        "Name": "Fight Club paket",
         "SportsObject": {
-          "name": "Plesni centar Allegro"
+          "name": "Favorit"
         },
         "MembershipType": "Mesečna",
-        "Price": 3000.0,
-        "NumberOfTerms": 20,
-        "DailyLimit": 2
+        "Price": 5000.0,
+        "NumberOfTerms": 30,
+        "DailyLimit": 3
       },
       "VisitedObjects": [
         {}
@@ -100,15 +100,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "aa23l78945",
-        "Name": "Članarina u Allegru",
+        "Id": "1233214554",
+        "Name": "Fight Club paket",
         "SportsObject": {
-          "name": "Plesni centar Allegro"
+          "name": "Favorit"
         },
         "MembershipType": "Mesečna",
-        "Price": 3000.0,
-        "NumberOfTerms": 20,
-        "DailyLimit": 2
+        "Price": 5000.0,
+        "NumberOfTerms": 30,
+        "DailyLimit": 3
       },
       "VisitedObjects": [
         {}
@@ -141,15 +141,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "Plesni centar Allegro"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2850.0,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -159,7 +159,7 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 2025.0,
       "BuyerType": {
         "Tier": "Srebrni"
       },
@@ -187,15 +187,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "Plesni centar Allegro"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2850.0,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -205,7 +205,7 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 2025.0,
       "BuyerType": {
         "Tier": "Srebrni"
       },
@@ -233,15 +233,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "Plesni centar Allegro"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2850.0,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -251,7 +251,7 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 2025.0,
       "BuyerType": {
         "Tier": "Srebrni"
       },
@@ -320,15 +320,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "Plesni centar Allegro"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2850.0,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -338,7 +338,7 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 2025.0,
       "BuyerType": {
         "Tier": "Srebrni"
       },
@@ -366,15 +366,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "aa23l78945",
-        "Name": "Članarina u Allegru",
+        "Id": "1233214554",
+        "Name": "Fight Club paket",
         "SportsObject": {
-          "name": "Plesni centar Allegro"
+          "name": "Favorit"
         },
         "MembershipType": "Mesečna",
-        "Price": 3000.0,
-        "NumberOfTerms": 20,
-        "DailyLimit": 2
+        "Price": 5000.0,
+        "NumberOfTerms": 30,
+        "DailyLimit": 3
       },
       "VisitedObjects": [
         {}
@@ -407,15 +407,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "Plesni centar Allegro"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2850.0,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -425,7 +425,7 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 2025.0,
       "BuyerType": {
         "Tier": "Srebrni"
       },
@@ -577,15 +577,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "Plesni centar Allegro"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2850.0,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -595,7 +595,7 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 2025.0,
       "BuyerType": {
         "Tier": "Srebrni"
       },
@@ -623,15 +623,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "Plesni centar Allegro"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2850.0,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -641,7 +641,7 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 2025.0,
       "BuyerType": {
         "Tier": "Srebrni"
       },
@@ -670,15 +670,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "Plesni centar Allegro"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2850.0,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -688,7 +688,7 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 2025.0,
       "BuyerType": {
         "Tier": "Srebrni"
       },
@@ -716,15 +716,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "Plesni centar Allegro"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2850.0,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -734,7 +734,7 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 2025.0,
       "BuyerType": {
         "Tier": "Srebrni"
       },
@@ -762,15 +762,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "Plesni centar Allegro"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2850.0,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -780,7 +780,7 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 2025.0,
       "BuyerType": {
         "Tier": "Srebrni"
       },
@@ -808,15 +808,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "Plesni centar Allegro"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2850.0,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -826,7 +826,7 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 2025.0,
       "BuyerType": {
         "Tier": "Srebrni"
       },
@@ -854,15 +854,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "Plesni centar Allegro"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2850.0,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -872,7 +872,7 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 2025.0,
       "BuyerType": {
         "Tier": "Srebrni"
       },
@@ -880,5 +880,97 @@
       "Username": "ivana"
     },
     "CheckIn": "2022-07-09T13:38:20.6613432"
+  },
+  {
+    "Id": "603f9850-c774-4225-9d15-bdd1fdb16428",
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "1e09a425-3567-49ee-acbc-0c601be8db86",
+      "Name": "Body Pump",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "Mega Gym"
+      },
+      "Duration": 45,
+      "Description": "Body Pump je spoj moćne muzike i jedinstvene energije. Veliki broj ponavljanja pomaže ti da imaš definisane mišiće tela. Na treningu možeš da biraš lakšu i težu opciju svake vežbe.",
+      "Picture": "../images/bodypump.jpg"
+    },
+    "Buyer": {
+      "Membership": {
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
+        "SportsObject": {
+          "name": "Plesni centar Allegro"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 2850.0,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
+      },
+      "VisitedObjects": [
+        {
+          "name": "Mega Gym"
+        },
+        {
+          "name": "No Limit Gym"
+        }
+      ],
+      "Points": 2025.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-09T14:24:48.2480128"
+  },
+  {
+    "Id": "f8fcda74-9fc7-480e-970b-af845a91c047",
+    "Trainer": {
+      "Id": "2a5eb950-0720-4018-9329-c3859a033144",
+      "Username": "marta"
+    },
+    "Training": {
+      "Id": "45f766oa-8756-564p-b8ja-123550e89h78",
+      "Name": "Argentinski tango",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "Plesni centar Allegro"
+      },
+      "Duration": 60,
+      "Description": "Argentinski Tango omogućuje odličan trening za tajming i tehniku stopala, kao izgradnju osnova za svaki ples.Intiman je, kako ga plesači često plešu obraz do obraza, upliću svoje noge na vrlo komplikovan način što odaje izuzetno senzualan efekat. Čas se održava u grupama od 20 ljudi, dva puta nedeljno.",
+      "Picture": "../images/tango.jpg"
+    },
+    "Buyer": {
+      "Membership": {
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
+        "SportsObject": {
+          "name": "Plesni centar Allegro"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 2850.0,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
+      },
+      "VisitedObjects": [
+        {
+          "name": "Mega Gym"
+        },
+        {
+          "name": "No Limit Gym"
+        }
+      ],
+      "Points": 2025.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-09T17:01:03.6549525"
   }
 ]

@@ -48,7 +48,8 @@ public class BuyersMembershipController {
 			res.type("application/json");
 			String id = req.params(":id");
 			BuyersMembership buyersMembership = Repository.getInstance().getBuyersMembershipDAO().getMembershipByBuyerId(id);
-			return gson.toJson(buyersMembership);
+			BuyersMembership validMembership = Repository.getInstance().getBuyersMembershipDAO().checkIfMembershipExpired(buyersMembership);
+			return gson.toJson(validMembership);
 		});
 	}
 }

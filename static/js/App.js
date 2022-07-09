@@ -14,6 +14,7 @@ const ManagerTrainings = { template: '<manager-trainings></manager-trainings>'}
 const TrainerTrainings =  { template: '<trainer-trainings></trainer-trainings>'}
 const HomePage = { template: '<home-page></home-page>' }
 const Memberships = { template: '<memberships></memberships>' }
+const MembershipBuyer = { template: '<membership-buyer></membership-buyer>'}
 const PromoCode = { template: '<promocode></promocode>' }
 
 const router = new VueRouter({
@@ -33,6 +34,7 @@ const router = new VueRouter({
         { path: '/dodaj-menadzera', component: CreateManager },
         { path: '/korisnici', name: 'users', component: UserList },
         { path: '/clanarine', component: Memberships },
+        { path: '/clanarina-kupac', component: MembershipBuyer },
         { path: '/dodaj-promokod', component: PromoCode }
         
       
