@@ -37,7 +37,7 @@ public class AdministratorDAO {
 			this.admins.clear();
 		    ArrayList<User> users = Repository.getInstance().getUserDAO().getUsers();
 		    for(User u : users) {
-		    	if(u.getUserType().equals(UserType.ADMIN)) {
+		    	if(u.getDeletedAt() != null && u.getUserType().equals(UserType.ADMIN)) {
 		    		this.admins.add(new Administrator(u));
 		    	}
 		    }

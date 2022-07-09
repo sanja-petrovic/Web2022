@@ -47,7 +47,9 @@ public class BuyersMembershipDAO {
 		    Reader reader = Files.newBufferedReader(Paths.get(filePath));
 		    this.buyersMemberships = gson.fromJson(reader, new TypeToken<ArrayList<BuyersMembership>>() {}.getType());
 		    for(BuyersMembership bm : this.buyersMemberships) {
-		    	this.fillData(bm);
+		    	if(bm.getDeletedAt() == null) {
+		    		this.fillData(bm);
+		    	}
 		    }
 		    reader.close();
 
@@ -119,8 +121,10 @@ public class BuyersMembershipDAO {
 	
 	public void updateBuyersMembership(BuyersMembership buyersMembership) {
 		int index = this.findIndexOf(buyersMembership);
-		this.buyersMemberships.set(index, buyersMembership);
-		this.write();
+		if(index != -1) {
+			this.buyersMemberships.set(index, buyersMembership);
+			this.write();
+		}
 	}
 	
 	public int findIndexOf(BuyersMembership buyersMembership) {

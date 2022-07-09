@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -43,7 +44,9 @@ public class TrainerDAO {
 		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/trainers.json"));
 		    this.trainers = gson.fromJson(reader, new TypeToken<ArrayList<Trainer>>() {}.getType());
 		    for(Trainer t : this.trainers) {
-		    	this.fillData(t);
+		    	if(t.getDeletedAt() == null) {
+			    	this.fillData(t);
+		    	}
 		    }
 		    reader.close();
 
@@ -68,7 +71,9 @@ public class TrainerDAO {
 	
 	public void fillTrainingHistory() {
 		for(Trainer t : this.trainers) {
-			t.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(t.getId()));
+			if(t.getDeletedAt() == null) {
+				t.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(t.getId()));
+			}
 		}
 	}
 	
@@ -90,7 +95,7 @@ public class TrainerDAO {
 		Trainer retVal = null;
 		
 		for(Trainer t : this.trainers) {
-			if(t.getUsername().equals(username)) {
+			if(t.getDeletedAt() == null && t.getUsername().equals(username)) {
 				retVal = t;
 				break;
 			}
@@ -103,7 +108,7 @@ public class TrainerDAO {
 		Trainer retVal = null;
 		
 		for(Trainer t : this.trainers) {
-			if(t.getId().equals(id)) {
+			if(t.getDeletedAt() == null && t.getId().equals(id)) {
 				retVal = t;
 				break;
 			}
@@ -118,6 +123,8 @@ public class TrainerDAO {
 	}
 	
 	public ArrayList<Trainer> getTrainers() {
-		return this.trainers;
+		return new ArrayList<Trainer>(this.trainers.stream()
+				  .filter(u -> u.getDeletedAt() == null)
+				  .collect(Collectors.toList()));
 	}
 }

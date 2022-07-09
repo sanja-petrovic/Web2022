@@ -73,6 +73,7 @@ public class UserService {
 			User u = Repository.getInstance().getBuyerDAO().getBuyerByUsername(username);
 			BuyersMembershipService.removeByBuyer(u.getId());
 			CommentService.removeByBuyer(u.getId());
+			TrainingHistoryService.removeByBuyer(u.getId());
 			retVal = (Buyer) u;
 			break;
 		case MANAGER:

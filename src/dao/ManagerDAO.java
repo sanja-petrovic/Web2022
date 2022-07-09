@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -40,7 +41,9 @@ public class ManagerDAO {
 		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/managers.json"));
 		    this.managers = gson.fromJson(reader, new TypeToken<ArrayList<Manager>>() {}.getType());
 		    for(Manager m : this.managers) {
-		    	this.fillData(m);
+		    	if(m.getDeletedAt() == null) {
+		    		this.fillData(m);
+		    	}
 		    }
 		    reader.close();
 		} catch (Exception ex) {
@@ -81,14 +84,16 @@ public class ManagerDAO {
 	
 	public void updateManager(Manager m) {
 		int index = this.findIndexOfManager(m);
-		this.managers.set(index, m);
-		this.writeManagers();
+		if(index != -1) {
+			this.managers.set(index, m);
+			this.writeManagers();
+		}
 	}
 	
 	public int findIndexOfManager(Manager m) {
 		int retVal = -1;
 		for(int i = 0; i < this.managers.size(); i++) {
-			if(this.managers.get(i).getId().equals(m.getId())) {
+			if(this.managers.get(i).getDeletedAt() == null && this.managers.get(i).getId().equals(m.getId())) {
 				retVal = i;
 				break;
 			}
@@ -106,7 +111,7 @@ public class ManagerDAO {
 		Manager retVal = null;
 		this.load();
 		for(Manager m : this.managers) {
-			if(m.getUsername().equals(username)) {
+			if(m.getDeletedAt() == null && m.getUsername().equals(username)) {
 				retVal = m;
 				break;
 			}
@@ -118,7 +123,7 @@ public class ManagerDAO {
 	public SportsObject getSportsObjectById(String Id) {
 		SportsObject sportsObject = null;
 		for(Manager m : this.managers) {
-			if(m.getId().equals(Id)) {
+			if(m.getDeletedAt() == null && m.getId().equals(Id)) {
 				sportsObject = m.getSportsObject();
 				break;
 			}
@@ -130,7 +135,7 @@ public class ManagerDAO {
 	public Manager getManagerById(String id) {
 		Manager retVal = null;
 		for(Manager m : this.managers) {
-			if(m.getId().equals(id)) {
+			if(m.getDeletedAt() == null && m.getId().equals(id)) {
 				retVal = m;
 				break;
 			}
@@ -143,7 +148,7 @@ public class ManagerDAO {
 		Manager retVal = null;
 		this.load();
 		for(Manager m : this.managers) {
-			if(m.getId().trim().equals(id.trim()) || m.getUsername().trim().equals(id.trim())) {
+			if(m.getDeletedAt() == null && m.getId().trim().equals(id.trim()) || m.getUsername().trim().equals(id.trim())) {
 				retVal = m;
 				break;
 			}
@@ -153,15 +158,16 @@ public class ManagerDAO {
 	}
 	
 	public ArrayList<Manager> getManagers() {
-
-		return this.managers;
+		return new ArrayList<Manager>(this.managers.stream()
+			  .filter(u -> u.getDeletedAt() == null)
+			  .collect(Collectors.toList()));
 		
 	}
 	
 	public ArrayList<Manager> getUnassignedManagers() {
 		ArrayList<Manager> managers = new ArrayList<>();
 		for(Manager manager : this.managers) {
-			if(manager.getSportsObject() == null) {
+			if(manager.getDeletedAt() == null && manager.getSportsObject() == null) {
 				managers.add(manager);
 			}
 		}

@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -92,7 +93,7 @@ public class BuyerDAO {
 	public Buyer getBuyerById(String id) {
 		Buyer retVal = null;
 		for(Buyer b : this.buyers) {
-			if(b.getId().equals(id)) {
+			if(b.getDeletedAt() == null && b.getId().equals(id)) {
 				retVal = b;
 				break;
 			}
@@ -103,15 +104,17 @@ public class BuyerDAO {
 	
 	public void updateBuyer(Buyer buyer) {
 		int index = this.findIndexOf(buyer);
-		this.buyers.set(index, buyer);
-		this.writeBuyers();
+		if(index != -1) {
+			this.buyers.set(index, buyer);
+			this.writeBuyers();
+		}
 	}
 	
 	public int findIndexOf(Buyer buyer) {
     	int index = -1; 
 
     	for(int i = 0; i < this.buyers.size(); i++) {
-    		if(this.buyers.get(i).getId().equals(buyer.getId())) {
+    		if(this.buyers.get(i).getDeletedAt() == null && this.buyers.get(i).getId().equals(buyer.getId())) {
     			index = i;
     			break;
     		}
@@ -123,7 +126,7 @@ public class BuyerDAO {
 	public Buyer getBuyerByUsername(String username) {
 		Buyer retVal = null;
 		for(Buyer b : this.buyers) {
-			if(b.getUsername().equals(username)) {
+			if(b.getDeletedAt() == null && b.getUsername().equals(username)) {
 				retVal = b;
 				break;
 			}
@@ -133,7 +136,9 @@ public class BuyerDAO {
 	}
 	
 	public ArrayList<Buyer> getBuyers() {
-		return this.buyers;
+		return new ArrayList<Buyer>(this.buyers.stream()
+				  .filter(u -> u.getDeletedAt() == null)
+				  .collect(Collectors.toList()));
 	}
 
 }

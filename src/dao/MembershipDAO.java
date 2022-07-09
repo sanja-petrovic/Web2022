@@ -34,7 +34,9 @@ public class MembershipDAO {
 		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/memberships.json"));
 		    this.memberships = gson.fromJson(reader, new TypeToken<ArrayList<Membership>>() {}.getType());
 		    for(Membership m : this.memberships) {
-		    	this.fillData(m);
+		    	if(m.getDeletedAt() == null) {
+		    		this.fillData(m);
+		    	}
 		    }
 		    reader.close();
 		} catch (Exception ex) {
@@ -53,7 +55,7 @@ public class MembershipDAO {
 	public Membership getMembershipById(String id) {
 		Membership retVal = null;
 		for(Membership m : this.memberships) {
-			if(m.getId().equals(id)) {
+			if(m.getDeletedAt() == null && m.getId().equals(id)) {
 				retVal = m;
 				break;
 			}

@@ -14,4 +14,8 @@ public class TrainingHistoryService {
 		
 		return trainingHistory;
 	}
+	
+	public static void removeByBuyer(String id) {
+		Repository.getInstance().getTrainingHistoryDAO().removeByBuyer(id);
+	}
 }

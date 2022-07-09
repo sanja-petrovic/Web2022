@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,13 +52,15 @@ public class SportsObjectDAO {
 
 	public ArrayList<SportsObject> getSportsObjects() {
 		this.load();
-		return this.sportsObjects;
+		return new ArrayList<SportsObject>(this.sportsObjects.stream()
+				  .filter(u -> u.getDeletedAt() == null)
+				  .collect(Collectors.toList()));
 	}
 	
 	public SportsObject getSportsObjectById(String name) {
 		SportsObject retVal = null;
 		for(SportsObject sportsObject : this.sportsObjects) {
-			if(sportsObject.getName().equals(name)) {
+			if(sportsObject.getDeletedAt() == null && sportsObject.getName().equals(name)) {
 				retVal = sportsObject;
 				break;
 			}
@@ -69,7 +72,7 @@ public class SportsObjectDAO {
 	public SportsObject getSportsObjectByIdCaseInsensitive(String name) {
 		SportsObject retVal = null;
 		for(SportsObject sportsObject : this.sportsObjects) {
-			if(sportsObject.getName().trim().toLowerCase().equals(name.trim().toLowerCase())) {
+			if(sportsObject.getDeletedAt() == null && sportsObject.getName().trim().toLowerCase().equals(name.trim().toLowerCase())) {
 				retVal = sportsObject;
 				break;
 			}
@@ -100,7 +103,7 @@ public class SportsObjectDAO {
 	public List<SportsObject> getSportsObjectByType(String type) {
 		List<SportsObject> searchedObjects = new ArrayList<SportsObject>();
 		for (SportsObject sportsObject : this.sportsObjects) {
-			if(sportsObject.getType().equals(type)) {
+			if(sportsObject.getDeletedAt() == null && sportsObject.getType().equals(type)) {
 				searchedObjects.add(sportsObject);
 			}
 		}
@@ -110,7 +113,7 @@ public class SportsObjectDAO {
 	public List<SportsObject> getAllSportsObjectByName(String name) {
 		List<SportsObject> searchedObjects = new ArrayList<SportsObject>();
 		for (SportsObject sportsObject : this.sportsObjects) {
-			if(sportsObject.getName().toLowerCase().contains(name)) {
+			if(sportsObject.getDeletedAt() == null && sportsObject.getName().toLowerCase().contains(name)) {
 				searchedObjects.add(sportsObject);
 			}
 		}
@@ -120,7 +123,7 @@ public class SportsObjectDAO {
 	public SportsObject getSportsObjectByName(String name) {
 		this.load();
 		for (SportsObject sportsObject : this.sportsObjects) {
-			if(sportsObject.getName().equals(name)) {
+			if(sportsObject.getDeletedAt() == null && sportsObject.getName().equals(name)) {
 				return sportsObject;
 			}
 		}
@@ -130,7 +133,7 @@ public class SportsObjectDAO {
 	public List<SportsObject> getSportsObjectByLocation(String location) {
 		List<SportsObject> searchedObjects = new ArrayList<SportsObject>();
 		for (SportsObject sportsObject : this.sportsObjects) {
-			if(sportsObject.getLocation().getAddress().getCity().toLowerCase().contains(location)) {
+			if(sportsObject.getDeletedAt() == null && sportsObject.getLocation().getAddress().getCity().toLowerCase().contains(location)) {
 				searchedObjects.add(sportsObject);
 			}
 			else if(sportsObject.getLocation().getAddress().getCountry().toLowerCase().contains(location)) {
@@ -144,7 +147,7 @@ public class SportsObjectDAO {
 	public List<SportsObject> getSportsObjectByRatingInterval(Double minRating, Double maxRating) {
 		List<SportsObject> searchedObjects = new ArrayList<SportsObject>();
 		for (SportsObject sportsObject : this.sportsObjects) {
-			if(sportsObject.getAverageGrade() >= minRating && sportsObject.getAverageGrade() <= maxRating) {
+			if(sportsObject.getDeletedAt() == null && sportsObject.getAverageGrade() >= minRating && sportsObject.getAverageGrade() <= maxRating) {
 				searchedObjects.add(sportsObject);
 			}
 		}
@@ -153,16 +156,18 @@ public class SportsObjectDAO {
 	
 	public SportsObject updateRating(SportsObject sportsObject, double rating) {
 		int index = this.findIndexOf(sportsObject);
-		this.sportsObjects.get(index).setAverageGrade(rating);
-		this.write();
-		
-		return this.sportsObjects.get(index);
+		if(index != -1) {
+			this.sportsObjects.get(index).setAverageGrade(rating);
+			this.write();
+			return this.sportsObjects.get(index);
+		}
+		return null;
 	}
 	
 	public int findIndexOf(SportsObject sportsObject) {
         int index = -1;
         for(int i = 0; i < this.sportsObjects.size(); i++) {
-            if(this.sportsObjects.get(i).getName().equals(sportsObject.getName())) {
+            if(this.sportsObjects.get(i).getDeletedAt() == null && this.sportsObjects.get(i).getName().equals(sportsObject.getName())) {
                 index = i;
                 break;
             }

@@ -42,7 +42,9 @@ public class CommentDAO {
 		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/comments.json"));
 		    this.comments = gson.fromJson(reader, new TypeToken<ArrayList<Comment>>() {}.getType());
 		    for(Comment c : this.comments) {
-		    	this.fillData(c);
+		    	if(c.getDeletedAt() == null) {
+		    		this.fillData(c);
+		    	}
 		    }
 		    reader.close();
 
@@ -103,8 +105,8 @@ public class CommentDAO {
 		int index = this.getIndexOfComment(c);
 		if(index != -1) {
 			this.comments.set(index, c);
+			this.write();
 		}
-		this.write();
 	}
 	
 	public int getIndexOfComment(Comment comment) {

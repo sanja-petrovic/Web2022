@@ -23,7 +23,9 @@ public class PromoCode {
 	@Expose
 	@SerializedName("Discount")
 	private double discount;
-	
+
+	@Expose
+	@SerializedName("DeletedAt")
 	private LocalDateTime deletedAt;
 	
 	
