@@ -596,7 +596,7 @@ Vue.component('buyer-profile-page', {
                     this.displayedScheduledTrainings = this.searchResult.scheduled;
                     return;
                 }
-                for (let i = 0; i < this.this.searchResult.scheduled.length; i++) {
+                for (let i = 0; i < this.searchResult.scheduled.length; i++) {
                     for (let j = 0; j < checkedTraining.length; j++) {
                         if (this.searchResult.scheduled[i].Training.TrainingType.toLowerCase() === checkedTraining[j].id.toLowerCase()) {
                             filterResult.push(this.searchResult.scheduled[i]);
