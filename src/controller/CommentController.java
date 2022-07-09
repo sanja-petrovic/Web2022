@@ -77,14 +77,14 @@ public class CommentController {
 			String buyer = req.params(":b");
 			String sportsObject = req.params(":s");
 			
-			if(BuyerService.checkIfFirstVisit(buyer, sportsObject)) {
+		/*	if(BuyerService.checkIfFirstVisit(buyer, sportsObject)) {
 				res.status(200);
 				res.body("Can make comment");
 			} else {
 				res.status(403);
 				res.body("Can't make comment");
 			}
-			
+		*/	
 			return res.body();
 		});
 	}

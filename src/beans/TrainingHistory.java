@@ -29,6 +29,10 @@ public class TrainingHistory {
 	@Expose
 	private LocalDateTime canceledAt;
 	
+	public TrainingHistory() {
+		super();
+	}
+	
 	public TrainingHistory(Buyer buyer, Training training, LocalDateTime checkIn) {
 		this.id = UUID.randomUUID().toString();
 		this.buyer = buyer;
@@ -36,7 +40,7 @@ public class TrainingHistory {
         this.training = training;
         this.checkIn = checkIn;
 	}
-
+	
 	public Trainer getTrainer() {
 		return trainer;
 	}

@@ -1,13 +1,8 @@
 package services;
 
-import beans.Buyer;
-import beans.SportsObject;
-import beans.Training;
-import dao.Repository;
-
 public class BuyerService {
 
-	public static boolean checkIfFirstVisit(String b, String s) {
+	/*public static boolean checkIfFirstVisit(String b, String s) {
 		boolean retVal = false;
 		int count = 0;
 		Buyer buyer = Repository.getInstance().getBuyerDAO().getBuyerByUsername(b);
@@ -26,5 +21,5 @@ public class BuyerService {
 		}
 
 		return retVal;
-	}
+	}*/
 }

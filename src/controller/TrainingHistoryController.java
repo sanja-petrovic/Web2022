@@ -11,12 +11,14 @@ import java.time.LocalTime;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import beans.Training;
+import beans.PromoCode;
 import beans.TrainingHistory;
 import dao.Repository;
+import dto.CreatePromoCodeDTO;
+import dto.TrainingHistoryDTO;
+import services.PromoCodeService;
 import services.TrainingHistoryService;
 import util.adapters.LocalDateAdapter;
-import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalDateTimeAdapter2;
 import util.adapters.LocalTimeAdapter;
 
@@ -31,6 +33,7 @@ public class TrainingHistoryController {
 			getTrainingHistoryForSportsObject();
 			getTrainingHistoryForTrainer();
 			cancelTraining();
+			addTrainingToHistory();
 		});
 	}
 	
@@ -52,8 +55,6 @@ public class TrainingHistoryController {
 		});
 	}
 	
-
-	
 	public static void cancelTraining() {
 		post("/trainings/:id/cancel", (req, res) -> {
 			res.type("application/json");
@@ -61,6 +62,16 @@ public class TrainingHistoryController {
 			String id = req.params(":id");
 			
 			return gson.toJson(TrainingHistoryService.cancelTraining(id));
+		});
+	}
+	
+	public static void addTrainingToHistory() {
+		post("/addToHistory", (req, res) -> {
+			res.type("application/json");
+			String payload = req.body();
+			TrainingHistoryDTO trainingHistoryDTO = gson.fromJson(payload, TrainingHistoryDTO.class); 
+			TrainingHistory trainingHistory = TrainingHistoryService.addTrainingToHistory(trainingHistoryDTO);
+			return gson.toJson(trainingHistory);
 		});
 	}
 }
