@@ -141,5 +141,17 @@ public class BuyerDAO {
 				  .filter(u -> u.getDeletedAt() == null)
 				  .collect(Collectors.toList()));
 	}
+	
+	public void setMembershipToNull(String membershipId) {
+		for(Buyer b : this.buyers) {
+			if(b.getDeletedAt() == null && b.getMembership() != null) {
+				if(b.getMembership().getId().equals(membershipId)) {
+					b.setMembership(null);
+				}
+			}
+		}
+		
+		this.writeBuyers();
+	}
 
 }

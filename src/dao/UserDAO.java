@@ -91,7 +91,7 @@ public class UserDAO {
 	public UserType getUserTypeByUsername(String username) {
 		UserType retVal = null;
 		for(User u : this.users) {
-			if(u.getUsername().equals(username) && u.getDeletedAt() == null) {
+			if(u.getUsername().equals(username) || u.getId().equals(username) && u.getDeletedAt() == null) {
 				retVal = u.getUserType();
 			}
 		}

@@ -156,5 +156,15 @@ public class TrainingHistoryDAO {
     	}
 		this.write();
     }
+    
+    public void removeByTrainer(String id) {
+
+    	for(TrainingHistory th : this.trainingHistories) {
+    		if(th.getDeletedAt() == null && th.getTrainer().getId().equals(id)) {
+    			th.setDeletedAt(LocalDateTime.now());
+    		}
+    	}
+		this.write();
+    }
 	
 }

@@ -58,5 +58,9 @@ public class TrainingService {
 	}
 	
 	
+	public static void removeByTrainer(String id) {
+		Repository.getInstance().getTrainingDAO().removeByTrainer(id);
+	}
+	
 
 }

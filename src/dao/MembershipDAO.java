@@ -1,15 +1,21 @@
 package dao;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
+import beans.Buyer;
 import beans.Membership;
 import beans.SportsObject;
 import util.adapters.LocalDateTimeAdapter;
@@ -64,8 +70,34 @@ public class MembershipDAO {
 		return retVal;
 	}
 	
+	public void write() {
+		try {
+			this.createGson();
+			FileWriter writer = new FileWriter("resources/data/memberships.json", StandardCharsets.UTF_8);
+			gson.toJson(this.memberships, writer);
+			writer.flush();
+			writer.close();
+			
+		} catch (JsonIOException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public ArrayList<Membership> getMemberships() {
-		
-		return this.memberships;
+		return new ArrayList<Membership>(this.memberships.stream()
+				  .filter(u -> u.getDeletedAt() == null)
+				  .collect(Collectors.toList()));
+	}
+	
+	public void removeMembership(String id) {
+		for(Membership m : this.getMemberships()) {
+			if(m.getId().equals(id)) {
+				m.setDeletedAt(LocalDateTime.now());
+				this.write();
+				break;
+			}
+		}
 	}
 }

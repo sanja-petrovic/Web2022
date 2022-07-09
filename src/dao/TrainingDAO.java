@@ -193,5 +193,14 @@ public class TrainingDAO {
         }
         return index;
     } 
+	
+	public void removeByTrainer(String id) {
+		for(Training t : this.trainings) {
+			if(t.getDeletedAt() == null && t.getTrainer().getId().equals(id)) {
+				t.setDeletedAt(LocalDateTime.now());
+			}
+		}
+		this.write();
+	}
 }
 	

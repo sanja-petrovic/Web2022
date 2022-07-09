@@ -61,6 +61,31 @@ public class UserService {
 	
 	public static void removeUser(String id) {
 		Repository.getInstance().getUserDAO().removeUser(id);
+		UserType userType = Repository.getInstance().getUserDAO().getUserTypeByUsername(id);
+		switch(userType) {
+			case BUYER:
+				buyerCascadeDelete(id);
+				break;
+			case MANAGER:
+				break;
+			case TRAINER:
+				trainerCascadeDelete(id);
+				break;
+			default:
+				break;
+		
+		}
+	}
+	
+	public static void buyerCascadeDelete(String id) {
+		BuyersMembershipService.removeByBuyer(id);
+		CommentService.removeByBuyer(id);
+		TrainingHistoryService.removeByBuyer(id);
+	}
+	
+	public static void trainerCascadeDelete(String id) {
+		TrainingHistoryService.removeByTrainer(id);
+		TrainingService.removeByTrainer(id);
 	}
 	
 	public static User getCompleteData(String username) {
@@ -71,9 +96,6 @@ public class UserService {
 		switch(userType) {
 		case BUYER:
 			User u = Repository.getInstance().getBuyerDAO().getBuyerByUsername(username);
-			BuyersMembershipService.removeByBuyer(u.getId());
-			CommentService.removeByBuyer(u.getId());
-			TrainingHistoryService.removeByBuyer(u.getId());
 			retVal = (Buyer) u;
 			break;
 		case MANAGER:

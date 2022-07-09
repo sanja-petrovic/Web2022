@@ -54,7 +54,7 @@ public class BuyersMembershipService {
 	}
 	
 	public static void removeByBuyer(String buyerId) {
-		Repository.getInstance().getBuyersMembershipDAO().removeBuyersMembership(buyerId);
+		Repository.getInstance().getBuyersMembershipDAO().removeBuyersMembershipByBuyer(buyerId);
 	}
 
 }

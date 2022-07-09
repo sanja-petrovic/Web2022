@@ -138,9 +138,9 @@ public class BuyersMembershipDAO {
     	return index;
     }
 	
-	public void removeBuyersMembership(String id) {
+	public void removeBuyersMembershipByBuyer(String buyerId) {
 		for(BuyersMembership bm : this.buyersMemberships) {
-			if(bm.getBuyer().getId().equals(id) && bm.getDeletedAt() == null) {
+			if(bm.getBuyer().getId().equals(buyerId) && bm.getDeletedAt() == null) {
 				bm.setDeletedAt(LocalDateTime.now());
 				this.write();
 				break;
@@ -148,5 +148,15 @@ public class BuyersMembershipDAO {
 		}
 	}
 	
+	public void removeBuyersMembership(String buyersMembershipId) {
+		for(BuyersMembership bm : this.buyersMemberships) {
+			if(bm.getId().equals(buyersMembershipId) && bm.getDeletedAt() == null) {
+				bm.setDeletedAt(LocalDateTime.now());
+				this.write();
+				break;
+			}
+		}
+	}
+
 	
 }
