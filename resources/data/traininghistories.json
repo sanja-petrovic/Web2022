@@ -31,7 +31,7 @@
       "VisitedObjects": [
         {}
       ],
-      "Points": 1200.0,
+      "Points": 3200.0,
       "BuyerType": {
         "Tier": "Zlatni"
       },
@@ -59,15 +59,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "aa23l78945",
-        "Name": "Članarina u Allegru",
+        "Id": "1233214554",
+        "Name": "Fight Club paket",
         "SportsObject": {
-          "name": "Plesni centar Allegro"
+          "name": "Favorit"
         },
         "MembershipType": "Mesečna",
-        "Price": 3000.0,
-        "NumberOfTerms": 20,
-        "DailyLimit": 2
+        "Price": 5000.0,
+        "NumberOfTerms": 30,
+        "DailyLimit": 3
       },
       "VisitedObjects": [
         {}
@@ -100,15 +100,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "aa23l78945",
-        "Name": "Članarina u Allegru",
+        "Id": "1233214554",
+        "Name": "Fight Club paket",
         "SportsObject": {
-          "name": "Plesni centar Allegro"
+          "name": "Favorit"
         },
         "MembershipType": "Mesečna",
-        "Price": 3000.0,
-        "NumberOfTerms": 20,
-        "DailyLimit": 2
+        "Price": 5000.0,
+        "NumberOfTerms": 30,
+        "DailyLimit": 3
       },
       "VisitedObjects": [
         {}
@@ -141,15 +141,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -159,9 +159,9 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 1590.0,
       "BuyerType": {
-        "Tier": "Srebrni"
+        "Tier": "Bronzani"
       },
       "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
       "Username": "ivana"
@@ -187,15 +187,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -205,9 +205,9 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 1590.0,
       "BuyerType": {
-        "Tier": "Srebrni"
+        "Tier": "Bronzani"
       },
       "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
       "Username": "ivana"
@@ -233,15 +233,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -251,9 +251,9 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 1590.0,
       "BuyerType": {
-        "Tier": "Srebrni"
+        "Tier": "Bronzani"
       },
       "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
       "Username": "ivana"
@@ -292,7 +292,7 @@
       "VisitedObjects": [
         {}
       ],
-      "Points": 1200.0,
+      "Points": 3200.0,
       "BuyerType": {
         "Tier": "Zlatni"
       },
@@ -320,15 +320,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -338,9 +338,9 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 1590.0,
       "BuyerType": {
-        "Tier": "Srebrni"
+        "Tier": "Bronzani"
       },
       "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
       "Username": "ivana"
@@ -366,15 +366,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "aa23l78945",
-        "Name": "Članarina u Allegru",
+        "Id": "1233214554",
+        "Name": "Fight Club paket",
         "SportsObject": {
-          "name": "Plesni centar Allegro"
+          "name": "Favorit"
         },
         "MembershipType": "Mesečna",
-        "Price": 3000.0,
-        "NumberOfTerms": 20,
-        "DailyLimit": 2
+        "Price": 5000.0,
+        "NumberOfTerms": 30,
+        "DailyLimit": 3
       },
       "VisitedObjects": [
         {}
@@ -407,15 +407,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -425,9 +425,9 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 1590.0,
       "BuyerType": {
-        "Tier": "Srebrni"
+        "Tier": "Bronzani"
       },
       "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
       "Username": "ivana"
@@ -466,7 +466,7 @@
       "VisitedObjects": [
         {}
       ],
-      "Points": 1200.0,
+      "Points": 3200.0,
       "BuyerType": {
         "Tier": "Zlatni"
       },
@@ -507,7 +507,7 @@
       "VisitedObjects": [
         {}
       ],
-      "Points": 1200.0,
+      "Points": 3200.0,
       "BuyerType": {
         "Tier": "Zlatni"
       },
@@ -549,7 +549,7 @@
       "VisitedObjects": [
         {}
       ],
-      "Points": 1200.0,
+      "Points": 3200.0,
       "BuyerType": {
         "Tier": "Zlatni"
       },
@@ -578,15 +578,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -596,9 +596,9 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 1590.0,
       "BuyerType": {
-        "Tier": "Srebrni"
+        "Tier": "Bronzani"
       },
       "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
       "Username": "ivana"
@@ -624,15 +624,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -642,9 +642,9 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 1590.0,
       "BuyerType": {
-        "Tier": "Srebrni"
+        "Tier": "Bronzani"
       },
       "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
       "Username": "ivana"
@@ -671,15 +671,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -689,9 +689,9 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 1590.0,
       "BuyerType": {
-        "Tier": "Srebrni"
+        "Tier": "Bronzani"
       },
       "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
       "Username": "ivana"
@@ -717,15 +717,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -735,9 +735,9 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 1590.0,
       "BuyerType": {
-        "Tier": "Srebrni"
+        "Tier": "Bronzani"
       },
       "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
       "Username": "ivana"
@@ -763,15 +763,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -781,9 +781,9 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 1590.0,
       "BuyerType": {
-        "Tier": "Srebrni"
+        "Tier": "Bronzani"
       },
       "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
       "Username": "ivana"
@@ -809,15 +809,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -827,9 +827,9 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 1590.0,
       "BuyerType": {
-        "Tier": "Srebrni"
+        "Tier": "Bronzani"
       },
       "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
       "Username": "ivana"
@@ -855,15 +855,15 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1234567891",
-        "Name": "MG basic paket",
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
         "SportsObject": {
-          "name": "Mega Gym"
+          "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 40,
-        "DailyLimit": 3
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
         {
@@ -873,13 +873,290 @@
           "name": "No Limit Gym"
         }
       ],
-      "Points": 200.0,
+      "Points": 1590.0,
       "BuyerType": {
-        "Tier": "Srebrni"
+        "Tier": "Bronzani"
       },
       "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
       "Username": "ivana"
     },
     "CheckIn": "2022-07-09T13:38:20.6613432"
+  },
+  {
+    "Id": "603f9850-c774-4225-9d15-bdd1fdb16428",
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "1e09a425-3567-49ee-acbc-0c601be8db86",
+      "Name": "Body Pump",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "Mega Gym"
+      },
+      "Duration": 45,
+      "Description": "Body Pump je spoj moćne muzike i jedinstvene energije. Veliki broj ponavljanja pomaže ti da imaš definisane mišiće tela. Na treningu možeš da biraš lakšu i težu opciju svake vežbe.",
+      "Picture": "../images/bodypump.jpg"
+    },
+    "Buyer": {
+      "Membership": {
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
+      },
+      "VisitedObjects": [
+        {
+          "name": "Mega Gym"
+        },
+        {
+          "name": "No Limit Gym"
+        }
+      ],
+      "Points": 1590.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-09T14:24:48.2480128"
+  },
+  {
+    "Id": "f8fcda74-9fc7-480e-970b-af845a91c047",
+    "Trainer": {
+      "Id": "2a5eb950-0720-4018-9329-c3859a033144",
+      "Username": "marta"
+    },
+    "Training": {
+      "Id": "45f766oa-8756-564p-b8ja-123550e89h78",
+      "Name": "Argentinski tango",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "Plesni centar Allegro"
+      },
+      "Duration": 60,
+      "Description": "Argentinski Tango omogućuje odličan trening za tajming i tehniku stopala, kao izgradnju osnova za svaki ples.Intiman je, kako ga plesači često plešu obraz do obraza, upliću svoje noge na vrlo komplikovan način što odaje izuzetno senzualan efekat. Čas se održava u grupama od 20 ljudi, dva puta nedeljno.",
+      "Picture": "../images/tango.jpg"
+    },
+    "Buyer": {
+      "Membership": {
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
+      },
+      "VisitedObjects": [
+        {
+          "name": "Mega Gym"
+        },
+        {
+          "name": "No Limit Gym"
+        }
+      ],
+      "Points": 1590.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-09T17:01:03.6549525"
+  },
+  {
+    "Id": "5aed41c5-09c5-4a70-a2f0-d1a211f8d620",
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
+      "Name": "Cardio",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "No Limit Gym"
+      },
+      "Duration": 30,
+      "Description": "Kardio vežbanje učiniće te zgodnijim, zdravijim i punim snage ali učiniće i više od toga. Imaćeš bolju koncentraciju i pamćenje, regulisaćeš telesnu težinu i bićeš otporniji na stres.",
+      "Picture": "../images/cardio.jpg"
+    },
+    "Buyer": {
+      "Membership": {
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
+      },
+      "VisitedObjects": [
+        {
+          "name": "Mega Gym"
+        },
+        {
+          "name": "No Limit Gym"
+        }
+      ],
+      "Points": 1590.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    }
+  },
+  {
+    "Id": "30788881-b721-477e-963e-0d84cc901d7b",
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
+      "Name": "Cardio",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "No Limit Gym"
+      },
+      "Duration": 30,
+      "Description": "Kardio vežbanje učiniće te zgodnijim, zdravijim i punim snage ali učiniće i više od toga. Imaćeš bolju koncentraciju i pamćenje, regulisaćeš telesnu težinu i bićeš otporniji na stres.",
+      "Picture": "../images/cardio.jpg"
+    },
+    "Buyer": {
+      "Membership": {
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
+      },
+      "VisitedObjects": [
+        {
+          "name": "Mega Gym"
+        },
+        {
+          "name": "No Limit Gym"
+        }
+      ],
+      "Points": 1590.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-12T20:27:00",
+    "ScheduledFor": "2022-07-12T20:27:00"
+  },
+  {
+    "Id": "8015bd52-3d45-4958-aa33-329a3eff5db1",
+    "Trainer": {
+      "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
+      "Username": "jovana"
+    },
+    "Training": {
+      "Id": "3b17c4cc-8d4c-4f0c-aea1-5719a36561a6",
+      "Name": "Body Balance",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "No Limit Gym"
+      },
+      "Duration": 60,
+      "Description": "Body Balance trening za um i telo. Predstavlja kombinaciju joge, pilatesa i tai chi-a.",
+      "Picture": "../images/bodybalance.jpg"
+    },
+    "Buyer": {
+      "Membership": {
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
+      },
+      "VisitedObjects": [
+        {
+          "name": "Mega Gym"
+        },
+        {
+          "name": "No Limit Gym"
+        }
+      ],
+      "Points": 1590.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-09T20:59:20.6068764"
+  },
+  {
+    "Id": "6d7b4558-359b-4bab-98ee-ccbfd9f0ec80",
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
+      "Name": "Cardio",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "No Limit Gym"
+      },
+      "Duration": 30,
+      "Description": "Kardio vežbanje učiniće te zgodnijim, zdravijim i punim snage ali učiniće i više od toga. Imaćeš bolju koncentraciju i pamćenje, regulisaćeš telesnu težinu i bićeš otporniji na stres.",
+      "Picture": "../images/cardio.jpg"
+    },
+    "Buyer": {
+      "Membership": {
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 2375.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
+      },
+      "VisitedObjects": [
+        {
+          "name": "Mega Gym"
+        },
+        {
+          "name": "No Limit Gym"
+        }
+      ],
+      "Points": 1590.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-18T18:30:00",
+    "ScheduledFor": "2022-07-18T18:30:00"
   }
 ]

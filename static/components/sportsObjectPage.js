@@ -10,10 +10,14 @@ Vue.component('sports-object-page', {
 			sportsObjectRating: 0,
             logo: null,
             sportsObjectMembership: null,
+            membershipIsValid: false,
             usedTerms: null,
             totalTerms: null,
             status: "",
+            mode: "BROWSE",
+            training: null,
 			comments: null,
+			scheduledFor: new Date(),
 			loggedInUserRole: "",
 			approvedComments: [],
 			pendingComments: [],
@@ -93,12 +97,44 @@ Vue.component('sports-object-page', {
                                 <div class="d-flex align-items-center justify-content-center" v-if="loggedInUserRole === 'Kupac' && item.type === 'Grupni'">
                                 	<div class="search-button mb-1" style="width: 150px" type="button" v-on:click="signIn(item)">
                                 		Prijavi se
+                                	</div>
                         		</div>
+                        		<div class="d-flex align-items-center justify-content-center" v-if="loggedInUserRole === 'Kupac' && item.type === 'Personalni'">
+                                	<div class="search-button mb-1" style="width: 220px" type="button" v-on:click="selectTraining(item)">
+                                		Zakaži trening
+                                	</div>
                         		</div>
-                            </div>
+                            </div>                          
                         </div>
                     </li>
                 </ul>
+            </div>
+            <div class="create-divs justify-content-center" v-if="mode==='SCHEDULE'">
+                <div class="bla">
+                	<div class="register-container">
+                    	<div class="register-content center-container">
+                        	<div class="info center-container">
+                            	<h3 class="heading" style="font-weight: 500">Zakaži personalni trening</h3>
+                               	<form class="myForm" action="">
+                                	<label for="contentName">Naziv treninga</label>
+                                    <input class="text-box create-input" type="text" id="contentName" v-model="this.training.content.Name" disabled>
+                                    <label for="type">Tip treninga</label>
+                                    <input class="text-box create-input" type="text" id="type" v-model="this.training.type" disabled>
+                                    <label for="trainer">Ime trenera</label>
+                                    <input class="text-box create-input" type="text" v-model="this.training.trainer.Name" id="trainer" disabled>
+                                    <label for="price">Cena treninga</label>
+                                    <input class="text-box create-input" type="number" v-model="this.training.price" id="price" name="price" disabled>
+                                    <label for="schedule">Izaberite datum i vreme termina:</label>
+                                    <input class="text-box create-input" type="datetime-local" v-model="scheduledFor" id="schedule" required>
+                                </form>
+                           	</div>
+				            <div>
+				                <button class="search-button mt-3 mb-5" id="theButton" v-on:click="scheduleTraining">Zakaži</button>
+				                <button class="search-button mt-3" v-on:click="cancelScheduling">Odustani</button>
+		                	</div>
+                    	</div>    
+                	</div>
+               	</div> 
             </div>
             <div class="sports-object-comments"  v-if="this.loggedInUserRole === 'Admin'">
                 <h4>Komentari</h4>
@@ -324,8 +360,7 @@ Vue.component('sports-object-page', {
                     return true;
                 else
                     return false;
-       },
-       
+       },    
        displayContents: function(name) {
 			axios.get('rest/getContentsForSportsObject', {
 			params: {
@@ -385,7 +420,7 @@ Vue.component('sports-object-page', {
 				}
 			).catch(error => console.log(error));
 		},
-		signIn: function(item) {
+		findMembership: function() {
 			let id = this.user.Id;
 			axios.get(`/rest/buyersmemberships/${id}`, {
 				name: id
@@ -395,25 +430,33 @@ Vue.component('sports-object-page', {
 				this.usedTerms = response.data.UsedTerms;
 				this.totalTerms = response.data.NumberOfTerms;
 				this.status = response.data.Status;
-				this.validateMembership(item, this.sportsObjectMembership, this.usedTerms, this.totalTerms, this.status);
+				this.validateMembership(this.sportsObjectMembership, this.usedTerms, this.totalTerms, this.status);
 				}
 			).catch(error => console.log(error));
-			
 		},
-		validateMembership: function(item, name, usedTerms, totalTerms, status) {
-			console.log(item);
+		
+		signIn: function(item) {
+			this.findMembership();
+			if(this.membershipIsValid) {
+				this.addTrainingToHistory(item);
+			}		
+		},
+		validateMembership: function(name, usedTerms, totalTerms, status) {
 			if(name != this.sportsObject.name) {
 				alert("Nemate članarinu u ovom sportskom objektu!")
+				this.membershipIsValid = false;
 			}
 			else if(usedTerms == totalTerms) {
 				alert("Iskoristili ste sve termine!");
+				this.membershipIsValid = false;
 			}
 			else if(status != "Aktivna") {
 				alert("Članarina nije aktivna! Kupite novu članarinu");
 				this.$router.replace("/clanarine"); 
+				this.membershipIsValid = false;
 			}
 			else {
-				this.addTrainingToHistory(item);
+				this.membershipIsValid = true;
 			}
 		},
 		addTrainingToHistory: async function(item) {
@@ -426,6 +469,33 @@ Vue.component('sports-object-page', {
 					console.log(response);
 					  this.$router.replace("/");
 					  alert("Uspešno ste se prijavili na trening");
+				})
+				.catch(err => {
+                	alert(err.response.data);     
+			})
+		},
+		selectTraining: function(item) {
+			this.findMembership();
+			if(this.membershipIsValid) {
+				this.mode = "SCHEDULE";
+				this.training = item;
+				console.log(item);
+			}
+		},
+		cancelScheduling: function() {
+			this.mode = "BROWSE";
+		},
+		scheduleTraining: async function() {
+			await axios.post('/rest/scheduleTraining', {
+                trainer: this.training.trainer,
+                contentId: this.training.content.Id,
+                buyerUsername: this.user.Username,
+                scheduledFor: this.scheduledFor
+            })
+            	.then(response => {
+					console.log(response);
+					  alert("Uspešno ste zakazali personalni trening");
+					  this.mode = "BROWSE";
 				})
 				.catch(err => {
                 	alert(err.response.data);     

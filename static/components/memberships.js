@@ -28,7 +28,7 @@ Vue.component('memberships', {
                 <div class="bla">
                     <div class="register-container">
   			        	<div class="register-content center-container">
-                                        <h3 class="heading" style="font-weight: 500">Kreiraj članarinu</h3>
+                                        <h3 class="heading" style="font-weight: 500">Nova članarina</h3>
                                         <form class="myForm" action="">
                                             <div class="input-group create-input">
                                               <label class="input-group-text" style="width: 10em" for="memberships">Izaberi članiranu</label>
