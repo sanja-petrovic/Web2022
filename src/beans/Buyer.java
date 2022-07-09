@@ -1,6 +1,7 @@
 package beans;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.google.gson.annotations.Expose;
@@ -22,8 +23,8 @@ public class Buyer extends User {
 	@Expose
 	@Exclude
 	@ExcludeUser
-	@SerializedName("Visits")
-	private HashMap<Training, LocalDate> visits;
+	@SerializedName("VisitedObjects")
+	private ArrayList<SportsObject> visitedObjects;
 	
 	@Expose
 	@Exclude
@@ -39,23 +40,23 @@ public class Buyer extends User {
 	
 	public Buyer(String username, String password, String name, String surname, Gender gender, LocalDate dateOfBirth, BuyerType buyerType) {
 		super(username, password, name, surname, gender, dateOfBirth, UserType.BUYER);
-		this.visits = new HashMap<>();
+		this.visitedObjects = new ArrayList<>();
 		this.type = buyerType;
 		this.points = 0;
 	}
 	
 	public Buyer(String username, String password, String name, String surname, Gender gender, LocalDate dateOfBirth,
-			Membership membership, HashMap<Training, LocalDate> visits, double points, BuyerType type) {
+			Membership membership, ArrayList<SportsObject> visitedObjects, double points, BuyerType type) {
 		super(username, password, name, surname, gender, dateOfBirth, UserType.BUYER);
 		this.membership = membership;
-		this.visits = visits;
+		this.visitedObjects = visitedObjects;
 		this.points = points;
 		this.type = type;
 	}
 	
 	public Buyer(User u) {
 		super(u);
-		this.visits = new HashMap<>();
+		this.visitedObjects = new ArrayList<>();
 		this.points = 0;
 		
 	}
@@ -66,12 +67,15 @@ public class Buyer extends User {
 	public void setMembership(Membership membership) {
 		this.membership = membership;
 	}
-	public HashMap<Training, LocalDate> getVisits() {
-		return visits;
+	
+	public ArrayList<SportsObject> getVisitedObjects() {
+		return visitedObjects;
 	}
-	public void setVisits(HashMap<Training, LocalDate> visits) {
-		this.visits = visits;
+
+	public void setVisitedObjects(ArrayList<SportsObject> visitedObjects) {
+		this.visitedObjects = visitedObjects;
 	}
+
 	public double getPoints() {
 		return points;
 	}

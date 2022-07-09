@@ -27,7 +27,7 @@ public class BuyerController {
 		path(basePath, () -> {
 			getBuyers();
 			getBuyer();
-			getVisitsByBuyer();
+		//	getVisitsByBuyer();
 		});
 	}
 	
@@ -45,7 +45,7 @@ public class BuyerController {
 			return gson.toJson(user);
 		});
 	}
-	
+	/*
 	public static void getVisitsByBuyer() {
 		get("/visits/:id", (req, res) -> {
 			res.type("application/json");
@@ -53,5 +53,5 @@ public class BuyerController {
 			HashMap<Training, LocalDate> visits = Repository.getInstance().getBuyerDAO().getBuyerByUsername(id).getVisits();
 			return gson.toJson(visits);
 		});
-	}
+	}*/
 }

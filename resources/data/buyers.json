@@ -11,7 +11,7 @@
       "NumberOfTerms": 20,
       "DailyLimit": 2
     },
-    "Visits": {},
+    "VisitedObjects": {},
     "Points": 9.0,
     "BuyerType": {
       "Tier": "Bronzani"
@@ -31,7 +31,7 @@
       "NumberOfTerms": 50,
       "DailyLimit": 5
     },
-    "Visits": {},
+    "VisitedObjects": {},
     "Points": 200.0,
     "BuyerType": {
       "Tier": "Srebrni"
@@ -51,7 +51,7 @@
       "NumberOfTerms": 30,
       "DailyLimit": 3
     },
-    "Visits": {},
+    "VisitedObjects": {},
     "Points": 1200.0,
     "BuyerType": {
       "Tier": "Zlatni"

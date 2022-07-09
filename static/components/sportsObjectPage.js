@@ -9,6 +9,10 @@ Vue.component('sports-object-page', {
            	contentTrainer: null,
 			sportsObjectRating: 0,
             logo: null,
+            sportsObjectMembership: null,
+            usedTerms: null,
+            totalTerms: null,
+            status: "",
 			comments: null,
 			loggedInUserRole: "",
 			approvedComments: [],
@@ -61,7 +65,7 @@ Vue.component('sports-object-page', {
             </div>
             <div class="sports-object-trainings">
                 <h4>U ponudi:</h4>
-                <ul class="cards" style="width: 200vw; margin-bottom: 20vh;">
+                <ul class="cards" style="width: 100vw; margin-bottom: 20vh;">
                     <li v-for="item in this.list">
                         <div class="card">
                             <img :src="item.content.Picture" class="card__image" alt="" />
@@ -84,6 +88,11 @@ Vue.component('sports-object-page', {
                                 <p class="card__description"> 
                                 	{{item.content.Description}}
                                 </p>
+                                <div class="d-flex align-items-center justify-content-center" v-if="loggedInUserRole === 'Kupac' && item.type === 'Grupni'">
+                                	<div class="search-button mb-1" style="width: 150px" type="button" v-on:click="signIn(item)">
+                                		Prijavi se
+                        		</div>
+                        		</div>
                             </div>
                         </div>
                     </li>
@@ -214,6 +223,7 @@ Vue.component('sports-object-page', {
 						this.loggedIn = true;
 						this.loggedInUserRole = response.data.UserType;
 						this.user = response.data;
+						console.log(this.user);
 						//this.canLeaveComment(response.data.Username, this.sportsObject.name)
 					}
 
@@ -285,6 +295,52 @@ Vue.component('sports-object-page', {
 				})
 				}
 			).catch(error => console.log(error));
+		},
+		signIn: function(item) {
+			let id = this.user.Id;
+			axios.get(`/rest/buyersmemberships/${id}`, {
+				name: id
+			}).then(response => { 
+				console.log(response.data);
+				this.sportsObjectMembership = response.data.SportsObject.name;
+				this.usedTerms = response.data.UsedTerms;
+				this.totalTerms = response.data.NumberOfTerms;
+				this.status = response.data.Status;
+				this.validateMembership(item, this.sportsObjectMembership, this.usedTerms, this.totalTerms, this.status);
+				}
+			).catch(error => console.log(error));
+			
+		},
+		validateMembership: function(item, name, usedTerms, totalTerms, status) {
+			console.log(item);
+			if(name != this.sportsObject.name) {
+				alert("Nemate članarinu u ovom sportskom objektu!")
+			}
+			else if(usedTerms == totalTerms) {
+				alert("Iskoristili ste sve termine!");
+			}
+			else if(status != "Aktivna") {
+				alert("Članarina nije aktivna! Kupite novu članarinu");
+				this.$router.replace("/clanarine"); 
+			}
+			else {
+				this.addTrainingToHistory(item);
+			}
+		},
+		addTrainingToHistory: async function(item) {
+			 await axios.post('/rest/addToHistory', {
+                trainer: item.trainer,
+                contentId: item.content.Id,
+                buyerUsername: this.user.Username
+            })
+            	.then(response => {
+					console.log(response);
+					  this.$router.replace("/");
+					  alert("Uspešno ste se prijavili na trening");
+				})
+				.catch(err => {
+                	alert(err.response.data);     
+			})
 		},
 		getComments: function (sportsObject) {
 			axios.get(`/rest/comments/${sportsObject}`, {

@@ -17,7 +17,17 @@
       "Picture": "../images/cardio.jpg"
     },
     "Buyer": {
-      "Visits": {},
+      "Membership": {
+        "Id": "1233214554",
+        "Name": "Fight Club paket",
+        "SportsObject": {
+          "name": "Favorit"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 5000.0,
+        "NumberOfTerms": 30,
+        "DailyLimit": 3
+      },
       "Points": 1200.0,
       "BuyerType": {
         "Tier": "Zlatni"
@@ -45,7 +55,17 @@
       "Picture": "../images/cardio.jpg"
     },
     "Buyer": {
-      "Visits": {},
+      "Membership": {
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
+        "SportsObject": {
+          "name": "Plesni centar Allegro"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 3000.0,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
+      },
       "Points": 9.0,
       "BuyerType": {
         "Tier": "Bronzani"
@@ -73,7 +93,17 @@
       "Picture": "../images/bodybalance.jpg"
     },
     "Buyer": {
-      "Visits": {},
+      "Membership": {
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
+        "SportsObject": {
+          "name": "Plesni centar Allegro"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 3000.0,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
+      },
       "Points": 9.0,
       "BuyerType": {
         "Tier": "Bronzani"
@@ -101,7 +131,17 @@
       "Picture": "../images/cardio.jpg"
     },
     "Buyer": {
-      "Visits": {},
+      "Membership": {
+        "Id": "8553934453",
+        "Name": "Six Pack paket",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 6000.0,
+        "NumberOfTerms": 50,
+        "DailyLimit": 5
+      },
       "Points": 200.0,
       "BuyerType": {
         "Tier": "Srebrni"
@@ -129,7 +169,17 @@
       "Picture": "../images/cardio.jpg"
     },
     "Buyer": {
-      "Visits": {},
+      "Membership": {
+        "Id": "8553934453",
+        "Name": "Six Pack paket",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 6000.0,
+        "NumberOfTerms": 50,
+        "DailyLimit": 5
+      },
       "Points": 200.0,
       "BuyerType": {
         "Tier": "Srebrni"
@@ -157,7 +207,17 @@
       "Picture": "../images/cardio.jpg"
     },
     "Buyer": {
-      "Visits": {},
+      "Membership": {
+        "Id": "8553934453",
+        "Name": "Six Pack paket",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 6000.0,
+        "NumberOfTerms": 50,
+        "DailyLimit": 5
+      },
       "Points": 200.0,
       "BuyerType": {
         "Tier": "Srebrni"
@@ -185,7 +245,17 @@
       "Picture": "../images/bodypump.jpg"
     },
     "Buyer": {
-      "Visits": {},
+      "Membership": {
+        "Id": "1233214554",
+        "Name": "Fight Club paket",
+        "SportsObject": {
+          "name": "Favorit"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 5000.0,
+        "NumberOfTerms": 30,
+        "DailyLimit": 3
+      },
       "Points": 1200.0,
       "BuyerType": {
         "Tier": "Zlatni"
@@ -213,7 +283,17 @@
       "Picture": "../images/bodypump.jpg"
     },
     "Buyer": {
-      "Visits": {},
+      "Membership": {
+        "Id": "8553934453",
+        "Name": "Six Pack paket",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 6000.0,
+        "NumberOfTerms": 50,
+        "DailyLimit": 5
+      },
       "Points": 200.0,
       "BuyerType": {
         "Tier": "Srebrni"
@@ -241,7 +321,17 @@
       "Picture": "../images/salsa.jpg"
     },
     "Buyer": {
-      "Visits": {},
+      "Membership": {
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
+        "SportsObject": {
+          "name": "Plesni centar Allegro"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 3000.0,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
+      },
       "Points": 9.0,
       "BuyerType": {
         "Tier": "Bronzani"
@@ -269,7 +359,17 @@
       "Picture": "../images/tango.jpg"
     },
     "Buyer": {
-      "Visits": {},
+      "Membership": {
+        "Id": "8553934453",
+        "Name": "Six Pack paket",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 6000.0,
+        "NumberOfTerms": 50,
+        "DailyLimit": 5
+      },
       "Points": 200.0,
       "BuyerType": {
         "Tier": "Srebrni"
@@ -297,7 +397,17 @@
       "Picture": "../images/karate.jpg"
     },
     "Buyer": {
-      "Visits": {},
+      "Membership": {
+        "Id": "1233214554",
+        "Name": "Fight Club paket",
+        "SportsObject": {
+          "name": "Favorit"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 5000.0,
+        "NumberOfTerms": 30,
+        "DailyLimit": 3
+      },
       "Points": 1200.0,
       "BuyerType": {
         "Tier": "Zlatni"
@@ -325,7 +435,17 @@
       "Picture": "../images/bodypump.jpg"
     },
     "Buyer": {
-      "Visits": {},
+      "Membership": {
+        "Id": "1233214554",
+        "Name": "Fight Club paket",
+        "SportsObject": {
+          "name": "Favorit"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 5000.0,
+        "NumberOfTerms": 30,
+        "DailyLimit": 3
+      },
       "Points": 1200.0,
       "BuyerType": {
         "Tier": "Zlatni"
@@ -353,7 +473,17 @@
       "Picture": "../images/personal.jpg"
     },
     "Buyer": {
-      "Visits": {},
+      "Membership": {
+        "Id": "1233214554",
+        "Name": "Fight Club paket",
+        "SportsObject": {
+          "name": "Favorit"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 5000.0,
+        "NumberOfTerms": 30,
+        "DailyLimit": 3
+      },
       "Points": 1200.0,
       "BuyerType": {
         "Tier": "Zlatni"
@@ -382,7 +512,17 @@
       "Picture": "../images/advjoga.jpg"
     },
     "Buyer": {
-      "Visits": {},
+      "Membership": {
+        "Id": "8553934453",
+        "Name": "Six Pack paket",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 6000.0,
+        "NumberOfTerms": 50,
+        "DailyLimit": 5
+      },
       "Points": 200.0,
       "BuyerType": {
         "Tier": "Srebrni"
@@ -410,7 +550,17 @@
       "Picture": "../images/personal.jpg"
     },
     "Buyer": {
-      "Visits": {},
+      "Membership": {
+        "Id": "8553934453",
+        "Name": "Six Pack paket",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 6000.0,
+        "NumberOfTerms": 50,
+        "DailyLimit": 5
+      },
       "Points": 200.0,
       "BuyerType": {
         "Tier": "Srebrni"
@@ -420,5 +570,81 @@
     },
     "ScheduledFor": "2022-07-09T18:00:11.6057629",
     "CanceledAt": "2022-07-06T23:16:18.1954891"
+  },
+  {
+    "Id": "4963c583-91e2-46ac-b2b3-e0dc7345995d",
+    "Trainer": {
+      "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
+      "Username": "jovana"
+    },
+    "Training": {
+      "Id": "3b17c4cc-8d4c-4f0c-aea1-5719a36561a6",
+      "Name": "Body Balance",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "No Limit Gym"
+      },
+      "Duration": 60,
+      "Description": "Body Balance trening za um i telo. Predstavlja kombinaciju joge, pilatesa i tai chi-a.",
+      "Picture": "../images/bodybalance.jpg"
+    },
+    "Buyer": {
+      "Membership": {
+        "Id": "8553934453",
+        "Name": "Six Pack paket",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 6000.0,
+        "NumberOfTerms": 50,
+        "DailyLimit": 5
+      },
+      "Points": 200.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-09T02:25:21.4275286"
+  },
+  {
+    "Id": "01bcf086-264a-4d00-a4fd-a4eaf1353970",
+    "Trainer": {
+      "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
+      "Username": "jovana"
+    },
+    "Training": {
+      "Id": "3b17c4cc-8d4c-4f0c-aea1-5719a36561a6",
+      "Name": "Body Balance",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "No Limit Gym"
+      },
+      "Duration": 60,
+      "Description": "Body Balance trening za um i telo. Predstavlja kombinaciju joge, pilatesa i tai chi-a.",
+      "Picture": "../images/bodybalance.jpg"
+    },
+    "Buyer": {
+      "Membership": {
+        "Id": "8553934453",
+        "Name": "Six Pack paket",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 6000.0,
+        "NumberOfTerms": 50,
+        "DailyLimit": 5
+      },
+      "Points": 200.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-09T02:25:54.0567734"
   }
 ]
