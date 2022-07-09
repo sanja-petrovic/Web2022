@@ -15,6 +15,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
 import beans.Buyer;
+import beans.Membership;
 import beans.User;
 import beans.UserType;
 import util.adapters.LocalDateTimeAdapter;
@@ -61,7 +62,8 @@ public class BuyerDAO {
 				b.setType(Repository.getInstance().getBuyerTypeDAO().getBuyerTypeByTier(b.getType().getTier()));
 			}
 			if(b.getMembership() != null) {
-				b.setMembership(Repository.getInstance().getMembershipDAO().getMembershipById(b.getMembership().getId()));
+				Membership membership = Repository.getInstance().getMembershipDAO().getMembershipById(b.getMembership().getId());
+				b.setMembership(membership);
 			}
 		}
 	}
@@ -98,6 +100,25 @@ public class BuyerDAO {
 		
 		return retVal;
 	}
+	
+	public void updateBuyer(Buyer buyer) {
+		int index = this.findIndexOf(buyer);
+		this.buyers.set(index, buyer);
+		this.writeBuyers();
+	}
+	
+	public int findIndexOf(Buyer buyer) {
+    	int index = -1; 
+
+    	for(int i = 0; i < this.buyers.size(); i++) {
+    		if(this.buyers.get(i).getId().equals(buyer.getId())) {
+    			index = i;
+    			break;
+    		}
+    	}
+
+    	return index;
+    }
 	
 	public Buyer getBuyerByUsername(String username) {
 		Buyer retVal = null;

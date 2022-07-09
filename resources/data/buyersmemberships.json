@@ -1,0 +1,38 @@
+[
+  {
+    "Buyer": {
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "PaymentDate": "2022-07-08T20:23:06.7672748",
+    "DateTimeOfExpiration": "2022-08-08T20:23:06.7712617",
+    "UsedTerms": 0,
+    "Status": "Aktivna",
+    "Id": "8553934453",
+    "Name": "Six Pack paket"
+  },
+  {
+    "Buyer": {
+      "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
+      "Username": "petar"
+    },
+    "PaymentDate": "2022-07-09T10:18:45.6428625",
+    "DateTimeOfExpiration": "2022-08-09T10:18:45.6448368",
+    "UsedTerms": 0,
+    "Status": "Aktivna",
+    "Id": "1233214554",
+    "Name": "Fight Club paket"
+  },
+  {
+    "Buyer": {
+      "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+      "Username": "filip"
+    },
+    "PaymentDate": "2022-07-08T19:40:25.2913667",
+    "DateTimeOfExpiration": "2022-08-08T19:40:25.2913667",
+    "UsedTerms": 0,
+    "Status": "Aktivna",
+    "Id": "1233214554",
+    "Name": "Fight Club paket"
+  }
+]

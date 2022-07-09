@@ -14,16 +14,28 @@ Vue.component('navBarLoggedIn', {
                         <router-link to="/" class="nav-link" aria-current="page">Početna stranica</router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Treninzi</a>
+                        <router-link class="nav-link" to="/treninzi-menadzer" v-if="this.userType === 'Menadžer'">Treninzi</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/dodaj-trenera">Dodaj trenera</router-link>
+                        <router-link class="nav-link" to="/treninzi-trener" v-if="this.userType === 'Trener'">Treninzi</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/sadrzaji" v-if="this.userType === 'Menadžer'">Sadržaji</router-link>
                     </li>
                      <li class="nav-item">
                         <router-link class="nav-link" to="/dodaj-sadrzaj" v-if="this.userType === 'Menadžer'">Dodaj sadržaj</router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Članarine</a>
+                        <router-link class="nav-link" to="/clanarine" v-if="this.userType === 'Kupac'">Članarine</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/korisnici" v-if="this.userType === 'Admin'">Korisnici</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/dodaj-objekat" v-if="this.userType === 'Admin'">Dodaj sportski objekat</router-link>
+                    </li>
+                       <li class="nav-item">
+                        <router-link class="nav-link" to="/dodaj-promokod" v-if="this.userType === 'Admin'">Dodaj promo kod</router-link>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -32,11 +44,6 @@ Vue.component('navBarLoggedIn', {
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><router-link to="/profil" class="dropdown-item">Profil</router-link></li>
-                            <li><a class="dropdown-item" href="#">Članarina</a></li>
-                            <li><router-link class="dropdown-item" to="/dodaj-objekat">Istorija treninga</router-link></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
                             <li><a class="dropdown-item" href="#" v-on:click="logOut">Odjavi se</a></li>
                         </ul>
                     </li>

@@ -22,11 +22,11 @@ public class CommentService {
 	
 	public static Comment changeCommentStatus(String id, CommentStatus status) {
 		Comment c = Repository.getInstance().getCommentDAO().getCommentById(id);
+		c.setStatus(status);
 		if(status.equals(CommentStatus.APPROVED)) {
 			SportsObject s = Repository.getInstance().getSportsObjectDAO().updateRating(c.getSportsObject(), SportsObjectService.calculateRating(c.getSportsObject()));
 			c.setSportsObject(s);
 		}
-		c.setStatus(status);
 		Repository.getInstance().getCommentDAO().updateComment(c);
 		
 		return c;

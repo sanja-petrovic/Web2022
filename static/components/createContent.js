@@ -23,7 +23,7 @@ Vue.component('create-content', {
         <div>
         <nav-bar-logged-in v-if="this.loggedIn"></nav-bar-logged-in>
         <nav-bar-logged-out v-else></nav-bar-logged-out>
-         <div class="main-content">
+        <div class="main-content">
             <div class="sports-object-header justify-content-center">
                 <img class="sports-object-logo" :src="sportsObject.logoIcon">
                 <div class="sports-object-info">
@@ -46,7 +46,7 @@ Vue.component('create-content', {
                             class="d-inline-block">{{sportsObject.location.address.city}}, {{sportsObject.location.address.postcode}}</span></span><br>
                         <span class="d-inline-block"><i 
                                                         style="margin-right: 1.5em; color: #9BE3C3"></i><span
-                            class="d-inline-block">{{sportsObject.location.latitude}}, {{sportsObject.location.longitude}}</span></span><br>
+                            class="d-inline-block">{{sportsObject.location.latitude.toFixed(5)}}, {{sportsObject.location.longitude.toFixed(5)}}</span></span><br>
                         
                         <span class="d-inline-block"><i class="fa fa-star"
                                                         style="margin-right: 0.4em; color: #ADE9AA"></i><span
@@ -196,53 +196,45 @@ Vue.component('create-content', {
 				if(this.price == ""){
 					this.price = 0;
 				}
-                event.preventDefault();
                 var picturePath = new FileReader();
                 var file   = this.$refs.myFile.files[0];
                 var fileName = this.$refs.myFile.files[0].name;
                 picturePath.readAsDataURL(file);
-                if(this.type !== 'trening')
-                { 
-	                picturePath.onloadend = () =>
-	                {	
-	                    axios.post('/rest/createContent', {
-	                        name: this.name, sportsObjectName: this.sportsObject.name, contentType: this.contentType, imgData: picturePath.result, fileName: fileName, 
-	                        description: this.description, durationMinutes: this.durationMinutes
-	                    })
-	                        .then(function response(resp){
-	                            oopsie = false;
-	                            console.log(resp.data); 
-	                            alert(message);
-	                        }).catch(function error(err) {
-	                            alert("Greška na serveru!");
-	                            oopsie = true;
-	                        });
-	                }
-                } else {
-					this.contentType = "trening";
-					picturePath.onloadend = () =>
-	                {	
-	                    axios.post('/rest/createTraining', {
-	                        name: this.name, sportsObjectName: this.sportsObject.name, contentType: this.contentType, imgData: picturePath.result, fileName: fileName, 
-	                        description: this.description, durationMinutes: this.durationMinutes, trainer: this.trainer, price: this.price, trainingType: this.trainingType
-	                    })
-	                        .then(function response(resp){
-	                            oopsie = false;
-	                            console.log(resp.data); 
-	                            alert(message);
-	                        }).catch(function error(err) {
-	                            alert("Greška na serveru!");
-	                            oopsie = true;
-	                        });
-	                }
-	
-				}
-               
-            
-                if(oopsie) {
-                    this.$router.replace("/dodaj-sadrzaj");
-                } else {
-                    this.$router.replace("/");
+
+                picturePath.onloadend = () =>
+                {
+                    if(this.type !== 'trening') {
+                        axios.post('/rest/createContent', {
+                            name: this.name, sportsObjectName: this.sportsObject.name, contentType: this.contentType, imgData: picturePath.result, fileName: fileName,
+                            description: this.description, durationMinutes: this.durationMinutes
+                        })
+                            .then(resp => {
+                                oopsie = false;
+                                console.log(resp.data);
+                                alert(message);
+                                this.$router.replace("/sadrzaji");
+                            }).catch(err => {
+                            alert("Greška na serveru!");
+                            this.$router.replace("/dodaj-sadrzaj");
+                            oopsie = true;
+                        });
+                    } else {
+                        axios.post('/rest/createTraining', {
+                            name: this.name, sportsObjectName: this.sportsObject.name, contentType: "trening", imgData: picturePath.result, fileName: fileName,
+                            description: this.description, durationMinutes: this.durationMinutes, trainer: this.trainer, price: this.price, trainingType: this.trainingType
+                        })
+                            .then(resp => {
+                                oopsie = false;
+                                console.log(resp.data);
+                                this.$router.replace("/sadrzaji");
+
+                            }).catch(err => {
+                            alert("Greška na serveru!");
+
+                            this.$router.replace("/dodaj-sadrzaj");
+                            oopsie = true;
+                        });
+                    }
                 }
                 this.errorExists = oopsie;
                 

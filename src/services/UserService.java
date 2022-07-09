@@ -3,6 +3,7 @@ package services;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import beans.Administrator;
 import beans.Buyer;
@@ -22,10 +23,10 @@ public class UserService {
 	}
 
 	public static User updateUser(ProfileDTO updatedUser, User u) {
-        u.setUsername(updatedUser.getUsername());
         u.setGender(GenderParser.parse(updatedUser.getGender()));
         u.setName(updatedUser.getName());
         u.setSurname(updatedUser.getSurname());
+        u.setDateOfBirth(LocalDate.parse(updatedUser.getDob()));
         Repository.getInstance().getUserDAO().updateUser(u);
         return u;
     }

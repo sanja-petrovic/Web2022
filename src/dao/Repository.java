@@ -4,6 +4,7 @@ public class Repository {
 	
 	private UserDAO userDAO;
 	private BuyerDAO buyerDAO;
+	private BuyersMembershipDAO buyersMembershipDAO;
 	private MembershipDAO membershipDAO;
 	private BuyerTypeDAO buyerTypeDAO;
 	private SportsObjectDAO sportsObjectDAO;
@@ -14,6 +15,7 @@ public class Repository {
 	private TrainerDAO trainerDAO;
 	private AdministratorDAO administratorDAO;
 	private CommentDAO commentDAO;
+	private PromoCodeDAO promoCodeDAO;
 	public static Repository instance;
 	
 	
@@ -25,21 +27,25 @@ public class Repository {
 			instance.setUserDAO(new UserDAO());
 			instance.setBuyerTypeDAO(new BuyerTypeDAO());
 			instance.setSportsObjectDAO(new SportsObjectDAO());
-			instance.setBuyerDAO(new BuyerDAO());
 			instance.setManagerDAO(new ManagerDAO());
 			instance.setContentsDAO(new ContentsDAO());
 			instance.setMembershipDAO(new MembershipDAO());
-			instance.setTrainingDAO(new TrainingDAO());
+			instance.setBuyerDAO(new BuyerDAO());
+			instance.setBuyersMembershipDAO(new BuyersMembershipDAO());
 			instance.setTrainerDAO(new TrainerDAO());
+			instance.setTrainingDAO(new TrainingDAO());
 			instance.setCommentDAO(new CommentDAO());
 			instance.setTrainingHistoryDAO(new TrainingHistoryDAO());
 			instance.setAdministratorDAO(new AdministratorDAO());
+			instance.setPromoCodeDAO(new PromoCodeDAO());
 		}
 		return instance;
 	}
 	
 	public void loadData() {
-		this.userDAO.load();
+		this.trainingDAO.init();
+		this.trainerDAO.init();
+		this.trainingHistoryDAO.fillData();
 	}
 
 	public UserDAO getUserDAO() {
@@ -64,6 +70,14 @@ public class Repository {
 
 	public void setMembershipDAO(MembershipDAO membershipDAO) {
 		this.membershipDAO = membershipDAO;
+	}
+
+	public BuyersMembershipDAO getBuyersMembershipDAO() {
+		return buyersMembershipDAO;
+	}
+
+	public void setBuyersMembershipDAO(BuyersMembershipDAO buyersMembershipDAO) {
+		this.buyersMembershipDAO = buyersMembershipDAO;
 	}
 
 	public BuyerTypeDAO getBuyerTypeDAO() {
@@ -138,5 +152,15 @@ public class Repository {
 	public void setCommentDAO(CommentDAO commentDAO) {
 		this.commentDAO = commentDAO;
 	}
+
+	public PromoCodeDAO getPromoCodeDAO() {
+		return promoCodeDAO;
+	}
+
+	public void setPromoCodeDAO(PromoCodeDAO promoCodeDAO) {
+		this.promoCodeDAO = promoCodeDAO;
+	}
+	
+	
 
 }

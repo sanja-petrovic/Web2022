@@ -20,6 +20,7 @@ import beans.Content;
 import beans.SportsObject;
 import beans.Trainer;
 import beans.Training;
+import beans.TrainingType;
 import beans.User;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
@@ -33,6 +34,9 @@ public class TrainingDAO {
 	
 	public TrainingDAO() {
 		this.trainings = new ArrayList<>();
+	}
+	
+	public void init() {
 		this.load();
 	}
 	
@@ -57,10 +61,26 @@ public class TrainingDAO {
 
 	public void fillData(Training t) {
 		Content content = Repository.getInstance().getContentsDAO().getContentById(t.getId());
+		if(content != null) {
+			t.setContentType(content.getContentType());
+			t.setDeletedAt(content.getDeletedAt());
+			t.setDescription(content.getDescription());
+			t.setDurationMinutes(content.getDurationMinutes());
+			t.setName(content.getName());
+			t.setSportsObject(content.getSportsObject());
+			t.setPicture(content.getPicture());
+			
+		}
 		SportsObject sportsObject = Repository.getInstance().getSportsObjectDAO().getSportsObjectById(content.getSportsObject().getName());
-		Trainer trainer = Repository.getInstance().getTrainerDAO().getTrainerByUsername(t.getTrainer().getUsername());
-		t.setTrainer(trainer);
+		//Trainer trainer = Repository.getInstance().getTrainerDAO().getTrainerByUsername(t.getTrainer().getUsername());
+		//t.setTrainer(trainer);
 		t.setSportsObject(sportsObject);
+	}
+	
+	public void fillTrainers() {
+		for(Training t : this.trainings) {
+			t.setTrainer(Repository.getInstance().getTrainerDAO().getTrainerByUsername(t.getTrainer().getUsername()));
+		}
 	}
 	
 	public ArrayList<Training> getTrainings() {
@@ -119,11 +139,54 @@ public class TrainingDAO {
 			if(t.getId().equals(id)) {
 				User u = Repository.getInstance().getTrainerDAO().getTrainerByUsername(t.getTrainer().getUsername());
 				retVal = (Trainer) u;
+				retVal.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(u.getId()));
 				break;
 			}
 		
 		}
 		return retVal;
 	}
+	
+	public Double getPriceByTrainingId(String id) {
+		Double retVal = 0.0;
+		
+		for(Training t : this.trainings) {
+			if(t.getId().equals(id)) {
+				retVal = t.getPrice();
+				break;
+			}
+		
+		}
+		return retVal;
+	}
+	
+	public TrainingType getTypeByTrainingId(String id) {
+		TrainingType retVal = null;	
+		for(Training t : this.trainings) {
+			if(t.getId().equals(id)) {
+				retVal = t.getTrainingType();
+				break;
+			}
+		}
+		return retVal;
+	}
+	
+	public void editTraining(Training training) {
+		int index = this.findIndexOf(training);
+		 if(index != -1) {
+	            this.trainings.set(index, (Training) training);
+	            this.write();
+	     }
+	}
+	public int findIndexOf(Training training) {
+        int index = -1;
+        for(int i = 0; i < this.trainings.size(); i++) {
+            if(this.trainings.get(i).getId().equals(training.getId())) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    } 
 }
 	

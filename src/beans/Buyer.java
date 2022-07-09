@@ -7,6 +7,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import util.annotations.Exclude;
+import util.annotations.ExcludeUser;
 
 
 
@@ -14,21 +15,25 @@ public class Buyer extends User {
 
 	@Expose
 	@Exclude
+	@ExcludeUser
 	@SerializedName("Membership")
 	private Membership membership;
 	
 	@Expose
 	@Exclude
+	@ExcludeUser
 	@SerializedName("Visits")
 	private HashMap<Training, LocalDate> visits;
 	
 	@Expose
 	@Exclude
+	@ExcludeUser
 	@SerializedName("Points")
 	private double points;
 	
 	@Expose
 	@Exclude
+	@ExcludeUser
 	@SerializedName("BuyerType")
 	private BuyerType type;
 	

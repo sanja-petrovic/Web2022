@@ -10,25 +10,57 @@ import java.time.LocalTime;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import beans.Training;
+import beans.TrainingHistory;
 import dao.Repository;
+import services.TrainingHistoryService;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
+import util.adapters.LocalDateTimeAdapter2;
 import util.adapters.LocalTimeAdapter;
 
 public class TrainingHistoryController {
 	
-	private static Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
+	private static Gson gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter2()).create();
 	private static String basePath = "/rest";
 	
 	public void init() {
 		path(basePath, () -> {
 			getTrainingHistoryForUser();
+			getTrainingHistoryForSportsObject();
+			getTrainingHistoryForTrainer();
+			cancelTraining();
 		});
 	}
 	
 	public static void getTrainingHistoryForUser() {
 		get("/users/:id/trainings", (req, res) -> {
 			return gson.toJson(Repository.getInstance().getTrainingHistoryDAO().getTrainingHistoryForBuyer(req.params(":id")));
+		});
+	}
+	
+	public static void getTrainingHistoryForSportsObject() {
+		get("/sportsobjects/:id/trainings", (req, res) -> {
+			return gson.toJson(Repository.getInstance().getTrainingHistoryDAO().getTrainingHistoryForSportsObject(req.params(":id")));
+		});
+	}
+	
+	public static void getTrainingHistoryForTrainer() {
+		get("/trainers/:id/trainings", (req, res) -> {
+			return gson.toJson(Repository.getInstance().getTrainingHistoryDAO().getTrainingHistoryForTrainer(req.params(":id")));
+		});
+	}
+	
+
+	
+	public static void cancelTraining() {
+		post("/trainings/:id/cancel", (req, res) -> {
+			res.type("application/json");
+			String payload = req.body();
+			String id = req.params(":id");
+			
+			return gson.toJson(TrainingHistoryService.cancelTraining(id));
 		});
 	}
 }

@@ -32,6 +32,7 @@ public class TrainingHistoryDAO {
 		this.load();
 	}
 	
+	
 	public void createGson() {
 	    this.gson = new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).excludeFieldsWithoutExposeAnnotation().create();
 	}
@@ -41,22 +42,21 @@ public class TrainingHistoryDAO {
 			this.createGson();
 		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/traininghistories.json"));
 		    this.trainingHistories = gson.fromJson(reader, new TypeToken<ArrayList<TrainingHistory>>() {}.getType());
-		    for(TrainingHistory th : this.trainingHistories) {
-		    	this.fillData(th);
-		    }
 		    reader.close();
 		} catch (Exception ex) {
 		    ex.printStackTrace();
 		}
 	}
 	
-	public void fillData(TrainingHistory th) {
-		Buyer b = Repository.getInstance().getBuyerDAO().getBuyerByUsername(th.getBuyer().getUsername());
-        Trainer t = null;
-        if(th.getTrainer() != null) {
-            t = Repository.getInstance().getTrainerDAO().getTrainerByUsername(th.getTrainer().getUsername());
-        }
-        Training tr = Repository.getInstance().getTrainingDAO().getTrainingById(th.getTraining().getId());
+	public void fillData() {
+		for(TrainingHistory th : this.trainingHistories) {
+			th.setBuyer(Repository.getInstance().getBuyerDAO().getBuyerByUsername(th.getBuyer().getUsername()));
+	        /*if(th.getTrainer() != null) {
+	            th.setTrainer(Repository.getInstance().getTrainerDAO().getTrainerByUsername(th.getTrainer().getUsername()));
+	        }*/
+	        th.setTraining(Repository.getInstance().getTrainingDAO().getTrainingById(th.getTraining().getId()));
+	    }
+		
 	}
 	
 	
@@ -89,6 +89,58 @@ public class TrainingHistoryDAO {
         }
 
         return trainingHistories;
+    }
+    
+    public ArrayList<TrainingHistory> getTrainingHistoryForTrainer(String id) {
+        ArrayList<TrainingHistory> trainingHistories = new ArrayList<>();
+        for(TrainingHistory th : this.trainingHistories) {
+            if(th.getTrainer().getId().equals(id)) {
+                trainingHistories.add(th);
+            }
+        }
+        
+        return trainingHistories;
+    }
+    
+    public ArrayList<TrainingHistory> getTrainingHistoryForSportsObject(String sportsObjectName) {
+        ArrayList<TrainingHistory> trainingHistories = new ArrayList<>();
+        for(TrainingHistory th : this.trainingHistories) {
+            if(th.getTraining().getSportsObject().getName().equals(sportsObjectName)) {
+                trainingHistories.add(th);
+            }
+        }
+
+        return trainingHistories;
+    }
+    
+    public TrainingHistory getTrainingHistoryById(String id) {
+    	TrainingHistory retVal = null;
+    	for(TrainingHistory th: this.trainingHistories) {
+    		if(th.getId().equals(id)) {
+    			retVal = th;
+    			break;
+    		}
+    	}
+    	return retVal;
+    }
+    
+    public void updateTrainingHistory(TrainingHistory trainingHistory) {
+    	int index = this.findIndexOf(trainingHistory);
+    	this.trainingHistories.set(index, trainingHistory);
+    	this.write();
+    }
+    
+    public int findIndexOf(TrainingHistory trainingHistory) {
+    	int index = -1; 
+    	
+    	for(int i = 0; i < this.trainingHistories.size(); i++) {
+    		if(this.trainingHistories.get(i).getId().equals(trainingHistory.getId())) {
+    			index = i;
+    			break;
+    		}
+    	}
+    	
+    	return index;
     }
 	
 }

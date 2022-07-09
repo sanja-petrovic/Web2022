@@ -8,6 +8,7 @@ import beans.Training;
 import beans.TrainingType;
 import dao.Repository;
 import dto.CreateTrainingDTO;
+import dto.EditTrainingDTO;
 
 public class TrainingService {
 	
@@ -43,6 +44,19 @@ public class TrainingService {
 		Repository.getInstance().getTrainingDAO().addTraining(training);
 		return training;
 	}
+	
+	public static Training editTraining(EditTrainingDTO editTrainingDTO) {
+		Training training = Repository.getInstance().getTrainingDAO().getTrainingById(editTrainingDTO.getId());
+		training.setPrice(Double.parseDouble(editTrainingDTO.getPrice()));
+		training.setTrainer(Repository.getInstance().getTrainerDAO().getTrainerById(editTrainingDTO.getTrainerId()));
+		if (editTrainingDTO.getTrainingType().toString().equals("Personalni"))
+			training.setTrainingType(TrainingType.PERSONAL);
+		else
+			training.setTrainingType(TrainingType.GROUP);
+		Repository.getInstance().getTrainingDAO().editTraining(training);
+		return training;
+	}
+	
 	
 
 }

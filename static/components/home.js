@@ -136,7 +136,7 @@ Vue.component('home-page', {
                                                 item.location.address.street }} {{ item.location.address.number }}, {{
                                                 item.location.address.city }} {{item.location.address.postcode }}, {{item.location.address.country}}</span><br>
                                         <span class="d-inline-block"><i class="fa fa-star" style="margin-right: 0.4em; color: #ADE9AA"></i><span
-                                            class="d-inline-block">{{ item.averageGrade }}</span></span>
+                                            class="d-inline-block">{{ item.averageGrade.toFixed(2) }}</span></span>
                                     </p>
                                 </div>
                             </a>

@@ -43,7 +43,7 @@ Vue.component('create-sports-object', {
 
     template: `
         <div>
-        <nav-bar-logged-out></nav-bar-logged-out>
+        <nav-bar-logged-in></nav-bar-logged-in>
         <div class="outer-container">
             <div class="create-divs">
                 <div class="bla">
@@ -193,18 +193,14 @@ Vue.component('create-sports-object', {
                             imgData: picturePath.result,
                             fileName: fileName,
                         })
-                            .then(function response(resp) {
-                                location.reload();
+                            .then(resp => {
+                                this.$router.replace("/");
                                 oopsie = false;
-                            }).catch(function error(err) {
+                            }).catch(err => {
                             alert(err.response.data);
+                            this.$router.replace("/dodaj-objekat");
                             oopsie = true;
                         });
-                    }
-                    if (oopsie) {
-                        this.$router.replace("/dodaj-objekat");
-                    } else {
-                        this.$router.replace("/");
                     }
                     this.errorExists = oopsie;
                 });
@@ -240,18 +236,14 @@ Vue.component('create-sports-object', {
                             imgData: picturePath.result,
                             fileName: fileName,
                         })
-                            .then(function response(resp) {
-                                location.reload();
+                            .then(resp => {
+                                this.$router.replace("/");
                                 oopsie = false;
-                            }).catch(function error(err) {
+                            }).catch(err => {
                             alert(err.response.data);
+                            this.$router.replace("/dodaj-objekat");
                             oopsie = true;
                         });
-                    }
-                    if (oopsie) {
-                        this.$router.replace("/dodaj-objekat");
-                    } else {
-                        this.$router.replace("/");
                     }
                     this.errorExists = oopsie;
                 });

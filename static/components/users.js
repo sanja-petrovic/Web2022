@@ -265,7 +265,6 @@ Vue.component('users', {
                                        <th scope="col" class="border-0 font-medium">Korisničko ime</th>
                                        <th scope="col" class="border-0 font-medium">Pol</th>
                                        <th scope="col" class="border-0 font-medium">Datum rođenja</th>
-                                       <th scope="col" class="border-0 font-medium">Broj treninga</th>
                                    </tr>
                                    </thead>
                                    <tbody>
@@ -281,9 +280,6 @@ Vue.component('users', {
                                        </td>
                                        <td>
                                            <span class="text-muted">{{ user.DateOfBirth }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.TrainingHistory !== null ? user.TrainingHistory.length : 0 }}</span><br>
                                        </td>
                                    </tr>
                                    </tbody>

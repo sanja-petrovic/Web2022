@@ -1,15 +1,38 @@
 package beans;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class PromoCode {
+	
+	@Expose
+	@SerializedName("Id")
 	private String id;
-	private LocalDateTime expirationDateTime;
+	
+	@Expose
+	@SerializedName("ExpirationDateTime")
+	private LocalDate expirationDateTime;
+	
+	@Expose
+	@SerializedName("MaximumUses")
 	private int maximumUses;
+	
+	@Expose
+	@SerializedName("Discount")
 	private double discount;
+	
 	private LocalDateTime deletedAt;
 	
-	public PromoCode(String id, LocalDateTime expirationDateTime, int maximumUses, double discount) {
+	
+	public PromoCode() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public PromoCode(String id, LocalDate expirationDateTime, int maximumUses, double discount) {
 		this.id = id;
 		this.expirationDateTime = expirationDateTime;
 		this.maximumUses = maximumUses;
@@ -24,11 +47,11 @@ public class PromoCode {
 		this.id = id;
 	}
 
-	public LocalDateTime getExpirationDateTime() {
+	public LocalDate getExpirationDateTime() {
 		return expirationDateTime;
 	}
 
-	public void setExpirationDateTime(LocalDateTime expirationDateTime) {
+	public void setExpirationDateTime(LocalDate expirationDateTime) {
 		this.expirationDateTime = expirationDateTime;
 	}
 

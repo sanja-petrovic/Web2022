@@ -1,1 +1,424 @@
-[]
+[
+  {
+    "Id": "059ce458-8d68-4562-9838-e2cabc3889ec",
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
+      "Name": "Cardio",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "No Limit Gym"
+      },
+      "Duration": 30,
+      "Description": "Kardio vežbanje učiniće te zgodnijim, zdravijim i punim snage ali učiniće i više od toga. Imaćeš bolju koncentraciju i pamćenje, regulisaćeš telesnu težinu i bićeš otporniji na stres.",
+      "Picture": "../images/cardio.jpg"
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 1200.0,
+      "BuyerType": {
+        "Tier": "Zlatni"
+      },
+      "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+      "Username": "filip"
+    },
+    "CheckIn": "2022-05-25T00:00:00"
+  },
+  {
+    "Id": "af6c7d99-6ff8-456d-b708-ab74b9b8176d",
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
+      "Name": "Cardio",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "No Limit Gym"
+      },
+      "Duration": 30,
+      "Description": "Kardio vežbanje učiniće te zgodnijim, zdravijim i punim snage ali učiniće i više od toga. Imaćeš bolju koncentraciju i pamćenje, regulisaćeš telesnu težinu i bićeš otporniji na stres.",
+      "Picture": "../images/cardio.jpg"
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 9.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
+      "Username": "petar"
+    },
+    "CheckIn": "2022-07-02T10:30:00.6057629"
+  },
+  {
+    "Id": "6e401748-6179-4d6d-95fe-06aefa44f3d6",
+    "Trainer": {
+      "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
+      "Username": "jovana"
+    },
+    "Training": {
+      "Id": "3b17c4cc-8d4c-4f0c-aea1-5719a36561a6",
+      "Name": "Body Balance",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "No Limit Gym"
+      },
+      "Duration": 60,
+      "Description": "Body Balance trening za um i telo. Predstavlja kombinaciju joge, pilatesa i tai chi-a.",
+      "Picture": "../images/bodybalance.jpg"
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 9.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
+      "Username": "petar"
+    },
+    "CheckIn": "2022-07-03T17:26:42.274515"
+  },
+  {
+    "Id": "8b1e7917-9211-4ec0-bd7d-d0f16af74ae9",
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
+      "Name": "Cardio",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "No Limit Gym"
+      },
+      "Duration": 30,
+      "Description": "Kardio vežbanje učiniće te zgodnijim, zdravijim i punim snage ali učiniće i više od toga. Imaćeš bolju koncentraciju i pamćenje, regulisaćeš telesnu težinu i bićeš otporniji na stres.",
+      "Picture": "../images/cardio.jpg"
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 200.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-03T17:28:41.512039"
+  },
+  {
+    "Id": "84ec6f39-bf07-4bd7-bf00-d674aec78675",
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
+      "Name": "Cardio",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "No Limit Gym"
+      },
+      "Duration": 30,
+      "Description": "Kardio vežbanje učiniće te zgodnijim, zdravijim i punim snage ali učiniće i više od toga. Imaćeš bolju koncentraciju i pamćenje, regulisaćeš telesnu težinu i bićeš otporniji na stres.",
+      "Picture": "../images/cardio.jpg"
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 200.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-03T17:36:56.4544396"
+  },
+  {
+    "Id": "83919faf-da7e-4b14-ad47-552d9d242ecd",
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
+      "Name": "Cardio",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "No Limit Gym"
+      },
+      "Duration": 30,
+      "Description": "Kardio vežbanje učiniće te zgodnijim, zdravijim i punim snage ali učiniće i više od toga. Imaćeš bolju koncentraciju i pamćenje, regulisaćeš telesnu težinu i bićeš otporniji na stres.",
+      "Picture": "../images/cardio.jpg"
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 200.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-03T18:14:51.7094583"
+  },
+  {
+    "Id": "bfba96a4-3549-4232-8279-212d22febf31",
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "1e09a425-3567-49ee-acbc-0c601be8db86",
+      "Name": "Body Pump",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "Mega Gym"
+      },
+      "Duration": 45,
+      "Description": "Body Pump je spoj moćne muzike i jedinstvene energije. Veliki broj ponavljanja pomaže ti da imaš definisane mišiće tela. Na treningu možeš da biraš lakšu i težu opciju svake vežbe.",
+      "Picture": "../images/bodypump.jpg"
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 1200.0,
+      "BuyerType": {
+        "Tier": "Zlatni"
+      },
+      "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+      "Username": "filip"
+    },
+    "CheckIn": "2022-07-04T17:28:31.6057629"
+  },
+  {
+    "Id": "6a3b0428-1914-47de-af90-b81a5c5bb833",
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "1e09a425-3567-49ee-acbc-0c601be8db86",
+      "Name": "Body Pump",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "Mega Gym"
+      },
+      "Duration": 45,
+      "Description": "Body Pump je spoj moćne muzike i jedinstvene energije. Veliki broj ponavljanja pomaže ti da imaš definisane mišiće tela. Na treningu možeš da biraš lakšu i težu opciju svake vežbe.",
+      "Picture": "../images/bodypump.jpg"
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 200.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-04T17:30:31.6057629"
+  },
+  {
+    "Id": "76e1a3fa-8640-4355-80e1-2b33273ba324",
+    "Trainer": {
+      "Id": "2a5eb950-0720-4018-9329-c3859a033144",
+      "Username": "marta"
+    },
+    "Training": {
+      "Id": "88a326ee-4637-465c-b0fa-533550e89b47",
+      "Name": "Salsa",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "Plesni centar Allegro"
+      },
+      "Duration": 60,
+      "Description": "U našoj školi podučavamo Kubansku Salsu, koja je predak svih današnjih stilova Salse. Sam ples je vrlo pikantan, veseo, vatren i poletan. Njegov ritam može biti spor ili jako brz.Časovi se održavaju dva puta nedeljno, od po sat vremena.",
+      "Picture": "../images/salsa.jpg"
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 9.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
+      "Username": "petar"
+    },
+    "CheckIn": "2022-07-05T19:00:05.6057629"
+  },
+  {
+    "Id": "8ce58d8c-1c55-473c-990e-91d47176d035",
+    "Trainer": {
+      "Id": "2a5eb950-0720-4018-9329-c3859a033144",
+      "Username": "marta"
+    },
+    "Training": {
+      "Id": "45f766oa-8756-564p-b8ja-123550e89h78",
+      "Name": "Argentinski tango",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "Plesni centar Allegro"
+      },
+      "Duration": 60,
+      "Description": "Argentinski Tango omogućuje odličan trening za tajming i tehniku stopala, kao izgradnju osnova za svaki ples.Intiman je, kako ga plesači često plešu obraz do obraza, upliću svoje noge na vrlo komplikovan način što odaje izuzetno senzualan efekat. Čas se održava u grupama od 20 ljudi, dva puta nedeljno.",
+      "Picture": "../images/tango.jpg"
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 200.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-05T20:00:05.6057629"
+  },
+  {
+    "Id": "3bb7e144-5be4-42b4-a30b-0bbe4547000b",
+    "Trainer": {
+      "Id": "48e7eafb-42cb-4c95-90b7-371fa56dcbb3",
+      "Username": "sara"
+    },
+    "Training": {
+      "Id": "502e4c70-dbe6-4270-89f7-8a2e7880335a",
+      "Name": "Karate",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "Favorit"
+      },
+      "Duration": 60,
+      "Description": "Karate grupni treninzi najbolji u gradu.",
+      "Picture": "../images/karate.jpg"
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 1200.0,
+      "BuyerType": {
+        "Tier": "Zlatni"
+      },
+      "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+      "Username": "filip"
+    },
+    "CheckIn": "2022-07-05T20:00:31.6057629"
+  },
+  {
+    "Id": "209f3504-fa18-4d81-90fe-9ed212bf43c4",
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "1e09a425-3567-49ee-acbc-0c601be8db86",
+      "Name": "Body Pump",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "Mega Gym"
+      },
+      "Duration": 45,
+      "Description": "Body Pump je spoj moćne muzike i jedinstvene energije. Veliki broj ponavljanja pomaže ti da imaš definisane mišiće tela. Na treningu možeš da biraš lakšu i težu opciju svake vežbe.",
+      "Picture": "../images/bodypump.jpg"
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 1200.0,
+      "BuyerType": {
+        "Tier": "Zlatni"
+      },
+      "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+      "Username": "filip"
+    },
+    "CheckIn": "2022-07-06T00:00:00"
+  },
+  {
+    "Id": "6e724213-6ea8-4f6a-bc73-3ebcdc81c955",
+    "Trainer": {
+      "Id": "48e7eafb-42cb-4c95-90b7-371fa56dcbb3",
+      "Username": "sara"
+    },
+    "Training": {
+      "Id": "0a83a23b-1bea-41ae-99de-74e107de7b31",
+      "Name": "Personalni trening 1",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "Classic Gym"
+      },
+      "Duration": 128,
+      "Description": "Nudimo različite oblike rekreacije koje redovnim upražnjavanjem mogu poboljšati opšte psihofizičko stanje i pozitivno uticati na radne i životne sposobnosti. U zavisnosti od godina, pola, trenutnog stanja fizičke kondicije kao i želja, pomoći ćemo vam da napravite pravi izbor aktivnosti.",
+      "Picture": "../images/personal.jpg"
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 1200.0,
+      "BuyerType": {
+        "Tier": "Zlatni"
+      },
+      "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+      "Username": "filip"
+    },
+    "ScheduledFor": "2022-07-09T08:10:11.6057629",
+    "CanceledAt": "2022-07-07T00:09:59.0158531"
+  },
+  {
+    "Id": "cae2b26f-8832-4a32-a466-2df4b014f07b",
+    "Trainer": {
+      "Id": "2b87f67d-0a92-4a4a-a860-abff05055bea",
+      "Username": "milos"
+    },
+    "Training": {
+      "Id": "2defce60-2a10-410b-94f8-68309c8d2701",
+      "Name": "Joga za iskusnije",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "Hipokrat"
+      },
+      "Duration": 60,
+      "Description": "Program Joga za iskusnije je tako koncipiran da odgovori na potrebe vežbača koji već duže vremena vežbaju Jogu i mogu i žele da napreduju brže. Razlika u odnosu na program Joga za početnike je u tome što se vežbaju zahtevniji položaji i tehnike disanja, a tempo časa je takav da zahteva dobru kondiciju.",
+      "Picture": "../images/advjoga.jpg"
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 200.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "ScheduledFor": "2022-07-12T18:10:11.6057629"
+  },
+  {
+    "Id": "6fa756d9-d039-47f5-bfdb-5f0c5d8ef894",
+    "Trainer": {
+      "Id": "48e7eafb-42cb-4c95-90b7-371fa56dcbb3",
+      "Username": "sara"
+    },
+    "Training": {
+      "Id": "0a83a23b-1bea-41ae-99de-74e107de7b31",
+      "Name": "Personalni trening 1",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "Classic Gym"
+      },
+      "Duration": 128,
+      "Description": "Nudimo različite oblike rekreacije koje redovnim upražnjavanjem mogu poboljšati opšte psihofizičko stanje i pozitivno uticati na radne i životne sposobnosti. U zavisnosti od godina, pola, trenutnog stanja fizičke kondicije kao i želja, pomoći ćemo vam da napravite pravi izbor aktivnosti.",
+      "Picture": "../images/personal.jpg"
+    },
+    "Buyer": {
+      "Visits": {},
+      "Points": 200.0,
+      "BuyerType": {
+        "Tier": "Srebrni"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "ScheduledFor": "2022-07-09T18:00:11.6057629",
+    "CanceledAt": "2022-07-06T23:16:18.1954891"
+  }
+]

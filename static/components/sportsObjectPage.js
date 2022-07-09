@@ -9,10 +9,11 @@ Vue.component('sports-object-page', {
            	contentTrainer: null,
 			sportsObjectRating: 0,
             logo: null,
-            contentId: "",
 			comments: null,
 			loggedInUserRole: "",
 			approvedComments: [],
+			pendingComments: [],
+			deniedComments: [],
 			user: null,
 			comment: {
 				rating: 0,
@@ -53,7 +54,7 @@ Vue.component('sports-object-page', {
 
 							<span class="d-inline-block"><i class="fa fa-star"
 															style="margin-right: 0.4em; color: #ADE9AA"></i><span
-								class="d-inline-block" >Prosečna ocena: {{ sportsObject.averageGrade }}</span></span><br>
+								class="d-inline-block" >Prosečna ocena: {{ sportsObject.averageGrade.toFixed(2) }}</span></span><br>
 						</p>
 					</div>
 				</div>
@@ -62,7 +63,7 @@ Vue.component('sports-object-page', {
             </div>
             <div class="sports-object-trainings">
                 <h4>U ponudi:</h4>
-                <ul class="cards" style="width: 100vw; margin-bottom: 20vh;">
+                <ul class="cards" style="width: 200vw; margin-bottom: 20vh;">
                     <li v-for="item in this.list">
                         <div class="card">
                             <img :src="item.content.Picture" class="card__image" alt="" />
@@ -75,8 +76,11 @@ Vue.component('sports-object-page', {
                                     <div class="card__header-text">
                                         <h3 class="card__title">{{item.content.Name}}
                                         </h3>
-                                        <span v-if="item.content.ContentType==='trening'" class="card__status">Trener: {{item.trainer.Name}} {{item.trainer.Surname}}</span><br>
-                                        <span class="card__status">Trajanje: {{item.content.Duration}}min</span><br>
+                                        <span class="card__status">Trajanje: {{item.content.Duration}}min</span>
+                                        <span v-if="item.content.ContentType==='trening'" class="card__status"><br>Trener: {{item.trainer.Name}} {{item.trainer.Surname}}</span><br>
+                                        <span class="card__status" v-if="item.content.ContentType==='trening'">Tip treninga: {{item.type}}</span><br>
+                                        <span class="card__status" v-if="item.content.ContentType==='trening' && item.price !== 0.0">Doplata za trening: {{item.price}} din</span>
+                                        <span class="card__status" v-if="item.content.ContentType==='trening' && item.price === 0.0">nema doplate za trening</span><br>
                                     </div>
                                 </div>
                                 <p class="card__description"> 
@@ -90,7 +94,7 @@ Vue.component('sports-object-page', {
             <div class="sports-object-comments"  v-if="this.loggedInUserRole === 'Admin'">
                 <h4>Komentari</h4>
                 <ul class="comment-section">
-                    <li class="comment" v-for="item in this.comments">
+                    <li class="comment" v-for="item in this.pendingComments">
                         <div class="comment-header" style="flex-direction: row;">
 							<div class="left-side">
 								<div class="title">
@@ -113,12 +117,99 @@ Vue.component('sports-object-page', {
 							</p>
                         </div>
                     </li>
+
+					<li class="comment" v-for="item in this.approvedComments">
+						<div class="comment-header" style="flex-direction: row;">
+							<div class="left-side">
+								<div class="title">
+									<h5>{{ item.Buyer.Name + " " + item.Buyer.Surname }}</h5>
+									<div><i class="fa fa-star" v-for="i in item.Grade"></i><i class="fa-regular fa-star" v-for="i in (5 - item.Grade)"></i></div>
+								</div>
+							</div>
+							<div v-if="item.Status === 'Na čekanju'" class="right-side">
+								<button class="comment-button" v-on:click="approveComment(item.Id)">Odobri</button>
+								<button class="comment-button" v-on:click="denyComment(item.Id)">Odbij</button>
+							</div>
+						</div>
+						<div class="comment-content">
+							<p>{{ item.Content }}</p>
+						</div>
+						<div class="comment-footer">
+							<p><span class="badge rounded-pill badge-open" v-if="item.Status === 'Na čekanju'">Na čekanju</span>
+								<span class="badge rounded-pill badge-closed" v-else-if="item.Status === 'Odbijen'">Odbijen</span>
+								<span v-else></span>
+							</p>
+						</div>
+					</li>
+
+					<li class="comment" v-for="item in this.deniedComments">
+						<div class="comment-header" style="flex-direction: row;">
+							<div class="left-side">
+								<div class="title">
+									<h5>{{ item.Buyer.Name + " " + item.Buyer.Surname }}</h5>
+									<div><i class="fa fa-star" v-for="i in item.Grade"></i><i class="fa-regular fa-star" v-for="i in (5 - item.Grade)"></i></div>
+								</div>
+							</div>
+							<div v-if="item.Status === 'Na čekanju'" class="right-side">
+								<button class="comment-button" v-on:click="approveComment(item.Id)">Odobri</button>
+								<button class="comment-button" v-on:click="denyComment(item.Id)">Odbij</button>
+							</div>
+						</div>
+						<div class="comment-content">
+							<p>{{ item.Content }}</p>
+						</div>
+						<div class="comment-footer">
+							<p><span class="badge rounded-pill badge-open" v-if="item.Status === 'Na čekanju'">Na čekanju</span>
+								<span class="badge rounded-pill badge-closed" v-else-if="item.Status === 'Odbijen'">Odbijen</span>
+								<span v-else></span>
+							</p>
+						</div>
+					</li>
                 </ul>
             </div>
 			<div class="sports-object-comments"  v-else-if="this.loggedInUserRole === 'Menadžer'">
 				<h4>Komentari</h4>
 				<ul class="comment-section">
-					<li class="comment" v-for="item in this.comments">
+					<li class="comment" v-for="item in this.pendingComments">
+						<div class="comment-header">
+							<div class="left-side">
+								<div class="title">
+									<h5>{{ item.Buyer.Name + " " + item.Buyer.Surname }}</h5>
+									<div><i class="fa fa-star" v-for="i in item.Grade"></i><i class="fa-regular fa-star" v-for="i in (5 - item.Grade)"></i></div>
+								</div>
+							</div>
+						</div>
+						<div class="comment-content">
+							<p>{{ item.Content }}</p>
+						</div>
+						<div class="comment-footer">
+							<p><span class="badge rounded-pill badge-open" v-if="item.Status === 'Na čekanju'">Na čekanju</span>
+								<span class="badge rounded-pill badge-closed" v-else-if="item.Status === 'Odbijen'">Odbijen</span>
+								<span v-else></span>
+							</p>
+						</div>
+					</li>
+					<li class="comment" v-for="item in this.approvedComments">
+						<div class="comment-header">
+							<div class="left-side">
+								<div class="title">
+									<h5>{{ item.Buyer.Name + " " + item.Buyer.Surname }}</h5>
+									<div><i class="fa fa-star" v-for="i in item.Grade"></i><i class="fa-regular fa-star" v-for="i in (5 - item.Grade)"></i></div>
+								</div>
+							</div>
+						</div>
+						<div class="comment-content">
+							<p>{{ item.Content }}</p>
+						</div>
+						<div class="comment-footer">
+							<p><span class="badge rounded-pill badge-open" v-if="item.Status === 'Na čekanju'">Na čekanju</span>
+								<span class="badge rounded-pill badge-closed" v-else-if="item.Status === 'Odbijen'">Odbijen</span>
+								<span v-else></span>
+							</p>
+						</div>
+					</li>
+
+					<li class="comment" v-for="item in this.deniedComments">
 						<div class="comment-header">
 							<div class="left-side">
 								<div class="title">
@@ -239,8 +330,7 @@ Vue.component('sports-object-page', {
 							this.getTrainer(sportsObjectContent);					
 					} else {
 						this.list.push({
-							content: sportsObjectContent,
-							trainer: null,
+							content: sportsObjectContent
 						 })
 					}
 				}
@@ -253,9 +343,34 @@ Vue.component('sports-object-page', {
 			}).then(response => { 
 				console.log(response.data);
 				this.contentTrainer = response.data; 
+				this.getPrice(sportsObjectContent, this.contentTrainer)
+				
+				}
+			).catch(error => console.log(error));
+		},
+		getPrice: function(sportsObjectContent, contentTrainer) { 
+			let id = sportsObjectContent.Id;
+			axios.get(`/rest/trainings/price/${id}`, {
+				name: id
+			}).then(response => { 
+				console.log(response.data);
+				this.trainingPrice = response.data; 
+				this.getTrainingType(sportsObjectContent, contentTrainer, this.trainingPrice);
+				}
+			).catch(error => console.log(error));
+		},
+		getTrainingType: function(sportsObjectContent, contentTrainer, trainingPrice) {
+			let id = sportsObjectContent.Id;
+			axios.get(`/rest/trainings/type/${id}`, {
+				name: id
+			}).then(response => { 
+				console.log(response.data);
+				this.trainingType = response.data; 
 				this.list.push({
 					content: sportsObjectContent,
-					trainer: this.contentTrainer,
+					trainer: contentTrainer,
+					price: trainingPrice,
+					type: this.trainingType,
 				})
 				}
 			).catch(error => console.log(error));
@@ -263,7 +378,11 @@ Vue.component('sports-object-page', {
 		getComments: function (sportsObject) {
 			axios.get(`/rest/comments/${sportsObject}`, {
 				name: sportsObject
-			}).then(response => { this.comments = response.data; this.getApprovedComments();
+			}).then(response => {
+				this.comments = response.data;
+				this.getApprovedComments();
+				this.getDeniedComments();
+				this.getPendingComments();
 				})
 				.catch(error => console.log(error));
 		},
@@ -271,6 +390,23 @@ Vue.component('sports-object-page', {
 			for(let i = 0; i < this.comments.length; i++) {
 				if(this.comments[i].Status === 'Odobren') {
 					this.approvedComments.push(this.comments[i]);
+				}
+			}
+
+		},
+
+		getDeniedComments: function () {
+			for(let i = 0; i < this.comments.length; i++) {
+				if(this.comments[i].Status === 'Odbijen') {
+					this.deniedComments.push(this.comments[i]);
+				}
+			}
+		},
+
+		getPendingComments: function () {
+			for(let i = 0; i < this.comments.length; i++) {
+				if(this.comments[i].Status === 'Na čekanju') {
+					this.pendingComments.push(this.comments[i]);
 				}
 			}
 		},
@@ -309,21 +445,22 @@ Vue.component('sports-object-page', {
 			})
 		},
 		postComment: function () {
-			axios.post('/rest/post-comment', {
-				buyer: this.user.Id,
-				sportsObject: this.sportsObject.name,
-				content: this.comment.content,
-				grade: this.comment.rating,
-			}).then(response => {
-				alert("Comment posted!");
-				this.$router.go();
-			}).catch(function error(err) {
-				console.log(err);
-			})
+			if(this.comment.rating != null && this.comment.rating !== 0 && this.comment.content != null && this.comment.content.match(/^ *$/) === null) {
+				axios.post('/rest/post-comment', {
+					buyer: this.user.Id,
+					sportsObject: this.sportsObject.name,
+					content: this.comment.content,
+					grade: this.comment.rating,
+				}).then(response => {
+					alert("Comment posted!");
+					this.$router.go();
+				}).catch(function error(err) {
+					console.log(err);
+				})
+			}
 		},
 
 		displayMap: function () {
-
 			let lon = this.sportsObject.location.longitude;
 			let lat = this.sportsObject.location.latitude;
 			const iconFeature = new ol.Feature({

@@ -94,6 +94,17 @@ public class ContentsDAO {
 		}
 		
 		return retVal;
+	} 
+	public SportsObject getSportsObjectByContentId(String id) {
+		SportsObject retVal = null;
+		for(Content content : this.contents) {
+			if(content.getId().equals(id)) {
+				retVal = content.getSportsObject();
+				break;
+			}
+		}
+		
+		return retVal;	
 	}
 	public Content getContentById(String id) {
 		Content retVal = null;
@@ -126,5 +137,23 @@ public class ContentsDAO {
 		}
 	}
 	
+	public void editContent(Content content) {
+		int index = this.findIndexOf(content);
+		 if(index != -1) {
+	            this.contents.set(index, (Content) content);
+	            this.write();
+	     }
+	}
+	public int findIndexOf(Content content) {
+        int index = -1;
+        for(int i = 0; i < this.contents.size(); i++) {
+            if(this.contents.get(i).getId().equals(content.getId())) {
+                index = i;
+                break;
+            }
+        }
+
+        return index;
+    } 
 	
 }

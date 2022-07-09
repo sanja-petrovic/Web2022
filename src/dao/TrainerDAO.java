@@ -15,6 +15,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
 import beans.Trainer;
+import beans.Training;
 import beans.User;
 import util.adapters.LocalDateTimeAdapter;
 
@@ -27,6 +28,9 @@ public class TrainerDAO {
 	public TrainerDAO() {
 		this.trainers = new ArrayList<>();
 		this.createGson();
+	}
+	
+	public void init() {
 		this.load();
 	}
 	
@@ -58,6 +62,12 @@ public class TrainerDAO {
 			t.setPassword(u.getPassword());
 			t.setDeletedAt(u.getDeletedAt());
 			t.setUserType(u.getUserType());
+			//t.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(t.getId()));
+		}
+	}
+	
+	public void fillTrainingHistory() {
+		for(Trainer t : this.trainers) {
 			t.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(t.getId()));
 		}
 	}
@@ -89,13 +99,25 @@ public class TrainerDAO {
 		return retVal;
 	}
 	
+	public Trainer getTrainerById(String id) {
+		Trainer retVal = null;
+		
+		for(Trainer t : this.trainers) {
+			if(t.getId().equals(id)) {
+				retVal = t;
+				break;
+			}
+		}
+		
+		return retVal;
+	}
+	
 	public void addTrainer(Trainer t) {
 		this.trainers.add(t);
 		this.write();
 	}
 	
 	public ArrayList<Trainer> getTrainers() {
-		this.load();
 		return this.trainers;
 	}
 }
