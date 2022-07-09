@@ -304,3 +304,12 @@ textarea {
 ::-webkit-scrollbar-thumb:hover {
   background: $primary-button-hover;
 }
+
+.delete-button {
+  color: #ff7b8d;
+  background-color: transparent;
+  font-weight: 700;
+  filter: drop-shadow(0 0 0.75rem rgb(255, 182, 206));
+  font-size: 14px;
+  cursor: pointer;
+}

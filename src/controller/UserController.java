@@ -42,6 +42,7 @@ public class UserController {
 			getUser();
 			register();
 			updateProfile();
+			deleteUser();
 		});
 	}
 
@@ -126,6 +127,19 @@ public class UserController {
 			user = UserService.updateUser(profile, user);
 
 			return gson.toJson(user);
+		});
+	}
+	
+	public static void deleteUser() {
+		post("/users/:id/delete", (req, res) -> {
+			res.type("application/json");
+			String payload = req.body();
+			String id = req.params(":id");
+
+			UserService.removeUser(id);
+			res.status(200);
+
+			return true;
 		});
 	}
 	

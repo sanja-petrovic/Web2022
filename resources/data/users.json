@@ -67,6 +67,7 @@
     "Surname": "Jelenković",
     "Gender": "Ženski",
     "DateOfBirth": "1999-06-06",
+    "DeletedAt": "2022-07-09T12:33:02.0447455",
     "UserType": "Menadžer"
   },
   {
@@ -147,6 +148,7 @@
     "Surname": "Aleksić",
     "Gender": "Ženski",
     "DateOfBirth": "1999-06-08",
+    "DeletedAt": "2022-07-09T12:32:02.0764527",
     "UserType": "Trener"
   },
   {

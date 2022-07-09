@@ -160,6 +160,7 @@ Vue.component('users', {
                                        <th scope="col" class="border-0 font-medium">Pol</th>
                                        <th scope="col" class="border-0 font-medium">Datum rođenja</th>
                                        <th scope="col" class="border-0 font-medium">Uloga</th>
+                                       <th scope="col" class="border-0 font-medium"></th>
                                    </tr>
                                    </thead>
                                    <tbody>
@@ -178,6 +179,9 @@ Vue.component('users', {
                                        </td>
                                        <td>
                                            <span class="text-muted">{{ user.UserType }}</span><br>
+                                       </td>
+                                       <td>
+                                           <i v-if="user.UserType !== 'Admin'" v-on:click="deleteUser(user)" class="fa-solid fa-circle-minus delete-button"></i><br>
                                        </td>
                                    </tr>
                                    </tbody>
@@ -248,7 +252,7 @@ Vue.component('users', {
                                        <td>
                                            <span class="text-muted">{{ user.DateOfBirth }}</span><br>
                                        </td>
-                                       <td>
+                                       <td style="text-align: center">
                                            <span class="text-muted">{{ (user.SportsObject !== null) ? user.SportsObject.name : "Nijedan" }}</span><br>
                                        </td>
                                    </tr>
@@ -631,6 +635,17 @@ Vue.component('users', {
                 }
             }
             this.displayedUsers = filterResult;
+        },
+
+        deleteUser: function (user) {
+            axios.post(`/rest/users/${user.Id}/delete`)
+                .then(response => {
+                    console.log(response.data);
+                    this.$router.go();
+                })
+                .catch(error => {
+                    console.log(error);
+                })
         }
     }
 

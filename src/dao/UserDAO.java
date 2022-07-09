@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -63,7 +64,9 @@ public class UserDAO {
 	}
 
 	public ArrayList<User> getUsers() {
-		return this.users;
+		return new ArrayList<User>(this.users.stream()
+		  .filter(u -> u.getDeletedAt() == null)
+		  .collect(Collectors.toList()));
 	}
 
 	public void setUsers(ArrayList<User> users) {
@@ -97,9 +100,13 @@ public class UserDAO {
 		return retVal;
 	}
 	
-	public void removeUser(User u) {
-		if(this.users.contains(u)) {
-			u.setDeletedAt(LocalDateTime.now());
+	public void removeUser(String id) {
+		for(User u : this.users) {
+			if(u.getId().equals(id)) {
+				u.setDeletedAt(LocalDateTime.now());
+				this.write();
+				break;
+			}
 		}
 	}
 	

@@ -59,8 +59,8 @@ public class UserService {
 		return t;
 	}
 	
-	public static void removeUser(User u) {
-		Repository.getInstance().getUserDAO().removeUser(u);
+	public static void removeUser(String id) {
+		Repository.getInstance().getUserDAO().removeUser(id);
 	}
 	
 	public static User getCompleteData(String username) {
