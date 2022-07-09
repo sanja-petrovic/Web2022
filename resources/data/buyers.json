@@ -23,14 +23,14 @@
   },
   {
     "Membership": {
-      "Id": "aa23l78945",
-      "Name": "Članarina u Allegru",
+      "Id": "7894561230",
+      "Name": "Student paket No Limit",
       "SportsObject": {
-        "name": "Plesni centar Allegro"
+        "name": "No Limit Gym"
       },
       "MembershipType": "Mesečna",
-      "Price": 3000.0,
-      "NumberOfTerms": 20,
+      "Price": 2375.0,
+      "NumberOfTerms": 25,
       "DailyLimit": 2
     },
     "VisitedObjects": [
