@@ -29,317 +29,323 @@ Vue.component('buyer-profile-page', {
     },
     template: `
         <div>
-        <nav-bar-logged-in></nav-bar-logged-in>
-        <div class="profile">
+            <div v-if="user != null">
 
-            <div class="tab-panel about-wrapper">
-                <ul class="nav nav-pills me-3" id="pills-tab" role="tablist">
-                    <li v-on:click="selectedTab = 'PROFILE'" class="nav-item" role="presentation">
-                        <button class="nav-link active"  id="pills-profile-tab"
-                                data-bs-toggle="pill" data-bs-target="#pills-profile"
-                                type="button" role="tab">Korisnički profil
-                        </button>
-                    </li>
-                    <li v-if="this.user.UserType === 'Kupac'" v-on:click="selectedTab = 'PAST'"  class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-past-tab"
-                                data-bs-toggle="pill" data-bs-target="#pills-trainings"
-                                type="button"role="tab">Istorija treninga
-                        </button>
-                    </li>
-                    <li v-if="this.user.UserType === 'Kupac'" v-on:click="selectedTab = 'SCHEDULED'" class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-scheduled-tab"
-                                data-bs-toggle="pill" data-bs-target="#pills-scheduled-trainings"
-                                type="button" role="tab"  aria-controls="pills-contact" aria-selected="false">Zakazani
-                            treninzi
-                        </button>
-                    </li>
+                <nav-bar-logged-in></nav-bar-logged-in>
+                <div class="profile">
 
-                </ul>
-                <div class="tab-content" id="pills-tabContent" style="margin-top: 1em">
-                    <div class="tab-pane fade show active" id="pills-profile" role="tabpanel"
-                         aria-labelledby="pills-home-tab">
-                        <div class="about-section">
-                            <div class="profile-button-div">
-                                <button class="sort-button" v-if="!editable" v-on:click="allowEdit">Izmeni</button>
-                            </div>
-                            <div class="info">
-                                <label for="username">Korisničko ime</label>
-                                <input readonly class="text-box" type="text" id="username" name="username"
-                                       v-model="user.Username">
-                                <label for="name">Ime</label>
-                                <input readonly class="text-box" type="text" id="name" name="name" v-model="user.Name">
-                                <label for="surname">Prezime</label>
-                                <input class="text-box" type="text" id="surname" name="surname" v-model="user.Surname">
-                                <label v-if="!editable" for="gender">Pol</label>
-                                <input v-if="!editable" class="text-box" readonly type="text" id="gender" name="gender"
-                                       v-model="user.Gender">
-                                <div v-if="editable" class="input-group create-input" style="width: 100%;">
-                                    <span class="input-group-text" style="height: 43px">Pol</span>
-                                    <input type="radio" class="btn-check" value="Muški" v-model="user.Gender" name="gender" id="male" autocomplete="off">
-                                    <label class="btn btn-primary flex-grow-1" style="color: white; padding: 10px;" for="male">Muški</label>
-                                    <input type="radio" class="btn-check" value="Ženski" name="gender" v-model="user.Gender" id="female" autocomplete="off">
-                                    <label class="btn btn-primary flex-grow-1" style="color: white; padding: 10px" for="female">Ženski</label>
-                                </div>
-                                <label for="date">Datum rođenja</label>
-                                <input class="text-box" readonly type="date" id="dob" name="dob"
-                                       v-model="user.DateOfBirth">
-                                <button v-if="editable" v-on:click="edit" class="submit-button">Potvrdi</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-trainings" v-if="this.user.UserType === 'Kupac'" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <div class="center-container">
-                            <div class="buttons-galore" style="max-width: 100%; padding: 2em; margin: 0" >
-                                <div class="filter-and-sort">
-                                    <div class="dropdown">
-                                        <button class="sort-button" type="button" id="sort-button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <span class="d-inline-block"><i class="fa-solid fa-chevron-down" style="margin-right: 0.4em;"></i><span class="d-inline-block">Sortiraj po...</span></span>
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="sort-button">
-                                            <li><button class="dropdown-item" type="button" v-on:click="sortByNameAsc">Nazivu sportskog objekta (rastuće)</button></li>
-                                            <li><button class="dropdown-item" type="button" v-on:click="sortByNameDesc">Nazivu sportskog objekta (opadajuće)</button></li>
-                                            <li><hr class="dropdown-divider"></li>
-                                            <li><button class="dropdown-item" type="button" v-on:click="sortByPriceAsc">Ceni (rastuće)</button></li>
-                                            <li><button class="dropdown-item" type="button" v-on:click="sortByPriceDesc">Ceni (opadajuće)</button></li>
-                                            <li><hr class="dropdown-divider"></li>
-                                            <li><button class="dropdown-item" type="button"v-on:click="sortByDateAsc">Datumu prijave (rastuće)</button></li>
-                                            <li><button class="dropdown-item" type="button" v-on:click="sortByDateDesc">Datumu prijave (opadajuće)</button></li>
-                                        </ul>
+                    <div class="tab-panel about-wrapper">
+                        <ul class="nav nav-pills me-3" id="pills-tab" role="tablist">
+                            <li v-on:click="selectedTab = 'PROFILE'" class="nav-item" role="presentation">
+                                <button class="nav-link active"  id="pills-profile-tab"
+                                        data-bs-toggle="pill" data-bs-target="#pills-profile"
+                                        type="button" role="tab">Korisnički profil
+                                </button>
+                            </li>
+                            <li v-if="this.user.UserType === 'Kupac'" v-on:click="selectedTab = 'PAST'"  class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-past-tab"
+                                        data-bs-toggle="pill" data-bs-target="#pills-trainings"
+                                        type="button"role="tab">Istorija treninga
+                                </button>
+                            </li>
+                            <li v-if="this.user.UserType === 'Kupac'" v-on:click="selectedTab = 'SCHEDULED'" class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-scheduled-tab"
+                                        data-bs-toggle="pill" data-bs-target="#pills-scheduled-trainings"
+                                        type="button" role="tab"  aria-controls="pills-contact" aria-selected="false">Zakazani
+                                    treninzi
+                                </button>
+                            </li>
+
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent" style="margin-top: 1em">
+                            <div class="tab-pane fade show active" id="pills-profile" role="tabpanel"
+                                 aria-labelledby="pills-home-tab">
+                                <div class="about-section">
+                                    <div class="profile-button-div">
+                                        <button class="sort-button" v-if="!editable" v-on:click="allowEdit">Izmeni</button>
                                     </div>
-                                    <div class="dropdown">
-                                        <button type="button" class="dropdown-toggle filter-button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                                            Filteri
-                                        </button>
-                                        <div class="dropdown-menu p-4">
-                                            <div class="mb-3">
-                                                <p style="font-weight: 600;">Tip sportskog objekta</p>
-                                                <div class="form-check" v-for="item in sportsObjectTypes">
-                                                    <input class="form-check-input filter-checks-sports-object-type" type="checkbox" value="" v-on:change="filterTrainings" :id="item">
-                                                    <label class="form-check-label">
-                                                        {{ item }}
-                                                    </label>
-                                                </div>
+                                    <div class="info">
+                                        <label for="username">Korisničko ime</label>
+                                        <input readonly class="text-box" type="text" id="username" name="username"
+                                               v-model="user.Username">
+                                        <label for="name">Ime</label>
+                                        <input readonly class="text-box" type="text" id="name" name="name" v-model="user.Name">
+                                        <label for="surname">Prezime</label>
+                                        <input class="text-box" type="text" id="surname" name="surname" v-model="user.Surname">
+                                        <label v-if="!editable" for="gender">Pol</label>
+                                        <input v-if="!editable" class="text-box" readonly type="text" id="gender" name="gender"
+                                               v-model="user.Gender">
+                                        <div v-if="editable" class="input-group create-input" style="width: 100%;">
+                                            <span class="input-group-text" style="height: 43px">Pol</span>
+                                            <input type="radio" class="btn-check" value="Muški" v-model="user.Gender" name="gender" id="male" autocomplete="off">
+                                            <label class="btn btn-primary flex-grow-1" style="color: white; padding: 10px;" for="male">Muški</label>
+                                            <input type="radio" class="btn-check" value="Ženski" name="gender" v-model="user.Gender" id="female" autocomplete="off">
+                                            <label class="btn btn-primary flex-grow-1" style="color: white; padding: 10px" for="female">Ženski</label>
+                                        </div>
+                                        <label for="date">Datum rođenja</label>
+                                        <input class="text-box" readonly type="date" id="dob" name="dob"
+                                               v-model="user.DateOfBirth">
+                                        <button v-if="editable" v-on:click="edit" class="submit-button">Potvrdi</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-trainings" v-if="this.user.UserType === 'Kupac'" role="tabpanel" aria-labelledby="pills-home-tab">
+                                <div class="center-container">
+                                    <div class="buttons-galore" style="max-width: 100%; padding: 2em; margin: 0" >
+                                        <div class="filter-and-sort">
+                                            <div class="dropdown">
+                                                <button class="sort-button" type="button" id="sort-button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <span class="d-inline-block"><i class="fa-solid fa-chevron-down" style="margin-right: 0.4em;"></i><span class="d-inline-block">Sortiraj po...</span></span>
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="sort-button">
+                                                    <li><button class="dropdown-item" type="button" v-on:click="sortByNameAsc">Nazivu sportskog objekta (rastuće)</button></li>
+                                                    <li><button class="dropdown-item" type="button" v-on:click="sortByNameDesc">Nazivu sportskog objekta (opadajuće)</button></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><button class="dropdown-item" type="button" v-on:click="sortByPriceAsc">Ceni (rastuće)</button></li>
+                                                    <li><button class="dropdown-item" type="button" v-on:click="sortByPriceDesc">Ceni (opadajuće)</button></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><button class="dropdown-item" type="button"v-on:click="sortByDateAsc">Datumu prijave (rastuće)</button></li>
+                                                    <li><button class="dropdown-item" type="button" v-on:click="sortByDateDesc">Datumu prijave (opadajuće)</button></li>
+                                                </ul>
                                             </div>
-                                            <div class="mb-3">
-                                                <p style="font-weight: 600;">Tip treninga</p>
-                                                <div class="form-check">
-                                                    <input class="form-check-input filter-checks-training-type" type="checkbox" value="" v-on:change="filterTrainings" id="personalni">
-                                                    <label class="form-check-label" for="personal">
-                                                        Personalni
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input filter-checks-training-type" type="checkbox" value="" v-on:change="filterTrainings" id="grupni">
-                                                    <label class="form-check-label" for="group">
-                                                        Grupni
-                                                    </label>
+                                            <div class="dropdown">
+                                                <button type="button" class="dropdown-toggle filter-button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                                    Filteri
+                                                </button>
+                                                <div class="dropdown-menu p-4">
+                                                    <div class="mb-3">
+                                                        <p style="font-weight: 600;">Tip sportskog objekta</p>
+                                                        <div class="form-check" v-for="item in sportsObjectTypes">
+                                                            <input class="form-check-input filter-checks-sports-object-type" type="checkbox" value="" v-on:change="filterTrainings" :id="item">
+                                                            <label class="form-check-label">
+                                                                {{ item }}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <p style="font-weight: 600;">Tip treninga</p>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input filter-checks-training-type" type="checkbox" value="" v-on:change="filterTrainings" id="personalni">
+                                                            <label class="form-check-label" for="personal">
+                                                                Personalni
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input filter-checks-training-type" type="checkbox" value="" v-on:change="filterTrainings" id="grupni">
+                                                            <label class="form-check-label" for="group">
+                                                                Grupni
+                                                            </label>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <div class="input-group mb-3" style="max-width: 100%; padding: 0 2em">
-                                <input type="text" class="form-control" v-model="searchParam.sportsObject" placeholder="Sportski objekat">
-                                <input type="number" class="form-control" v-model="searchParam.priceMin" placeholder="Cena (min)">
-                                <input type="number" class="form-control" v-model="searchParam.priceMax" placeholder="Cena (max)">
-                                <input type="date" class="form-control" v-model="searchParam.checkInMin" placeholder="Datum prijave od...">
-                                <input type="date" class="form-control" v-model="searchParam.checkInMax" placeholder="Datum prijave do...">
-                                <div class="search-button" v-on:click="combinedSearch" type="button">
-                                    <i class="fa fa-search"></i>
+                                    <div class="input-group mb-3" style="max-width: 100%; padding: 0 2em">
+                                        <input type="text" class="form-control" v-model="searchParam.sportsObject" placeholder="Sportski objekat">
+                                        <input type="number" class="form-control" v-model="searchParam.priceMin" placeholder="Cena (min)">
+                                        <input type="number" class="form-control" v-model="searchParam.priceMax" placeholder="Cena (max)">
+                                        <input type="date" class="form-control" v-model="searchParam.checkInMin" placeholder="Datum prijave od...">
+                                        <input type="date" class="form-control" v-model="searchParam.checkInMax" placeholder="Datum prijave do...">
+                                        <div class="search-button" v-on:click="combinedSearch" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="users-table">
+                                        <table class="table table-borderless">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col" class="border-0 font-medium">Naziv treninga</th>
+                                                <th scope="col" class="border-0 font-medium">Tip treninga</th>
+                                                <th scope="col" class="border-0 font-medium">Sportski objekat</th>
+                                                <th scope="col" class="border-0 font-medium">Cena</th>
+                                                <th scope="col" class="border-0 font-medium">Datum treniranja</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="training in this.displayedPastTrainings">
+                                                <td>
+                                                    <span class="text-muted">{{ training.Training.Name }}</span><br>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted">{{ training.Training.TrainingType }}</span><br>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted">{{ training.Training.SportsObject.name }}</span><br>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted">{{ training.Training.Price }}</span><br>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted">{{ training.CheckIn === null ? training.ScheduledFor : training.CheckIn }}</span><br>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                            <hr>
-                            <div class="users-table">
-                                <table class="table table-borderless">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col" class="border-0 font-medium">Naziv treninga</th>
-                                        <th scope="col" class="border-0 font-medium">Tip treninga</th>
-                                        <th scope="col" class="border-0 font-medium">Sportski objekat</th>
-                                        <th scope="col" class="border-0 font-medium">Cena</th>
-                                        <th scope="col" class="border-0 font-medium">Datum treniranja</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr v-for="training in this.displayedPastTrainings">
-                                        <td>
-                                            <span class="text-muted">{{ training.Training.Name }}</span><br>
-                                        </td>
-                                        <td>
-                                            <span class="text-muted">{{ training.Training.TrainingType }}</span><br>
-                                        </td>
-                                        <td>
-                                            <span class="text-muted">{{ training.Training.SportsObject.name }}</span><br>
-                                        </td>
-                                        <td>
-                                            <span class="text-muted">{{ training.Training.Price }}</span><br>
-                                        </td>
-                                        <td>
-                                            <span class="text-muted">{{ training.CheckIn === null ? training.ScheduledFor : training.CheckIn }}</span><br>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-scheduled-trainings" role="tabpanel"
-                         aria-labelledby="pills-home-tab">
-                        <div class="center-container">
-                            <div class="buttons-galore" style="max-width: 100%; padding: 2em; margin: 0">
-                                <div class="filter-and-sort">
-                                    <div class="dropdown">
-                                        <button class="sort-button" type="button" id="sort-button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="tab-pane fade" id="pills-scheduled-trainings" role="tabpanel"
+                                 aria-labelledby="pills-home-tab">
+                                <div class="center-container">
+                                    <div class="buttons-galore" style="max-width: 100%; padding: 2em; margin: 0">
+                                        <div class="filter-and-sort">
+                                            <div class="dropdown">
+                                                <button class="sort-button" type="button" id="sort-button"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
                                             <span class="d-inline-block"><i class="fa-solid fa-chevron-down"
                                                                             style="margin-right: 0.4em;"></i><span
                                                 class="d-inline-block">Sortiraj po...</span></span>
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="sort-button">
-                                            <li>
-                                                <button class="dropdown-item" type="button" v-on:click="sortByNameAsc">
-                                                    Nazivu sportskog objekta (rastuće)
                                                 </button>
-                                            </li>
-                                            <li>
-                                                <button class="dropdown-item" type="button" v-on:click="sortByNameDesc">
-                                                    Nazivu sportskog objekta (opadajuće)
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li>
-                                                <button class="dropdown-item" type="button" v-on:click="sortByPriceAsc">
-                                                    Ceni (rastuće)
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="dropdown-item" type="button"
-                                                        v-on:click="sortByPriceDesc">Ceni (opadajuće)
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li>
-                                                <button class="dropdown-item" type="button" v-on:click="sortByDateAsc">
-                                                    Datumu prijave (rastuće)
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="dropdown-item" type="button" v-on:click="sortByDateDesc">
-                                                    Datumu prijave (opadajuće)
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="dropdown">
-                                        <button type="button" class="dropdown-toggle filter-button"
-                                                data-bs-toggle="dropdown" aria-expanded="false"
-                                                data-bs-auto-close="outside">
-                                            Filteri
-                                        </button>
-                                        <div class="dropdown-menu p-4">
-                                            <div class="mb-3">
-                                                <p style="font-weight: 600;">Tip sportskog objekta</p>
-                                                <div class="form-check" v-for="item in sportsObjectTypes">
-                                                    <input class="form-check-input filter-checks-sports-object-type"
-                                                           type="checkbox" value="" v-on:change="filterTrainings"
-                                                           :id="item">
-                                                    <label class="form-check-label">
-                                                        {{ item }}
-                                                    </label>
-                                                </div>
+                                                <ul class="dropdown-menu" aria-labelledby="sort-button">
+                                                    <li>
+                                                        <button class="dropdown-item" type="button" v-on:click="sortByNameAsc">
+                                                            Nazivu sportskog objekta (rastuće)
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <button class="dropdown-item" type="button" v-on:click="sortByNameDesc">
+                                                            Nazivu sportskog objekta (opadajuće)
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <hr class="dropdown-divider">
+                                                    </li>
+                                                    <li>
+                                                        <button class="dropdown-item" type="button" v-on:click="sortByPriceAsc">
+                                                            Ceni (rastuće)
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <button class="dropdown-item" type="button"
+                                                                v-on:click="sortByPriceDesc">Ceni (opadajuće)
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <hr class="dropdown-divider">
+                                                    </li>
+                                                    <li>
+                                                        <button class="dropdown-item" type="button" v-on:click="sortByDateAsc">
+                                                            Datumu prijave (rastuće)
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <button class="dropdown-item" type="button" v-on:click="sortByDateDesc">
+                                                            Datumu prijave (opadajuće)
+                                                        </button>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                            <div class="mb-3">
-                                                <p style="font-weight: 600;">Tip treninga</p>
-                                                <div class="form-check">
-                                                    <input class="form-check-input filter-checks-training-type"
-                                                           type="checkbox" value="" v-on:change="filterTrainings"
-                                                           id="personalni">
-                                                    <label class="form-check-label" for="personal">
-                                                        Personalni
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input filter-checks-training-type"
-                                                           type="checkbox" value="" v-on:change="filterTrainings"
-                                                           id="grupni">
-                                                    <label class="form-check-label" for="group">
-                                                        Grupni
-                                                    </label>
+                                            <div class="dropdown">
+                                                <button type="button" class="dropdown-toggle filter-button"
+                                                        data-bs-toggle="dropdown" aria-expanded="false"
+                                                        data-bs-auto-close="outside">
+                                                    Filteri
+                                                </button>
+                                                <div class="dropdown-menu p-4">
+                                                    <div class="mb-3">
+                                                        <p style="font-weight: 600;">Tip sportskog objekta</p>
+                                                        <div class="form-check" v-for="item in sportsObjectTypes">
+                                                            <input class="form-check-input filter-checks-sports-object-type"
+                                                                   type="checkbox" value="" v-on:change="filterTrainings"
+                                                                   :id="item">
+                                                            <label class="form-check-label">
+                                                                {{ item }}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <p style="font-weight: 600;">Tip treninga</p>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input filter-checks-training-type"
+                                                                   type="checkbox" value="" v-on:change="filterTrainings"
+                                                                   id="personalni">
+                                                            <label class="form-check-label" for="personal">
+                                                                Personalni
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input filter-checks-training-type"
+                                                                   type="checkbox" value="" v-on:change="filterTrainings"
+                                                                   id="grupni">
+                                                            <label class="form-check-label" for="group">
+                                                                Grupni
+                                                            </label>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="input-group mb-3" style="max-width: 100%; padding: 0 2em">
-                                <input type="text" class="form-control" v-model="searchParam.sportsObject"
-                                       placeholder="Sportski objekat">
-                                <input type="number" class="form-control" v-model="searchParam.priceMin"
-                                       placeholder="Cena (min)">
-                                <input type="number" class="form-control" v-model="searchParam.priceMax"
-                                       placeholder="Cena (max)">
-                                <input type="date" class="form-control" v-model="searchParam.checkInMin"
-                                       placeholder="Datum prijave od...">
-                                <input type="date" class="form-control" v-model="searchParam.checkInMax"
-                                       placeholder="Datum prijave do...">
-                                <div class="search-button" type="button" v-on:click="combinedSearch">
-                                    <i class="fa fa-search"></i>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="users-table">
-                                <table class="table table-borderless">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col" class="border-0 font-medium">Naziv treninga</th>
-                                        <th scope="col" class="border-0 font-medium">Tip treninga</th>
-                                        <th scope="col" class="border-0 font-medium">Sportski objekat</th>
-                                        <th scope="col" class="border-0 font-medium">Cena</th>
-                                        <th scope="col" class="border-0 font-medium">Zakazani termin</th>
-                                        <th scope="col" class="border-0 font-medium">Status</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr v-for="training in this.displayedScheduledTrainings">
-                                        <td>
-                                            <span class="text-muted">{{ training.Training.Name }}</span><br>
-                                        </td>
-                                        <td>
-                                            <span class="text-muted">{{ training.Training.TrainingType }}</span><br>
-                                        </td>
-                                        <td>
+                                    <div class="input-group mb-3" style="max-width: 100%; padding: 0 2em">
+                                        <input type="text" class="form-control" v-model="searchParam.sportsObject"
+                                               placeholder="Sportski objekat">
+                                        <input type="number" class="form-control" v-model="searchParam.priceMin"
+                                               placeholder="Cena (min)">
+                                        <input type="number" class="form-control" v-model="searchParam.priceMax"
+                                               placeholder="Cena (max)">
+                                        <input type="date" class="form-control" v-model="searchParam.checkInMin"
+                                               placeholder="Datum prijave od...">
+                                        <input type="date" class="form-control" v-model="searchParam.checkInMax"
+                                               placeholder="Datum prijave do...">
+                                        <div class="search-button" type="button" v-on:click="combinedSearch">
+                                            <i class="fa fa-search"></i>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="users-table">
+                                        <table class="table table-borderless">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col" class="border-0 font-medium">Naziv treninga</th>
+                                                <th scope="col" class="border-0 font-medium">Tip treninga</th>
+                                                <th scope="col" class="border-0 font-medium">Sportski objekat</th>
+                                                <th scope="col" class="border-0 font-medium">Cena</th>
+                                                <th scope="col" class="border-0 font-medium">Zakazani termin</th>
+                                                <th scope="col" class="border-0 font-medium">Status</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-for="training in this.displayedScheduledTrainings">
+                                                <td>
+                                                    <span class="text-muted">{{ training.Training.Name }}</span><br>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted">{{ training.Training.TrainingType }}</span><br>
+                                                </td>
+                                                <td>
                                             <span
                                                 class="text-muted">{{ training.Training.SportsObject.name }}</span><br>
-                                        </td>
-                                        <td>
-                                            <span class="text-muted">{{ training.Training.Price }}</span><br>
-                                        </td>
-                                        <td>
-                                            <span class="text-muted">{{ training.ScheduledFor }}</span><br>
-                                        </td>
-                                        <td>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted">{{ training.Training.Price }}</span><br>
+                                                </td>
+                                                <td>
+                                                    <span class="text-muted">{{ training.ScheduledFor }}</span><br>
+                                                </td>
+                                                <td>
                                             <span
-                                                  v-if="training.CanceledAt !== undefined">Otkazan</span>
-                                            <span
-                                                  v-else>Odobren</span>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                                v-if="training.CanceledAt !== undefined">Otkazan</span>
+                                                    <span
+                                                        v-else>Odobren</span>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
+                        </div>
+
+                    </div>
                 </div>
-                
             </div>
-        </div>
+            <div v-else>
+                <unauthorized-access></unauthorized-access>
+            </div>
         </div>
     `,
     mounted() {
