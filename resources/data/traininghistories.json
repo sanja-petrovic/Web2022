@@ -1058,7 +1058,8 @@
       },
       "Duration": 30,
       "Description": "Kardio vežbanje učiniće te zgodnijim, zdravijim i punim snage ali učiniće i više od toga. Imaćeš bolju koncentraciju i pamćenje, regulisaćeš telesnu težinu i bićeš otporniji na stres.",
-      "Picture": "../images/cardio.jpg"
+      "Picture": "../images/cardio.jpg",
+      "CheckIn": "2022-07-09T17:01:03.6549525"
     },
     "Buyer": {
       "Membership": {

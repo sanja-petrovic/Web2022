@@ -41,7 +41,6 @@ Vue.component('trainings-admin', {
             .then(response => {
                 if (response.data != null) {
                     this.trainings = response.data;
-                    this.loggedInCheck();
                     console.log(response.data);
                 }
             })

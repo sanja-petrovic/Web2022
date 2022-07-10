@@ -8,44 +8,48 @@ Vue.component('membership-buyer', {
 			
 		}
 		
-		
 	},
 	
 	template: `
 		<div>
-			<nav-bar-logged-in></nav-bar-logged-in>
-			<div class="main-content">
-			<div class="create-divs justify-content-center">
-                <div class="bla">
-                    <div class="register-container">
-  			        	<div class="register-content center-container">
-							<div v-if="membership != null" class="info center-container">
-							<label for="name">Ime Članarine</label>
-							<input class="text-box" type="text" id="name" v-model="this.membership.Name" disabled>
-							<label for="sportsObject">Članarina za sportski objekat</label>
-							<input class="text-box" type="text" id="sportsObject" v-model="this.membership.SportsObject.name" disabled>
-							<label for="status">Status članarine</label>
-							<input class="text-box" type="text" id="status" v-model="this.membership.Status" disabled>
-							<label for="date">Članarina važi do</label>
-							<input class="text-box" type="text" id="date" v-model="this.membership.DateTimeOfExpiration" disabled>
-							<label for="used">Iskorišćen broj termina</label>
-							<input class="text-box" type="text" id="used" v-model="this.membership.UsedTerms" disabled>
-							<label for="terms">Ukupan broj termina</label>
-							<input class="text-box" type="text" id="terms" v-model="this.membership.NumberOfTerms" disabled>
-							<label for="limit">Dozvoljen broj dnevnih termina</label>
-							<input class="text-box" type="text" id="limit" v-model="this.membership.DailyLimit" disabled>
-							<label for="points">Ukupan broj poena</label>
-							<input class="text-box" type="text" id="points" v-model="this.buyer.Points" disabled>
-							<label for="tier">Vaš rang kupca</label>
-							<input class="text-box" type="text" id="tier" v-model="this.buyer.BuyerType.Tier" disabled>
-							</div>
-							<div v-else>
-								<p style="font-size: 20px">Niste pretplaćeni ni na jednu članarinu.</p>
+			<div v-if="buyer !== null && buyer.UserType === 'Kupac'">
+				<nav-bar-logged-in></nav-bar-logged-in>
+				<div class="main-content">
+					<div class="create-divs justify-content-center">
+						<div class="bla">
+							<div class="register-container">
+								<div class="register-content center-container">
+									<div v-if="membership != null" class="info center-container">
+										<label for="name">Ime Članarine</label>
+										<input class="text-box" type="text" id="name" v-model="this.membership.Name" disabled>
+										<label for="sportsObject">Članarina za sportski objekat</label>
+										<input class="text-box" type="text" id="sportsObject" v-model="this.membership.SportsObject.name" disabled>
+										<label for="status">Status članarine</label>
+										<input class="text-box" type="text" id="status" v-model="this.membership.Status" disabled>
+										<label for="date">Članarina važi do</label>
+										<input class="text-box" type="text" id="date" v-model="this.membership.DateTimeOfExpiration" disabled>
+										<label for="used">Iskorišćen broj termina</label>
+										<input class="text-box" type="text" id="used" v-model="this.membership.UsedTerms" disabled>
+										<label for="terms">Ukupan broj termina</label>
+										<input class="text-box" type="text" id="terms" v-model="this.membership.NumberOfTerms" disabled>
+										<label for="limit">Dozvoljen broj dnevnih termina</label>
+										<input class="text-box" type="text" id="limit" v-model="this.membership.DailyLimit" disabled>
+										<label for="points">Ukupan broj poena</label>
+										<input class="text-box" type="text" id="points" v-model="this.buyer.Points" disabled>
+										<label for="tier">Vaš rang kupca</label>
+										<input class="text-box" type="text" id="tier" v-model="this.buyer.BuyerType.Tier" disabled>
+									</div>
+									<div v-else>
+										<p style="font-size: 20px">Niste pretplaćeni ni na jednu članarinu.</p>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<div v-else>
+				<unauthorized-access></unauthorized-access>
 			</div>
 	</div>			
 	
@@ -56,7 +60,9 @@ Vue.component('membership-buyer', {
             .then(response => {
              	this.buyer = response.data;
                 this.buyerId = response.data.Id;
-                this.findMembership();
+				if(this.buyer.UserType === 'Kupac') {
+					this.findMembership();
+				}
             })
             .catch(error => console.log(error));
 		

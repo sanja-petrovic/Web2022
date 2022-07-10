@@ -1,6 +1,7 @@
 Vue.component('create-trainer', {
     data: function () {
         return {
+            user: null,
             name: "",
             surname: "",
             gender: "",
@@ -17,7 +18,8 @@ Vue.component('create-trainer', {
 
     template: `
         <div>
-            <nav-bar-logged-in></nav-bar-logged-in>
+            <div v-if="user != null && user.UserType === 'Admin'">
+                <nav-bar-logged-in></nav-bar-logged-in>
                 <div class="outer-container">
                     <div class="create-divs">
                         <div class="bla">
@@ -37,13 +39,13 @@ Vue.component('create-trainer', {
                                                 <input type="radio" class="btn-check" value="Ženski" name="gender" v-model="gender" id="female" autocomplete="off">
                                                 <label class="btn btn-primary flex-grow-1" for="female">Ženski</label>
                                             </div>
-                                            <input class="text-box create-input" v-model="dob" type="date" id="dob" name="dob" 
+                                            <input class="text-box create-input" v-model="dob" type="date" id="dob" name="dob"
                                                    placeholder="Datum rođenja" required>
-                                            <input class="text-box create-input" v-on:blur="usernameUniqueCheck" v-model="username" type="text" id="username" name="username" 
-                                                    placeholder="Korisničko ime" required>
-                                            <input class="text-box create-input" v-on:blur="passwordMatchCheck" v-model="passwordFirst" type="password" id="password" 
+                                            <input class="text-box create-input" v-on:blur="usernameUniqueCheck" v-model="username" type="text" id="username" name="username"
+                                                   placeholder="Korisničko ime" required>
+                                            <input class="text-box create-input" v-on:blur="passwordMatchCheck" v-model="passwordFirst" type="password" id="password"
                                                    name="password" placeholder="Šifra" required>
-                                            <input class="text-box create-input" v-on:blur="passwordMatchCheck" v-model="passwordSecond" type="password" id="passwordcheck" 
+                                            <input class="text-box create-input" v-on:blur="passwordMatchCheck" v-model="passwordSecond" type="password" id="passwordcheck"
                                                    name="passwordcheck" placeholder="Potvrdi šifru" required>
                                             <label class="invalid-input create-input" v-if="errorExists">{{ this.errorMessage }}</label>
                                         </form>
@@ -54,13 +56,29 @@ Vue.component('create-trainer', {
                     </div>
                     <button v-on:click="registerTrainer" class="search-button">Dodaj trenera</button>
                 </div>
+            </div>
+            <div v-else>
+                <unauthorized-access></unauthorized-access>
+            </div>
         </div>
     `,
 
     mounted() {
+        this.loggedInCheck();
     },
 
     methods: {
+        loggedInCheck: function () {
+            axios.get(`/rest/loggedInUser`)
+                .then(response => {
+                    if (response.data != null) {
+                        this.user = response.data;
+                        console.log(this.user);
+                    }
+
+                })
+                .catch(error => console.log(error));
+        },
         registerTrainer: async function () {
             event.preventDefault();
             this.passwordMatchCheck();

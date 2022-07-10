@@ -16,7 +16,6 @@ import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
 import beans.Buyer;
-import beans.BuyersMembership;
 import beans.Comment;
 import beans.SportsObject;
 import util.adapters.LocalDateTimeAdapter;
@@ -152,5 +151,16 @@ public class CommentDAO {
 		}
 		
 		this.write();
+	}
+	
+	public ArrayList<Comment> getCommentsByUser(String id) {
+		ArrayList<Comment> comments = new ArrayList<>();
+		for(Comment c : this.comments) {
+			if(c.getBuyer().getUsername().equals(id)) {
+				comments.add(c);
+			}
+		}
+		
+		return comments;
 	}
 }

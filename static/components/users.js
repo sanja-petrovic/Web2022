@@ -1,6 +1,7 @@
 Vue.component('users', {
     data: function () {
         return {
+            user: null,
             users: null,
             buyers: null,
             managers: null,
@@ -26,346 +27,367 @@ Vue.component('users', {
 
     template: `
         <div class="user-page">
-        <nav-bar-logged-in></nav-bar-logged-in>
-            <div class="tabs">
-                <div class="buttons-galore">
-                    <div class="filter-and-sort">
-                        <div class="dropdown">
-                            <button class="sort-button" type="button" id="sort-button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="d-inline-block"><i class="fa-solid fa-chevron-down" style="margin-right: 0.4em;"></i><span class="d-inline-block">Sortiraj po...</span></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="sort-button">
-                                <li><button class="dropdown-item" type="button" v-on:click="sortByNameAsc">Imenu (rastuće)</button></li>
-                                <li><button class="dropdown-item" type="button" v-on:click="sortByNameDesc">Imenu (opadajuće)</button></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item" type="button" v-on:click="sortBySurnameAsc">Prezimenu (rastuće)</button></li>
-                                <li><button class="dropdown-item" type="button" v-on:click="sortBySurnameDesc">Prezimenu (opadajuće)</button></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item" type="button"v-on:click="sortByUsernameAsc">Korisničkom imenu (rastuće)</button></li>
-                                <li><button class="dropdown-item" type="button" v-on:click="sortByUsernameDesc">Korisničkom imenu (opadajuće)</button></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><button class="dropdown-item" type="button"v-on:click="sortByPointsAsc">Broju poena (rastuće)</button></li>
-                                <li><button class="dropdown-item" type="button" v-on:click="sortByPointsDesc">Broju poena (opadajuće)</button></li>
-                            </ul>
-                        </div>
-                        <div class="dropdown">
-                            <button type="button" class="dropdown-toggle filter-button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                                Filteri
-                            </button>
-                            <div class="dropdown-menu p-4">
-                                <div class="mb-3">
-                                    <p style="font-weight: 600;">Tip kupca</p>
-                                    <div class="form-check">
-                                        <input class="form-check-input filter-checks-buyer" type="checkbox" value="" v-on:change="filterBuyers" id="bronzani">
-                                        <label class="form-check-label" for="bronze">
-                                            Bronzani
-                                        </label>
+            <div v-if="user != null && user.UserType === 'Admin'">
+
+                <nav-bar-logged-in></nav-bar-logged-in>
+                <div class="tabs">
+                    <div class="buttons-galore">
+                        <div class="filter-and-sort">
+                            <div class="dropdown">
+                                <button class="sort-button" type="button" id="sort-button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="d-inline-block"><i class="fa-solid fa-chevron-down" style="margin-right: 0.4em;"></i><span class="d-inline-block">Sortiraj po...</span></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="sort-button">
+                                    <li><button class="dropdown-item" type="button" v-on:click="sortByNameAsc">Imenu (rastuće)</button></li>
+                                    <li><button class="dropdown-item" type="button" v-on:click="sortByNameDesc">Imenu (opadajuće)</button></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><button class="dropdown-item" type="button" v-on:click="sortBySurnameAsc">Prezimenu (rastuće)</button></li>
+                                    <li><button class="dropdown-item" type="button" v-on:click="sortBySurnameDesc">Prezimenu (opadajuće)</button></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><button class="dropdown-item" type="button"v-on:click="sortByUsernameAsc">Korisničkom imenu (rastuće)</button></li>
+                                    <li><button class="dropdown-item" type="button" v-on:click="sortByUsernameDesc">Korisničkom imenu (opadajuće)</button></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><button class="dropdown-item" type="button"v-on:click="sortByPointsAsc">Broju poena (rastuće)</button></li>
+                                    <li><button class="dropdown-item" type="button" v-on:click="sortByPointsDesc">Broju poena (opadajuće)</button></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown">
+                                <button type="button" class="dropdown-toggle filter-button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                    Filteri
+                                </button>
+                                <div class="dropdown-menu p-4">
+                                    <div class="mb-3">
+                                        <p style="font-weight: 600;">Tip kupca</p>
+                                        <div class="form-check">
+                                            <input class="form-check-input filter-checks-buyer" type="checkbox" value="" v-on:change="filterBuyers" id="bronzani">
+                                            <label class="form-check-label" for="bronze">
+                                                Bronzani
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input filter-checks-buyer"  type="checkbox" v-on:change="filterBuyers" value="" id="srebrni">
+                                            <label class="form-check-label" for="silver">
+                                                Srebrni
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input filter-checks-buyer" type="checkbox" v-on:change="filterBuyers" value="" id="zlatni">
+                                            <label class="form-check-label" for="gold">
+                                                Zlatni
+                                            </label>
+                                        </div>
                                     </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input filter-checks-buyer"  type="checkbox" v-on:change="filterBuyers" value="" id="srebrni">
-                                        <label class="form-check-label" for="silver">
-                                            Srebrni
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input filter-checks-buyer" type="checkbox" v-on:change="filterBuyers" value="" id="zlatni">
-                                        <label class="form-check-label" for="gold">
-                                            Zlatni
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <p style="font-weight: 600;">Uloga</p>
-                                    <div class="form-check">
-                                        <input class="form-check-input filter-checks-roles" type="checkbox" value="" v-on:change="filterUsers" id="kupac">
-                                        <label class="form-check-label" for="kupac">
-                                            Kupac
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input filter-checks-roles"  type="checkbox" v-on:change="filterUsers" value="" id="menadžer">
-                                        <label class="form-check-label" for="menadžer">
-                                            Menadžer
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input filter-checks-roles" type="checkbox" v-on:change="filterUsers" value="" id="trener">
-                                        <label class="form-check-label" for="trener">
-                                            Trener
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input filter-checks-roles" type="checkbox" v-on:change="filterUsers" value="" id="admin">
-                                        <label class="form-check-label" for="admin">
-                                            Administrator
-                                        </label>
+                                    <div class="mb-3">
+                                        <p style="font-weight: 600;">Uloga</p>
+                                        <div class="form-check">
+                                            <input class="form-check-input filter-checks-roles" type="checkbox" value="" v-on:change="filterUsers" id="kupac">
+                                            <label class="form-check-label" for="kupac">
+                                                Kupac
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input filter-checks-roles"  type="checkbox" v-on:change="filterUsers" value="" id="menadžer">
+                                            <label class="form-check-label" for="menadžer">
+                                                Menadžer
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input filter-checks-roles" type="checkbox" v-on:change="filterUsers" value="" id="trener">
+                                            <label class="form-check-label" for="trener">
+                                                Trener
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input filter-checks-roles" type="checkbox" v-on:change="filterUsers" value="" id="admin">
+                                            <label class="form-check-label" for="admin">
+                                                Administrator
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <button v-if="checkedTab === 'trener'" class="sort-button" type="button">
+                            <router-link to="/dodaj-trenera">Dodaj trenera</router-link>
+                        </button>
+                        <button v-if="checkedTab === 'menadžer'" class="sort-button" type="button">
+                            <router-link to="/dodaj-menadzera">Dodaj menadžera</router-link>
+                        </button>
                     </div>
-                    <button v-if="checkedTab === 'trener'" class="sort-button" type="button">
-                        <router-link to="/dodaj-trenera">Dodaj trenera</router-link>
-                    </button>
-                    <button v-if="checkedTab === 'menadžer'" class="sort-button" type="button">
-                        <router-link to="/dodaj-menadzera">Dodaj menadžera</router-link>
-                    </button>
-                </div>
-                
-                <div class="input-group mb-3" style="max-width: 50vw; margin-left: 175px;">
-                    <input type="text" class="form-control" v-model="searchParam.searchName" placeholder="Ime">
-                    <input type="text" class="form-control" v-model="searchParam.searchSurname" placeholder="Prezime">
-                    <input type="text" class="form-control" v-model="searchParam.searchUsername" placeholder="Korisničko ime">
-                    <div class="search-button" v-on:click="combinedSearch" type="button">
-                        <i class="fa fa-search"></i>
+
+                    <div class="input-group mb-3" style="max-width: 50vw; margin-left: 175px;">
+                        <input type="text" class="form-control" v-model="searchParam.searchName" placeholder="Ime">
+                        <input type="text" class="form-control" v-model="searchParam.searchSurname" placeholder="Prezime">
+                        <input type="text" class="form-control" v-model="searchParam.searchUsername" placeholder="Korisničko ime">
+                        <div class="search-button" v-on:click="combinedSearch" type="button">
+                            <i class="fa fa-search"></i>
+                        </div>
                     </div>
+
+                    <div class="tab-panel">
+                        <ul class="nav flex-column nav-pills me-3" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" v-on:click="checkedTab = 'svi'" id="pills-user-tab" data-bs-toggle="pill" data-bs-target="#pills-users"
+                                        type="button" role="tab" aria-controls="pills-home" aria-selected="true">Svi korisnici
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-buyer-tab" v-on:click="checkedTab = 'kupac'" data-bs-toggle="pill" data-bs-target="#pills-buyers"
+                                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Kupci
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-manager-tab" v-on:click="checkedTab = 'menadžer'" data-bs-toggle="pill" data-bs-target="#pills-managers"
+                                        type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Menadžeri
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-trainer-tab" v-on:click="checkedTab = 'trener'" data-bs-toggle="pill" data-bs-target="#pills-trainers"
+                                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Treneri
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-admin-tab" v-on:click="checkedTab = 'admin'" data-bs-toggle="pill" data-bs-target="#pills-admins"
+                                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Administratori
+                                </button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-users" role="tabpanel" aria-labelledby="pills-home-tab">
+                                <div class="users-table">
+                                    <table class="table table-borderless">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" class="border-0 font-medium">Ime i prezime</th>
+                                            <th scope="col" class="border-0 font-medium">Korisničko ime</th>
+                                            <th scope="col" class="border-0 font-medium">Pol</th>
+                                            <th scope="col" class="border-0 font-medium">Datum rođenja</th>
+                                            <th scope="col" class="border-0 font-medium">Uloga</th>
+                                            <th scope="col" class="border-0 font-medium"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="user in this.displayedUsers">
+                                            <td>
+                                                <span class="font-medium mb-0">{{ user.Name + " " + user.Surname }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.Username }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.Gender }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.DateOfBirth }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.UserType }}</span><br>
+                                            </td>
+                                            <td>
+                                                <i v-on:click="deleteUser(user)" class="fa-solid fa-circle-minus delete-button"></i><br>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-buyers" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                <div class="users-table">
+                                    <table class="table table-responsive table-borderless">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" class="border-0 font-medium">Ime i prezime</th>
+                                            <th scope="col" class="border-0 font-medium">Korisničko ime</th>
+                                            <th scope="col" class="border-0 font-medium">Pol</th>
+                                            <th scope="col" class="border-0 font-medium">Datum rođenja</th>
+                                            <th scope="col" class="border-0 font-medium">Broj sakupljenih poena</th>
+                                            <th scope="col" class="border-0 font-medium">Tip kupca</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="user in this.displayedBuyers">
+                                            <td>
+                                                <span class="font-medium mb-0">{{ user.Name + " " + user.Surname }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.Username }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.Gender }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.DateOfBirth }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.Points }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.BuyerType.Tier }}</span><br>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-managers" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                <div class="users-table">
+                                    <table class="table table-responsive table-borderless">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" class="border-0 font-medium">Ime i prezime</th>
+                                            <th scope="col" class="border-0 font-medium">Korisničko ime</th>
+                                            <th scope="col" class="border-0 font-medium">Pol</th>
+                                            <th scope="col" class="border-0 font-medium">Datum rođenja</th>
+                                            <th scope="col" class="border-0 font-medium">Sportski objekat</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="user in this.displayedManagers">
+                                            <td>
+                                                <span class="font-medium mb-0">{{ user.Name + " " + user.Surname }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.Username }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.Gender }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.DateOfBirth }}</span><br>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <span class="text-muted">{{ (user.SportsObject !== null) ? user.SportsObject.name : "Nijedan" }}</span><br>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-trainers" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                <div class="users-table">
+                                    <table class="table table-responsive table-borderless">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" class="border-0 font-medium">Ime i prezime</th>
+                                            <th scope="col" class="border-0 font-medium">Korisničko ime</th>
+                                            <th scope="col" class="border-0 font-medium">Pol</th>
+                                            <th scope="col" class="border-0 font-medium">Datum rođenja</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="user in this.displayedTrainers">
+                                            <td>
+                                                <span class="font-medium mb-0">{{ user.Name + " " + user.Surname }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.Username }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.Gender }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.DateOfBirth }}</span><br>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-admins" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                <div class="users-table">
+                                    <table class="table table-responsive table-borderless">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" class="border-0 font-medium">Ime i prezime</th>
+                                            <th scope="col" class="border-0 font-medium">Korisničko ime</th>
+                                            <th scope="col" class="border-0 font-medium">Pol</th>
+                                            <th scope="col" class="border-0 font-medium">Datum rođenja</th>
+                                            <th scope="col" class="border-0 font-medium">Uloga</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="user in this.displayedAdmins">
+                                            <td>
+                                                <span class="font-medium mb-0">{{ user.Name + " " + user.Surname }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.Username }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.Gender }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{ user.DateOfBirth }}</span><br>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">Administrator</span><br>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
-                
-               <div class="tab-panel">
-                   <ul class="nav flex-column nav-pills me-3" id="pills-tab" role="tablist">
-                       <li class="nav-item" role="presentation">
-                           <button class="nav-link active" v-on:click="checkedTab = 'svi'" id="pills-user-tab" data-bs-toggle="pill" data-bs-target="#pills-users"
-                                   type="button" role="tab" aria-controls="pills-home" aria-selected="true">Svi korisnici
-                           </button>
-                       </li>
-                       <li class="nav-item" role="presentation">
-                           <button class="nav-link" id="pills-buyer-tab" v-on:click="checkedTab = 'kupac'" data-bs-toggle="pill" data-bs-target="#pills-buyers"
-                                   type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Kupci
-                           </button>
-                       </li>
-                       <li class="nav-item" role="presentation">
-                           <button class="nav-link" id="pills-manager-tab" v-on:click="checkedTab = 'menadžer'" data-bs-toggle="pill" data-bs-target="#pills-managers"
-                                   type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Menadžeri
-                           </button>
-                       </li>
-                       <li class="nav-item" role="presentation">
-                           <button class="nav-link" id="pills-trainer-tab" v-on:click="checkedTab = 'trener'" data-bs-toggle="pill" data-bs-target="#pills-trainers"
-                                   type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Treneri
-                           </button>
-                       </li>
-                       <li class="nav-item" role="presentation">
-                           <button class="nav-link" id="pills-admin-tab" v-on:click="checkedTab = 'admin'" data-bs-toggle="pill" data-bs-target="#pills-admins"
-                                   type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Administratori
-                           </button>
-                       </li>
-                   </ul>
-                   <div class="tab-content" id="pills-tabContent">
-                       <div class="tab-pane fade show active" id="pills-users" role="tabpanel" aria-labelledby="pills-home-tab">
-                           <div class="users-table">
-                               <table class="table table-borderless">
-                                   <thead>
-                                   <tr>
-                                       <th scope="col" class="border-0 font-medium">Ime i prezime</th>
-                                       <th scope="col" class="border-0 font-medium">Korisničko ime</th>
-                                       <th scope="col" class="border-0 font-medium">Pol</th>
-                                       <th scope="col" class="border-0 font-medium">Datum rođenja</th>
-                                       <th scope="col" class="border-0 font-medium">Uloga</th>
-                                       <th scope="col" class="border-0 font-medium"></th>
-                                   </tr>
-                                   </thead>
-                                   <tbody>
-                                   <tr v-for="user in this.displayedUsers">
-                                       <td>
-                                           <span class="font-medium mb-0">{{ user.Name + " " + user.Surname }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.Username }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.Gender }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.DateOfBirth }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.UserType }}</span><br>
-                                       </td>
-                                       <td>
-                                           <i v-on:click="deleteUser(user)" class="fa-solid fa-circle-minus delete-button"></i><br>
-                                       </td>
-                                   </tr>
-                                   </tbody>
-                               </table>
-                           </div>
-                       </div>
-                       <div class="tab-pane fade" id="pills-buyers" role="tabpanel" aria-labelledby="pills-profile-tab">
-                           <div class="users-table">
-                               <table class="table table-responsive table-borderless">
-                                   <thead>
-                                   <tr>
-                                       <th scope="col" class="border-0 font-medium">Ime i prezime</th>
-                                       <th scope="col" class="border-0 font-medium">Korisničko ime</th>
-                                       <th scope="col" class="border-0 font-medium">Pol</th>
-                                       <th scope="col" class="border-0 font-medium">Datum rođenja</th>
-                                       <th scope="col" class="border-0 font-medium">Broj sakupljenih poena</th>
-                                       <th scope="col" class="border-0 font-medium">Tip kupca</th>
-                                   </tr>
-                                   </thead>
-                                   <tbody>
-                                   <tr v-for="user in this.displayedBuyers">
-                                       <td>
-                                           <span class="font-medium mb-0">{{ user.Name + " " + user.Surname }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.Username }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.Gender }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.DateOfBirth }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.Points }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.BuyerType.Tier }}</span><br>
-                                       </td>
-                                   </tr>
-                                   </tbody>
-                               </table>
-                           </div>
-                       </div>
-                       <div class="tab-pane fade" id="pills-managers" role="tabpanel" aria-labelledby="pills-contact-tab">
-                           <div class="users-table">
-                               <table class="table table-responsive table-borderless">
-                                   <thead>
-                                   <tr>
-                                       <th scope="col" class="border-0 font-medium">Ime i prezime</th>
-                                       <th scope="col" class="border-0 font-medium">Korisničko ime</th>
-                                       <th scope="col" class="border-0 font-medium">Pol</th>
-                                       <th scope="col" class="border-0 font-medium">Datum rođenja</th>
-                                       <th scope="col" class="border-0 font-medium">Sportski objekat</th>
-                                   </tr>
-                                   </thead>
-                                   <tbody>
-                                   <tr v-for="user in this.displayedManagers">
-                                       <td>
-                                           <span class="font-medium mb-0">{{ user.Name + " " + user.Surname }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.Username }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.Gender }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.DateOfBirth }}</span><br>
-                                       </td>
-                                       <td style="text-align: center">
-                                           <span class="text-muted">{{ (user.SportsObject !== null) ? user.SportsObject.name : "Nijedan" }}</span><br>
-                                       </td>
-                                   </tr>
-                                   </tbody>
-                               </table>
-                           </div>
-                       </div>
-                       <div class="tab-pane fade" id="pills-trainers" role="tabpanel" aria-labelledby="pills-contact-tab">
-                           <div class="users-table">
-                               <table class="table table-responsive table-borderless">
-                                   <thead>
-                                   <tr>
-                                       <th scope="col" class="border-0 font-medium">Ime i prezime</th>
-                                       <th scope="col" class="border-0 font-medium">Korisničko ime</th>
-                                       <th scope="col" class="border-0 font-medium">Pol</th>
-                                       <th scope="col" class="border-0 font-medium">Datum rođenja</th>
-                                   </tr>
-                                   </thead>
-                                   <tbody>
-                                   <tr v-for="user in this.displayedTrainers">
-                                       <td>
-                                           <span class="font-medium mb-0">{{ user.Name + " " + user.Surname }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.Username }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.Gender }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.DateOfBirth }}</span><br>
-                                       </td>
-                                   </tr>
-                                   </tbody>
-                               </table>
-                           </div>
-                       </div>
-                       <div class="tab-pane fade" id="pills-admins" role="tabpanel" aria-labelledby="pills-contact-tab">
-                           <div class="users-table">
-                               <table class="table table-responsive table-borderless">
-                                   <thead>
-                                   <tr>
-                                       <th scope="col" class="border-0 font-medium">Ime i prezime</th>
-                                       <th scope="col" class="border-0 font-medium">Korisničko ime</th>
-                                       <th scope="col" class="border-0 font-medium">Pol</th>
-                                       <th scope="col" class="border-0 font-medium">Datum rođenja</th>
-                                       <th scope="col" class="border-0 font-medium">Uloga</th>
-                                   </tr>
-                                   </thead>
-                                   <tbody>
-                                   <tr v-for="user in this.displayedAdmins">
-                                       <td>
-                                           <span class="font-medium mb-0">{{ user.Name + " " + user.Surname }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.Username }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.Gender }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">{{ user.DateOfBirth }}</span><br>
-                                       </td>
-                                       <td>
-                                           <span class="text-muted">Administrator</span><br>
-                                       </td>
-                                   </tr>
-                                   </tbody>
-                               </table>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-                
-                
+            </div>
+            <div v-else>
+                <unauthorized-access></unauthorized-access>
             </div>
         </div>
     `,
     mounted() {
-        axios.get('rest/users')
-            .then(response => {
-                this.users = response.data;
-                this.displayedUsers = response.data;
-                this.sortByRole();
-            })
-            .catch(error => console.log(error));
-        axios.get('rest/buyers')
-            .then(response => {
-                this.buyers = response.data;
-                this.displayedBuyers = response.data;
-            })
-            .catch(error => console.log(error));
-        axios.get('rest/managers')
-            .then(response => {
-                this.managers = response.data;
-                this.displayedManagers = response.data;
-            })
-            .catch(error => console.log(error));
-        axios.get('rest/trainers')
-            .then(response => {
-                this.trainers = response.data;
-                this.displayedTrainers = response.data;
-            })
-            .catch(error => console.log(error));
-        axios.get('rest/admins')
-            .then(response => {
-                this.admins = response.data;
-                this.displayedAdmins = response.data;
-            })
-            .catch(error => console.log(error));
+        this.loggedInCheck().then(resp => {
+            if(this.user != null && this.user.UserType === 'Admin') {
+                axios.get('rest/users')
+                    .then(response => {
+                        this.users = response.data;
+                        this.displayedUsers = response.data;
+                        this.sortByRole();
+                    })
+                    .catch(error => console.log(error));
+                axios.get('rest/buyers')
+                    .then(response => {
+                        this.buyers = response.data;
+                        this.displayedBuyers = response.data;
+                    })
+                    .catch(error => console.log(error));
+                axios.get('rest/managers')
+                    .then(response => {
+                        this.managers = response.data;
+                        this.displayedManagers = response.data;
+                    })
+                    .catch(error => console.log(error));
+                axios.get('rest/trainers')
+                    .then(response => {
+                        this.trainers = response.data;
+                        this.displayedTrainers = response.data;
+                    })
+                    .catch(error => console.log(error));
+                axios.get('rest/admins')
+                    .then(response => {
+                        this.admins = response.data;
+                        this.displayedAdmins = response.data;
+                    })
+                    .catch(error => console.log(error));
+            }
+        })
     }
     ,
     methods: {
+        loggedInCheck: async function () {
+            await axios.get(`/rest/loggedInUser`)
+                .then(response => {
+                    if (response.data != null) {
+                        this.user = response.data;
+                        console.log(this.user);
+                    }
+
+                })
+                .catch(error => console.log(error));
+        },
         combinedSearch() {
             let selected = document.getElementsByClassName('active')[0];
             let searchResult = [];

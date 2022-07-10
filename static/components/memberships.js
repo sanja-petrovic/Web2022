@@ -1,6 +1,7 @@
 Vue.component('memberships', {
 	data: function() {
 		return {
+			user: null,
 			loggedIn: false,
 			username: "",
 			memberships: null,
@@ -21,22 +22,23 @@ Vue.component('memberships', {
 	
 	template: `
 		<div>
-		  <nav-bar-logged-in v-if="this.loggedIn"></nav-bar-logged-in>
-		  <nav-bar-logged-out v-else></nav-bar-logged-out>
-		  <div class="main-content">
-			<div class="create-divs justify-content-center">
-                <div class="bla">
-                    <div class="register-container">
-  			        	<div class="register-content center-container">
-                                        <h3 class="heading" style="font-weight: 500">Nova članarina</h3>
-                                        <form class="myForm" action="">
-                                            <div class="input-group create-input">
-                                              <label class="input-group-text" style="width: 10em" for="memberships">Izaberi članiranu</label>
-												  <select name="memberships" id="memberships" style="width: 15em" v-model="membership">
-												    <option v-for="m in this.memberships" :value="m">{{m.Name}}</option>
-												  </select>
-											</div>
-											<div class="info center-container" v-if="this.membership !== null">
+			<div v-if="user != null && user.UserType === 'Kupac'">
+				<nav-bar-logged-in v-if="this.loggedIn"></nav-bar-logged-in>
+				<nav-bar-logged-out v-else></nav-bar-logged-out>
+				<div class="main-content">
+					<div class="create-divs justify-content-center">
+						<div class="bla">
+							<div class="register-container">
+								<div class="register-content center-container">
+									<h3 class="heading" style="font-weight: 500">Nova članarina</h3>
+									<form class="myForm" action="">
+										<div class="input-group create-input">
+											<label class="input-group-text" style="width: 10em" for="memberships">Izaberi članiranu</label>
+											<select name="memberships" id="memberships" style="width: 15em" v-model="membership">
+												<option v-for="m in this.memberships" :value="m">{{m.Name}}</option>
+											</select>
+										</div>
+										<div class="info center-container" v-if="this.membership !== null">
 											<label for="name">Ime Članarine</label>
 											<input class="text-box" type="text" id="name" v-model="this.membership.Name" disabled>
 											<label for="type">Tip članarine</label>
@@ -49,24 +51,28 @@ Vue.component('memberships', {
 											<input class="text-box" type="text" id="limit" v-model="this.membership.DailyLimit" disabled>
 											<label for="price">Cena</label>
 											<input class="text-box" type="text" id="price"  v-model="this.membership.Price" disabled>
-											<button class="search-button" style="width: 320px" id="button" v-on:click="viewMembership">Pregled članarine</button><br>			
+											<button class="search-button" style="width: 320px" id="button" v-on:click="viewMembership">Pregled članarine</button><br>
 											<div class="info center-container" v-if="viewClicked === true">
-											<label for="price">Cena za kupca {{this.tier}}</label>
-											<input class="text-box" type="text" id="price" v-model="this.price" disabled><br>
-											<input class="text-box create-input" type="text" v-on:blur="validatePromoCode" name="id" id="id" v-model="id" placeholder="Unesite promo kod:">
-											<label for="newPrice" v-if="validCode === true">Kod je prihvaćen! Nova cena:</label>
-											<input class="text-box" v-if="validCode === true" type="text" id="newPrice" v-model="this.newPrice" disabled><br>
+												<label for="price">Cena za kupca {{this.tier}}</label>
+												<input class="text-box" type="text" id="price" v-model="this.price" disabled><br>
+												<input class="text-box create-input" type="text" v-on:blur="validatePromoCode" name="id" id="id" v-model="id" placeholder="Unesite promo kod:">
+												<label for="newPrice" v-if="validCode === true">Kod je prihvaćen! Nova cena:</label>
+												<input class="text-box" v-if="validCode === true" type="text" id="newPrice" v-model="this.newPrice" disabled><br>
 											</div>
-											</div>
-											<label class="invalid-input create-input" v-if="errorExists">{{ this.errorMessage }}</label>
-                                        </form>
-                                </div>         
-                    </div>
-                </div>
-                </div>
-                <button class="search-button mb-5 mt-3" id="theButton" v-on:click="createBuyersMembership">Dodaj članarinu</button>
-          </div>
-          </div>
+										</div>
+										<label class="invalid-input create-input" v-if="errorExists">{{ this.errorMessage }}</label>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button class="search-button mb-5 mt-3" id="theButton" v-on:click="createBuyersMembership">Dodaj članarinu</button>
+				</div>
+			</div>
+			<div v-else>
+				<unauthorized-access></unauthorized-access>
+			</div>
+		</div>
      
 	`,
 	
@@ -80,7 +86,8 @@ Vue.component('memberships', {
             axios.get(`/rest/loggedInUser`)
                 .then(response => {
                     if (response.data != null) {
-                        this.loggedIn = true;    
+                        this.loggedIn = true;
+						this.user = response.data;
                         this.username = response.data.Username;  
                         this.tier = response.data.BuyerType.Tier;
                         this.discount = response.data.BuyerType.Discount;

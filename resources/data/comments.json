@@ -76,5 +76,18 @@
     "Content": "Sve najbolje",
     "Grade": 1,
     "Status": "Odbijen"
+  },
+  {
+    "Id": "a8f774a6-429c-45cf-bf8a-865709745558",
+    "Buyer": {
+      "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+      "Username": "filip"
+    },
+    "SportsObject": {
+      "name": "Favorit"
+    },
+    "Content": "Sara je super trener",
+    "Grade": 4,
+    "Status": "Odobren"
   }
 ]

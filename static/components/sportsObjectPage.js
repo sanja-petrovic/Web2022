@@ -26,7 +26,8 @@ Vue.component('sports-object-page', {
 			comment: {
 				rating: 0,
 				content: ""
-			}
+			},
+			canComment: false
         }
     },
     template: `
@@ -39,7 +40,7 @@ Vue.component('sports-object-page', {
                 <div class="sports-object-header">
 					<img class="sports-object-logo" :src="sportsObject.logoIcon">
 					<div class="sports-object-info">
-						<div><h1>{{sportsObject.name}}</h1> <i v-if="user.UserType === 'Admin'" v-on:click="deleteSportsObject" class="fa-solid fa-circle-minus delete-button"></i></div>
+						<div><h1>{{sportsObject.name}}</h1> <i v-if="loggedInUserRole === 'Admin'" v-on:click="deleteSportsObject" class="fa-solid fa-circle-minus delete-button"></i></div>
 						<p class="sports-object-subtitle">{{sportsObject.type}}
 							<span class="badge rounded-pill badge-open" v-if="openCheck(sportsObject.status)">Otvoreno</span>
 							<span class="badge rounded-pill badge-closed" v-if="!openCheck(sportsObject.status)">Zatvoreno</span>
@@ -279,7 +280,7 @@ Vue.component('sports-object-page', {
 			<div class="sports-object-comments"  v-else>
 				<h4>Komentari</h4>
 				<ul class="comment-section">
-					<div v-if="this.loggedInUserRole === 'Kupac'" class="comment">
+					<div v-if="this.loggedInUserRole === 'Kupac' && this.canComment" class="comment">
 						<div class="comment-header">
 							<h4 style="margin-left: 0; font-size: 20px">Utisak posle prve posete</h4>
 							<div class="rating">
@@ -325,7 +326,6 @@ Vue.component('sports-object-page', {
 		var path = window.location.href;
 		var sportsObjectName = path.split('/objekti/')[1];
 		var name = sportsObjectName.replaceAll('%20', ' ');
-		this.loggedInCheck();
 		axios.get('rest/getSportsObjectByName', {
 			params: {
 				name: name
@@ -335,6 +335,7 @@ Vue.component('sports-object-page', {
 			this.sportsObject = response.data;
 			this.sportsObjectRating = response.data.averageGrade.toFixed(2);
 			this.logo = this.sportsObject.logoIcon;
+			this.loggedInCheck();
 			this.displayMap();
 		});
 		this.displayContents(name);
@@ -348,8 +349,11 @@ Vue.component('sports-object-page', {
 						this.loggedIn = true;
 						this.loggedInUserRole = response.data.UserType;
 						this.user = response.data;
+						this.canLeaveComment(this.user.Username, this.sportsObject.name);
 						console.log(this.user);
-						//this.canLeaveComment(response.data.Username, this.sportsObject.name)
+					} else {
+						this.loggedInUserRole = 'None';
+						this.loggedIn = false;
 					}
 
                 })
@@ -561,13 +565,13 @@ Vue.component('sports-object-page', {
 					oopsie = true;
 				});
 		},
-		canLeaveComment: function (username, name) {
-			axios.get(`/rest/buyer-comments/:${username}/${name}`, {
+		canLeaveComment: async function (username, name) {
+			await axios.get(`/rest/buyer-comments/${username}/${name}`, {
 			}).then(response => {
-				return true;
+				this.canComment = true;
 			}).catch(function error(err) {
 				console.log(err);
-				return false;
+				this.canComment = false;
 			})
 		},
 		postComment: function () {
