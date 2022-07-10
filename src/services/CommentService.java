@@ -1,5 +1,7 @@
 package services;
 
+import java.util.ArrayList;
+
 import beans.Comment;
 import beans.CommentStatus;
 import beans.SportsObject;
@@ -34,6 +36,17 @@ public class CommentService {
 	
 	public static void removeByBuyer(String id) {
 		Repository.getInstance().getCommentDAO().removeCommentsByUser(id);
+	}
+	
+	public static boolean hasCommentedBefore(String buyer, String sportsObject) {
+		ArrayList<Comment> comments = Repository.getInstance().getCommentDAO().getCommentsBySportsObject(sportsObject);
+		for(Comment c : comments) {
+			if(c.getBuyer().getUsername().equals(buyer)) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 }

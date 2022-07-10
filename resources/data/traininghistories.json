@@ -147,7 +147,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -193,7 +193,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -239,7 +239,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -326,7 +326,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -413,7 +413,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -531,8 +531,7 @@
       },
       "Duration": 128,
       "Description": "Nudimo različite oblike rekreacije koje redovnim upražnjavanjem mogu poboljšati opšte psihofizičko stanje i pozitivno uticati na radne i životne sposobnosti. U zavisnosti od godina, pola, trenutnog stanja fizičke kondicije kao i želja, pomoći ćemo vam da napravite pravi izbor aktivnosti.",
-      "Picture": "../images/personal.jpg",
-      "CheckIn": "2022-07-06T00:00:00"
+      "Picture": "../images/personal.jpg"
     },
     "Buyer": {
       "Membership": {
@@ -584,7 +583,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -630,7 +629,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -677,7 +676,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -723,7 +722,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -769,7 +768,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -815,7 +814,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -861,7 +860,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -907,7 +906,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -953,7 +952,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -999,7 +998,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -1044,7 +1043,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -1091,7 +1090,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -1137,7 +1136,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -1158,5 +1157,46 @@
     },
     "CheckIn": "2022-07-18T18:30:00",
     "ScheduledFor": "2022-07-18T18:30:00"
+  },
+  {
+    "Id": "a4416a5b-2df9-4bfe-bf6a-22a8067ddddd",
+    "Trainer": {
+      "Id": "48e7eafb-42cb-4c95-90b7-371fa56dcbb3",
+      "Username": "sara"
+    },
+    "Training": {
+      "Id": "502e4c70-dbe6-4270-89f7-8a2e7880335a",
+      "Name": "Karate",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "Favorit"
+      },
+      "Duration": 60,
+      "Description": "Karate grupni treninzi najbolji u gradu.",
+      "Picture": "../images/karate.jpg"
+    },
+    "Buyer": {
+      "Membership": {
+        "Id": "1233214554",
+        "Name": "Fight Club paket",
+        "SportsObject": {
+          "name": "Favorit"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 5000.0,
+        "NumberOfTerms": 30,
+        "DailyLimit": 3
+      },
+      "VisitedObjects": [
+        {}
+      ],
+      "Points": 9.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
+      "Username": "petar"
+    },
+    "CheckIn": "2022-07-10T14:27:54.0426244"
   }
 ]
