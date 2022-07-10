@@ -15,6 +15,7 @@ import beans.PromoCode;
 import beans.SportsObject;
 import dao.Repository;
 import dto.CreatePromoCodeDTO;
+import services.ContentService;
 import services.PromoCodeService;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
@@ -37,6 +38,7 @@ public class PromoCodeController {
 			createPromoCode();
 			getPromoCodes();
 			getPromoCodeById();
+			removePromoCode();
 		});
 	}
 	
@@ -56,6 +58,7 @@ public class PromoCodeController {
 			return gson.toJson(promoCode);
 		});
 	}
+	
 	public static void createPromoCode() {
 		post("/createPromocode", (req, res) -> {
 			res.type("application/json");
@@ -63,6 +66,18 @@ public class PromoCodeController {
 			CreatePromoCodeDTO promoCodeDTO = gson.fromJson(payload, CreatePromoCodeDTO.class);
 			PromoCode promocode = PromoCodeService.createPromoCode(promoCodeDTO);
 			return gson.toJson(promocode);
+		});
+	}
+	
+	public static void removePromoCode() {
+		post("/promocodes/:id/delete", (req, res) -> {
+			res.type("application/json");
+			String payload = req.body();
+			String id = req.params(":id");
+			PromoCodeService.removePromoCode(id);
+			res.status(200);
+
+			return true;
 		});
 	}
 }

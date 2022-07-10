@@ -21,5 +21,9 @@ public class PromoCodeService {
 		Repository.getInstance().getPromoCodeDAO().addPromoCode(promocode);
 		return promocode;
 	}
+	
+	public static void removePromoCode(String id) {
+		Repository.getInstance().getPromoCodeDAO().removePromoCode(id);
+	}
 
 }

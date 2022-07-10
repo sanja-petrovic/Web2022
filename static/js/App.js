@@ -19,7 +19,9 @@ const PromoCode = { template: '<promocode></promocode>' }
 const MembershipsAdmin = { template: '<memberships-admin></memberships-admin>' }
 const TrainingsAdmin = { template: '<trainings-admin></trainings-admin>' }
 const ContentsAdmin = { template: '<contents-admin></contents-admin>'}
+const PromoCodesAdmin = { template: '<promocodes-admin></promocodes-admin>'}
 const UnauthorizedAccess = { template: '<unauthorized-access></unauthorized-access>'}
+const NotFound = { template: '<not-found></not-found>'}
 
 
 const router = new VueRouter({
@@ -43,7 +45,9 @@ const router = new VueRouter({
         { path: '/dodaj-promokod', component: PromoCode },
         { path: '/obrisi-clanarinu', component: MembershipsAdmin },
         { path: '/obrisi-trening', component: TrainingsAdmin },
-        { path: '/obrisi-sadrzaj', component: ContentsAdmin }
+        { path: '/obrisi-sadrzaj', component: ContentsAdmin },
+        { path: '/obrisi-promo-kod', component: PromoCodesAdmin },
+        { path: '*', component: NotFound }
         
       
     ]

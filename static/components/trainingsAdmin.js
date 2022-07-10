@@ -59,7 +59,7 @@ Vue.component('trainings-admin', {
                         console.log(error);
                     })
             } else {
-                alert("No membership selected.");
+                alert("Nije izabran nijedan trening.");
             }
         },
         loggedInCheck: function () {

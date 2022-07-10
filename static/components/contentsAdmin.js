@@ -23,7 +23,7 @@ Vue.component('contents-admin', {
                                         <option disabled selected hidden>Sadržaji</option>
                                         <option v-for="item in this.contents" :value="item">{{ item.Name }}</option>
                                     </select>
-                                    <button class="btn btn-primary" v-on:click="deleteTraining">Confirm</button></div>
+                                    <button class="btn btn-primary" v-on:click="deleteContent">Confirm</button></div>
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@ Vue.component('contents-admin', {
             .catch(error => console.log(error));
     },
     methods: {
-        deleteTraining: function () {
+        deleteContent: function () {
             if(this.selected != null) {
                 axios.post(`/rest/contents/${this.selected.Id}/delete`)
                     .then(response => {
@@ -59,7 +59,7 @@ Vue.component('contents-admin', {
                         console.log(error);
                     })
             } else {
-                alert("No membership selected.");
+                alert("Nije izabran nijedan sadržaj.");
             }
         },
         loggedInCheck: function () {

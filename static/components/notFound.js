@@ -1,4 +1,4 @@
-Vue.component('unauthorized-access', {
+Vue.component('not-found', {
     data: function () {
         return {
         }
@@ -6,8 +6,8 @@ Vue.component('unauthorized-access', {
     template:
         `
             <div class="main-content" style="display: flex; justify-content: center; align-items: center; height: 100vh; width: 100vw">
-            <h1>Nemate pristup ovoj stranici</h1>
+            <h1>Stranica nije pronađena</h1>
             </div>
-        
-    `
+
+        `
 })
