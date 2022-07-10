@@ -190,7 +190,7 @@ Vue.component('trainer-trainings', {
                                             <span class="text-muted">{{ training.Training.Price }}</span><br>
                                         </td>
                                         <td>
-                                            <span class="text-muted">{{ training.CheckIn }}</span><br>
+                                            <span class="text-muted">{{ training.CheckIn === null ? training.ScheduledFor : training.CheckIn }}</span><br>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -533,8 +533,8 @@ Vue.component('trainer-trainings', {
                 });
             } else {
                 this.displayedScheduledTrainings.sort((a, b) => {
-                    let newA = this.convertDate(a.CheckIn).getTime();
-                    let newB = this.convertDate(b.CheckIn).getTime();
+                    let newA = this.convertDate(a.ScheduledFor).getTime();
+                    let newB = this.convertDate(b.ScheduledFor).getTime();
                     return newA - newB;
                 });
             }
@@ -548,8 +548,8 @@ Vue.component('trainer-trainings', {
                 });
             } else {
                 this.displayedScheduledTrainings.sort((a, b) => {
-                    let newA = this.convertDate(a.CheckIn).getTime();
-                    let newB = this.convertDate(b.CheckIn).getTime();
+                    let newA = this.convertDate(a.ScheduledFor).getTime();
+                    let newB = this.convertDate(b.ScheduledFor).getTime();
                     return newB - newA;
                 });
             }

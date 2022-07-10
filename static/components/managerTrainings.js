@@ -481,8 +481,8 @@ Vue.component('manager-trainings', {
 				});
 			} else {
 				this.displayedScheduledTrainings.sort((a, b) => {
-					let newA = this.convertDate(a.CheckIn).getTime();
-					let newB = this.convertDate(b.CheckIn).getTime();
+					let newA = this.convertDate(a.ScheduledFor).getTime();
+					let newB = this.convertDate(b.ScheduledFor).getTime();
 					return newA - newB;
 				});
 			}
@@ -496,8 +496,8 @@ Vue.component('manager-trainings', {
 				});
 			} else {
 				this.displayedScheduledTrainings.sort((a, b) => {
-					let newA = this.convertDate(a.CheckIn).getTime();
-					let newB = this.convertDate(b.CheckIn).getTime();
+					let newA = this.convertDate(a.ScheduledFor).getTime();
+					let newB = this.convertDate(b.ScheduledFor).getTime();
 					return newB - newA;
 				});
 			}

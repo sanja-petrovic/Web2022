@@ -974,51 +974,6 @@
     "CheckIn": "2022-07-09T17:01:03.6549525"
   },
   {
-    "Id": "5aed41c5-09c5-4a70-a2f0-d1a211f8d620",
-    "Trainer": {
-      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
-      "Username": "danilo"
-    },
-    "Training": {
-      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
-      "Name": "Cardio",
-      "ContentType": "trening",
-      "SportsObject": {
-        "name": "No Limit Gym"
-      },
-      "Duration": 30,
-      "Description": "Kardio vežbanje učiniće te zgodnijim, zdravijim i punim snage ali učiniće i više od toga. Imaćeš bolju koncentraciju i pamćenje, regulisaćeš telesnu težinu i bićeš otporniji na stres.",
-      "Picture": "../images/cardio.jpg"
-    },
-    "Buyer": {
-      "Membership": {
-        "Id": "7894561230",
-        "Name": "Student paket No Limit",
-        "SportsObject": {
-          "name": "No Limit Gym"
-        },
-        "MembershipType": "Mesečna",
-        "Price": 2500.0,
-        "NumberOfTerms": 25,
-        "DailyLimit": 2
-      },
-      "VisitedObjects": [
-        {
-          "name": "Mega Gym"
-        },
-        {
-          "name": "No Limit Gym"
-        }
-      ],
-      "Points": 1590.0,
-      "BuyerType": {
-        "Tier": "Bronzani"
-      },
-      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
-      "Username": "ivana"
-    }
-  },
-  {
     "Id": "30788881-b721-477e-963e-0d84cc901d7b",
     "Trainer": {
       "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
@@ -1033,7 +988,8 @@
       },
       "Duration": 30,
       "Description": "Kardio vežbanje učiniće te zgodnijim, zdravijim i punim snage ali učiniće i više od toga. Imaćeš bolju koncentraciju i pamćenje, regulisaćeš telesnu težinu i bićeš otporniji na stres.",
-      "Picture": "../images/cardio.jpg"
+      "Picture": "../images/cardio.jpg",
+      "CheckIn": "2022-07-09T17:01:03.6549525"
     },
     "Buyer": {
       "Membership": {
@@ -1198,5 +1154,98 @@
       "Username": "petar"
     },
     "CheckIn": "2022-07-10T14:27:54.0426244"
+  },
+  {
+    "Id": "659d1e1b-705d-45e5-beeb-fbc9ef55433e",
+    "Trainer": {
+      "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
+      "Username": "jovana"
+    },
+    "Training": {
+      "Id": "3b17c4cc-8d4c-4f0c-aea1-5719a36561a6",
+      "Name": "Body Balance",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "No Limit Gym"
+      },
+      "Duration": 60,
+      "Description": "Body Balance trening za um i telo. Predstavlja kombinaciju joge, pilatesa i tai chi-a.",
+      "Picture": "../images/bodybalance.jpg"
+    },
+    "Buyer": {
+      "Membership": {
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 2500.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
+      },
+      "VisitedObjects": [
+        {
+          "name": "Mega Gym"
+        },
+        {
+          "name": "No Limit Gym"
+        }
+      ],
+      "Points": 1590.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-10T14:44:28.8461527"
+  },
+  {
+    "Id": "b025b957-a95c-447b-a610-8cbfbe19a327",
+    "Trainer": {
+      "Id": "46496aca-f407-4c47-b593-5acaca4abaf5",
+      "Username": "danilo"
+    },
+    "Training": {
+      "Id": "77335056-3792-45bf-b969-e34a557a9d4b",
+      "Name": "Cardio",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "No Limit Gym"
+      },
+      "Duration": 30,
+      "Description": "Kardio vežbanje učiniće te zgodnijim, zdravijim i punim snage ali učiniće i više od toga. Imaćeš bolju koncentraciju i pamćenje, regulisaćeš telesnu težinu i bićeš otporniji na stres.",
+      "Picture": "../images/cardio.jpg"
+    },
+    "Buyer": {
+      "Membership": {
+        "Id": "7894561230",
+        "Name": "Student paket No Limit",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 2500.0,
+        "NumberOfTerms": 25,
+        "DailyLimit": 2
+      },
+      "VisitedObjects": [
+        {
+          "name": "Mega Gym"
+        },
+        {
+          "name": "No Limit Gym"
+        }
+      ],
+      "Points": 1590.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "749a5c0e-8a19-4032-85e4-30717163b7da",
+      "Username": "ivana"
+    },
+    "CheckIn": "2022-07-13T14:44:00",
+    "ScheduledFor": "2022-07-13T14:44:00"
   }
 ]
