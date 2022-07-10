@@ -59,7 +59,7 @@ Vue.component('membershipsAdmin', {
                         console.log(error);
                     })
             } else {
-                alert("No membership selected.");
+                alert("Nije izabrana nijedna članarina.");
             }
         },
         loggedInCheck: function () {

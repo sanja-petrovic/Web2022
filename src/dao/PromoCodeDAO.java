@@ -109,6 +109,8 @@ public class PromoCodeDAO {
 		for(PromoCode pc : this.getPromoCodes()) {
 			if(pc.getId().equals(id)) {
 				pc.setDeletedAt(LocalDateTime.now());
+				this.write();
+				break;
 			}
 		}
 	}
