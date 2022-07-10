@@ -30,8 +30,15 @@ public class TrainingHistoryService {
 		Training training = Repository.getInstance().getTrainingDAO().getTrainingById(trainingHistoryDTO.getContentId());
 		SportsObject sportsObject = training.getSportsObject();
 		ArrayList<SportsObject> list = buyer.getVisitedObjects();
-		if(buyer.getVisitedObjects().contains(sportsObject))
+		boolean canAdd = true;
+		for(SportsObject so : buyer.getVisitedObjects()) {
+			if(so.getName().equals(sportsObject.getName())) {
+				canAdd = false;
+			}
+		}
+		if(canAdd) {
 			list.add(sportsObject);
+		}
 	
 		buyer.setVisitedObjects(list);
 		Repository.getInstance().getBuyerDAO().updateBuyer(buyer);
