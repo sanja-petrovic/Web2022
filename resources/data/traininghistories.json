@@ -18,18 +18,20 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1233214554",
-        "Name": "Fight Club paket",
+        "Id": "8553934453",
+        "Name": "Six Pack paket",
         "SportsObject": {
-          "name": "Favorit"
+          "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 30,
-        "DailyLimit": 3
+        "Price": 4800.0,
+        "NumberOfTerms": 50,
+        "DailyLimit": 5
       },
       "VisitedObjects": [
-        {}
+        {
+          "name": "No Limit Gym"
+        }
       ],
       "Points": 3200.0,
       "BuyerType": {
@@ -59,18 +61,23 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1233214554",
-        "Name": "Fight Club paket",
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
         "SportsObject": {
-          "name": "Favorit"
+          "name": "Plesni centar Allegro"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 30,
-        "DailyLimit": 3
+        "Price": 2422.5,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
-        {}
+        {
+          "name": "Favorit"
+        },
+        {
+          "name": "Plesni centar Allegro"
+        }
       ],
       "Points": 9.0,
       "BuyerType": {
@@ -100,18 +107,23 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1233214554",
-        "Name": "Fight Club paket",
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
         "SportsObject": {
-          "name": "Favorit"
+          "name": "Plesni centar Allegro"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 30,
-        "DailyLimit": 3
+        "Price": 2422.5,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
-        {}
+        {
+          "name": "Favorit"
+        },
+        {
+          "name": "Plesni centar Allegro"
+        }
       ],
       "Points": 9.0,
       "BuyerType": {
@@ -147,7 +159,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -193,7 +205,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -239,7 +251,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -279,18 +291,20 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1233214554",
-        "Name": "Fight Club paket",
+        "Id": "8553934453",
+        "Name": "Six Pack paket",
         "SportsObject": {
-          "name": "Favorit"
+          "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 30,
-        "DailyLimit": 3
+        "Price": 4800.0,
+        "NumberOfTerms": 50,
+        "DailyLimit": 5
       },
       "VisitedObjects": [
-        {}
+        {
+          "name": "No Limit Gym"
+        }
       ],
       "Points": 3200.0,
       "BuyerType": {
@@ -326,7 +340,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -366,18 +380,23 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1233214554",
-        "Name": "Fight Club paket",
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
         "SportsObject": {
-          "name": "Favorit"
+          "name": "Plesni centar Allegro"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 30,
-        "DailyLimit": 3
+        "Price": 2422.5,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
       },
       "VisitedObjects": [
-        {}
+        {
+          "name": "Favorit"
+        },
+        {
+          "name": "Plesni centar Allegro"
+        }
       ],
       "Points": 9.0,
       "BuyerType": {
@@ -413,7 +432,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -453,18 +472,20 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1233214554",
-        "Name": "Fight Club paket",
+        "Id": "8553934453",
+        "Name": "Six Pack paket",
         "SportsObject": {
-          "name": "Favorit"
+          "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 30,
-        "DailyLimit": 3
+        "Price": 4800.0,
+        "NumberOfTerms": 50,
+        "DailyLimit": 5
       },
       "VisitedObjects": [
-        {}
+        {
+          "name": "No Limit Gym"
+        }
       ],
       "Points": 3200.0,
       "BuyerType": {
@@ -494,18 +515,20 @@
     },
     "Buyer": {
       "Membership": {
-        "Id": "1233214554",
-        "Name": "Fight Club paket",
+        "Id": "8553934453",
+        "Name": "Six Pack paket",
         "SportsObject": {
-          "name": "Favorit"
+          "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 30,
-        "DailyLimit": 3
+        "Price": 4800.0,
+        "NumberOfTerms": 50,
+        "DailyLimit": 5
       },
       "VisitedObjects": [
-        {}
+        {
+          "name": "No Limit Gym"
+        }
       ],
       "Points": 3200.0,
       "BuyerType": {
@@ -531,23 +554,24 @@
       },
       "Duration": 128,
       "Description": "Nudimo različite oblike rekreacije koje redovnim upražnjavanjem mogu poboljšati opšte psihofizičko stanje i pozitivno uticati na radne i životne sposobnosti. U zavisnosti od godina, pola, trenutnog stanja fizičke kondicije kao i želja, pomoći ćemo vam da napravite pravi izbor aktivnosti.",
-      "Picture": "../images/personal.jpg",
-      "CheckIn": "2022-07-06T00:00:00"
+      "Picture": "../images/personal.jpg"
     },
     "Buyer": {
       "Membership": {
-        "Id": "1233214554",
-        "Name": "Fight Club paket",
+        "Id": "8553934453",
+        "Name": "Six Pack paket",
         "SportsObject": {
-          "name": "Favorit"
+          "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 5000.0,
-        "NumberOfTerms": 30,
-        "DailyLimit": 3
+        "Price": 4800.0,
+        "NumberOfTerms": 50,
+        "DailyLimit": 5
       },
       "VisitedObjects": [
-        {}
+        {
+          "name": "No Limit Gym"
+        }
       ],
       "Points": 3200.0,
       "BuyerType": {
@@ -584,7 +608,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -630,7 +654,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -677,7 +701,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -723,7 +747,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -769,7 +793,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -815,7 +839,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -861,7 +885,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -907,7 +931,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -953,7 +977,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -999,7 +1023,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -1044,7 +1068,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -1091,7 +1115,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -1137,7 +1161,7 @@
           "name": "No Limit Gym"
         },
         "MembershipType": "Mesečna",
-        "Price": 2375.0,
+        "Price": 2500.0,
         "NumberOfTerms": 25,
         "DailyLimit": 2
       },
@@ -1158,5 +1182,140 @@
     },
     "CheckIn": "2022-07-18T18:30:00",
     "ScheduledFor": "2022-07-18T18:30:00"
+  },
+  {
+    "Id": "9c51cea3-d7f7-4382-bfe2-686e10b7776d",
+    "Trainer": {
+      "Id": "48e7eafb-42cb-4c95-90b7-371fa56dcbb3",
+      "Username": "sara"
+    },
+    "Training": {
+      "Id": "502e4c70-dbe6-4270-89f7-8a2e7880335a",
+      "Name": "Karate",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "Favorit"
+      },
+      "Duration": 60,
+      "Description": "Karate grupni treninzi najbolji u gradu.",
+      "Picture": "../images/karate.jpg"
+    },
+    "Buyer": {
+      "Membership": {
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
+        "SportsObject": {
+          "name": "Plesni centar Allegro"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 2422.5,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
+      },
+      "VisitedObjects": [
+        {
+          "name": "Favorit"
+        },
+        {
+          "name": "Plesni centar Allegro"
+        }
+      ],
+      "Points": 9.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
+      "Username": "petar"
+    },
+    "CheckIn": "2022-07-10T20:28:24.4128156"
+  },
+  {
+    "Id": "59bf34f6-9898-4631-b3c7-c60cea1e322d",
+    "Trainer": {
+      "Id": "2a5eb950-0720-4018-9329-c3859a033144",
+      "Username": "marta"
+    },
+    "Training": {
+      "Id": "45f766oa-8756-564p-b8ja-123550e89h78",
+      "Name": "Argentinski tango",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "Plesni centar Allegro"
+      },
+      "Duration": 60,
+      "Description": "Argentinski Tango omogućuje odličan trening za tajming i tehniku stopala, kao izgradnju osnova za svaki ples.Intiman je, kako ga plesači često plešu obraz do obraza, upliću svoje noge na vrlo komplikovan način što odaje izuzetno senzualan efekat. Čas se održava u grupama od 20 ljudi, dva puta nedeljno.",
+      "Picture": "../images/tango.jpg"
+    },
+    "Buyer": {
+      "Membership": {
+        "Id": "aa23l78945",
+        "Name": "Članarina u Allegru",
+        "SportsObject": {
+          "name": "Plesni centar Allegro"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 2422.5,
+        "NumberOfTerms": 20,
+        "DailyLimit": 2
+      },
+      "VisitedObjects": [
+        {
+          "name": "Favorit"
+        },
+        {
+          "name": "Plesni centar Allegro"
+        }
+      ],
+      "Points": 9.0,
+      "BuyerType": {
+        "Tier": "Bronzani"
+      },
+      "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
+      "Username": "petar"
+    },
+    "CheckIn": "2022-07-10T20:29:21.0726971"
+  },
+  {
+    "Id": "a4e20105-2aa5-48d2-b305-1d2ba4f9cd51",
+    "Trainer": {
+      "Id": "3ebf3f9d-8f17-40f2-b21d-8febaab6965f",
+      "Username": "jovana"
+    },
+    "Training": {
+      "Id": "3b17c4cc-8d4c-4f0c-aea1-5719a36561a6",
+      "Name": "Body Balance",
+      "ContentType": "trening",
+      "SportsObject": {
+        "name": "No Limit Gym"
+      },
+      "Duration": 60,
+      "Description": "Body Balance trening za um i telo. Predstavlja kombinaciju joge, pilatesa i tai chi-a.",
+      "Picture": "../images/bodybalance.jpg"
+    },
+    "Buyer": {
+      "Membership": {
+        "Id": "8553934453",
+        "Name": "Six Pack paket",
+        "SportsObject": {
+          "name": "No Limit Gym"
+        },
+        "MembershipType": "Mesečna",
+        "Price": 4800.0,
+        "NumberOfTerms": 50,
+        "DailyLimit": 5
+      },
+      "VisitedObjects": [
+        {
+          "name": "No Limit Gym"
+        }
+      ],
+      "Points": 3200.0,
+      "BuyerType": {
+        "Tier": "Zlatni"
+      },
+      "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
+      "Username": "filip"
+    },
+    "CheckIn": "2022-07-10T20:30:50.799591"
   }
 ]

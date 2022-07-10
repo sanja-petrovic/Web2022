@@ -156,12 +156,9 @@ public class BuyersMembershipDAO {
 		BuyerType buyerType = buyer.getType();
 	
 		if(points >= 1000 && points < 2000) {
-			buyerType.setTier("Bronzani");
-		}
-		else if(points >= 2000 && points < 3000) {
 			buyerType.setTier("Srebrni");
 		}
-		else if(points >= 3000) {
+		else if(points >= 2000) {
 			buyerType.setTier("Zlatni");
 		}
 		else {

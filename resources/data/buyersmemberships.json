@@ -6,7 +6,7 @@
     },
     "PaymentDate": "2022-07-09T20:59:05.1947489",
     "DateTimeOfExpiration": "2022-08-09T20:59:05.1975159",
-    "UsedTerms": 2,
+    "UsedTerms": 10,
     "Status": "Aktivna",
     "Id": "7894561230",
     "Name": "Student paket No Limit"
@@ -16,23 +16,23 @@
       "Id": "8f66512f-58f5-4fc9-ab8b-62726b69e602",
       "Username": "petar"
     },
-    "PaymentDate": "2022-07-09T10:18:45.6428625",
-    "DateTimeOfExpiration": "2022-08-09T10:18:45.6448368",
-    "UsedTerms": 0,
+    "PaymentDate": "2022-07-10T20:29:09.5978878",
+    "DateTimeOfExpiration": "2022-08-10T20:29:09.5978878",
+    "UsedTerms": 1,
     "Status": "Aktivna",
-    "Id": "1233214554",
-    "Name": "Fight Club paket"
+    "Id": "aa23l78945",
+    "Name": "Članarina u Allegru"
   },
   {
     "Buyer": {
       "Id": "3eefd167-f31c-4b78-81f6-f2fb46ad9bb5",
       "Username": "filip"
     },
-    "PaymentDate": "2022-07-08T19:40:25.2913667",
-    "DateTimeOfExpiration": "2022-08-08T19:40:25.2913667",
-    "UsedTerms": 0,
+    "PaymentDate": "2022-07-10T20:30:43.2132847",
+    "DateTimeOfExpiration": "2022-08-10T20:30:43.2132847",
+    "UsedTerms": 1,
     "Status": "Aktivna",
-    "Id": "1233214554",
-    "Name": "Fight Club paket"
+    "Id": "8553934453",
+    "Name": "Six Pack paket"
   }
 ]
