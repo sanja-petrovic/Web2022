@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -15,6 +16,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
 import beans.Buyer;
+import beans.BuyersMembership;
 import beans.Comment;
 import beans.SportsObject;
 import util.adapters.LocalDateTimeAdapter;
@@ -40,7 +42,9 @@ public class CommentDAO {
 		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/comments.json"));
 		    this.comments = gson.fromJson(reader, new TypeToken<ArrayList<Comment>>() {}.getType());
 		    for(Comment c : this.comments) {
-		    	this.fillData(c);
+		    	if(c.getDeletedAt() == null) {
+		    		this.fillData(c);
+		    	}
 		    }
 		    reader.close();
 
@@ -80,14 +84,16 @@ public class CommentDAO {
 	}
 	
 	public ArrayList<Comment> getComments() {
-		return this.comments;
+		return new ArrayList<Comment>(this.comments.stream()
+				  .filter(c -> c.getDeletedAt() == null)
+				  .collect(Collectors.toList()));
 	}
 	
 	public ArrayList<Comment> getCommentsBySportsObject(String name) {
 		ArrayList<Comment> comments = new ArrayList<>();
 		
 		for(Comment c : this.comments) {
-			if(c.getSportsObject().getName().equals(name)) {
+			if(c.getDeletedAt() == null && c.getSportsObject().getName().equals(name)) {
 				comments.add(c);
 			}
 		}
@@ -99,15 +105,15 @@ public class CommentDAO {
 		int index = this.getIndexOfComment(c);
 		if(index != -1) {
 			this.comments.set(index, c);
+			this.write();
 		}
-		this.write();
 	}
 	
 	public int getIndexOfComment(Comment comment) {
 		int index = -1;
 		
 		for(int i = 0; i < this.comments.size(); i++) {
-			if(this.comments.get(i).getId().equals(comment.getId())) {
+			if(this.comments.get(i).getDeletedAt() == null && this.comments.get(i).getId().equals(comment.getId())) {
 				index = i;
 				break;
 			}
@@ -119,12 +125,32 @@ public class CommentDAO {
 	public Comment getCommentById(String id) {
 		Comment retVal = null;
 		for(Comment c : this.comments) {
-			if(c.getId().equals(id)) {
+			if(c.getDeletedAt() == null && c.getId().equals(id)) {
 				retVal = c;
 				break;
 			}
 		}
 		
 		return retVal;
+	}
+	
+	public void removeCommentsByUser(String id) {
+		for(Comment c : this.comments) {
+			if(c.getDeletedAt() == null && c.getBuyer().getId().equals(id)) {
+				c.setDeletedAt(LocalDateTime.now());
+			}
+		}
+		this.write();
+	}
+	
+	public void removeCommentsBySportsObject(String id) {
+		for(Comment c : this.comments) {
+			if(c.getDeletedAt() == null && c.getSportsObject().getName().equals(id)) {
+				c.setDeletedAt(LocalDateTime.now());
+				
+			}
+		}
+		
+		this.write();
 	}
 }

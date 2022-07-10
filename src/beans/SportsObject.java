@@ -1,5 +1,6 @@
 package beans;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.google.gson.annotations.Expose;
@@ -24,6 +25,8 @@ public class SportsObject {
 	private double averageGrade;
 	@SerializedName("businessHours")
 	private BusinessHours businessHours;
+	@SerializedName("DeletedAt")
+	private LocalDateTime deletedAt;
 
 
 	public SportsObject(String name, String type, ArrayList<String> offers, SportsObjectStatus status,
@@ -105,5 +108,13 @@ public class SportsObject {
 
 	public void setBusinessHours(BusinessHours businessHours) {
 		this.businessHours = businessHours;
+	}
+
+	public LocalDateTime getDeletedAt() {
+		return deletedAt;
+	}
+
+	public void setDeletedAt(LocalDateTime deletedAt) {
+		this.deletedAt = deletedAt;
 	}
 }

@@ -11406,6 +11406,23 @@ textarea {
   background: #708cff;
 }
 
+.delete-button {
+  color: #ff7b8d;
+  background-color: transparent;
+  font-weight: 700;
+  filter: drop-shadow(0 0 0.75rem rgb(255, 182, 206));
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.div-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 20vw;
+  flex-direction: column;
+}
+
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -22806,6 +22823,23 @@ textarea {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #708cff;
+}
+
+.delete-button {
+  color: #ff7b8d;
+  background-color: transparent;
+  font-weight: 700;
+  filter: drop-shadow(0 0 0.75rem rgb(255, 182, 206));
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.div-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 20vw;
+  flex-direction: column;
 }
 
 .login-body {
@@ -34291,6 +34325,23 @@ textarea {
   background: #708cff;
 }
 
+.delete-button {
+  color: #ff7b8d;
+  background-color: transparent;
+  font-weight: 700;
+  filter: drop-shadow(0 0 0.75rem rgb(255, 182, 206));
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.div-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 20vw;
+  flex-direction: column;
+}
+
 .register-body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
@@ -45774,6 +45825,23 @@ textarea {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #708cff;
+}
+
+.delete-button {
+  color: #ff7b8d;
+  background-color: transparent;
+  font-weight: 700;
+  filter: drop-shadow(0 0 0.75rem rgb(255, 182, 206));
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.div-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 20vw;
+  flex-direction: column;
 }
 
 :root {
@@ -57319,6 +57387,23 @@ textarea {
   background: #708cff;
 }
 
+.delete-button {
+  color: #ff7b8d;
+  background-color: transparent;
+  font-weight: 700;
+  filter: drop-shadow(0 0 0.75rem rgb(255, 182, 206));
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.div-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 20vw;
+  flex-direction: column;
+}
+
 .sports-object-container {
   display: flex;
   flex-direction: column;
@@ -57366,7 +57451,7 @@ textarea {
   flex-direction: column;
 }
 .sports-object-trainings .card {
-  height: 15vw;
+  height: 18vw;
 }
 .sports-object-trainings .card img {
   opacity: 100%;
@@ -68951,6 +69036,23 @@ textarea {
   background: #708cff;
 }
 
+.delete-button {
+  color: #ff7b8d;
+  background-color: transparent;
+  font-weight: 700;
+  filter: drop-shadow(0 0 0.75rem rgb(255, 182, 206));
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.div-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 20vw;
+  flex-direction: column;
+}
+
 .about-wrapper {
   width: 100vw;
   display: flex;
@@ -80414,6 +80516,23 @@ textarea {
   background: #708cff;
 }
 
+.delete-button {
+  color: #ff7b8d;
+  background-color: transparent;
+  font-weight: 700;
+  filter: drop-shadow(0 0 0.75rem rgb(255, 182, 206));
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.div-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 20vw;
+  flex-direction: column;
+}
+
 .sidebar-container {
   padding: 2vw;
 }
@@ -91823,6 +91942,23 @@ textarea {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #708cff;
+}
+
+.delete-button {
+  color: #ff7b8d;
+  background-color: transparent;
+  font-weight: 700;
+  filter: drop-shadow(0 0 0.75rem rgb(255, 182, 206));
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.div-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 20vw;
+  flex-direction: column;
 }
 
 .tabs {

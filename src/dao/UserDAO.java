@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -63,7 +64,9 @@ public class UserDAO {
 	}
 
 	public ArrayList<User> getUsers() {
-		return this.users;
+		return new ArrayList<User>(this.users.stream()
+		  .filter(u -> u.getDeletedAt() == null)
+		  .collect(Collectors.toList()));
 	}
 
 	public void setUsers(ArrayList<User> users) {
@@ -71,6 +74,15 @@ public class UserDAO {
 	}
 
 	public User getUserByUsername(String username) {
+		for (User user : this.users) {
+			if (user.getUsername().equals(username) && user.getDeletedAt() == null) {
+				return user;
+			}
+		}
+		return null;
+	}
+	
+	public User getUserByUsernameUnprotected(String username) {
 		for (User user : this.users) {
 			if (user.getUsername().equals(username)) {
 				return user;
@@ -81,7 +93,6 @@ public class UserDAO {
 	
 	public void addUser(User u) {
 		this.users.add(u);
-		UserType type = u.getUserType();
 		
 		this.write();
 	}
@@ -89,7 +100,7 @@ public class UserDAO {
 	public UserType getUserTypeByUsername(String username) {
 		UserType retVal = null;
 		for(User u : this.users) {
-			if(u.getUsername().equals(username)) {
+			if(u.getUsername().equals(username) && u.getDeletedAt() == null) {
 				retVal = u.getUserType();
 			}
 		}
@@ -97,9 +108,24 @@ public class UserDAO {
 		return retVal;
 	}
 	
-	public void removeUser(User u) {
-		if(this.users.contains(u)) {
-			u.setDeletedAt(LocalDateTime.now());
+	public UserType getUserTypeById(String id) {
+		UserType retVal = null;
+		for(User u : this.users) {
+			if(u.getId().equals(id)) {
+				retVal = u.getUserType();
+			}
+		}
+		
+		return retVal;
+	}
+	
+	public void removeUser(String id) {
+		for(User u : this.users) {
+			if(u.getId().equals(id) && u.getDeletedAt() == null) {
+				u.setDeletedAt(LocalDateTime.now());
+				this.write();
+				break;
+			}
 		}
 	}
 	
@@ -114,7 +140,7 @@ public class UserDAO {
     public int findIndexOf(User u) {
         int index = -1;
         for(int i = 0; i < this.users.size(); i++) {
-            if(this.users.get(i).getId().equals(u.getId())) {
+            if(this.users.get(i).getId().equals(u.getId()) && u.getDeletedAt() == null) {
                 index = i;
                 break;
             }

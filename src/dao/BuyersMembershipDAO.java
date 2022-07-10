@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -22,6 +23,7 @@ import beans.BuyersMembership;
 import beans.Membership;
 import beans.MembershipStatus;
 import beans.SportsObject;
+import beans.User;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalTimeAdapter;
@@ -48,7 +50,9 @@ public class BuyersMembershipDAO {
 		    Reader reader = Files.newBufferedReader(Paths.get(filePath));
 		    this.buyersMemberships = gson.fromJson(reader, new TypeToken<ArrayList<BuyersMembership>>() {}.getType());
 		    for(BuyersMembership bm : this.buyersMemberships) {
-		    	this.fillData(bm);
+		    	if(bm.getDeletedAt() == null) {
+		    		this.fillData(bm);
+		    	}
 		    }
 		    reader.close();
 
@@ -70,7 +74,9 @@ public class BuyersMembershipDAO {
 	}
 	
 	public ArrayList<BuyersMembership> getBuyersMemberships() {
-		return this.buyersMemberships;
+		return new ArrayList<BuyersMembership>(this.buyersMemberships.stream()
+				  .filter(bm -> bm.getDeletedAt() == null)
+				  .collect(Collectors.toList()));
 	}	
 	
 	public void write() {
@@ -96,7 +102,7 @@ public class BuyersMembershipDAO {
 	public BuyersMembership getMembershipById(String id) {
 		BuyersMembership retVal = null;
 		for(BuyersMembership bm : this.buyersMemberships) {
-			if(bm.getId().equals(id)) {
+			if(bm.getId().equals(id) && bm.getDeletedAt() == null) {
 				retVal = bm;
 				break;
 			}
@@ -108,7 +114,7 @@ public class BuyersMembershipDAO {
 	public BuyersMembership getMembershipByBuyerId(String id) {
 		BuyersMembership retVal = null;
 		for(BuyersMembership bm : this.buyersMemberships) {
-			if(bm.getBuyer().getId().equals(id)) {
+			if(bm.getBuyer().getId().equals(id) && bm.getDeletedAt() == null) {
 				retVal = bm;
 				break;
 			}
@@ -167,14 +173,16 @@ public class BuyersMembershipDAO {
 	
 	public void updateBuyersMembership(BuyersMembership buyersMembership) {
 		int index = this.findIndexOf(buyersMembership);
-		this.buyersMemberships.set(index, buyersMembership);
-		this.write();
+		if(index != -1) {
+			this.buyersMemberships.set(index, buyersMembership);
+			this.write();
+		}
 	}
 	
 	public int findIndexOf(BuyersMembership buyersMembership) {
 		int index = -1; 
     	for(int i = 0; i < this.buyersMemberships.size(); i++) {
-    		if(this.buyersMemberships.get(i).getBuyer().getId().equals(buyersMembership.getBuyer().getId())) {
+    		if(this.buyersMemberships.get(i).getBuyer().getId().equals(buyersMembership.getBuyer().getId()) && this.buyersMemberships.get(i).getDeletedAt() == null) {
     			index = i;
     			break;
     		}
@@ -182,5 +190,25 @@ public class BuyersMembershipDAO {
     	return index;
     }
 	
+	public void removeBuyersMembershipByBuyer(String buyerId) {
+		for(BuyersMembership bm : this.buyersMemberships) {
+			if(bm.getBuyer().getId().equals(buyerId) && bm.getDeletedAt() == null) {
+				bm.setDeletedAt(LocalDateTime.now());
+				this.write();
+				break;
+			}
+		}
+	}
+	
+	public void removeBuyersMembership(String buyersMembershipId) {
+		for(BuyersMembership bm : this.buyersMemberships) {
+			if(bm.getId().equals(buyersMembershipId) && bm.getDeletedAt() == null) {
+				bm.setDeletedAt(LocalDateTime.now());
+				this.write();
+				break;
+			}
+		}
+	}
+
 	
 }

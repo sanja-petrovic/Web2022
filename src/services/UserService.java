@@ -3,6 +3,7 @@ package services;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import beans.Administrator;
 import beans.Buyer;
@@ -25,6 +26,7 @@ public class UserService {
         u.setGender(GenderParser.parse(updatedUser.getGender()));
         u.setName(updatedUser.getName());
         u.setSurname(updatedUser.getSurname());
+        u.setDateOfBirth(LocalDate.parse(updatedUser.getDob()));
         Repository.getInstance().getUserDAO().updateUser(u);
         return u;
     }
@@ -57,36 +59,63 @@ public class UserService {
 		return t;
 	}
 	
-	public static void removeUser(User u) {
-		Repository.getInstance().getUserDAO().removeUser(u);
+	public static void removeUser(String id) {
+		Repository.getInstance().getUserDAO().removeUser(id);
+		UserType userType = Repository.getInstance().getUserDAO().getUserTypeById(id);
+		switch(userType) {
+			case BUYER:
+				buyerCascadeDelete(id);
+				break;
+			case MANAGER:
+				break;
+			case TRAINER:
+				trainerCascadeDelete(id);
+				break;
+			default:
+				break;
+		
+		}
+	}
+	
+	public static void buyerCascadeDelete(String id) {
+		BuyersMembershipService.removeByBuyer(id);
+		CommentService.removeByBuyer(id);
+		TrainingHistoryService.removeByBuyer(id);
+	}
+	
+	public static void trainerCascadeDelete(String id) {
+		TrainingHistoryService.removeByTrainer(id);
+		TrainingService.removeByTrainer(id);
 	}
 	
 	public static User getCompleteData(String username) {
 		User retVal = null;
 		
 		UserType userType = Repository.getInstance().getUserDAO().getUserTypeByUsername(username);
-		
-		switch(userType) {
-		case BUYER:
-			User u = Repository.getInstance().getBuyerDAO().getBuyerByUsername(username);
-			retVal = (Buyer) u;
-			break;
-		case MANAGER:
-			u = Repository.getInstance().getManagerDAO().getManagerByUsername(username);
-			retVal = (Manager) u;
-			break;
-		case TRAINER:
-			u = Repository.getInstance().getTrainerDAO().getTrainerByUsername(username);
-			retVal = (Trainer) u;
-			break;
-		case ADMIN:
-			u = Repository.getInstance().getAdministratorDAO().getAdminByUsername(username);
-			retVal = (Administrator) u;
-			break;
-		default:
-			break;
-		
-		
+		if(userType != null) {
+
+			switch(userType) {
+			case BUYER:
+				User u = Repository.getInstance().getBuyerDAO().getBuyerByUsername(username);
+				retVal = (Buyer) u;
+				break;
+			case MANAGER:
+				u = Repository.getInstance().getManagerDAO().getManagerByUsername(username);
+				retVal = (Manager) u;
+				break;
+			case TRAINER:
+				u = Repository.getInstance().getTrainerDAO().getTrainerByUsername(username);
+				retVal = (Trainer) u;
+				break;
+			case ADMIN:
+				u = Repository.getInstance().getAdministratorDAO().getAdminByUsername(username);
+				retVal = (Administrator) u;
+				break;
+			default:
+				break;
+			
+			
+			}
 		}
 		
 		

@@ -28,6 +28,10 @@ public class TrainingHistory {
 	@SerializedName("CanceledAt")
 	@Expose
 	private LocalDateTime canceledAt;
+	@SerializedName("DeletedAt")
+	@Expose
+	private LocalDateTime deletedAt;
+	
 	
 	public TrainingHistory() {
 		super();
@@ -95,6 +99,14 @@ public class TrainingHistory {
 
 	public void setCanceledAt(LocalDateTime canceledAt) {
 		this.canceledAt = canceledAt;
+	}
+
+	public LocalDateTime getDeletedAt() {
+		return deletedAt;
+	}
+
+	public void setDeletedAt(LocalDateTime deletedAt) {
+		this.deletedAt = deletedAt;
 	}
 
     

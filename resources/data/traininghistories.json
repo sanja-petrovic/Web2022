@@ -531,7 +531,8 @@
       },
       "Duration": 128,
       "Description": "Nudimo različite oblike rekreacije koje redovnim upražnjavanjem mogu poboljšati opšte psihofizičko stanje i pozitivno uticati na radne i životne sposobnosti. U zavisnosti od godina, pola, trenutnog stanja fizičke kondicije kao i želja, pomoći ćemo vam da napravite pravi izbor aktivnosti.",
-      "Picture": "../images/personal.jpg"
+      "Picture": "../images/personal.jpg",
+      "CheckIn": "2022-07-06T00:00:00"
     },
     "Buyer": {
       "Membership": {

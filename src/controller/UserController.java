@@ -42,6 +42,7 @@ public class UserController {
 			getUser();
 			register();
 			updateProfile();
+			deleteUser();
 		});
 	}
 
@@ -54,7 +55,7 @@ public class UserController {
 
 			User user = UserService.getCompleteData(u.getUsername());
 
-			if (user == null) {
+			if (user == null || user.getDeletedAt() != null) {
 				res.status(401);
 				res.body("Incorrect username or password. Please try again");
 				return res.body();
@@ -126,6 +127,19 @@ public class UserController {
 			user = UserService.updateUser(profile, user);
 
 			return gson.toJson(user);
+		});
+	}
+	
+	public static void deleteUser() {
+		post("/users/:id/delete", (req, res) -> {
+			res.type("application/json");
+			String payload = req.body();
+			String id = req.params(":id");
+
+			UserService.removeUser(id);
+			res.status(200);
+
+			return true;
 		});
 	}
 	

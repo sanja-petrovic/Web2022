@@ -2,6 +2,7 @@ package controller;
 
 import static spark.Spark.get;
 import static spark.Spark.path;
+import static spark.Spark.post;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -11,6 +12,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import dao.Repository;
+import services.MembershipService;
+import services.UserService;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalTimeAdapter;
@@ -23,6 +26,7 @@ public class MembershipController {
 	public void init() {
 		path(basePath, () -> {
 			getMemberships();
+			removeMembership();
 		});
 	}
 	
@@ -31,6 +35,19 @@ public class MembershipController {
 			res.type("application/json");
 			res.status(200);
 			return gson.toJson(Repository.getInstance().getMembershipDAO().getMemberships());
+		});
+	}
+	
+	public static void removeMembership() {
+		post("/memberships/:id/delete", (req, res) -> {
+			res.type("application/json");
+			String payload = req.body();
+			String id = req.params(":id");
+
+			MembershipService.removeMembership(id);
+			res.status(200);
+
+			return true;
 		});
 	}
 

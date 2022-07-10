@@ -40,7 +40,9 @@ public class ContentsDAO {
 		    Reader reader = Files.newBufferedReader(Paths.get(filePath));
 		    this.contents = gson.fromJson(reader, new TypeToken<ArrayList<Content>>() {}.getType());
 		    for(Content c : this.contents) {
-		    	this.fillData(c);
+		    	if(c.getDeletedAt() == null) {
+		    		this.fillData(c);
+		    	}
 		    }
 		    reader.close();
 
@@ -65,7 +67,7 @@ public class ContentsDAO {
 	public List<Content> getContentsByType(String type) {
 		List<Content> searchedContents = new ArrayList<Content>();
 		for (Content content : this.contents) {
-			if(content.getType().equals(type)) {
+			if(content.getDeletedAt() == null && content.getType().equals(type)) {
 				searchedContents.add(content);
 			}
 		}
@@ -76,7 +78,7 @@ public class ContentsDAO {
 		List<Content> searchedContents = new ArrayList<Content>();
 		for (Content content : this.contents) {
 			
-			if(content.getSportsObject().getName().equals(name)) {
+			if(content.getDeletedAt() == null && content.getSportsObject().getName().equals(name)) {
 				
 				searchedContents.add(content);
 			}
@@ -98,7 +100,7 @@ public class ContentsDAO {
 	public SportsObject getSportsObjectByContentId(String id) {
 		SportsObject retVal = null;
 		for(Content content : this.contents) {
-			if(content.getId().equals(id)) {
+			if(content.getDeletedAt() == null && content.getId().equals(id)) {
 				retVal = content.getSportsObject();
 				break;
 			}
@@ -109,7 +111,7 @@ public class ContentsDAO {
 	public Content getContentById(String id) {
 		Content retVal = null;
 		for(Content content : this.contents) {
-			if(content.getId().equals(id)) {
+			if(content.getDeletedAt() == null && content.getId().equals(id)) {
 				retVal = content;
 				break;
 			}
@@ -147,7 +149,7 @@ public class ContentsDAO {
 	public int findIndexOf(Content content) {
         int index = -1;
         for(int i = 0; i < this.contents.size(); i++) {
-            if(this.contents.get(i).getId().equals(content.getId())) {
+            if(this.contents.get(i).getDeletedAt() == null && this.contents.get(i).getId().equals(content.getId())) {
                 index = i;
                 break;
             }
@@ -155,5 +157,24 @@ public class ContentsDAO {
 
         return index;
     } 
+	
+	public void removeContent(String id) {
+		for(Content c : this.getContents()) {
+			if(c.getId().equals(id)) {
+				c.setDeletedAt(LocalDateTime.now());
+				this.write();
+				break;
+			}
+		}
+	}
+	
+	public void removeContentBySportsObject(String id) {
+		for(Content c : this.getContents()) {
+			if(c.getSportsObject().getName().equals(id)) {
+				c.setDeletedAt(LocalDateTime.now());
+			}
+		}
+		this.write();
+	}
 	
 }

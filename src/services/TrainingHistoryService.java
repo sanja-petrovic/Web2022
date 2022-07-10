@@ -51,6 +51,13 @@ public class TrainingHistoryService {
 		return trainingHistory;
 	}
 	
+	public static void removeByBuyer(String id) {
+		Repository.getInstance().getTrainingHistoryDAO().removeByBuyer(id);
+	}
+	public static void removeByTrainer(String id) {
+		Repository.getInstance().getTrainingHistoryDAO().removeByTrainer(id);
+	}
+	
 	public static TrainingHistory addScheduledTraining(ScheduledTrainingDTO scheduledTrainingDTO) {
 		Buyer buyer = Repository.getInstance().getBuyerDAO().getBuyerByUsername(scheduledTrainingDTO.getBuyerUsername());
 		Training training = Repository.getInstance().getTrainingDAO().getTrainingById(scheduledTrainingDTO.getContentId());

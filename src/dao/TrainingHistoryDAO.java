@@ -51,11 +51,13 @@ public class TrainingHistoryDAO {
 	
 	public void fillData() {
 		for(TrainingHistory th : this.trainingHistories) {
-			th.setBuyer(Repository.getInstance().getBuyerDAO().getBuyerByUsername(th.getBuyer().getUsername()));
-	        /*if(th.getTrainer() != null) {
-	            th.setTrainer(Repository.getInstance().getTrainerDAO().getTrainerByUsername(th.getTrainer().getUsername()));
-	        }*/
-	        th.setTraining(Repository.getInstance().getTrainingDAO().getTrainingById(th.getTraining().getId()));
+			if(th.getDeletedAt() == null) {
+				th.setBuyer(Repository.getInstance().getBuyerDAO().getBuyerByUsername(th.getBuyer().getUsername()));
+		        /*if(th.getTrainer() != null) {
+		            th.setTrainer(Repository.getInstance().getTrainerDAO().getTrainerByUsername(th.getTrainer().getUsername()));
+		        }*/
+		        th.setTraining(Repository.getInstance().getTrainingDAO().getTrainingById(th.getTraining().getId()));
+			}
 	    }
 		
 	}
@@ -84,7 +86,7 @@ public class TrainingHistoryDAO {
     public ArrayList<TrainingHistory> getTrainingHistoryForBuyer(String username) {
         ArrayList<TrainingHistory> trainingHistories = new ArrayList<>();
         for(TrainingHistory th : this.trainingHistories) {
-            if(th.getBuyer().getUsername().equals(username)) {
+            if(th.getDeletedAt() == null && th.getBuyer().getUsername().equals(username)) {
                 trainingHistories.add(th);
             }
         }
@@ -95,7 +97,7 @@ public class TrainingHistoryDAO {
     public ArrayList<TrainingHistory> getTrainingHistoryForTrainer(String id) {
         ArrayList<TrainingHistory> trainingHistories = new ArrayList<>();
         for(TrainingHistory th : this.trainingHistories) {
-            if(th.getTrainer().getId().equals(id)) {
+            if(th.getDeletedAt() == null && th.getTrainer().getId().equals(id)) {
                 trainingHistories.add(th);
             }
         }
@@ -106,7 +108,7 @@ public class TrainingHistoryDAO {
     public ArrayList<TrainingHistory> getTrainingHistoryForSportsObject(String sportsObjectName) {
         ArrayList<TrainingHistory> trainingHistories = new ArrayList<>();
         for(TrainingHistory th : this.trainingHistories) {
-            if(th.getTraining().getSportsObject().getName().equals(sportsObjectName)) {
+            if(th.getDeletedAt() == null && th.getTraining().getSportsObject().getName().equals(sportsObjectName)) {
                 trainingHistories.add(th);
             }
         }
@@ -117,7 +119,7 @@ public class TrainingHistoryDAO {
     public TrainingHistory getTrainingHistoryById(String id) {
     	TrainingHistory retVal = null;
     	for(TrainingHistory th: this.trainingHistories) {
-    		if(th.getId().equals(id)) {
+    		if(th.getDeletedAt() == null && th.getId().equals(id)) {
     			retVal = th;
     			break;
     		}
@@ -127,15 +129,17 @@ public class TrainingHistoryDAO {
     
     public void updateTrainingHistory(TrainingHistory trainingHistory) {
     	int index = this.findIndexOf(trainingHistory);
-    	this.trainingHistories.set(index, trainingHistory);
-    	this.write();
+    	if(index != -1) {
+        	this.trainingHistories.set(index, trainingHistory);
+        	this.write();
+    	}
     }
     
     public int findIndexOf(TrainingHistory trainingHistory) {
     	int index = -1; 
     	
     	for(int i = 0; i < this.trainingHistories.size(); i++) {
-    		if(this.trainingHistories.get(i).getId().equals(trainingHistory.getId())) {
+    		if(this.trainingHistories.get(i).getDeletedAt() == null && this.trainingHistories.get(i).getId().equals(trainingHistory.getId())) {
     			index = i;
     			break;
     		}
@@ -143,5 +147,41 @@ public class TrainingHistoryDAO {
     	
     	return index;
     }
+    
+    public void removeByBuyer(String id) {
+    	for(TrainingHistory th : this.trainingHistories) {
+    		if(th.getDeletedAt() == null && th.getBuyer().getId().equals(id)) {
+    			th.setDeletedAt(LocalDateTime.now());
+    		}
+    	}
+		this.write();
+    }
+    
+    public void removeByTrainer(String id) {
+    	for(TrainingHistory th : this.trainingHistories) {
+    		if(th.getDeletedAt() == null && th.getTrainer().getId().equals(id)) {
+    			th.setDeletedAt(LocalDateTime.now());
+    		}
+    	}
+		this.write();
+    }
+    
+    public void removeByTraining(String id) {
+    	for(TrainingHistory th : this.trainingHistories) {
+    		if(th.getDeletedAt() == null && th.getTraining().getId().equals(id)) {
+    			th.setDeletedAt(LocalDateTime.now());
+    		}
+    	}
+		this.write();
+    }
 	
+    public void removeBySportsObject(String id) {
+    	for(TrainingHistory th : this.trainingHistories) {
+    		if(th.getDeletedAt() == null && th.getTraining().getSportsObject().getName().equals(id)) {
+    			th.setDeletedAt(LocalDateTime.now());
+    		}
+    	}
+		this.write();
+    	
+    }
 }

@@ -16,15 +16,15 @@
     "Name": "Ivana",
     "Surname": "Ivanović",
     "Gender": "Ženski",
-    "DateOfBirth": "1999-06-10",
+    "DateOfBirth": "1999-06-08",
     "UserType": "Kupac"
   },
   {
     "Id": "a3bd0158-1f31-42dc-94ac-e21adbf100ad",
     "Username": "marko",
     "Password": "1000:8be87e24efb117a19aa732e1db48d2a7:8751bf6ada02cede67026f64682dbfc420d81cf9b7a4252d96f0d4cf9e42c6c560c181fdc310871001b79e6bd3d98ec77fd1d6fcfe63e9bd68a839efdb0912ae",
-    "Name": "Marko2",
-    "Surname": "Marković2",
+    "Name": "Marko",
+    "Surname": "Marković",
     "Gender": "Muški",
     "DateOfBirth": "1999-05-31",
     "UserType": "Menadžer"

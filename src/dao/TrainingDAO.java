@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,7 +51,9 @@ public class TrainingDAO {
 		    Reader reader = Files.newBufferedReader(Paths.get("resources/data/trainings.json"));
 		    this.trainings = gson.fromJson(reader, new TypeToken<ArrayList<Training>>() {}.getType());
 		    for(Training t : this.trainings) {
-		    	this.fillData(t);
+		    	if(t.getDeletedAt() == null) {
+		    		this.fillData(t);
+		    	}
 		    }
 		    reader.close();
 
@@ -84,7 +87,9 @@ public class TrainingDAO {
 	}
 	
 	public ArrayList<Training> getTrainings() {
-		return this.trainings;
+		return new ArrayList<Training>(this.trainings.stream()
+				  .filter(u -> u.getDeletedAt() == null)
+				  .collect(Collectors.toList()));
 	}
 	
 	public void addTraining(Training training) {
@@ -110,7 +115,7 @@ public class TrainingDAO {
 	public ArrayList<Training> getTrainingsByTrainer(String id) {
 		ArrayList<Training> trainings = new ArrayList<>();
 		for(Training t : this.trainings) {
-			if(t.getTrainer().getId().equals(id)) {
+			if(t.getDeletedAt() == null && t.getTrainer().getId().equals(id)) {
 				trainings.add(t);
 			}
 		}
@@ -123,7 +128,7 @@ public class TrainingDAO {
 		Training retVal = null;
 		
 		for(Training t : this.trainings) {
-			if(t.getId().equals(id)) {
+			if(t.getDeletedAt() == null && t.getId().equals(id)) {
 				retVal = t;
 				break;
 			}
@@ -136,7 +141,7 @@ public class TrainingDAO {
 		Trainer retVal = null;
 		
 		for(Training t : this.trainings) {
-			if(t.getId().equals(id)) {
+			if(t.getDeletedAt() == null && t.getId().equals(id)) {
 				User u = Repository.getInstance().getTrainerDAO().getTrainerByUsername(t.getTrainer().getUsername());
 				retVal = (Trainer) u;
 				retVal.setTrainingHistory(Repository.getInstance().getTrainingDAO().getTrainingsByTrainer(u.getId()));
@@ -151,7 +156,7 @@ public class TrainingDAO {
 		Double retVal = 0.0;
 		
 		for(Training t : this.trainings) {
-			if(t.getId().equals(id)) {
+			if(t.getDeletedAt() == null && t.getId().equals(id)) {
 				retVal = t.getPrice();
 				break;
 			}
@@ -163,7 +168,7 @@ public class TrainingDAO {
 	public TrainingType getTypeByTrainingId(String id) {
 		TrainingType retVal = null;	
 		for(Training t : this.trainings) {
-			if(t.getId().equals(id)) {
+			if(t.getDeletedAt() == null && t.getId().equals(id)) {
 				retVal = t.getTrainingType();
 				break;
 			}
@@ -181,12 +186,39 @@ public class TrainingDAO {
 	public int findIndexOf(Training training) {
         int index = -1;
         for(int i = 0; i < this.trainings.size(); i++) {
-            if(this.trainings.get(i).getId().equals(training.getId())) {
+            if(this.trainings.get(i).getDeletedAt() == null && this.trainings.get(i).getId().equals(training.getId())) {
                 index = i;
                 break;
             }
         }
         return index;
     } 
+	public int findIndexOf(String id) {
+        int index = -1;
+        for(int i = 0; i < this.trainings.size(); i++) {
+            if(this.trainings.get(i).getDeletedAt() == null && this.trainings.get(i).getId().equals(id)) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    } 
+	
+	public void removeByTrainer(String id) {
+		for(Training t : this.trainings) {
+			if(t.getDeletedAt() == null && t.getTrainer().getId().equals(id)) {
+				t.setDeletedAt(LocalDateTime.now());
+			}
+		}
+		this.write();
+	}
+	
+	public void removeTraining(String id) {
+		int index = this.findIndexOf(id);
+		if(index != -1) {
+			this.trainings.get(index).setDeletedAt(LocalDateTime.now());
+			this.write();
+		}
+	}
 }
 	

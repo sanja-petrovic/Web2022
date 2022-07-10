@@ -32,4 +32,8 @@ public class CommentService {
 		return c;
 	}
 	
+	public static void removeByBuyer(String id) {
+		Repository.getInstance().getCommentDAO().removeCommentsByUser(id);
+	}
+	
 }

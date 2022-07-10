@@ -11344,6 +11344,23 @@ textarea {
   background: #708cff;
 }
 
+.delete-button {
+  color: #ff7b8d;
+  background-color: transparent;
+  font-weight: 700;
+  filter: drop-shadow(0 0 0.75rem rgb(255, 182, 206));
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.div-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 20vw;
+  flex-direction: column;
+}
+
 * {
   box-sizing: border-box;
 }

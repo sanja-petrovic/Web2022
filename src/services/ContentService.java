@@ -26,5 +26,9 @@ public class ContentService {
 		return content;
 		
 	}
+	
+	public static void removeContent(String id) {
+		Repository.getInstance().getContentsDAO().removeContent(id);
+	}
 
 }

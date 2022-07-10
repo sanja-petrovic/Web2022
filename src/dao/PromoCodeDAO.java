@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,6 +20,7 @@ import com.google.gson.reflect.TypeToken;
 import beans.BuyersMembership;
 import beans.Content;
 import beans.PromoCode;
+import beans.Trainer;
 import util.adapters.LocalDateAdapter;
 import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalTimeAdapter;
@@ -49,13 +51,15 @@ public class PromoCodeDAO {
 	}
 	 
 	public ArrayList<PromoCode> getPromoCodes() {
-		return this.promocodes;
+		return new ArrayList<PromoCode>(this.promocodes.stream()
+				  .filter(u -> u.getDeletedAt() == null)
+				  .collect(Collectors.toList()));
 	}
 	
 	public PromoCode getPromoCodeById(String id) {
 		PromoCode retVal = null;
 		for(PromoCode promoCode : this.promocodes) {
-			if(promoCode.getId().equals(id)) {
+			if(promoCode.getDeletedAt() == null && promoCode.getId().equals(id)) {
 				retVal = promoCode;
 				break;
 			}
@@ -84,14 +88,16 @@ public class PromoCodeDAO {
 	}
 	public void updatePromoCode(PromoCode promoCode) {
 		int index = this.findIndexOf(promoCode);
-		this.promocodes.set(index, promoCode);
-		this.write();
+		if(index != -1) {
+			this.promocodes.set(index, promoCode);
+			this.write();
+		}
 	}
 	
 	public int findIndexOf(PromoCode promoCode) {
 		int index = -1; 
     	for(int i = 0; i < this.promocodes.size(); i++) {
-    		if(this.promocodes.get(i).getId().equals(promoCode.getId())) {
+    		if(this.promocodes.get(i).getDeletedAt() == null && this.promocodes.get(i).getId().equals(promoCode.getId())) {
     			index = i;
     			break;
     		}
@@ -99,4 +105,11 @@ public class PromoCodeDAO {
     	return index;
     }
 	
+	public void removePromoCode(String id) {
+		for(PromoCode pc : this.getPromoCodes()) {
+			if(pc.getId().equals(id)) {
+				pc.setDeletedAt(LocalDateTime.now());
+			}
+		}
+	}
 }
