@@ -137,17 +137,15 @@ public class BuyerDAO {
 	}
 	
 	public ArrayList<Buyer> getBuyersByVisitedSportsObject(String name) {
-	//	SportsObject sportsObject = Repository.getInstance().getSportsObjectDAO().getSportsObjectByName(name);
 		ArrayList<Buyer> searchedBuyers = new ArrayList<Buyer>();
 		for(Buyer b : this.buyers) {
-			for(int i = 0; i < b.getVisitedObjects().size(); i++)
-			{
-				if(b.getVisitedObjects().get(i).getName().equals(name)) {
+			for(SportsObject so : b.getVisitedObjects()) {
+				if(so.getName() != null && so.getName().equals(name)) {
 					searchedBuyers.add(b);
 				}
 			}
-			
 		}
+		
 		return searchedBuyers;
 	}
 	

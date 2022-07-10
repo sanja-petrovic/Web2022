@@ -19,6 +19,7 @@ import controller.TrainerController;
 import controller.TrainingController;
 import controller.TrainingHistoryController;
 import controller.UserController;
+import dao.BuyerDAO;
 import dao.Repository;
 
 
@@ -41,6 +42,9 @@ public class Main {
 		MembershipController membershipController = new MembershipController();
 		BuyersMembershipController buyersMembershipController = new BuyersMembershipController();
 		PromoCodeController promoCodeController = new PromoCodeController();
+		
+		BuyerDAO buyerDAO = new BuyerDAO();
+		buyerDAO.getBuyersByVisitedSportsObject("No Limit Gym");
 		
 		userController.init();
 		sportsObjectController.init();
