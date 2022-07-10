@@ -39,7 +39,7 @@ Vue.component('sports-object-page', {
                 <div class="sports-object-header">
 					<img class="sports-object-logo" :src="sportsObject.logoIcon">
 					<div class="sports-object-info">
-						<h1>{{sportsObject.name}}</h1>
+						<div><h1>{{sportsObject.name}}</h1> <i v-if="user.UserType === 'Admin'" v-on:click="deleteSportsObject" class="fa-solid fa-circle-minus delete-button"></i></div>
 						<p class="sports-object-subtitle">{{sportsObject.type}}
 							<span class="badge rounded-pill badge-open" v-if="openCheck(sportsObject.status)">Otvoreno</span>
 							<span class="badge rounded-pill badge-closed" v-if="!openCheck(sportsObject.status)">Zatvoreno</span>
@@ -627,6 +627,16 @@ Vue.component('sports-object-page', {
 			}, 50);
 
 
+		},
+		deleteSportsObject: function () {
+			axios.post(`/rest/sportsobjects/${this.sportsObject.name}/delete`)
+				.then(response => {
+					console.log(response.data);
+					this.$router.replace("/");
+				})
+				.catch(error => {
+					console.log(error);
+				})
 		}
     }
     

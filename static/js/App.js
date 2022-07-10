@@ -16,6 +16,11 @@ const HomePage = { template: '<home-page></home-page>' }
 const Memberships = { template: '<memberships></memberships>' }
 const MembershipBuyer = { template: '<membership-buyer></membership-buyer>'}
 const PromoCode = { template: '<promocode></promocode>' }
+const MembershipsAdmin = { template: '<memberships-admin></memberships-admin>' }
+const TrainingsAdmin = { template: '<trainings-admin></trainings-admin>' }
+const ContentsAdmin = { template: '<contents-admin></contents-admin>'}
+const UnauthorizedAccess = { template: '<unauthorized-access></unauthorized-access>'}
+
 
 const router = new VueRouter({
     mode: 'hash',
@@ -35,7 +40,10 @@ const router = new VueRouter({
         { path: '/korisnici', name: 'users', component: UserList },
         { path: '/clanarine', component: Memberships },
         { path: '/clanarina-kupac', component: MembershipBuyer },
-        { path: '/dodaj-promokod', component: PromoCode }
+        { path: '/dodaj-promokod', component: PromoCode },
+        { path: '/obrisi-clanarinu', component: MembershipsAdmin },
+        { path: '/obrisi-trening', component: TrainingsAdmin },
+        { path: '/obrisi-sadrzaj', component: ContentsAdmin }
         
       
     ]

@@ -181,7 +181,7 @@ Vue.component('users', {
                                            <span class="text-muted">{{ user.UserType }}</span><br>
                                        </td>
                                        <td>
-                                           <i v-if="user.UserType !== 'Admin'" v-on:click="deleteUser(user)" class="fa-solid fa-circle-minus delete-button"></i><br>
+                                           <i v-on:click="deleteUser(user)" class="fa-solid fa-circle-minus delete-button"></i><br>
                                        </td>
                                    </tr>
                                    </tbody>

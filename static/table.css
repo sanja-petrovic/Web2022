@@ -11353,6 +11353,14 @@ textarea {
   cursor: pointer;
 }
 
+.div-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 20vw;
+  flex-direction: column;
+}
+
 * {
   box-sizing: border-box;
 }
