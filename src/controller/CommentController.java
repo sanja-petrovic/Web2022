@@ -76,8 +76,9 @@ public class CommentController {
 			res.type("application/json");
 			String buyer = req.params(":b");
 			String sportsObject = req.params(":s");
+			sportsObject = sportsObject.replace("%20", " ");
 			
-			if(BuyerService.checkIfFirstVisit(buyer, sportsObject)) {
+			if(BuyerService.checkIfFirstVisit(buyer, sportsObject) && !CommentService.hasCommentedBefore(buyer, sportsObject)) {
 				res.status(200);
 				res.body("Can make comment");
 			} else {
