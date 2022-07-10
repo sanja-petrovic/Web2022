@@ -7,6 +7,7 @@ import static spark.Spark.post;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -30,6 +31,7 @@ public class TrainerController {
 			getTrainers();
 			createTrainer();
 			getTrainer();
+			getTrainersForSportsObject();
 		});
 	}
 	
@@ -45,6 +47,17 @@ public class TrainerController {
 			String id = req.params(":id");
 			Trainer trainer = Repository.getInstance().getTrainerDAO().getTrainerByUsername(id);
 			return gson.toJson(trainer);
+		});
+	}
+	
+	
+	public static void getTrainersForSportsObject() {
+		get("/getTrainersForObject", (req, res) -> {  
+			res.type("application/json");
+			String name = req.queryParams("name");
+			res.status(200);
+			List<Trainer> trainers = Repository.getInstance().getTrainerDAO().getTrainersForSportsObject(name);
+			return gson.toJson(trainers);
 		});
 	}
 	

@@ -7,10 +7,13 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.HashMap;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import beans.Buyer;
+import beans.Trainer;
 import beans.Training;
 import beans.User;
 import dao.Repository;
@@ -27,7 +30,7 @@ public class BuyerController {
 		path(basePath, () -> {
 			getBuyers();
 			getBuyer();
-		//	getVisitsByBuyer();
+			getBuyersByVisitedSportsObject();
 		});
 	}
 	
@@ -45,13 +48,14 @@ public class BuyerController {
 			return gson.toJson(user);
 		});
 	}
-	/*
-	public static void getVisitsByBuyer() {
-		get("/visits/:id", (req, res) -> {
+	
+	public static void getBuyersByVisitedSportsObject() {
+		get("/getBuyersByVisitedObject", (req, res) -> {  
 			res.type("application/json");
-			String id = req.params(":id");
-			HashMap<Training, LocalDate> visits = Repository.getInstance().getBuyerDAO().getBuyerByUsername(id).getVisits();
-			return gson.toJson(visits);
+			String name = req.queryParams("name");
+			res.status(200);
+			List<Buyer> buyers = Repository.getInstance().getBuyerDAO().getBuyersByVisitedSportsObject(name);
+			return gson.toJson(buyers);
 		});
-	}*/
+	}
 }

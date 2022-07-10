@@ -11,6 +11,7 @@ const CreateManager = { template: '<create-manager></create-manager>' }
 const CreateContent = { template: '<create-content></create-content>'}
 const ManagerContents = { template: '<manager-contents></manager-contents>'}
 const ManagerTrainings = { template: '<manager-trainings></manager-trainings>'}
+const ManagerSportsObject = { template: '<manager-sports-object></manager-sports-object>'}
 const TrainerTrainings =  { template: '<trainer-trainings></trainer-trainings>'}
 const HomePage = { template: '<home-page></home-page>' }
 const Memberships = { template: '<memberships></memberships>' }
@@ -37,6 +38,7 @@ const router = new VueRouter({
         { path: '/dodaj-sadrzaj', component: CreateContent },
         { path: '/sadrzaji', component: ManagerContents },
         { path: '/treninzi-menadzer', component: ManagerTrainings },
+        { path: '/menadzer-objekat', component: ManagerSportsObject },
         { path: '/treninzi-trener', component: TrainerTrainings },
         { path: '/dodaj-menadzera', component: CreateManager },
         { path: '/korisnici', name: 'users', component: UserList },

@@ -17,6 +17,7 @@ import com.google.gson.reflect.TypeToken;
 
 import beans.Content;
 import beans.SportsObject;
+import beans.Trainer;
 import util.adapters.LocalDateTimeAdapter;
 
 public class ContentsDAO {

@@ -47,6 +47,7 @@ Vue.component('navBarLoggedIn', {
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><router-link to="/profil" class="dropdown-item">Profil</router-link></li>
+                            <li><router-link class="dropdown-item" to="/menadzer-objekat" v-if="this.userType === 'Menadžer'">Sportski objekat</router-link></li>
                             <li><a class="dropdown-item" href="#" v-on:click="logOut">Odjavi se</a></li>
                         </ul>
                     </li>

@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
@@ -15,6 +16,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 
+import beans.Content;
 import beans.Trainer;
 import beans.Training;
 import beans.User;
@@ -113,6 +115,19 @@ public class TrainerDAO {
 		}
 		
 		return retVal;
+	}
+	
+	public List<Trainer> getTrainersForSportsObject(String name) {
+		List<Trainer> searchedTrainers = new ArrayList<Trainer>();
+		Trainer trainer;
+		List<Training> trainings = Repository.getInstance().getTrainingDAO().getTrainings();
+		for (Training training : trainings) {
+			if(training.getSportsObject().getName().equals(name)) {
+				trainer = getTrainerByUsername(training.getTrainer().getUsername());
+				searchedTrainers.add(trainer);
+			}
+		}
+		return searchedTrainers;
 	}
 	
 	public void addTrainer(Trainer t) {

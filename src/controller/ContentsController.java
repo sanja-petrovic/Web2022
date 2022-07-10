@@ -19,11 +19,11 @@ import com.google.gson.GsonBuilder;
 
 import beans.Content;
 import beans.SportsObject;
+import beans.Trainer;
 import dao.Repository;
 import dto.ContentDTO;
 import dto.EditContentDTO;
 import services.ContentService;
-import services.TrainingService;
 import util.adapters.LocalDateTimeAdapter;
 import util.adapters.LocalTimeAdapter;
 
