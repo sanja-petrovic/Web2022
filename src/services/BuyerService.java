@@ -14,7 +14,7 @@ public class BuyerService {
 		Buyer buyer = Repository.getInstance().getBuyerDAO().getBuyerByUsername(b);
 		ArrayList<TrainingHistory> trainingHistory = Repository.getInstance().getTrainingHistoryDAO().getTrainingHistoryForBuyer(b);
 		for(TrainingHistory th : trainingHistory) {
-			if(th.getTraining().getSportsObject().getName().equals(s)) {
+			if(th.getCanceledAt() == null && th.getTraining().getSportsObject().getName().equals(s)) {
 				count++;
 				if(count > 1) {
 					retVal = false;

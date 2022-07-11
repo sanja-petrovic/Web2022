@@ -83,25 +83,27 @@ Vue.component('create-trainer', {
             event.preventDefault();
             this.passwordMatchCheck();
             let oopsie = this.errorExists;
-            await axios.post('/rest/create-trainer', {
-                username: this.username,
-                password: this.passwordSecond,
-                name: this.name,
-                surname: this.surname,
-                gender: this.gender,
-                dob: this.dob
-            })
-                .then(function response(resp) {
-                    oopsie = false;
+            if(this.username != null && this.passwordFirst !== null && this.passwordSecond !== null && this.name !== null && this.surname !== null && this.gender !== null && this.dob !== null) {
+                await axios.post('/rest/create-trainer', {
+                    username: this.username,
+                    password: this.passwordSecond,
+                    name: this.name,
+                    surname: this.surname,
+                    gender: this.gender,
+                    dob: this.dob
                 })
-                .catch(function error(err) {
-                    oopsie = true;
-                });
+                    .then(function response(resp) {
+                        oopsie = false;
+                    })
+                    .catch(function error(err) {
+                        oopsie = true;
+                    });
 
-            if(oopsie) {
-                this.$router.replace("/create-trainer");
-            } else {
-                this.$router.replace("/");
+                if(oopsie) {
+                    this.$router.replace("/dodaj-trenera");
+                } else {
+                    this.$router.replace("/");
+                }
             }
 
         },

@@ -141,15 +141,17 @@ Vue.component('memberships', {
                 	this.errorExists = true;
                 	this.validCode = false;
 				}
-				if(promoCode.MaximumUses > 0) {
-                	this.errorExists = false;
-                	this.validCode = true;
-                	this.promoCodeId = promoCode.Id;
-                	this.calculateNewPrice(this.price, promoCode.Discount);       	
-                } else {
-					this.errorMessage ="Promo kod je iskorišćen maksimalan broj puta!";
-                	this.errorExists = true;
-                	this.validCode = false;
+				if(this.validCode) {
+					if(promoCode.MaximumUses > 0) {
+						this.errorExists = false;
+						this.validCode = true;
+						this.promoCodeId = promoCode.Id;
+						this.calculateNewPrice(this.price, promoCode.Discount);
+					} else {
+						this.errorMessage ="Promo kod je iskorišćen maksimalan broj puta!";
+						this.errorExists = true;
+						this.validCode = false;
+					}
 				}
 		
             } else {

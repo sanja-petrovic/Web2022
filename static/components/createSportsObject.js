@@ -191,42 +191,46 @@ Vue.component('create-sports-object', {
             console.log(this.location);
         },
         createSportsObject: function () {
-            return new Promise((resolve, reject) => {
-                this.doGeocoding().then(response => {
-                    let oopsie = false;
-                    var picturePath = new FileReader();
-                    var file = this.$refs.myFile.files[0];
-                    var fileName = this.$refs.myFile.files[0].name;
-                    picturePath.readAsDataURL(file);
-                    picturePath.onloadend = () => {
-                        axios.post('/rest/createSportsObject', {
-                            name: this.title,
-                            manager: this.manager.Id,
-                            type: this.type,
-                            businessHoursStart: this.businessHours.start,
-                            businessHoursEnd: this.businessHours.end,
-                            street: this.location.address.street,
-                            number: this.location.address.number,
-                            city: this.location.address.city,
-                            country: "Srbija",
-                            postCode: this.location.address.postCode,
-                            latitude: this.location.latitude,
-                            longitude: this.location.longitude,
-                            imgData: picturePath.result,
-                            fileName: fileName,
-                        })
-                            .then(resp => {
-                                this.$router.replace("/");
-                                oopsie = false;
-                            }).catch(err => {
-                            alert(err.response.data);
-                            this.$router.replace("/dodaj-objekat");
-                            oopsie = true;
-                        });
-                    }
-                    this.errorExists = oopsie;
-                });
-            })
+            if(this.name !== null && this.manager !== null && this.type !== null && this.businessHours.start !== null && this.businessHours.end !== null && this.location.address.street
+            && this.location.address.city !== null && this.location.address.number !== null && this.location.address.postCode !== null && this.location.address.country !== null) {
+
+                return new Promise((resolve, reject) => {
+                    this.doGeocoding().then(response => {
+                        let oopsie = false;
+                        var picturePath = new FileReader();
+                        var file = this.$refs.myFile.files[0];
+                        var fileName = this.$refs.myFile.files[0].name;
+                        picturePath.readAsDataURL(file);
+                        picturePath.onloadend = () => {
+                            axios.post('/rest/createSportsObject', {
+                                name: this.title,
+                                manager: this.manager.Id,
+                                type: this.type,
+                                businessHoursStart: this.businessHours.start,
+                                businessHoursEnd: this.businessHours.end,
+                                street: this.location.address.street,
+                                number: this.location.address.number,
+                                city: this.location.address.city,
+                                country: "Srbija",
+                                postCode: this.location.address.postCode,
+                                latitude: this.location.latitude,
+                                longitude: this.location.longitude,
+                                imgData: picturePath.result,
+                                fileName: fileName,
+                            })
+                                .then(resp => {
+                                    this.$router.replace("/");
+                                    oopsie = false;
+                                }).catch(err => {
+                                alert(err.response.data);
+                                this.$router.replace("/dodaj-objekat");
+                                oopsie = true;
+                            });
+                        }
+                        this.errorExists = oopsie;
+                    });
+                })
+            }
 
         },
 

@@ -372,6 +372,7 @@ Vue.component('trainer-trainings', {
                 .then(response => {
                     if (response.data != null) {
                         this.loggedIn = true;
+                        this.user = response.data;
                         let id = response.data.Id;
                         this.getTrainingsForTrainer(id);
                     }
