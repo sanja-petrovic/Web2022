@@ -191,12 +191,63 @@ Vue.component('create-sports-object', {
             console.log(this.location);
         },
         createSportsObject: function () {
-            if(this.name !== null && this.manager !== null && this.type !== null && this.businessHours.start !== null && this.businessHours.end !== null && this.location.address.street
-            && this.location.address.city !== null && this.location.address.number !== null && this.location.address.postCode !== null && this.location.address.country !== null) {
+            if(this.title !==  ""  && this.manager !==  "Menadžer"  && this.type !==  ""  && this.businessHours.start !== null && this.businessHours.end !== null && this.location.address.street !==  ""
+                && this.location.address.city !==  ""  && this.location.address.number !==  ""  && this.location.address.postCode !==  "" ) {
 
                 return new Promise((resolve, reject) => {
                     this.doGeocoding().then(response => {
                         let oopsie = false;
+                        var picturePath = new FileReader();
+                        var file = this.$refs.myFile.files[0];
+                        if(file === undefined) {
+                            alert("No file chosen!");
+                            oopsie = true;
+                        } else {
+                            var fileName = this.$refs.myFile.files[0].name;
+                            picturePath.readAsDataURL(file);
+                            picturePath.onloadend = () => {
+                                axios.post('/rest/createSportsObject', {
+                                    name: this.title,
+                                    manager: this.manager.Id,
+                                    type: this.type,
+                                    businessHoursStart: this.businessHours.start,
+                                    businessHoursEnd: this.businessHours.end,
+                                    street: this.location.address.street,
+                                    number: this.location.address.number,
+                                    city: this.location.address.city,
+                                    country: "Srbija",
+                                    postCode: this.location.address.postCode,
+                                    latitude: this.location.latitude,
+                                    longitude: this.location.longitude,
+                                    imgData: picturePath.result,
+                                    fileName: fileName,
+                                })
+                                    .then(resp => {
+                                        this.$router.replace("/");
+                                        oopsie = false;
+                                    }).catch(err => {
+                                    alert(err.response.data);
+                                    this.$router.replace("/dodaj-objekat");
+                                    oopsie = true;
+                                });
+                            }
+                        }
+
+                        this.errorExists = oopsie;
+                    });
+                })
+            }
+
+        },
+
+        createObjectAndManager: function () {
+            if(this.title !==  ""  && this.manager !==  "Menadžer"  && this.type !==  ""  && this.businessHours.start !== null && this.businessHours.end !== null && this.location.address.street !==  ""
+                && this.location.address.city !==  ""  && this.location.address.number !==  ""  && this.location.address.postCode !==  "" ) {
+                return new Promise((resolve, reject) => {
+                    this.doGeocoding().then
+                    this.registerManager().then(response => {
+                        let oopsie = false;
+                        event.preventDefault();
                         var picturePath = new FileReader();
                         var file = this.$refs.myFile.files[0];
                         var fileName = this.$refs.myFile.files[0].name;
@@ -230,70 +281,35 @@ Vue.component('create-sports-object', {
                         this.errorExists = oopsie;
                     });
                 })
+            } else {
+                alert("Invalid input!");
             }
 
-        },
-
-        createObjectAndManager: function () {
-
-            return new Promise((resolve, reject) => {
-                this.doGeocoding().then
-                this.registerManager().then(response => {
-                    let oopsie = false;
-                    event.preventDefault();
-                    var picturePath = new FileReader();
-                    var file = this.$refs.myFile.files[0];
-                    var fileName = this.$refs.myFile.files[0].name;
-                    picturePath.readAsDataURL(file);
-                    picturePath.onloadend = () => {
-                        axios.post('/rest/createSportsObject', {
-                            name: this.title,
-                            manager: this.manager.Id,
-                            type: this.type,
-                            businessHoursStart: this.businessHours.start,
-                            businessHoursEnd: this.businessHours.end,
-                            street: this.location.address.street,
-                            number: this.location.address.number,
-                            city: this.location.address.city,
-                            country: "Srbija",
-                            postCode: this.location.address.postCode,
-                            latitude: this.location.latitude,
-                            longitude: this.location.longitude,
-                            imgData: picturePath.result,
-                            fileName: fileName,
-                        })
-                            .then(resp => {
-                                this.$router.replace("/");
-                                oopsie = false;
-                            }).catch(err => {
-                            alert(err.response.data);
-                            this.$router.replace("/dodaj-objekat");
-                            oopsie = true;
-                        });
-                    }
-                    this.errorExists = oopsie;
-                });
-            })
         },
         registerManager: async function () {
             event.preventDefault();
             this.passwordMatchCheck();
             let oopsie = this.errorExists;
-            await axios.post('/rest/create-manager', {
-                username: this.managerParams.username,
-                password: this.managerParams.passwordSecond,
-                name: this.managerParams.name,
-                surname: this.managerParams.surname,
-                gender: this.managerParams.gender,
-                dob: this.managerParams.dob
-            })
-                .then(response => {
-                    oopsie = false;
-                    this.manager = response.data;
+            if(this.managerParams.username !== "" && this.managerParams.name !== ""
+                && this.managerParams.passwordFirst !==  "" && this.managerParams.passwordSecond !==  "" && this.managerParams.surname !== "" && this.managerParams.gender !== "" ) {
+                await axios.post('/rest/create-manager', {
+                    username: this.managerParams.username,
+                    password: this.managerParams.passwordSecond,
+                    name: this.managerParams.name,
+                    surname: this.managerParams.surname,
+                    gender: this.managerParams.gender,
+                    dob: this.managerParams.dob
                 })
-                .catch(function error(err) {
-                    oopsie = true;
-                });
+                    .then(response => {
+                        oopsie = false;
+                        this.manager = response.data;
+                    })
+                    .catch(function error(err) {
+                        oopsie = true;
+                    });
+            } else {
+                alert("Invalid input!");
+            }
 
         }, passwordMatchCheck: function () {
             if (this.usernameIsUnique) {

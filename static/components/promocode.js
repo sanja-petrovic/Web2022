@@ -92,21 +92,25 @@ Vue.component('promocode', {
             event.preventDefault();
 		},
         definePromocode: async function() {
-			 await axios.post('/rest/createPromocode', {
-                id: this.id,
-                discount: this.discount,
-                maximumUses: this.maximumUses,
-                expirationDateTime: this.expirationDateTime
-            })
-            	.then(response => {
-					console.log(response);
-					  this.$router.replace("/");
-					  alert("Uspešno ste kreirali novi promo kod!");
-				})
-				.catch(err => {
-                	alert(err.response.data);
-                    this.$router.replace("/dodaj-promokod");          
-			})
+			 if(this.id !== "" && this.discount !== "" && this.maximumUses !== "") {
+				 await axios.post('/rest/createPromocode', {
+					 id: this.id,
+					 discount: this.discount,
+					 maximumUses: this.maximumUses,
+					 expirationDateTime: this.expirationDateTime
+				 })
+					 .then(response => {
+						 console.log(response);
+						 this.$router.replace("/");
+						 alert("Uspešno ste kreirali novi promo kod!");
+					 })
+					 .catch(err => {
+						 alert(err.response.data);
+						 this.$router.replace("/dodaj-promokod");
+					 })
+			 } else {
+				 alert("Invalid input!");
+			 }
 		
 		
 		}

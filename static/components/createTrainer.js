@@ -83,7 +83,7 @@ Vue.component('create-trainer', {
             event.preventDefault();
             this.passwordMatchCheck();
             let oopsie = this.errorExists;
-            if(this.username != null && this.passwordFirst !== null && this.passwordSecond !== null && this.name !== null && this.surname !== null && this.gender !== null && this.dob !== null) {
+            if(this.username !== "" && this.passwordFirst !== "" && this.passwordSecond !== "" && this.name !== "" && this.surname !== "" && this.gender !== "") {
                 await axios.post('/rest/create-trainer', {
                     username: this.username,
                     password: this.passwordSecond,
@@ -104,6 +104,8 @@ Vue.component('create-trainer', {
                 } else {
                     this.$router.replace("/");
                 }
+            } else {
+                alert("Invalid input!");
             }
 
         },

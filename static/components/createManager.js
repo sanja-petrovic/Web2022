@@ -85,27 +85,32 @@ Vue.component('create-manager', {
             event.preventDefault();
             this.passwordMatchCheck();
             let oopsie = this.errorExists;
-            await axios.post('/rest/create-manager', {
-                username: this.managerParams.username,
-                password: this.managerParams.passwordSecond,
-                name: this.managerParams.name,
-                surname: this.managerParams.surname,
-                gender: this.managerParams.gender,
-                dob: this.managerParams.dob
-            })
-                .then(response => {
-                    oopsie = false;
-                    this.manager = response.data;
+            if(this.managerParams.username !== "" && this.managerParams.name !== ""
+            && this.managerParams.passwordFirst !==  "" && this.managerParams.passwordSecond !==  "" && this.managerParams.surname !== "" && this.managerParams.gender !== "" ) {
+                await axios.post('/rest/create-manager', {
+                    username: this.managerParams.username,
+                    password: this.managerParams.passwordSecond,
+                    name: this.managerParams.name,
+                    surname: this.managerParams.surname,
+                    gender: this.managerParams.gender,
+                    dob: this.managerParams.dob
                 })
-                .catch(function error(err) {
-                    oopsie = true;
-                });
-            if(oopsie) {
-                this.$router.replace("/dodaj-menadzera");
+                    .then(response => {
+                        oopsie = false;
+                        this.manager = response.data;
+                    })
+                    .catch(function error(err) {
+                        oopsie = true;
+                    });
+                if(oopsie) {
+                    this.$router.replace("/dodaj-menadzera");
+                } else {
+                    this.$router.replace("/korisnici");
+                }
+                this.errorExists = oopsie;
             } else {
-                this.$router.replace("/korisnici");
+                alert('Invalid input!');
             }
-            this.errorExists = oopsie;
 
         }, passwordMatchCheck: function () {
             if (this.usernameIsUnique) {
